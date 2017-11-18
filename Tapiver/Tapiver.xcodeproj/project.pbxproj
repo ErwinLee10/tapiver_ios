@@ -1,0 +1,511 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B0B0567D1FC084CD001E4659 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B0567C1FC084CD001E4659 /* AppDelegate.swift */; };
+		B0B056841FC084CD001E4659 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0B056831FC084CD001E4659 /* Assets.xcassets */; };
+		B0B056871FC084CD001E4659 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0B056851FC084CD001E4659 /* LaunchScreen.storyboard */; };
+		B0B056951FC0860F001E4659 /* BCAExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B056921FC0860F001E4659 /* BCAExtention.swift */; };
+		B0B056961FC0860F001E4659 /* StringCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B056941FC0860F001E4659 /* StringCommon.swift */; };
+		B0B056A21FC08680001E4659 /* TAPLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B0569A1FC08680001E4659 /* TAPLoginViewController.swift */; };
+		B0B056A31FC08680001E4659 /* TAPLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0B0569B1FC08680001E4659 /* TAPLoginViewController.xib */; };
+		B0B056A41FC08680001E4659 /* BCALoginProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B0569D1FC08680001E4659 /* BCALoginProtocols.swift */; };
+		B0B056A51FC08680001E4659 /* TAPLoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B0569F1FC08680001E4659 /* TAPLoginPresenter.swift */; };
+		B0B056A61FC08680001E4659 /* TAPLoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B056A11FC08680001E4659 /* TAPLoginModel.swift */; };
+		D33DB5415B68BDBD3452755B /* Pods_Tapiver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D246665402A90FDB19ADE64 /* Pods_Tapiver.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1D246665402A90FDB19ADE64 /* Pods_Tapiver.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tapiver.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		29A1ABC763EF13C0631E2DA2 /* Pods-Tapiver.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tapiver.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tapiver/Pods-Tapiver.debug.xcconfig"; sourceTree = "<group>"; };
+		2AD33DFBDCE839D1D2BAF8C4 /* Pods-Tapiver.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tapiver.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tapiver/Pods-Tapiver.release.xcconfig"; sourceTree = "<group>"; };
+		B0B056791FC084CD001E4659 /* Tapiver.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tapiver.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B0B0567C1FC084CD001E4659 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B0B056831FC084CD001E4659 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B0B056861FC084CD001E4659 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B0B056881FC084CD001E4659 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B0B056921FC0860F001E4659 /* BCAExtention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BCAExtention.swift; sourceTree = "<group>"; };
+		B0B056941FC0860F001E4659 /* StringCommon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringCommon.swift; sourceTree = "<group>"; };
+		B0B0569A1FC08680001E4659 /* TAPLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TAPLoginViewController.swift; sourceTree = "<group>"; };
+		B0B0569B1FC08680001E4659 /* TAPLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TAPLoginViewController.xib; sourceTree = "<group>"; };
+		B0B0569D1FC08680001E4659 /* BCALoginProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BCALoginProtocols.swift; sourceTree = "<group>"; };
+		B0B0569F1FC08680001E4659 /* TAPLoginPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TAPLoginPresenter.swift; sourceTree = "<group>"; };
+		B0B056A11FC08680001E4659 /* TAPLoginModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TAPLoginModel.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B0B056761FC084CD001E4659 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D33DB5415B68BDBD3452755B /* Pods_Tapiver.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		21C035E1912A58E96339129B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				29A1ABC763EF13C0631E2DA2 /* Pods-Tapiver.debug.xcconfig */,
+				2AD33DFBDCE839D1D2BAF8C4 /* Pods-Tapiver.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		2DDFAD5114A2234EBD712B04 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1D246665402A90FDB19ADE64 /* Pods_Tapiver.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B0B056701FC084CD001E4659 = {
+			isa = PBXGroup;
+			children = (
+				B0B0567B1FC084CD001E4659 /* Tapiver */,
+				B0B0567A1FC084CD001E4659 /* Products */,
+				21C035E1912A58E96339129B /* Pods */,
+				2DDFAD5114A2234EBD712B04 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		B0B0567A1FC084CD001E4659 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B0B056791FC084CD001E4659 /* Tapiver.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B0B0567B1FC084CD001E4659 /* Tapiver */ = {
+			isa = PBXGroup;
+			children = (
+				B0B056901FC085CE001E4659 /* Common */,
+				B0B0568F1FC085C0001E4659 /* Classes */,
+				B0B0568E1FC085B3001E4659 /* Application */,
+			);
+			path = Tapiver;
+			sourceTree = "<group>";
+		};
+		B0B0568E1FC085B3001E4659 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				B0B0567C1FC084CD001E4659 /* AppDelegate.swift */,
+				B0B056831FC084CD001E4659 /* Assets.xcassets */,
+				B0B056851FC084CD001E4659 /* LaunchScreen.storyboard */,
+				B0B056881FC084CD001E4659 /* Info.plist */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		B0B0568F1FC085C0001E4659 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				B0B056971FC0861C001E4659 /* Modules */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		B0B056901FC085CE001E4659 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				B0B056931FC0860F001E4659 /* Constants */,
+				B0B056911FC0860F001E4659 /* Extention */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		B0B056911FC0860F001E4659 /* Extention */ = {
+			isa = PBXGroup;
+			children = (
+				B0B056921FC0860F001E4659 /* BCAExtention.swift */,
+			);
+			path = Extention;
+			sourceTree = "<group>";
+		};
+		B0B056931FC0860F001E4659 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				B0B056941FC0860F001E4659 /* StringCommon.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		B0B056971FC0861C001E4659 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				B0B056981FC0862A001E4659 /* Login */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		B0B056981FC0862A001E4659 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				B0B056A01FC08680001E4659 /* Models */,
+				B0B056991FC08680001E4659 /* PassiveView */,
+				B0B0569E1FC08680001E4659 /* Presenter */,
+				B0B0569C1FC08680001E4659 /* Protocols */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		B0B056991FC08680001E4659 /* PassiveView */ = {
+			isa = PBXGroup;
+			children = (
+				B0B0569A1FC08680001E4659 /* TAPLoginViewController.swift */,
+				B0B0569B1FC08680001E4659 /* TAPLoginViewController.xib */,
+			);
+			path = PassiveView;
+			sourceTree = "<group>";
+		};
+		B0B0569C1FC08680001E4659 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				B0B0569D1FC08680001E4659 /* BCALoginProtocols.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		B0B0569E1FC08680001E4659 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				B0B0569F1FC08680001E4659 /* TAPLoginPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		B0B056A01FC08680001E4659 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B0B056A11FC08680001E4659 /* TAPLoginModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B0B056781FC084CD001E4659 /* Tapiver */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B0B0568B1FC084CD001E4659 /* Build configuration list for PBXNativeTarget "Tapiver" */;
+			buildPhases = (
+				F41EB0FFFAEEFD3342340276 /* [CP] Check Pods Manifest.lock */,
+				B0B056751FC084CD001E4659 /* Sources */,
+				B0B056761FC084CD001E4659 /* Frameworks */,
+				B0B056771FC084CD001E4659 /* Resources */,
+				1807983760C8BF07BCC4808D /* [CP] Embed Pods Frameworks */,
+				60DA4E05B36426904D2AE35C /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Tapiver;
+			productName = Tapiver;
+			productReference = B0B056791FC084CD001E4659 /* Tapiver.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B0B056711FC084CD001E4659 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = TAP;
+				LastSwiftUpdateCheck = 0910;
+				LastUpgradeCheck = 0910;
+				ORGANIZATIONNAME = hunghoang;
+				TargetAttributes = {
+					B0B056781FC084CD001E4659 = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = B0B056741FC084CD001E4659 /* Build configuration list for PBXProject "Tapiver" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B0B056701FC084CD001E4659;
+			productRefGroup = B0B0567A1FC084CD001E4659 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B0B056781FC084CD001E4659 /* Tapiver */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B0B056771FC084CD001E4659 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B0B056871FC084CD001E4659 /* LaunchScreen.storyboard in Resources */,
+				B0B056A31FC08680001E4659 /* TAPLoginViewController.xib in Resources */,
+				B0B056841FC084CD001E4659 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1807983760C8BF07BCC4808D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Tapiver/Pods-Tapiver-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Tapiver/Pods-Tapiver-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		60DA4E05B36426904D2AE35C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Tapiver/Pods-Tapiver-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F41EB0FFFAEEFD3342340276 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Tapiver-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B0B056751FC084CD001E4659 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B0B056951FC0860F001E4659 /* BCAExtention.swift in Sources */,
+				B0B056961FC0860F001E4659 /* StringCommon.swift in Sources */,
+				B0B0567D1FC084CD001E4659 /* AppDelegate.swift in Sources */,
+				B0B056A41FC08680001E4659 /* BCALoginProtocols.swift in Sources */,
+				B0B056A51FC08680001E4659 /* TAPLoginPresenter.swift in Sources */,
+				B0B056A61FC08680001E4659 /* TAPLoginModel.swift in Sources */,
+				B0B056A21FC08680001E4659 /* TAPLoginViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		B0B056851FC084CD001E4659 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B0B056861FC084CD001E4659 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B0B056891FC084CD001E4659 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		B0B0568A1FC084CD001E4659 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B0B0568C1FC084CD001E4659 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 29A1ABC763EF13C0631E2DA2 /* Pods-Tapiver.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "$(SRCROOT)/Tapiver/Application/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.app.Tapiver;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B0B0568D1FC084CD001E4659 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2AD33DFBDCE839D1D2BAF8C4 /* Pods-Tapiver.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "$(SRCROOT)/Tapiver/Application/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.app.Tapiver;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B0B056741FC084CD001E4659 /* Build configuration list for PBXProject "Tapiver" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B0B056891FC084CD001E4659 /* Debug */,
+				B0B0568A1FC084CD001E4659 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B0B0568B1FC084CD001E4659 /* Build configuration list for PBXNativeTarget "Tapiver" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B0B0568C1FC084CD001E4659 /* Debug */,
+				B0B0568D1FC084CD001E4659 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B0B056711FC084CD001E4659 /* Project object */;
+}
