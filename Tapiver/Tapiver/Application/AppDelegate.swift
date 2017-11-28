@@ -17,10 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         self.window = UIWindow(frame: UIScreen.main.bounds)
-        let naviRoot = TAPLoginViewController(nibName: "TAPLoginViewController", bundle: nil)
-        let navi = UINavigationController(rootViewController: naviRoot)
-        navi.navigationBar.isTranslucent = false
-        navi.navigationBar.isHidden = true
+        let navi = TAPMainFrame.makeNewMainFrame()
         self.window!.rootViewController = navi
         self.window!.makeKeyAndVisible()
 
