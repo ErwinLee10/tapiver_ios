@@ -1,14 +1,14 @@
 //
-//  TAPLoginPageMainViewController.swift
+//  TAPForgotPasswordViewController.swift
 //  Tapiver
 //
-//  Created by HungHN on 11/28/17.
+//  Created by HungHN on 11/29/17.
 //  Copyright © 2017 hunghoang. All rights reserved.
 //
 
 import UIKit
 
-class TAPLoginPageMainViewController: UIViewController {
+class TAPForgotPasswordViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,8 +21,4 @@ class TAPLoginPageMainViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    @IBAction func actionLogin(_ sender: UIButton) {
-        TAPMainFrame.showMainTabbarPage()
-    }
-    
 }

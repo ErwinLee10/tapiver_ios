@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6C66BFA41FCE69500092A006 /* TAPSignupEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C66BFA21FCE69500092A006 /* TAPSignupEmailViewController.swift */; };
+		6C66BFA51FCE69500092A006 /* TAPSignupEmailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C66BFA31FCE69500092A006 /* TAPSignupEmailViewController.xib */; };
+		6C66BFA91FCE6FA10092A006 /* TAPSignupPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C66BFA71FCE6FA10092A006 /* TAPSignupPasswordViewController.swift */; };
+		6C66BFAA1FCE6FA10092A006 /* TAPSignupPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C66BFA81FCE6FA10092A006 /* TAPSignupPasswordViewController.xib */; };
+		6C66BFB11FCEAE160092A006 /* TAPForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C66BFAF1FCEAE160092A006 /* TAPForgotPasswordViewController.swift */; };
+		6C66BFB21FCEAE160092A006 /* TAPForgotPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C66BFB01FCEAE160092A006 /* TAPForgotPasswordViewController.xib */; };
+		6C66BFB71FCEB3870092A006 /* TAPMainTabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C66BFB51FCEB3870092A006 /* TAPMainTabbarViewController.swift */; };
+		6C66BFB81FCEB3870092A006 /* TAPMainTabbarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C66BFB61FCEB3870092A006 /* TAPMainTabbarViewController.xib */; };
 		6C86010E1FCD683B004E7CAE /* BCAWebservice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C86010D1FCD683B004E7CAE /* BCAWebservice.swift */; };
 		6C86011B1FCD6902004E7CAE /* BCABaseEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C8601171FCD6902004E7CAE /* BCABaseEntity.swift */; };
 		6C8601201FCD696A004E7CAE /* TAPLoginPageMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C86011E1FCD696A004E7CAE /* TAPLoginPageMainViewController.swift */; };
@@ -22,6 +30,14 @@
 		6C86013B1FCD70E5004E7CAE /* splash02.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C8601381FCD70E5004E7CAE /* splash02.png */; };
 		6C86013C1FCD70E5004E7CAE /* splash03.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C8601391FCD70E5004E7CAE /* splash03.png */; };
 		6C86013F1FCD732B004E7CAE /* TAPMainFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C86013E1FCD732B004E7CAE /* TAPMainFrame.swift */; };
+		6CCEEFBA1FCEB5B70018FDB3 /* TAPCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CCEEFB81FCEB5B70018FDB3 /* TAPCategoryViewController.swift */; };
+		6CCEEFBB1FCEB5B70018FDB3 /* TAPCategoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6CCEEFB91FCEB5B70018FDB3 /* TAPCategoryViewController.xib */; };
+		6CCEEFBE1FCEB5C50018FDB3 /* TAPDealsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CCEEFBC1FCEB5C50018FDB3 /* TAPDealsViewController.swift */; };
+		6CCEEFBF1FCEB5C50018FDB3 /* TAPDealsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6CCEEFBD1FCEB5C50018FDB3 /* TAPDealsViewController.xib */; };
+		6CCEEFC21FCEB6400018FDB3 /* TAPDiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CCEEFC01FCEB6400018FDB3 /* TAPDiscoverViewController.swift */; };
+		6CCEEFC31FCEB6400018FDB3 /* TAPDiscoverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6CCEEFC11FCEB6400018FDB3 /* TAPDiscoverViewController.xib */; };
+		6CCEEFC71FCEB6600018FDB3 /* TAPFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CCEEFC51FCEB6600018FDB3 /* TAPFeedViewController.swift */; };
+		6CCEEFC81FCEB6600018FDB3 /* TAPFeedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6CCEEFC61FCEB6600018FDB3 /* TAPFeedViewController.xib */; };
 		B0B0567D1FC084CD001E4659 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B0567C1FC084CD001E4659 /* AppDelegate.swift */; };
 		B0B056841FC084CD001E4659 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0B056831FC084CD001E4659 /* Assets.xcassets */; };
 		B0B056871FC084CD001E4659 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0B056851FC084CD001E4659 /* LaunchScreen.storyboard */; };
@@ -34,6 +50,14 @@
 		1D246665402A90FDB19ADE64 /* Pods_Tapiver.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tapiver.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		29A1ABC763EF13C0631E2DA2 /* Pods-Tapiver.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tapiver.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tapiver/Pods-Tapiver.debug.xcconfig"; sourceTree = "<group>"; };
 		2AD33DFBDCE839D1D2BAF8C4 /* Pods-Tapiver.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tapiver.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tapiver/Pods-Tapiver.release.xcconfig"; sourceTree = "<group>"; };
+		6C66BFA21FCE69500092A006 /* TAPSignupEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPSignupEmailViewController.swift; sourceTree = "<group>"; };
+		6C66BFA31FCE69500092A006 /* TAPSignupEmailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TAPSignupEmailViewController.xib; sourceTree = "<group>"; };
+		6C66BFA71FCE6FA10092A006 /* TAPSignupPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TAPSignupPasswordViewController.swift; sourceTree = "<group>"; };
+		6C66BFA81FCE6FA10092A006 /* TAPSignupPasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TAPSignupPasswordViewController.xib; sourceTree = "<group>"; };
+		6C66BFAF1FCEAE160092A006 /* TAPForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPForgotPasswordViewController.swift; sourceTree = "<group>"; };
+		6C66BFB01FCEAE160092A006 /* TAPForgotPasswordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TAPForgotPasswordViewController.xib; sourceTree = "<group>"; };
+		6C66BFB51FCEB3870092A006 /* TAPMainTabbarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPMainTabbarViewController.swift; sourceTree = "<group>"; };
+		6C66BFB61FCEB3870092A006 /* TAPMainTabbarViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TAPMainTabbarViewController.xib; sourceTree = "<group>"; };
 		6C86010D1FCD683B004E7CAE /* BCAWebservice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BCAWebservice.swift; sourceTree = "<group>"; };
 		6C86010F1FCD6863004E7CAE /* Tapiver-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tapiver-Bridging-Header.h"; sourceTree = "<group>"; };
 		6C8601171FCD6902004E7CAE /* BCABaseEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BCABaseEntity.swift; sourceTree = "<group>"; };
@@ -50,6 +74,14 @@
 		6C8601381FCD70E5004E7CAE /* splash02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash02.png; sourceTree = "<group>"; };
 		6C8601391FCD70E5004E7CAE /* splash03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash03.png; sourceTree = "<group>"; };
 		6C86013E1FCD732B004E7CAE /* TAPMainFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPMainFrame.swift; sourceTree = "<group>"; };
+		6CCEEFB81FCEB5B70018FDB3 /* TAPCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPCategoryViewController.swift; sourceTree = "<group>"; };
+		6CCEEFB91FCEB5B70018FDB3 /* TAPCategoryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TAPCategoryViewController.xib; sourceTree = "<group>"; };
+		6CCEEFBC1FCEB5C50018FDB3 /* TAPDealsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPDealsViewController.swift; sourceTree = "<group>"; };
+		6CCEEFBD1FCEB5C50018FDB3 /* TAPDealsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TAPDealsViewController.xib; sourceTree = "<group>"; };
+		6CCEEFC01FCEB6400018FDB3 /* TAPDiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPDiscoverViewController.swift; sourceTree = "<group>"; };
+		6CCEEFC11FCEB6400018FDB3 /* TAPDiscoverViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TAPDiscoverViewController.xib; sourceTree = "<group>"; };
+		6CCEEFC51FCEB6600018FDB3 /* TAPFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPFeedViewController.swift; sourceTree = "<group>"; };
+		6CCEEFC61FCEB6600018FDB3 /* TAPFeedViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TAPFeedViewController.xib; sourceTree = "<group>"; };
 		B0B056791FC084CD001E4659 /* Tapiver.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tapiver.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0B0567C1FC084CD001E4659 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B0B056831FC084CD001E4659 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -86,6 +118,42 @@
 				1D246665402A90FDB19ADE64 /* Pods_Tapiver.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6C66BFA11FCE69260092A006 /* SignupEmail */ = {
+			isa = PBXGroup;
+			children = (
+				6C66BFA21FCE69500092A006 /* TAPSignupEmailViewController.swift */,
+				6C66BFA31FCE69500092A006 /* TAPSignupEmailViewController.xib */,
+			);
+			path = SignupEmail;
+			sourceTree = "<group>";
+		};
+		6C66BFA61FCE6FA10092A006 /* SignupPassword */ = {
+			isa = PBXGroup;
+			children = (
+				6C66BFA71FCE6FA10092A006 /* TAPSignupPasswordViewController.swift */,
+				6C66BFA81FCE6FA10092A006 /* TAPSignupPasswordViewController.xib */,
+			);
+			path = SignupPassword;
+			sourceTree = "<group>";
+		};
+		6C66BFAE1FCEA02E0092A006 /* ForgotPassword */ = {
+			isa = PBXGroup;
+			children = (
+				6C66BFAF1FCEAE160092A006 /* TAPForgotPasswordViewController.swift */,
+				6C66BFB01FCEAE160092A006 /* TAPForgotPasswordViewController.xib */,
+			);
+			path = ForgotPassword;
+			sourceTree = "<group>";
+		};
+		6C66BFB31FCEB3540092A006 /* MainTabbar */ = {
+			isa = PBXGroup;
+			children = (
+				6C66BFB51FCEB3870092A006 /* TAPMainTabbarViewController.swift */,
+				6C66BFB61FCEB3870092A006 /* TAPMainTabbarViewController.xib */,
+			);
+			path = MainTabbar;
 			sourceTree = "<group>";
 		};
 		6C86010C1FCD683B004E7CAE /* Webservice */ = {
@@ -193,6 +261,42 @@
 			path = MainFrame;
 			sourceTree = "<group>";
 		};
+		6CCEEFB41FCEB57F0018FDB3 /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				6CCEEFC51FCEB6600018FDB3 /* TAPFeedViewController.swift */,
+				6CCEEFC61FCEB6600018FDB3 /* TAPFeedViewController.xib */,
+			);
+			path = Feed;
+			sourceTree = "<group>";
+		};
+		6CCEEFB51FCEB5860018FDB3 /* Discover */ = {
+			isa = PBXGroup;
+			children = (
+				6CCEEFC01FCEB6400018FDB3 /* TAPDiscoverViewController.swift */,
+				6CCEEFC11FCEB6400018FDB3 /* TAPDiscoverViewController.xib */,
+			);
+			path = Discover;
+			sourceTree = "<group>";
+		};
+		6CCEEFB61FCEB58E0018FDB3 /* Deals */ = {
+			isa = PBXGroup;
+			children = (
+				6CCEEFBC1FCEB5C50018FDB3 /* TAPDealsViewController.swift */,
+				6CCEEFBD1FCEB5C50018FDB3 /* TAPDealsViewController.xib */,
+			);
+			path = Deals;
+			sourceTree = "<group>";
+		};
+		6CCEEFB71FCEB5940018FDB3 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				6CCEEFB81FCEB5B70018FDB3 /* TAPCategoryViewController.swift */,
+				6CCEEFB91FCEB5B70018FDB3 /* TAPCategoryViewController.xib */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
 		B0B056701FC084CD001E4659 = {
 			isa = PBXGroup;
 			children = (
@@ -272,6 +376,14 @@
 		B0B056971FC0861C001E4659 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				6CCEEFB71FCEB5940018FDB3 /* Category */,
+				6CCEEFB61FCEB58E0018FDB3 /* Deals */,
+				6CCEEFB51FCEB5860018FDB3 /* Discover */,
+				6CCEEFB41FCEB57F0018FDB3 /* Feed */,
+				6C66BFB31FCEB3540092A006 /* MainTabbar */,
+				6C66BFAE1FCEA02E0092A006 /* ForgotPassword */,
+				6C66BFA61FCE6FA10092A006 /* SignupPassword */,
+				6C66BFA11FCE69260092A006 /* SignupEmail */,
 				6C86012C1FCD6D56004E7CAE /* IntroApp */,
 				6C8601261FCD6D21004E7CAE /* Splash */,
 				6C86011D1FCD693D004E7CAE /* LoginPageMain */,
@@ -344,14 +456,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				6C86013B1FCD70E5004E7CAE /* splash02.png in Resources */,
+				6C66BFAA1FCE6FA10092A006 /* TAPSignupPasswordViewController.xib in Resources */,
 				6C8601251FCD6CD0004E7CAE /* splash.png in Resources */,
 				B0B056871FC084CD001E4659 /* LaunchScreen.storyboard in Resources */,
+				6C66BFB21FCEAE160092A006 /* TAPForgotPasswordViewController.xib in Resources */,
+				6C66BFB81FCEB3870092A006 /* TAPMainTabbarViewController.xib in Resources */,
+				6CCEEFC81FCEB6600018FDB3 /* TAPFeedViewController.xib in Resources */,
 				6C86012B1FCD6D3E004E7CAE /* TAPSplashViewController.xib in Resources */,
+				6CCEEFBF1FCEB5C50018FDB3 /* TAPDealsViewController.xib in Resources */,
+				6CCEEFC31FCEB6400018FDB3 /* TAPDiscoverViewController.xib in Resources */,
 				6C86013A1FCD70E5004E7CAE /* splash01.png in Resources */,
 				6C8601311FCD6D70004E7CAE /* TAPIntroAppViewController.xib in Resources */,
+				6CCEEFBB1FCEB5B70018FDB3 /* TAPCategoryViewController.xib in Resources */,
 				6C8601361FCD6E69004E7CAE /* TAPIntroPageViewController.xib in Resources */,
 				B0B056841FC084CD001E4659 /* Assets.xcassets in Resources */,
 				6C8601211FCD696A004E7CAE /* TAPLoginPageMainViewController.xib in Resources */,
+				6C66BFA51FCE69500092A006 /* TAPSignupEmailViewController.xib in Resources */,
 				6C86013C1FCD70E5004E7CAE /* splash03.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -419,16 +539,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6C66BFA41FCE69500092A006 /* TAPSignupEmailViewController.swift in Sources */,
 				B0B056951FC0860F001E4659 /* BCAExtention.swift in Sources */,
 				B0B056961FC0860F001E4659 /* StringCommon.swift in Sources */,
+				6CCEEFBE1FCEB5C50018FDB3 /* TAPDealsViewController.swift in Sources */,
 				6C86011B1FCD6902004E7CAE /* BCABaseEntity.swift in Sources */,
 				6C8601351FCD6E69004E7CAE /* TAPIntroPageViewController.swift in Sources */,
 				6C8601301FCD6D70004E7CAE /* TAPIntroAppViewController.swift in Sources */,
 				B0B0567D1FC084CD001E4659 /* AppDelegate.swift in Sources */,
 				6C86013F1FCD732B004E7CAE /* TAPMainFrame.swift in Sources */,
 				6C8601201FCD696A004E7CAE /* TAPLoginPageMainViewController.swift in Sources */,
+				6CCEEFBA1FCEB5B70018FDB3 /* TAPCategoryViewController.swift in Sources */,
+				6C66BFB11FCEAE160092A006 /* TAPForgotPasswordViewController.swift in Sources */,
+				6C66BFA91FCE6FA10092A006 /* TAPSignupPasswordViewController.swift in Sources */,
 				6C86010E1FCD683B004E7CAE /* BCAWebservice.swift in Sources */,
+				6CCEEFC71FCEB6600018FDB3 /* TAPFeedViewController.swift in Sources */,
 				6C86012A1FCD6D3E004E7CAE /* TAPSplashViewController.swift in Sources */,
+				6CCEEFC21FCEB6400018FDB3 /* TAPDiscoverViewController.swift in Sources */,
+				6C66BFB71FCEB3870092A006 /* TAPMainTabbarViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

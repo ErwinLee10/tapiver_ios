@@ -30,6 +30,12 @@ class TAPMainFrame: NSObject {
         
     }
     
+    static func showMainTabbarPage() -> Void {
+        let vc = TAPMainTabbarViewController(nibName: "TAPMainTabbarViewController", bundle: nil)
+        navigationView?.viewControllers = [vc]
+        
+    }
+    
     static func getNavi() -> UINavigationController{
         return navigationView!
     }

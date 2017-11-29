@@ -119,6 +119,9 @@
                             <real key="value" value="20"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="actionLogin:" destination="-1" eventType="touchUpInside" id="OPm-8M-nCm"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D6B-h1-nlE">
                     <rect key="frame" x="50" y="449.5" width="275" height="40"/>
@@ -129,7 +132,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="LAU-qE-TnL"/>
                     </constraints>
-                    <state key="normal" title="Button"/>
+                    <state key="normal" title="Signup"/>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pzQ-X9-LMr">
                     <rect key="frame" x="124" y="560" width="127" height="30"/>
