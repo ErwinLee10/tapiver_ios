@@ -48,9 +48,9 @@ class TAPMainTabbarViewController: UITabBarController {
         let controllers:[UIViewController] = NSArray.init(objects: feedVC, discoverVC, dealsVC, CategoryVC) as! [UIViewController]
         self.viewControllers = controllers
         
-        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor : UIColor.white], for: UIControlState.normal)
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor : UIColor.init(netHex: 0x696A6A)], for: UIControlState.normal)
         UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor : UIColor.init(netHex: 0x175C7A)], for: UIControlState.selected)
-        UITabBar.appearance().barTintColor = UIColor.init(netHex: 0x696A6A)
+        UITabBar.appearance().barTintColor = UIColor.init(netHex: 0xF7F8F8)
     }
 
 }
