@@ -9,6 +9,8 @@
 import UIKit
 
 class TAPSignupEmailViewController: UIViewController {
+    
+    var email: String!
 
     override func viewDidLoad() {
         super.viewDidLoad()
