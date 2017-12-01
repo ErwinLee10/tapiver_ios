@@ -18,9 +18,15 @@ class TAPSignupEmailViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @IBAction func actionSignupNext(_ sender: UIButton) {
+        TAPMainFrame.showSignupPassPage()
     }
-
+    @IBAction func actionSignupFacebook(_ sender: Any) {
+        
+    }
+    
+    @IBAction func actionLogin(_ sender: UIButton) {
+        TAPMainFrame.showLoginPageMain()
+    }
+    
 }

@@ -36,6 +36,24 @@ class TAPMainFrame: NSObject {
         
     }
     
+    static func showForgotPage() -> Void {
+        let vc = TAPForgotPasswordViewController(nibName: "TAPForgotPasswordViewController", bundle: nil)
+        navigationView?.viewControllers = [vc]
+        
+    }
+    
+    static func showSignupEmailPage() -> Void {
+        let vc = TAPSignupEmailViewController(nibName: "TAPSignupEmailViewController", bundle: nil)
+        navigationView?.viewControllers = [vc]
+        
+    }
+    
+    static func showSignupPassPage() -> Void {
+        let vc = TAPSignupPasswordViewController(nibName: "TAPSignupPasswordViewController", bundle: nil)
+        navigationView?.viewControllers = [vc]
+        
+    }
+    
     static func getNavi() -> UINavigationController{
         return navigationView!
     }

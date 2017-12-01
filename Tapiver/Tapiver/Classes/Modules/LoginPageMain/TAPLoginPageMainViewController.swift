@@ -25,4 +25,15 @@ class TAPLoginPageMainViewController: UIViewController {
         TAPMainFrame.showMainTabbarPage()
     }
     
+    @IBAction func actionForgotpass(_ sender: UIButton) {
+         TAPMainFrame.showForgotPage()
+    }
+    
+    @IBAction func actionSkip(_ sender: UIButton) {
+        TAPMainFrame.showMainTabbarPage()
+    }
+    
+    @IBAction func actionSignup(_ sender: UIButton) {
+        TAPMainFrame.showSignupEmailPage()
+    }
 }
