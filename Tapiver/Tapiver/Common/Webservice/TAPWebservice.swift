@@ -1,5 +1,5 @@
 //
-//  BCAWebservice.swift
+//  TAPWebservice.swift
 //  BCAInvestment
 //
 //  Created by HungHN on 11/24/17.
@@ -12,34 +12,38 @@ import UIKit
 import Foundation
 import AFNetworking
 
-typealias ServerResponseHandler = (_ success:Bool, _ response:BCABaseEntity?) -> Void;
+typealias ServerResponseHandler = (_ success:Bool, _ response:TAPBaseEntity?) -> Void;
 
-class BCAWebservice: NSObject {
-    static let shareInstance = BCAWebservice()
+class TAPWebservice: NSObject {
+    static let shareInstance = TAPWebservice()
     let requestManager:AFHTTPSessionManager!
     override init() {
         let securityPolicy:AFSecurityPolicy = AFSecurityPolicy();
         securityPolicy.allowInvalidCertificates = true
         securityPolicy.validatesDomainName = false;
-        self.requestManager = AFHTTPSessionManager();
-        let set = NSMutableSet(set: (self.requestManager!.responseSerializer.acceptableContentTypes)!)
-        set.add("application/json")
-        set.add("text/html")
-        let setobj  = NSSet(set: set)
-        self.requestManager.securityPolicy = securityPolicy;
-        self.requestManager!.responseSerializer.acceptableContentTypes = setobj as? Set<String>
-        //        let requestSerializer:AFHTTPRequestSerializer = AFHTTPRequestSerializer()
-        let requestSerializer:AFJSONRequestSerializer = AFJSONRequestSerializer()
+        self.requestManager = AFHTTPSessionManager()
+        self.requestManager.securityPolicy = securityPolicy
+        
+        let requestSerializer = AFJSONRequestSerializer()
         requestSerializer.stringEncoding = String.Encoding.utf8.rawValue
-        self.requestManager!.requestSerializer = requestSerializer
-        self.requestManager!.responseSerializer = AFJSONResponseSerializer()
-        self.requestManager!.requestSerializer.timeoutInterval = TimeInterval(60)
+        self.requestManager.requestSerializer = requestSerializer
+        self.requestManager.responseSerializer = AFJSONResponseSerializer()
+        self.requestManager.requestSerializer.timeoutInterval = TimeInterval(60)
+        
+        if let contentType = self.requestManager.responseSerializer.acceptableContentTypes {
+            let set = NSMutableSet(set: contentType)
+            set.add("application/json")
+            set.add("text/html")
+            
+            let setobj  = NSSet(set: set)
+            self.requestManager.responseSerializer.acceptableContentTypes = setobj as? Set<String>
+        }
     }
     
     func sendGETRequest(path:String!,
                         params:NSDictionary?,
                         headers:NSDictionary?,
-                        responseObjectClass:BCABaseEntity!,
+                        responseObjectClass:TAPBaseEntity!,
                         responseHandler:@escaping ServerResponseHandler) -> Void {
         
         let allKeys = headers?.allKeys as? [String] ?? []
@@ -50,11 +54,11 @@ class BCAWebservice: NSObject {
         
         self.requestManager!.get(path, parameters: params, progress: nil, success: {(task, responseObject) -> Void in
             print("responseObject ->> \(String(describing: responseObject))")
-            if responseObject is NSDictionary {
-                responseObjectClass.parserResponse(dic:(responseObject as? NSDictionary)!)
-            } else {
-                responseObjectClass.parserResponse(dic: responseObject as! NSDictionary)
+            guard let response = responseObject as? NSDictionary else {
+                responseHandler(false, nil);
+                return
             }
+            responseObjectClass?.parserResponse(dic: response)
             responseHandler(true, responseObjectClass);
             
         }, failure: { (task, responseOBJ) -> Void in
@@ -65,21 +69,26 @@ class BCAWebservice: NSObject {
     func sendPOSTRequest (path:String!,
                           params:NSDictionary?,
                           headers:NSDictionary?,
-                          responseObjectClass:BCABaseEntity!,
+                          responseObjectClass:TAPBaseEntity!,
                           responseHandler:@escaping ServerResponseHandler) -> Void {
         let allKeys = headers?.allKeys as? [String] ?? []
         for key in allKeys {
             let value = headers?.object(forKey: key)
             self.requestManager.requestSerializer.setValue(value as? String, forHTTPHeaderField: key)
         }
+        
         self.requestManager!.post(path, parameters:params , progress: nil, success: {(task, responseObject) -> Void in
             
             print("responseObject ->> \(String(describing: responseObject))")
-            responseObjectClass.parserResponse(dic:(responseObject as? NSDictionary)!)
+            guard let response = responseObject as? NSDictionary else {
+                responseHandler(false, nil);
+                return
+            }
+            responseObjectClass?.parserResponse(dic: response)
             responseHandler(true, responseObjectClass);
         }, failure: { (task, responseOBJ) -> Void in
             
-            print(task?.error ?? "error  null")
+            print("errorObject ->> \(String(describing: responseOBJ))")
             responseHandler(false, nil);
         })
         
@@ -90,7 +99,7 @@ class BCAWebservice: NSObject {
                            headers:NSDictionary?,
                            fileData: Data!,
                            fileName: String,
-                           responseObjectClass:BCABaseEntity!,
+                           responseObjectClass:TAPBaseEntity!,
                            responseHandler:@escaping ServerResponseHandler) -> Void {
         let allKeys = headers?.allKeys as? [String] ?? []
         for key in allKeys {
@@ -103,7 +112,11 @@ class BCAWebservice: NSObject {
         }, progress: nil,success: {(task, responseObject) -> Void in
             
             print("responseObject ->> \(String(describing: responseObject))")
-            responseObjectClass.parserResponse(dic:(responseObject as? NSDictionary)!)
+            guard let response = responseObject as? NSDictionary else {
+                responseHandler(false, nil);
+                return
+            }
+            responseObjectClass?.parserResponse(dic: response)
             responseHandler(true, responseObjectClass);
             
         }, failure: { (task, responseOBJ) -> Void in
