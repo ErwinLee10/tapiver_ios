@@ -54,16 +54,14 @@ Please be aware that HTTP status code is also meaningful. ([credits](http://blog
 
 ### Authentication APIs
 
-#### `POST /v1/login`
+#### `POST /v1/auth/u/login-email`
 
 ##### Query parameters
-  * `username` - [String]
-  * the seller username
+  * `email` - [String]
+  * the email used in registration
   * `password` - [integer] - default(1)
   * the password of the seller
 
-
-authenticate sellers or user with username and password (note currently it should not support user authentication with username and password).
 
 #### Response Body
 ```javascript
