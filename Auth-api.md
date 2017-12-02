@@ -85,6 +85,10 @@ to register user with email and password
   * email of the user
   * `password` - [String] 
   * password of the user, must contain 1 alphabet and 1 digit and minimum length = 8
+  * firstName - [String]
+  * first name of the user
+  * lastName - [String]
+  * last name of the user
 
 #### Response Body
 ```javascript
