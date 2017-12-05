@@ -8,12 +8,27 @@
 
 import UIKit
 
-class TAPLoginModel: TAPBaseEntity {
+class TAPLoginModel: TAPBaseEntity,  NSCoding {
     var userId: String?
     var webSessionId: String?
     override func parserResponse(dic: NSDictionary) {
         userId = dic.value(forKey: "userId") as? String
         webSessionId = dic.value(forKey: "webSessionId") as? String
+    }
+    
+    override init() {
+        self.userId = ""
+        self.webSessionId = ""
+    }
+
+    required init(coder decoder: NSCoder) {
+        self.userId = decoder.decodeObject(forKey: "userId") as? String ?? ""
+        self.webSessionId = decoder.decodeObject(forKey: "webSessionId") as? String ?? ""
+    }
+    
+    func encode(with coder: NSCoder) {
+        coder.encode(userId, forKey: "userId")
+        coder.encode(webSessionId, forKey: "webSessionId")
     }
 }
 /*

@@ -126,7 +126,11 @@ extension TAPSignupEmailViewController {
         SVProgressHUD.show()
         TAPWebservice.shareInstance.sendPOSTRequest(path: API_PATH(path: "/api/v1/auth/u/continue-with-facebook"), params: params, headers: header, responseObjectClass: TAPLoginModel()) { (success, response) in
             if success {
-                let loginModel = response as? TAPLoginModel
+                guard let model = response as? TAPLoginModel else {
+                    return
+                }
+                TAPGlobal.shared.saveLoginModel(model: model)
+                TAPGlobal.shared.saveHasLogin(isLogin: true)
                 TAPMainFrame.showMainTabbarPage()
             } else {
                 TAPMainFrame.showSignupEmailPage(email: email, firstName: firstName, lastName: lastName)

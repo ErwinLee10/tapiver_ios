@@ -32,6 +32,8 @@
 		6C86013B1FCD70E5004E7CAE /* splash02@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C8601381FCD70E5004E7CAE /* splash02@2x.png */; };
 		6C86013C1FCD70E5004E7CAE /* splash03@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C8601391FCD70E5004E7CAE /* splash03@2x.png */; };
 		6C86013F1FCD732B004E7CAE /* TAPMainFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C86013E1FCD732B004E7CAE /* TAPMainFrame.swift */; };
+		6C8F83031FD6ACD300BC6F99 /* TAPHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C8F83021FD6ACD300BC6F99 /* TAPHelpers.swift */; };
+		6C8F83051FD6ACFF00BC6F99 /* TAPGlobal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C8F83041FD6ACFF00BC6F99 /* TAPGlobal.swift */; };
 		6CCEEFBA1FCEB5B70018FDB3 /* TAPCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CCEEFB81FCEB5B70018FDB3 /* TAPCategoryViewController.swift */; };
 		6CCEEFBB1FCEB5B70018FDB3 /* TAPCategoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6CCEEFB91FCEB5B70018FDB3 /* TAPCategoryViewController.xib */; };
 		6CCEEFBE1FCEB5C50018FDB3 /* TAPDealsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CCEEFBC1FCEB5C50018FDB3 /* TAPDealsViewController.swift */; };
@@ -81,6 +83,8 @@
 		6C8601381FCD70E5004E7CAE /* splash02@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splash02@2x.png"; sourceTree = "<group>"; };
 		6C8601391FCD70E5004E7CAE /* splash03@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "splash03@2x.png"; sourceTree = "<group>"; };
 		6C86013E1FCD732B004E7CAE /* TAPMainFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPMainFrame.swift; sourceTree = "<group>"; };
+		6C8F83021FD6ACD300BC6F99 /* TAPHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPHelpers.swift; sourceTree = "<group>"; };
+		6C8F83041FD6ACFF00BC6F99 /* TAPGlobal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPGlobal.swift; sourceTree = "<group>"; };
 		6CCEEFB81FCEB5B70018FDB3 /* TAPCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPCategoryViewController.swift; sourceTree = "<group>"; };
 		6CCEEFB91FCEB5B70018FDB3 /* TAPCategoryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TAPCategoryViewController.xib; sourceTree = "<group>"; };
 		6CCEEFBC1FCEB5C50018FDB3 /* TAPDealsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPDealsViewController.swift; sourceTree = "<group>"; };
@@ -257,6 +261,15 @@
 			path = MainFrame;
 			sourceTree = "<group>";
 		};
+		6C8F83011FD6ACAB00BC6F99 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				6C8F83021FD6ACD300BC6F99 /* TAPHelpers.swift */,
+				6C8F83041FD6ACFF00BC6F99 /* TAPGlobal.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		6CCEEFB41FCEB57F0018FDB3 /* Feed */ = {
 			isa = PBXGroup;
 			children = (
@@ -345,6 +358,7 @@
 		B0B056901FC085CE001E4659 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				6C8F83011FD6ACAB00BC6F99 /* Helpers */,
 				6C86013D1FCD730E004E7CAE /* MainFrame */,
 				6C86010C1FCD683B004E7CAE /* Webservice */,
 				B0B056931FC0860F001E4659 /* Constants */,
@@ -553,10 +567,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6C8F83051FD6ACFF00BC6F99 /* TAPGlobal.swift in Sources */,
 				6C66BFA41FCE69500092A006 /* TAPSignupEmailViewController.swift in Sources */,
 				B0ECB4B81FD2B86B00E97703 /* TAPLoginModel.swift in Sources */,
 				B0B056951FC0860F001E4659 /* BCAExtention.swift in Sources */,
 				B0ECB4BF1FD2D77600E97703 /* TAPDialogUtils.swift in Sources */,
+				6C8F83031FD6ACD300BC6F99 /* TAPHelpers.swift in Sources */,
 				B0B056961FC0860F001E4659 /* StringCommon.swift in Sources */,
 				B0ECB4BD1FD2D6CD00E97703 /* TAPUtils.swift in Sources */,
 				6CCEEFBE1FCEB5C50018FDB3 /* TAPDealsViewController.swift in Sources */,

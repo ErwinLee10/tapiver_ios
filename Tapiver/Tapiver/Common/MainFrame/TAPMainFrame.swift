@@ -12,7 +12,13 @@ var navigationView:UINavigationController?
 class TAPMainFrame: NSObject {
     
     static func makeNewMainFrame () -> UIViewController! {
-        let naviRoot = TAPIntroAppViewController(nibName: "TAPIntroAppViewController", bundle: nil)
+        let naviRoot: UIViewController
+        
+        if(TAPGlobal.shared.hasLogin()) {
+            naviRoot = TAPMainTabbarViewController(nibName: "TAPMainTabbarViewController", bundle: nil)
+        } else {
+            naviRoot = TAPIntroAppViewController(nibName: "TAPIntroAppViewController", bundle: nil)
+        }
         navigationView = self.makeCenterNavi(controller: naviRoot)
         return navigationView
     }

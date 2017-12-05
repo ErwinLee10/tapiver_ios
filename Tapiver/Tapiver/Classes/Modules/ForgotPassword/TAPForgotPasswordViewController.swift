@@ -46,6 +46,11 @@ class TAPForgotPasswordViewController: UIViewController {
         SVProgressHUD.show()
         TAPWebservice.shareInstance.sendPOSTRequest(path: apiPath, params: NSDictionary(), headers: header, responseObjectClass: TAPLoginModel()) { (success, response) in
             if success {
+                guard let model = response as? TAPLoginModel else {
+                    return
+                }
+                TAPGlobal.shared.saveLoginModel(model: model)
+                TAPGlobal.shared.saveHasLogin(isLogin: true)
                 TAPMainFrame.showLoginPageMain()
             } else {
                 TAPDialogUtils.shareInstance.showAlertMessageOneButton(title: "", message: "Server error, please contact Tapiver team for assistance", positive: "OK", positiveHandler: nil, vc: self)

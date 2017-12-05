@@ -9,6 +9,3 @@
 import Foundation
 
 let API_URL = "https://dev-backend.tapiver.com"
-func API_PATH(path: String) -> String {
-    return API_URL + path
-}
