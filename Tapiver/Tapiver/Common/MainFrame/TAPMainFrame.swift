@@ -48,6 +48,15 @@ class TAPMainFrame: NSObject {
         
     }
     
+    static func showSignupEmailPage(email: String?, firstName: String?, lastName: String?) -> Void {
+        let vc = TAPSignupEmailViewController(nibName: "TAPSignupEmailViewController", bundle: nil)
+        vc.email = email
+        vc.firstName = firstName
+        vc.lastName = lastName
+        navigationView?.viewControllers = [vc]
+        
+    }
+    
     static func showSignupPassPage(email:String, firstName:String?, lastName:String?) -> Void {
         let vc = TAPSignupPasswordViewController(nibName: "TAPSignupPasswordViewController", bundle: nil)
         vc.email = email

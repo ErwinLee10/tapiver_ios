@@ -8,6 +8,7 @@
 
 import UIKit
 import SVProgressHUD
+import FBSDKLoginKit
 
 class TAPLoginPageMainViewController: UIViewController {
     
@@ -88,4 +89,73 @@ class TAPLoginPageMainViewController: UIViewController {
     @IBAction func actionSignup(_ sender: UIButton) {
         TAPMainFrame.showSignupEmailPage()
     }
+    
+    @IBAction func actionFacebook(_ sender: UIButton) {
+        self.pLoginWithFacebook()
+    }
+    
 }
+
+extension TAPLoginPageMainViewController {
+    
+    // MARK: Facebook
+    
+    func pLoginWithFacebook() -> Void {
+        
+        let fbLoginManager = FBSDKLoginManager()
+        fbLoginManager.logOut()
+        let facebookReadPermissions = ["public_profile", "email", "user_friends"]
+        if FBSDKAccessToken.current() != nil {
+            return
+        }
+        
+        fbLoginManager.logIn(withReadPermissions: facebookReadPermissions, from: self) { (result, error) in
+            if let error = error {
+                print("error->\(error)")
+                FBSDKLoginManager().logOut()
+            } else if (result?.isCancelled)! {
+                FBSDKLoginManager().logOut()
+            } else {
+                self.fetchFacebookUserInfo()
+                
+            }
+        }
+    }
+    
+    func fetchFacebookUserInfo ()-> Void
+    {
+        if (FBSDKAccessToken.current() != nil)
+        {
+            let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, link, first_name, last_name, email, birthday, location ,friends ,hometown"])
+            graphRequest.start(completionHandler: { (connection, result, error) -> Void in
+                
+                if let error = error {
+                    print("Error: \(error)")
+                } else {
+                    let email = (result as! NSDictionary).value(forKey: "email") as? String ?? ""
+                    let firstName = (result as! NSDictionary).value(forKey: "first_name") as? String ?? ""
+                    let lastName = (result as! NSDictionary).value(forKey: "last_name") as? String ?? ""
+                    self.loginWithFacebook(token: FBSDKAccessToken.current().tokenString, email: email, firstName: firstName, lastName: lastName)
+                }
+            })
+        }
+    }
+    
+    func loginWithFacebook(token: String, email: String?, firstName: String?, lastName: String?) -> Void {
+        let header = NSMutableDictionary()
+        header.setValue("application/json", forKey: "Content-Type")
+        let params = NSMutableDictionary()
+        params.setValue(token, forKey: "token")
+        SVProgressHUD.show()
+        TAPWebservice.shareInstance.sendPOSTRequest(path: API_PATH(path: "/api/v1/auth/u/continue-with-facebook"), params: params, headers: header, responseObjectClass: TAPLoginModel()) { (success, response) in
+            if success {
+                let loginModel = response as? TAPLoginModel
+                TAPMainFrame.showMainTabbarPage()
+            } else {
+                TAPMainFrame.showSignupEmailPage(email: email, firstName: firstName, lastName: lastName)
+            }
+            SVProgressHUD.dismiss()
+        }
+    }
+}
+

@@ -173,6 +173,9 @@
                             <real key="value" value="8"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="actionFacebook:" destination="-1" eventType="touchUpInside" id="nzS-29-EDN"/>
+                    </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="facebook" translatesAutoresizingMaskIntoConstraints="NO" id="mvg-BZ-1XJ">
                     <rect key="frame" x="58" y="476.5" width="24" height="24"/>

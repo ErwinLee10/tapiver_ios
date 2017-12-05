@@ -170,6 +170,7 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                     <connections>
+                        <action selector="actionFacebook:" destination="-1" eventType="touchUpInside" id="fkd-aU-Drb"/>
                         <action selector="actionSignupFacebook:" destination="-1" eventType="touchUpInside" id="Xpd-Xa-Vke"/>
                     </connections>
                 </button>
