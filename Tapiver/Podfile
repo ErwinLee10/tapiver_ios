@@ -10,4 +10,5 @@ target 'Tapiver' do
     pod 'SVProgressHUD'
     pod 'FBSDKCoreKit'
     pod 'FBSDKLoginKit'
+    pod 'SDWebImage', '~> 4.0'
 end

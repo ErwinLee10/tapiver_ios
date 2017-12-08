@@ -54,11 +54,14 @@ class TAPWebservice: NSObject {
         
         self.requestManager!.get(path, parameters: params, progress: nil, success: {(task, responseObject) -> Void in
             print("responseObject ->> \(String(describing: responseObject))")
-            guard let response = responseObject as? NSDictionary else {
-                responseHandler(false, nil);
+            if let response = responseObject as? NSDictionary {
+                responseObjectClass?.parserResponse(dic: response)
+            } else if let response = responseObject as? [NSDictionary] {
+                responseObjectClass?.parserResponseArray(dics: response)
+            } else {
+                responseHandler(false, responseObjectClass);
                 return
             }
-            responseObjectClass?.parserResponse(dic: response)
             responseHandler(true, responseObjectClass);
             
         }, failure: { (task, responseOBJ) -> Void in
@@ -80,11 +83,14 @@ class TAPWebservice: NSObject {
         self.requestManager!.post(path, parameters:params , progress: nil, success: {(task, responseObject) -> Void in
             
             print("responseObject ->> \(String(describing: responseObject))")
-            guard let response = responseObject as? NSDictionary else {
-                responseHandler(false, nil);
+            if let response = responseObject as? NSDictionary {
+                responseObjectClass?.parserResponse(dic: response)
+            } else if let response = responseObject as? [NSDictionary] {
+                responseObjectClass?.parserResponseArray(dics: response)
+            } else {
+                responseHandler(false, responseObjectClass);
                 return
             }
-            responseObjectClass?.parserResponse(dic: response)
             responseHandler(true, responseObjectClass);
         }, failure: { (task, responseOBJ) -> Void in
             
@@ -112,11 +118,14 @@ class TAPWebservice: NSObject {
         }, progress: nil,success: {(task, responseObject) -> Void in
             
             print("responseObject ->> \(String(describing: responseObject))")
-            guard let response = responseObject as? NSDictionary else {
-                responseHandler(false, nil);
+            if let response = responseObject as? NSDictionary {
+                responseObjectClass?.parserResponse(dic: response)
+            } else if let response = responseObject as? [NSDictionary] {
+                responseObjectClass?.parserResponseArray(dics: response)
+            } else {
+                responseHandler(false, responseObjectClass);
                 return
             }
-            responseObjectClass?.parserResponse(dic: response)
             responseHandler(true, responseObjectClass);
             
         }, failure: { (task, responseOBJ) -> Void in

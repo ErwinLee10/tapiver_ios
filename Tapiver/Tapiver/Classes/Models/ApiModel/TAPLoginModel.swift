@@ -12,7 +12,7 @@ class TAPLoginModel: TAPBaseEntity,  NSCoding {
     var userId: String?
     var webSessionId: String?
     override func parserResponse(dic: NSDictionary) {
-        userId = dic.value(forKey: "userId") as? String
+        userId = String.init(format: "%d",dic.value(forKey: "userId") as? Int ?? 0)
         webSessionId = dic.value(forKey: "webSessionId") as? String
     }
     
