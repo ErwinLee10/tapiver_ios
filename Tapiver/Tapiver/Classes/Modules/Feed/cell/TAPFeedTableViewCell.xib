@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -13,7 +13,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="290" id="KGk-i7-Jjw" customClass="TAPFeedTableViewCell" customModule="Tapiver" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="290" id="KGk-i7-Jjw" customClass="TAPFeedTableViewCell" customModule="Tapiver" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="384" height="290"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
@@ -24,13 +24,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="384" height="289.5"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jaV-UB-hUH">
-                                <rect key="frame" x="0.0" y="0.0" width="384" height="50"/>
+                                <rect key="frame" x="0.0" y="5" width="384" height="50"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="q12-Q5-n1R">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="q12-Q5-n1R">
                                         <rect key="frame" x="20" y="5" width="40" height="40"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="q12-Q5-n1R" secondAttribute="height" multiplier="1:1" id="GBB-8q-7yM"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="20"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aldo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sF8-Wo-hJQ">
                                         <rect key="frame" x="70" y="5" width="174" height="20"/>
@@ -101,8 +113,8 @@
                             <constraint firstAttribute="trailing" secondItem="I2A-zX-vQy" secondAttribute="trailing" id="EcK-vl-EkB"/>
                             <constraint firstItem="jaV-UB-hUH" firstAttribute="leading" secondItem="7ap-W9-7xd" secondAttribute="leading" id="H8q-79-JZI"/>
                             <constraint firstItem="I2A-zX-vQy" firstAttribute="leading" secondItem="7ap-W9-7xd" secondAttribute="leading" id="SzY-DD-BV0"/>
-                            <constraint firstItem="jaV-UB-hUH" firstAttribute="top" secondItem="7ap-W9-7xd" secondAttribute="top" id="cNR-yA-1zR"/>
-                            <constraint firstItem="I2A-zX-vQy" firstAttribute="top" secondItem="jaV-UB-hUH" secondAttribute="bottom" constant="10" id="cpi-Af-p1g"/>
+                            <constraint firstItem="jaV-UB-hUH" firstAttribute="top" secondItem="7ap-W9-7xd" secondAttribute="top" constant="5" id="cNR-yA-1zR"/>
+                            <constraint firstItem="I2A-zX-vQy" firstAttribute="top" secondItem="jaV-UB-hUH" secondAttribute="bottom" constant="5" id="cpi-Af-p1g"/>
                             <constraint firstAttribute="bottom" secondItem="I2A-zX-vQy" secondAttribute="bottom" constant="10" id="iKA-JI-G5p"/>
                         </constraints>
                     </view>
@@ -117,6 +129,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="collectionHot" destination="I2A-zX-vQy" id="Qwv-p0-HvA"/>
+                <outlet property="ivAvatar" destination="q12-Q5-n1R" id="8D5-wV-4zE"/>
             </connections>
             <point key="canvasLocation" x="-246" y="-1"/>
         </tableViewCell>

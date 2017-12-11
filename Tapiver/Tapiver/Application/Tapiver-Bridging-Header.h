@@ -7,5 +7,6 @@
 
 #import <AFNetworking/AFNetworking.h>
 #import <SVProgressHUD/SVProgressHUD.h>
+#import "iCarousel.h"
 
 #endif /* Tapiver_Bridging_Header_h */

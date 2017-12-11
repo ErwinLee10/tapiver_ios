@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -23,18 +23,27 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gaw-xs-al2">
                         <rect key="frame" x="0.0" y="0.0" width="154" height="206"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rfu-LE-13M">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rfu-LE-13M" customClass="iCarousel">
                                 <rect key="frame" x="10" y="0.0" width="134" height="135"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="dPP-ay-Cs8">
-                                <rect key="frame" x="57.5" y="120" width="39" height="20"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nXx-go-RFv">
+                                <rect key="frame" x="0.0" y="120" width="154" height="20"/>
+                                <subviews>
+                                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="dPP-ay-Cs8">
+                                        <rect key="frame" x="57" y="0.0" width="39" height="20"/>
+                                        <color key="pageIndicatorTintColor" red="0.1137254902" green="0.43529411759999997" blue="0.5450980392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="currentPageIndicatorTintColor" red="0.60000002384185791" green="0.40000000596046448" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
+                                    </pageControl>
+                                </subviews>
+                                <color key="backgroundColor" red="0.94901960784313721" green="0.94509803921568625" blue="0.94901960784313721" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="0SY-Tt-aIO"/>
+                                    <constraint firstItem="dPP-ay-Cs8" firstAttribute="centerX" secondItem="nXx-go-RFv" secondAttribute="centerX" id="FVU-xi-FPS"/>
+                                    <constraint firstAttribute="bottom" secondItem="dPP-ay-Cs8" secondAttribute="bottom" id="GhO-vd-mDh"/>
+                                    <constraint firstAttribute="height" constant="20" id="fdc-Ud-iDe"/>
+                                    <constraint firstItem="dPP-ay-Cs8" firstAttribute="top" secondItem="nXx-go-RFv" secondAttribute="top" id="sxB-zr-bBh"/>
                                 </constraints>
-                                <color key="pageIndicatorTintColor" red="0.1137254902" green="0.43529411759999997" blue="0.5450980392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="currentPageIndicatorTintColor" red="0.60000002384185791" green="0.40000000596046448" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
-                            </pageControl>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VpP-rQ-TXU">
                                 <rect key="frame" x="0.0" y="140" width="154" height="66"/>
                                 <subviews>
@@ -134,17 +143,60 @@
                                     <constraint firstAttribute="bottom" secondItem="yes-yN-4Ud" secondAttribute="bottom" constant="5" id="xmU-pM-JtF"/>
                                 </constraints>
                             </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="banner_hot" translatesAutoresizingMaskIntoConstraints="NO" id="Jmj-Lb-1rA">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="LLy-EF-kVV"/>
+                                    <constraint firstAttribute="height" constant="50" id="akf-eF-1kX"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_freeshipping" translatesAutoresizingMaskIntoConstraints="NO" id="wpP-Gd-tHu">
+                                <rect key="frame" x="114" y="45" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Csc-B5-VpT"/>
+                                    <constraint firstAttribute="width" constant="30" id="rf4-0P-JTx"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10%" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z9I-iZ-L6X">
+                                <rect key="frame" x="114" y="5" width="30" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="MhC-Td-uC2"/>
+                                    <constraint firstAttribute="width" constant="30" id="x6y-3F-Yc5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="10"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="0.60000002379999995" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="nXx-go-RFv" firstAttribute="leading" secondItem="Gaw-xs-al2" secondAttribute="leading" id="6ys-gE-zd7"/>
                             <constraint firstAttribute="bottom" secondItem="VpP-rQ-TXU" secondAttribute="bottom" id="BAH-eZ-IHy"/>
+                            <constraint firstItem="nXx-go-RFv" firstAttribute="bottom" secondItem="VpP-rQ-TXU" secondAttribute="top" id="G58-gv-pbh"/>
+                            <constraint firstItem="Jmj-Lb-1rA" firstAttribute="top" secondItem="Gaw-xs-al2" secondAttribute="top" id="Ga6-x5-fkE"/>
                             <constraint firstItem="VpP-rQ-TXU" firstAttribute="top" secondItem="Rfu-LE-13M" secondAttribute="bottom" constant="5" id="HBv-h4-S01"/>
+                            <constraint firstItem="Jmj-Lb-1rA" firstAttribute="leading" secondItem="Gaw-xs-al2" secondAttribute="leading" id="HNv-jR-q68"/>
                             <constraint firstItem="Rfu-LE-13M" firstAttribute="top" secondItem="Gaw-xs-al2" secondAttribute="top" id="KjP-6g-BfG"/>
+                            <constraint firstItem="Z9I-iZ-L6X" firstAttribute="top" secondItem="Gaw-xs-al2" secondAttribute="top" constant="5" id="LHb-fV-d5U"/>
                             <constraint firstAttribute="trailing" secondItem="Rfu-LE-13M" secondAttribute="trailing" constant="10" id="UO6-TX-84P"/>
                             <constraint firstAttribute="trailing" secondItem="VpP-rQ-TXU" secondAttribute="trailing" id="aqo-lf-qjf"/>
+                            <constraint firstAttribute="trailing" secondItem="Z9I-iZ-L6X" secondAttribute="trailing" constant="10" id="bao-im-sZw"/>
                             <constraint firstItem="VpP-rQ-TXU" firstAttribute="leading" secondItem="Gaw-xs-al2" secondAttribute="leading" id="dvz-C3-3E5"/>
-                            <constraint firstItem="dPP-ay-Cs8" firstAttribute="centerX" secondItem="Gaw-xs-al2" secondAttribute="centerX" id="rhI-wX-XEM"/>
-                            <constraint firstItem="VpP-rQ-TXU" firstAttribute="top" secondItem="dPP-ay-Cs8" secondAttribute="bottom" id="uxK-D1-ez3"/>
+                            <constraint firstAttribute="trailing" secondItem="wpP-Gd-tHu" secondAttribute="trailing" constant="10" id="hrm-Zp-GBW"/>
+                            <constraint firstItem="wpP-Gd-tHu" firstAttribute="top" secondItem="Z9I-iZ-L6X" secondAttribute="bottom" constant="10" id="oEA-rO-f6q"/>
+                            <constraint firstAttribute="trailing" secondItem="nXx-go-RFv" secondAttribute="trailing" id="twk-HE-xOJ"/>
                             <constraint firstItem="Rfu-LE-13M" firstAttribute="leading" secondItem="Gaw-xs-al2" secondAttribute="leading" constant="10" id="znk-cI-Hty"/>
                         </constraints>
                     </view>
@@ -159,10 +211,16 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="154" height="206"/>
+            <connections>
+                <outlet property="pageControl" destination="dPP-ay-Cs8" id="oTR-Vf-C3x"/>
+                <outlet property="pageView" destination="Rfu-LE-13M" id="sIm-HO-6Dt"/>
+            </connections>
             <point key="canvasLocation" x="-31" y="104"/>
         </collectionViewCell>
     </objects>
     <resources>
+        <image name="banner_hot" width="24" height="24"/>
+        <image name="ic_freeshipping" width="32" height="32"/>
         <image name="icon_thumbs_on" width="32" height="32"/>
     </resources>
 </document>

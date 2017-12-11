@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import SDWebImage
 
 class TAPFeedTableViewCell: UITableViewCell {
 
      @IBOutlet weak var collectionHot: UICollectionView!
+    @IBOutlet weak var ivAvatar: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -18,7 +20,8 @@ class TAPFeedTableViewCell: UITableViewCell {
         collectionHot.delegate = self
         collectionHot.dataSource = self
         collectionHot.register(UINib.init(nibName: "TAPFeedCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "TAPFeedCollectionViewCell")
-
+        
+        ivAvatar.sd_setImage(with: URL.init(string: "https://s3-ap-southeast-1.amazonaws.com/tapiver/supclothing/PRODUCT/f12d56a2-976f-4c17-b2c2-8843ce8ce354.jpg"), completed: nil)
     }
     
 }
