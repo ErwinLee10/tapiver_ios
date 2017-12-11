@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		03AE84021FDEE3B7006D6986 /* TAPMallPageDealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AE84001FDEE3B7006D6986 /* TAPMallPageDealViewController.swift */; };
+		03AE84031FDEE3B7006D6986 /* TAPMallPageDealViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03AE84011FDEE3B7006D6986 /* TAPMallPageDealViewController.xib */; };
+		03AE84061FDEE416006D6986 /* TAPBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AE84051FDEE416006D6986 /* TAPBaseViewController.swift */; };
+		03AE84091FDEE583006D6986 /* TAPMallPageTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AE84081FDEE583006D6986 /* TAPMallPageTabBarViewController.swift */; };
+		03AE840D1FDEE80B006D6986 /* TAPHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AE840C1FDEE80B006D6986 /* TAPHeaderView.swift */; };
+		03AE840F1FDEE82F006D6986 /* TAPHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03AE840E1FDEE82F006D6986 /* TAPHeaderView.xib */; };
+		03AE84121FDEE997006D6986 /* TAPMallPageShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AE84101FDEE997006D6986 /* TAPMallPageShopViewController.swift */; };
+		03AE84131FDEE997006D6986 /* TAPMallPageShopViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03AE84111FDEE997006D6986 /* TAPMallPageShopViewController.xib */; };
+		03AE84191FDEFE5F006D6986 /* TAPMallPageDealsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AE84171FDEFE5F006D6986 /* TAPMallPageDealsCell.swift */; };
+		03AE841A1FDEFE5F006D6986 /* TAPMallPageDealsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03AE84181FDEFE5F006D6986 /* TAPMallPageDealsCell.xib */; };
+		03AE841C1FE01154006D6986 /* TAPMacros.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AE841B1FE01154006D6986 /* TAPMacros.swift */; };
 		6C1070A71FD92A99001887BB /* TAPFeedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C1070A51FD92A99001887BB /* TAPFeedCollectionViewCell.swift */; };
 		6C1070A81FD92A99001887BB /* TAPFeedCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C1070A61FD92A99001887BB /* TAPFeedCollectionViewCell.xib */; };
 		6C1E68641FDA864D00BC1183 /* TAPFeedApiModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C1E68631FDA864D00BC1183 /* TAPFeedApiModel.swift */; };
@@ -63,6 +74,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		03AE84001FDEE3B7006D6986 /* TAPMallPageDealViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPMallPageDealViewController.swift; sourceTree = "<group>"; };
+		03AE84011FDEE3B7006D6986 /* TAPMallPageDealViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TAPMallPageDealViewController.xib; sourceTree = "<group>"; };
+		03AE84051FDEE416006D6986 /* TAPBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPBaseViewController.swift; sourceTree = "<group>"; };
+		03AE84081FDEE583006D6986 /* TAPMallPageTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPMallPageTabBarViewController.swift; sourceTree = "<group>"; };
+		03AE840C1FDEE80B006D6986 /* TAPHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPHeaderView.swift; sourceTree = "<group>"; };
+		03AE840E1FDEE82F006D6986 /* TAPHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TAPHeaderView.xib; sourceTree = "<group>"; };
+		03AE84101FDEE997006D6986 /* TAPMallPageShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPMallPageShopViewController.swift; sourceTree = "<group>"; };
+		03AE84111FDEE997006D6986 /* TAPMallPageShopViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TAPMallPageShopViewController.xib; sourceTree = "<group>"; };
+		03AE84171FDEFE5F006D6986 /* TAPMallPageDealsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPMallPageDealsCell.swift; sourceTree = "<group>"; };
+		03AE84181FDEFE5F006D6986 /* TAPMallPageDealsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TAPMallPageDealsCell.xib; sourceTree = "<group>"; };
+		03AE841B1FE01154006D6986 /* TAPMacros.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPMacros.swift; sourceTree = "<group>"; };
 		1D246665402A90FDB19ADE64 /* Pods_Tapiver.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tapiver.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		29A1ABC763EF13C0631E2DA2 /* Pods-Tapiver.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tapiver.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tapiver/Pods-Tapiver.debug.xcconfig"; sourceTree = "<group>"; };
 		2AD33DFBDCE839D1D2BAF8C4 /* Pods-Tapiver.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tapiver.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tapiver/Pods-Tapiver.release.xcconfig"; sourceTree = "<group>"; };
@@ -136,6 +158,77 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		03AE83FD1FDEE319006D6986 /* Mall Page */ = {
+			isa = PBXGroup;
+			children = (
+				03AE84071FDEE53D006D6986 /* Tabbar */,
+				03AE83FE1FDEE353006D6986 /* Shop */,
+				03AE83FF1FDEE374006D6986 /* Deals */,
+			);
+			path = "Mall Page";
+			sourceTree = "<group>";
+		};
+		03AE83FE1FDEE353006D6986 /* Shop */ = {
+			isa = PBXGroup;
+			children = (
+				03AE84101FDEE997006D6986 /* TAPMallPageShopViewController.swift */,
+				03AE84111FDEE997006D6986 /* TAPMallPageShopViewController.xib */,
+			);
+			path = Shop;
+			sourceTree = "<group>";
+		};
+		03AE83FF1FDEE374006D6986 /* Deals */ = {
+			isa = PBXGroup;
+			children = (
+				03AE84141FDEFDEE006D6986 /* Cell */,
+				03AE84001FDEE3B7006D6986 /* TAPMallPageDealViewController.swift */,
+				03AE84011FDEE3B7006D6986 /* TAPMallPageDealViewController.xib */,
+			);
+			path = Deals;
+			sourceTree = "<group>";
+		};
+		03AE84041FDEE3ED006D6986 /* BaseViewController */ = {
+			isa = PBXGroup;
+			children = (
+				03AE84051FDEE416006D6986 /* TAPBaseViewController.swift */,
+			);
+			path = BaseViewController;
+			sourceTree = "<group>";
+		};
+		03AE84071FDEE53D006D6986 /* Tabbar */ = {
+			isa = PBXGroup;
+			children = (
+				03AE84081FDEE583006D6986 /* TAPMallPageTabBarViewController.swift */,
+			);
+			path = Tabbar;
+			sourceTree = "<group>";
+		};
+		03AE840A1FDEE60C006D6986 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				03AE840B1FDEE67E006D6986 /* Header */,
+			);
+			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		03AE840B1FDEE67E006D6986 /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				03AE840C1FDEE80B006D6986 /* TAPHeaderView.swift */,
+				03AE840E1FDEE82F006D6986 /* TAPHeaderView.xib */,
+			);
+			path = Header;
+			sourceTree = "<group>";
+		};
+		03AE84141FDEFDEE006D6986 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				03AE84171FDEFE5F006D6986 /* TAPMallPageDealsCell.swift */,
+				03AE84181FDEFE5F006D6986 /* TAPMallPageDealsCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		21C035E1912A58E96339129B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -412,6 +505,7 @@
 				6C86010C1FCD683B004E7CAE /* Webservice */,
 				B0B056931FC0860F001E4659 /* Constants */,
 				B0B056911FC0860F001E4659 /* Extention */,
+				03AE840A1FDEE60C006D6986 /* CustomViews */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -431,6 +525,7 @@
 			children = (
 				B0B056941FC0860F001E4659 /* StringCommon.swift */,
 				6C7DA0501FCFE95300E3F3E4 /* TAPContant.swift */,
+				03AE841B1FE01154006D6986 /* TAPMacros.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -438,6 +533,8 @@
 		B0B056971FC0861C001E4659 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				03AE84041FDEE3ED006D6986 /* BaseViewController */,
+				03AE83FD1FDEE319006D6986 /* Mall Page */,
 				6CCEEFB71FCEB5940018FDB3 /* Category */,
 				6CCEEFB61FCEB58E0018FDB3 /* Deals */,
 				6CCEEFB51FCEB5860018FDB3 /* Discover */,
@@ -540,16 +637,20 @@
 				6CCEEFBF1FCEB5C50018FDB3 /* TAPDealsViewController.xib in Resources */,
 				6CCEEFC31FCEB6400018FDB3 /* TAPDiscoverViewController.xib in Resources */,
 				6C86013A1FCD70E5004E7CAE /* splash01@2x.png in Resources */,
+				03AE841A1FDEFE5F006D6986 /* TAPMallPageDealsCell.xib in Resources */,
 				6C8601311FCD6D70004E7CAE /* TAPIntroAppViewController.xib in Resources */,
 				6CCEEFBB1FCEB5B70018FDB3 /* TAPCategoryViewController.xib in Resources */,
 				6C8601361FCD6E69004E7CAE /* TAPIntroPageViewController.xib in Resources */,
 				B0B056841FC084CD001E4659 /* Assets.xcassets in Resources */,
 				6C8601211FCD696A004E7CAE /* TAPLoginPageMainViewController.xib in Resources */,
 				6C66BFA51FCE69500092A006 /* TAPSignupEmailViewController.xib in Resources */,
+				03AE84131FDEE997006D6986 /* TAPMallPageShopViewController.xib in Resources */,
 				6C86013C1FCD70E5004E7CAE /* splash03@2x.png in Resources */,
 				6C1070A81FD92A99001887BB /* TAPFeedCollectionViewCell.xib in Resources */,
 				6C1E68681FDA9B9A00BC1183 /* TAPFeedTableViewCell.xib in Resources */,
 				6C7DA0531FCFEDDE00E3F3E4 /* bg_signup.png in Resources */,
+				03AE840F1FDEE82F006D6986 /* TAPHeaderView.xib in Resources */,
+				03AE84031FDEE3B7006D6986 /* TAPMallPageDealViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -633,24 +734,31 @@
 				B0B056961FC0860F001E4659 /* StringCommon.swift in Sources */,
 				B0ECB4BD1FD2D6CD00E97703 /* TAPUtils.swift in Sources */,
 				6C5C9FE41FDE4631001EFC08 /* iCarousel.m in Sources */,
+				03AE84091FDEE583006D6986 /* TAPMallPageTabBarViewController.swift in Sources */,
 				6C1E68641FDA864D00BC1183 /* TAPFeedApiModel.swift in Sources */,
 				6CCEEFBE1FCEB5C50018FDB3 /* TAPDealsViewController.swift in Sources */,
 				6C86011B1FCD6902004E7CAE /* TAPBaseEntity.swift in Sources */,
 				6C8601351FCD6E69004E7CAE /* TAPIntroPageViewController.swift in Sources */,
+				03AE84061FDEE416006D6986 /* TAPBaseViewController.swift in Sources */,
 				6C8601301FCD6D70004E7CAE /* TAPIntroAppViewController.swift in Sources */,
 				B0B0567D1FC084CD001E4659 /* AppDelegate.swift in Sources */,
 				6C86013F1FCD732B004E7CAE /* TAPMainFrame.swift in Sources */,
 				6C8601201FCD696A004E7CAE /* TAPLoginPageMainViewController.swift in Sources */,
 				6CCEEFBA1FCEB5B70018FDB3 /* TAPCategoryViewController.swift in Sources */,
+				03AE841C1FE01154006D6986 /* TAPMacros.swift in Sources */,
 				6C66BFB11FCEAE160092A006 /* TAPForgotPasswordViewController.swift in Sources */,
+				03AE84021FDEE3B7006D6986 /* TAPMallPageDealViewController.swift in Sources */,
+				03AE840D1FDEE80B006D6986 /* TAPHeaderView.swift in Sources */,
 				6C66BFA91FCE6FA10092A006 /* TAPSignupPasswordViewController.swift in Sources */,
 				6C1E68671FDA9B9A00BC1183 /* TAPFeedTableViewCell.swift in Sources */,
 				6C86010E1FCD683B004E7CAE /* TAPWebservice.swift in Sources */,
 				6C7DA0511FCFE95300E3F3E4 /* TAPContant.swift in Sources */,
+				03AE84121FDEE997006D6986 /* TAPMallPageShopViewController.swift in Sources */,
 				6C8D08F91FD7D50D00B208DA /* TAPAddressModel.swift in Sources */,
 				6CCEEFC71FCEB6600018FDB3 /* TAPFeedViewController.swift in Sources */,
 				6C8D08F71FD7D48000B208DA /* TAPFeedModel.swift in Sources */,
 				6C8D08FB1FD7D70200B208DA /* TAPProductModel.swift in Sources */,
+				03AE84191FDEFE5F006D6986 /* TAPMallPageDealsCell.swift in Sources */,
 				6C86012A1FCD6D3E004E7CAE /* TAPSplashViewController.swift in Sources */,
 				6CCEEFC21FCEB6400018FDB3 /* TAPDiscoverViewController.swift in Sources */,
 				6C1070A71FD92A99001887BB /* TAPFeedCollectionViewCell.swift in Sources */,
