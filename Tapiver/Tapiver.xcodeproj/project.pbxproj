@@ -51,6 +51,10 @@
 		6CCEEFC31FCEB6400018FDB3 /* TAPDiscoverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6CCEEFC11FCEB6400018FDB3 /* TAPDiscoverViewController.xib */; };
 		6CCEEFC71FCEB6600018FDB3 /* TAPFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CCEEFC51FCEB6600018FDB3 /* TAPFeedViewController.swift */; };
 		6CCEEFC81FCEB6600018FDB3 /* TAPFeedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6CCEEFC61FCEB6600018FDB3 /* TAPFeedViewController.xib */; };
+		841F54371FDEA8B600FDE9FA /* InfoCustomer in Resources */ = {isa = PBXBuildFile; fileRef = 841F54351FDEA8B500FDE9FA /* InfoCustomer */; };
+		841F54381FDEA8B600FDE9FA /* AddNewAddress in Resources */ = {isa = PBXBuildFile; fileRef = 841F54361FDEA8B600FDE9FA /* AddNewAddress */; };
+		841F543B1FDEA8DC00FDE9FA /* address@xxxhdpi.png in Resources */ = {isa = PBXBuildFile; fileRef = 841F54391FDEA8DC00FDE9FA /* address@xxxhdpi.png */; };
+		841F543C1FDEA8DC00FDE9FA /* ic_next.png in Resources */ = {isa = PBXBuildFile; fileRef = 841F543A1FDEA8DC00FDE9FA /* ic_next.png */; };
 		B0B0567D1FC084CD001E4659 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B0567C1FC084CD001E4659 /* AppDelegate.swift */; };
 		B0B056841FC084CD001E4659 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0B056831FC084CD001E4659 /* Assets.xcassets */; };
 		B0B056871FC084CD001E4659 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0B056851FC084CD001E4659 /* LaunchScreen.storyboard */; };
@@ -112,6 +116,10 @@
 		6CCEEFC11FCEB6400018FDB3 /* TAPDiscoverViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TAPDiscoverViewController.xib; sourceTree = "<group>"; };
 		6CCEEFC51FCEB6600018FDB3 /* TAPFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPFeedViewController.swift; sourceTree = "<group>"; };
 		6CCEEFC61FCEB6600018FDB3 /* TAPFeedViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TAPFeedViewController.xib; sourceTree = "<group>"; };
+		841F54351FDEA8B500FDE9FA /* InfoCustomer */ = {isa = PBXFileReference; lastKnownFileType = folder; path = InfoCustomer; sourceTree = "<group>"; };
+		841F54361FDEA8B600FDE9FA /* AddNewAddress */ = {isa = PBXFileReference; lastKnownFileType = folder; path = AddNewAddress; sourceTree = "<group>"; };
+		841F54391FDEA8DC00FDE9FA /* address@xxxhdpi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "address@xxxhdpi.png"; sourceTree = "<group>"; };
+		841F543A1FDEA8DC00FDE9FA /* ic_next.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_next.png; sourceTree = "<group>"; };
 		B0B056791FC084CD001E4659 /* Tapiver.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tapiver.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0B0567C1FC084CD001E4659 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B0B056831FC084CD001E4659 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -263,6 +271,8 @@
 		6C8601231FCD6CC5004E7CAE /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				841F54391FDEA8DC00FDE9FA /* address@xxxhdpi.png */,
+				841F543A1FDEA8DC00FDE9FA /* ic_next.png */,
 				6C7DA0521FCFEDDE00E3F3E4 /* bg_signup.png */,
 				6C8601371FCD70E5004E7CAE /* splash01@2x.png */,
 				6C8601381FCD70E5004E7CAE /* splash02@2x.png */,
@@ -438,6 +448,8 @@
 		B0B056971FC0861C001E4659 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				841F54361FDEA8B600FDE9FA /* AddNewAddress */,
+				841F54351FDEA8B500FDE9FA /* InfoCustomer */,
 				6CCEEFB71FCEB5940018FDB3 /* Category */,
 				6CCEEFB61FCEB58E0018FDB3 /* Deals */,
 				6CCEEFB51FCEB5860018FDB3 /* Discover */,
@@ -529,14 +541,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				841F54371FDEA8B600FDE9FA /* InfoCustomer in Resources */,
 				6C86013B1FCD70E5004E7CAE /* splash02@2x.png in Resources */,
 				6C66BFAA1FCE6FA10092A006 /* TAPSignupPasswordViewController.xib in Resources */,
 				6C8601251FCD6CD0004E7CAE /* splash@2x.png in Resources */,
 				B0B056871FC084CD001E4659 /* LaunchScreen.storyboard in Resources */,
 				6C66BFB21FCEAE160092A006 /* TAPForgotPasswordViewController.xib in Resources */,
 				6C66BFB81FCEB3870092A006 /* TAPMainTabbarViewController.xib in Resources */,
+				841F543C1FDEA8DC00FDE9FA /* ic_next.png in Resources */,
 				6CCEEFC81FCEB6600018FDB3 /* TAPFeedViewController.xib in Resources */,
 				6C86012B1FCD6D3E004E7CAE /* TAPSplashViewController.xib in Resources */,
+				841F543B1FDEA8DC00FDE9FA /* address@xxxhdpi.png in Resources */,
 				6CCEEFBF1FCEB5C50018FDB3 /* TAPDealsViewController.xib in Resources */,
 				6CCEEFC31FCEB6400018FDB3 /* TAPDiscoverViewController.xib in Resources */,
 				6C86013A1FCD70E5004E7CAE /* splash01@2x.png in Resources */,
@@ -548,6 +563,7 @@
 				6C66BFA51FCE69500092A006 /* TAPSignupEmailViewController.xib in Resources */,
 				6C86013C1FCD70E5004E7CAE /* splash03@2x.png in Resources */,
 				6C1070A81FD92A99001887BB /* TAPFeedCollectionViewCell.xib in Resources */,
+				841F54381FDEA8B600FDE9FA /* AddNewAddress in Resources */,
 				6C1E68681FDA9B9A00BC1183 /* TAPFeedTableViewCell.xib in Resources */,
 				6C7DA0531FCFEDDE00E3F3E4 /* bg_signup.png in Resources */,
 			);
