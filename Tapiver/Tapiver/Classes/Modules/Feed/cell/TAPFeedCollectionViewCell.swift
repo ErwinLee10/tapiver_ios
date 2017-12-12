@@ -12,11 +12,22 @@ import SDWebImage
 
 class TAPFeedCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var pageView: iCarousel!
-    @IBOutlet weak var pageControl: UIPageControl!
+    @IBOutlet private weak var pageView: iCarousel!
+    @IBOutlet private weak var pageControl: UIPageControl!
+    @IBOutlet private weak var ivHotNew: UIImageView!
+    @IBOutlet private weak var persentSaleLbl: UILabel!
+    @IBOutlet private weak var ivFree: UIImageView!
+    @IBOutlet private weak var likeBtn: UIButton!
+    @IBOutlet private weak var numberLikeLbl: UILabel!
+    @IBOutlet private weak var nameProdctLbl: UILabel!
+    @IBOutlet private weak var contentLbl: UILabel!
+    @IBOutlet private weak var fromLbl: UILabel!
+    @IBOutlet private weak var priceLbl: UILabel!
+    @IBOutlet private weak var newPriceLbl: UILabel!
+    
     
     private var currentIdex: Int = 0
-    private var items: [String]  = ["https://s3-ap-southeast-1.amazonaws.com/tapiver/supclothing/PRODUCT/a846094c-9b74-41ae-8f24-8a943e1192ff.jpg","https://s3-ap-southeast-1.amazonaws.com/tapiver/supclothing/PRODUCT/5e431a84-43d3-4774-b5b8-bc52a7d5c9cd.jpg","https://s3-ap-southeast-1.amazonaws.com/tapiver/supclothing/PRODUCT/74fc8cb8-4b35-47a1-a90e-81e76f950912.jpg"]
+    private var items: [String]  = []
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -32,6 +43,37 @@ class TAPFeedCollectionViewCell: UICollectionViewCell {
         self.pageView.dataSource = self
         
         self.pageControl.numberOfPages = items.count
+    }
+    
+    func fillDataToView(model: TAPProductModel) {
+        let isNew: Bool = model.variationsOverview?.labels?.contains("NEW") ?? false
+        let isHot: Bool = model.variationsOverview?.labels?.contains("HOT") ?? false
+        ivHotNew.isHidden = !isNew && !isHot
+        ivHotNew.image = UIImage.init(named: isHot ? "banner_hot" : (isNew ? "banner_new" : ""))
+        let isFree: Bool = model.variationsOverview?.labels?.contains("FREE_SHIPPING") ?? false
+        ivFree.isHidden = !isFree
+        likeBtn.setImage(UIImage.init(named: model.isLikedByThisUser ? "icon_thumbs_on" : "icon_thumbs_off"), for: UIControlState.normal)
+        numberLikeLbl.text = String.init(model.likes)
+        nameProdctLbl.text = model.brand
+        contentLbl.text = model.name
+        items = model.variationsOverview?.pictures ?? []
+        pageView.reloadData()
+        let price = model.variationsOverview?.originalPrice ?? 0
+        guard let salePrice = model.variationsOverview?.salePrice else {
+            persentSaleLbl.isHidden = true
+            newPriceLbl.text = "$" + String.init(price)
+            priceLbl.text = ""
+            return
+        }
+        let percentSale: Int = 100 - salePrice * 100 / price
+        persentSaleLbl.text = String.init(percentSale) + "%"
+        newPriceLbl.text = "$" + String.init(salePrice)
+        priceLbl.text = "$" + String.init(price)
+        let attributes : [NSAttributedStringKey : Any] = [ NSAttributedStringKey.font : UIFont.systemFont(ofSize: 11.0),
+                                            NSAttributedStringKey.foregroundColor : UIColor.init(netHex: 0x848585),
+                                            NSAttributedStringKey.strikethroughStyle : NSUnderlineStyle.styleSingle.rawValue]
+        let attStringSaySomething = NSAttributedString(string: "$" + String.init(price), attributes: attributes)
+        priceLbl.attributedText = attStringSaySomething
     }
 }
 

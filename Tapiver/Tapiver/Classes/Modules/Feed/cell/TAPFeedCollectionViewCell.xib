@@ -48,13 +48,13 @@
                                 <rect key="frame" x="0.0" y="140" width="154" height="66"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0ja-wL-SmT">
-                                        <rect key="frame" x="10" y="49.5" width="31" height="11.5"/>
+                                        <rect key="frame" x="10" y="47.5" width="14" height="13.5"/>
                                         <attributedString key="attributedText">
-                                            <fragment content="$40.50">
+                                            <fragment content="10">
                                                 <attributes>
-                                                    <color key="NSColor" red="0.68235294120000001" green="0.66666666669999997" blue="0.66274509800000003" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <font key="NSFont" size="10" name="ArialMT"/>
-                                                    <font key="NSOriginalFont" size="10" name="ArialMT"/>
+                                                    <font key="NSFont" size="11" name="Verdana"/>
+                                                    <font key="NSOriginalFont" size="12" name="Verdana"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                     <integer key="NSStrikethrough" value="1"/>
                                                 </attributes>
                                             </fragment>
@@ -62,7 +62,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$39.50" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yes-yN-4Ud">
-                                        <rect key="frame" x="51" y="44" width="47" height="17"/>
+                                        <rect key="frame" x="34" y="44" width="47" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -70,12 +70,13 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fqE-ov-oSZ">
                                         <rect key="frame" x="114" y="10" width="30" height="46"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_thumbs_on" translatesAutoresizingMaskIntoConstraints="NO" id="Ocs-8x-xdO">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZEH-Ie-393">
                                                 <rect key="frame" x="5" y="3" width="20" height="20"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" secondItem="Ocs-8x-xdO" secondAttribute="height" multiplier="1:1" id="Gta-Re-Tee"/>
+                                                    <constraint firstAttribute="width" secondItem="ZEH-Ie-393" secondAttribute="height" multiplier="1:1" id="IMX-11-Vmm"/>
                                                 </constraints>
-                                            </imageView>
+                                                <state key="normal" image="icon_thumbs_on"/>
+                                            </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TNf-NH-rhF">
                                                 <rect key="frame" x="6.5" y="23" width="18.5" height="12"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="10"/>
@@ -85,12 +86,12 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="TNf-NH-rhF" firstAttribute="top" secondItem="Ocs-8x-xdO" secondAttribute="bottom" id="9Lo-lz-k5W"/>
-                                            <constraint firstAttribute="trailing" secondItem="Ocs-8x-xdO" secondAttribute="trailing" constant="5" id="9lN-Sw-0rD"/>
+                                            <constraint firstItem="ZEH-Ie-393" firstAttribute="leading" secondItem="fqE-ov-oSZ" secondAttribute="leading" constant="5" id="3tL-SY-d6Y"/>
+                                            <constraint firstAttribute="trailing" secondItem="ZEH-Ie-393" secondAttribute="trailing" constant="5" id="Dmx-U1-pck"/>
                                             <constraint firstAttribute="width" constant="30" id="JBq-mu-haC"/>
-                                            <constraint firstItem="Ocs-8x-xdO" firstAttribute="leading" secondItem="fqE-ov-oSZ" secondAttribute="leading" constant="5" id="aAg-AC-kLG"/>
-                                            <constraint firstItem="Ocs-8x-xdO" firstAttribute="centerY" secondItem="fqE-ov-oSZ" secondAttribute="centerY" constant="-10" id="bdJ-16-oPB"/>
                                             <constraint firstItem="TNf-NH-rhF" firstAttribute="centerX" secondItem="fqE-ov-oSZ" secondAttribute="centerX" id="eqp-ro-wDb"/>
+                                            <constraint firstItem="ZEH-Ie-393" firstAttribute="centerY" secondItem="fqE-ov-oSZ" secondAttribute="centerY" constant="-10" id="fF7-Ev-p0T"/>
+                                            <constraint firstItem="TNf-NH-rhF" firstAttribute="top" secondItem="ZEH-Ie-393" secondAttribute="bottom" id="tgD-7b-zmZ"/>
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sweater Weather" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BBd-mz-3s5">
@@ -159,7 +160,7 @@
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10%" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z9I-iZ-L6X">
                                 <rect key="frame" x="114" y="5" width="30" height="30"/>
-                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.88235294117647056" green="0.11764705882352941" blue="0.14509803921568626" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="MhC-Td-uC2"/>
                                     <constraint firstAttribute="width" constant="30" id="x6y-3F-Yc5"/>
@@ -212,8 +213,18 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="154" height="206"/>
             <connections>
+                <outlet property="contentLbl" destination="BBd-mz-3s5" id="VaA-ig-jMS"/>
+                <outlet property="fromLbl" destination="IIv-Ui-1iX" id="GyO-ec-R3y"/>
+                <outlet property="ivFree" destination="wpP-Gd-tHu" id="AKb-qY-md9"/>
+                <outlet property="ivHotNew" destination="Jmj-Lb-1rA" id="zfZ-kc-Gf1"/>
+                <outlet property="likeBtn" destination="ZEH-Ie-393" id="MKa-rf-CTu"/>
+                <outlet property="nameProdctLbl" destination="8kh-2T-bEN" id="ahF-wE-nFe"/>
+                <outlet property="newPriceLbl" destination="yes-yN-4Ud" id="yAr-aT-rRn"/>
+                <outlet property="numberLikeLbl" destination="TNf-NH-rhF" id="9lx-k6-Afd"/>
                 <outlet property="pageControl" destination="dPP-ay-Cs8" id="oTR-Vf-C3x"/>
                 <outlet property="pageView" destination="Rfu-LE-13M" id="sIm-HO-6Dt"/>
+                <outlet property="persentSaleLbl" destination="Z9I-iZ-L6X" id="UQc-Cl-ibP"/>
+                <outlet property="priceLbl" destination="0ja-wL-SmT" id="Iwo-7a-g6f"/>
             </connections>
             <point key="canvasLocation" x="-31" y="104"/>
         </collectionViewCell>

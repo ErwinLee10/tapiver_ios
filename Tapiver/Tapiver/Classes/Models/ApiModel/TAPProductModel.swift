@@ -11,7 +11,7 @@ import UIKit
 class TAPProductModel: TAPBaseEntity {
     var id: Int?
     var name: String?
-    var likes: Int?
+    var likes: Int = 0
     var isLikedByThisUser: Bool = false
     var brand: String?
     var variationsOverview: TAPVariationsOverviewModel?
@@ -19,13 +19,13 @@ class TAPProductModel: TAPBaseEntity {
     override func parserResponse(dic: NSDictionary) {
         id = dic.value(forKey: "id") as? Int
         name = dic.value(forKey: "name") as? String
-        likes = dic.value(forKey: "likes") as? Int
+        likes = dic.value(forKey: "likes") as? Int ?? 0
         isLikedByThisUser = dic.value(forKey: "isLikedByThisUser") as? Bool ?? false
-        guard let dataVariationsOverview = dic.value(forKey: "variationsOverview") as? NSDictionary else {
+        guard let dataVariationsOverview = dic.value(forKey: "variationsOverview") as? [NSDictionary] else {
             return
         }
         variationsOverview = TAPVariationsOverviewModel()
-        variationsOverview?.parserResponse(dic:dataVariationsOverview)
+        variationsOverview?.parserResponseArray(dics: dataVariationsOverview)
     }
 }
 
@@ -50,6 +50,10 @@ class TAPVariationsOverviewModel: TAPBaseEntity {
         originalPrice = dic.value(forKey: "originalPrice") as? Int
         salePrice = dic.value(forKey: "salePrice") as? Int
         stock = dic.value(forKey: "stock") as? Int
+    }
+    
+    override func parserResponseArray(dics: [NSDictionary]) {
+        parserResponse(dic: dics[0])
     }
 }
 

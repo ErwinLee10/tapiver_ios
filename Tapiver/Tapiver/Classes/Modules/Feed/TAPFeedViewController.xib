@@ -13,6 +13,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TAPFeedViewController" customModule="Tapiver" customModuleProvider="target">
             <connections>
+                <outlet property="nodataView" destination="KCl-LZ-LDH" id="bIG-cM-eBM"/>
                 <outlet property="tableData" destination="xEP-6W-pca" id="76z-xE-siX"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -113,6 +114,33 @@
                         <outlet property="delegate" destination="-1" id="1JI-Cx-ATt"/>
                     </connections>
                 </tableView>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KCl-LZ-LDH">
+                    <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nodata" translatesAutoresizingMaskIntoConstraints="NO" id="Hyy-zD-aBe">
+                            <rect key="frame" x="137.5" y="211.5" width="100" height="100"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="100" id="6NV-12-kSl"/>
+                                <constraint firstAttribute="height" constant="100" id="pm6-QK-A2t"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your feed is empty.  Follow shops to personalize your own feed." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iUb-NS-JGM">
+                            <rect key="frame" x="40" y="341.5" width="295" height="36"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <color key="textColor" red="0.51764705882352935" green="0.52156862745098043" blue="0.52156862745098043" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.96862745098039216" green="0.97647058823529409" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="iUb-NS-JGM" secondAttribute="trailing" constant="40" id="AEu-ee-Az5"/>
+                        <constraint firstItem="iUb-NS-JGM" firstAttribute="top" secondItem="Hyy-zD-aBe" secondAttribute="bottom" constant="30" id="CBM-Hw-5EK"/>
+                        <constraint firstItem="Hyy-zD-aBe" firstAttribute="centerY" secondItem="KCl-LZ-LDH" secondAttribute="centerY" constant="-40" id="Jwc-NI-D3J"/>
+                        <constraint firstItem="iUb-NS-JGM" firstAttribute="leading" secondItem="KCl-LZ-LDH" secondAttribute="leading" constant="40" id="ONk-J1-UzB"/>
+                        <constraint firstItem="Hyy-zD-aBe" firstAttribute="centerX" secondItem="KCl-LZ-LDH" secondAttribute="centerX" id="eho-lg-gc6"/>
+                        <constraint firstItem="iUb-NS-JGM" firstAttribute="centerX" secondItem="KCl-LZ-LDH" secondAttribute="centerX" id="rSi-vm-Y5q"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="0.098039215686274508" green="0.35686274509803922" blue="0.47450980392156861" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -121,7 +149,11 @@
                 <constraint firstItem="xEP-6W-pca" firstAttribute="top" secondItem="GdG-Dk-Eo1" secondAttribute="bottom" id="54D-qy-USa"/>
                 <constraint firstItem="GdG-Dk-Eo1" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="6Ky-cm-f35"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="xEP-6W-pca" secondAttribute="trailing" id="K9h-Oh-37R"/>
+                <constraint firstItem="KCl-LZ-LDH" firstAttribute="top" secondItem="GdG-Dk-Eo1" secondAttribute="bottom" id="S1v-vi-jxf"/>
+                <constraint firstItem="KCl-LZ-LDH" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Yi1-8Q-wzQ"/>
                 <constraint firstItem="GdG-Dk-Eo1" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" priority="750" id="a4j-90-CjJ"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="KCl-LZ-LDH" secondAttribute="bottom" id="aKH-FB-6bf"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="KCl-LZ-LDH" secondAttribute="trailing" id="c6G-IF-0qi"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="xEP-6W-pca" secondAttribute="bottom" id="uxR-Hl-Mkj"/>
                 <constraint firstItem="GdG-Dk-Eo1" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="zQM-C2-U69"/>
             </constraints>
@@ -132,6 +164,7 @@
     <resources>
         <image name="icon_cart" width="48" height="48"/>
         <image name="icons_search" width="48" height="48"/>
+        <image name="nodata" width="210" height="210"/>
         <image name="tapiver-logo-1" width="32" height="31"/>
         <image name="three-dot" width="21" height="21"/>
     </resources>

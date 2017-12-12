@@ -11,8 +11,12 @@ import SDWebImage
 
 class TAPFeedTableViewCell: UITableViewCell {
 
-     @IBOutlet weak var collectionHot: UICollectionView!
-    @IBOutlet weak var ivAvatar: UIImageView!
+    @IBOutlet private weak var collectionHot: UICollectionView!
+    @IBOutlet private weak var ivAvatar: UIImageView!
+    @IBOutlet private weak var followBtn: UIButton!
+    @IBOutlet private weak var nameLbl: UILabel!
+    @IBOutlet private weak var titleLbl: UILabel!
+    var items:[TAPProductModel] = []
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -20,8 +24,15 @@ class TAPFeedTableViewCell: UITableViewCell {
         collectionHot.delegate = self
         collectionHot.dataSource = self
         collectionHot.register(UINib.init(nibName: "TAPFeedCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "TAPFeedCollectionViewCell")
-        
-        ivAvatar.sd_setImage(with: URL.init(string: "https://s3-ap-southeast-1.amazonaws.com/tapiver/supclothing/PRODUCT/f12d56a2-976f-4c17-b2c2-8843ce8ce354.jpg"), completed: nil)
+    }
+    
+    func fillDataToView(model: TAPFeedModel) {
+        ivAvatar.sd_setImage(with: URL.init(string: model.sellerPicture ?? ""), completed: nil)
+        nameLbl.text = model.sellerName
+        titleLbl.text = model.sellerAddress?.streetName
+        items = model.products ?? []
+        collectionHot.reloadData()
+        followBtn.setTitle(model.isFollowedByThisUser ? "FOLLOWING" : "FOLLOW", for: UIControlState.normal)
     }
     
 }
@@ -29,13 +40,14 @@ class TAPFeedTableViewCell: UITableViewCell {
 extension TAPFeedTableViewCell: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return items.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TAPFeedCollectionViewCell", for: indexPath) as? TAPFeedCollectionViewCell else {
             return UICollectionViewCell()
         }
+        cell.fillDataToView(model: items[indexPath.item])
         return cell
     }
 }
