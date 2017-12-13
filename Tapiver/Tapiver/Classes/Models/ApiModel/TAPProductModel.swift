@@ -14,18 +14,35 @@ class TAPProductModel: TAPBaseEntity {
     var likes: Int = 0
     var isLikedByThisUser: Bool = false
     var brand: String?
+    var sellerName: String?
+    var sellerId: Int?
+    var sellerPicture: String?
+    var sellerCoverPicture: String?
+    var sellerTotalFollower: Int?
     var variationsOverview: TAPVariationsOverviewModel?
+    var sellerAddress: TAPSellerAddressModel?
     
     override func parserResponse(dic: NSDictionary) {
-        id = dic.value(forKey: "id") as? Int
-        name = dic.value(forKey: "name") as? String
-        likes = dic.value(forKey: "likes") as? Int ?? 0
-        isLikedByThisUser = dic.value(forKey: "isLikedByThisUser") as? Bool ?? false
-        guard let dataVariationsOverview = dic.value(forKey: "variationsOverview") as? [NSDictionary] else {
-            return
+        id = dic.value(forKey: TAPConstants.APIParams.id) as? Int
+        name = dic.value(forKey: TAPConstants.APIParams.name) as? String
+        likes = dic.value(forKey: TAPConstants.APIParams.likes) as? Int ?? 0
+        brand = dic.value(forKey: TAPConstants.APIParams.brand) as? String
+        isLikedByThisUser = dic.value(forKey: TAPConstants.APIParams.isLikedByThisUser) as? Bool ?? false
+        if let dataVariationsOverview = dic.value(forKey: TAPConstants.APIParams.variationsOverview) as? [NSDictionary] {
+            variationsOverview = TAPVariationsOverviewModel()
+            variationsOverview?.parserResponseArray(dics: dataVariationsOverview)
         }
-        variationsOverview = TAPVariationsOverviewModel()
-        variationsOverview?.parserResponseArray(dics: dataVariationsOverview)
+        
+        sellerName = dic.value(forKey: TAPConstants.APIParams.sellerName) as? String
+        sellerId = dic.value(forKey: TAPConstants.APIParams.sellerId) as? Int
+        sellerPicture = dic.value(forKey: TAPConstants.APIParams.sellerPicture) as? String
+        sellerCoverPicture = dic.value(forKey: TAPConstants.APIParams.sellerCoverPicture) as? String
+        sellerTotalFollower = dic.value(forKey: TAPConstants.APIParams.sellerTotalFollower) as? Int
+        
+        if let sellerAddressDic = dic.value(forKey: TAPConstants.APIParams.sellerAddress) as? NSDictionary {
+            sellerAddress = TAPSellerAddressModel()
+            sellerAddress?.parserResponse(dic: sellerAddressDic)
+        }
     }
 }
 

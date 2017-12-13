@@ -7,23 +7,27 @@
 //
 
 import UIKit
+import SVProgressHUD
 
-class TAPMallPageDealViewController: TAPBaseViewController {
+class TAPMallPageDealViewController: TAPMallPageBaseViewController {
     @IBOutlet weak var contentCollectionView: UICollectionView!
-    @IBOutlet var mainHeaderHeight: NSLayoutConstraint!
+    @IBOutlet weak var emptyLabel: UILabel!
+    var productList: [TAPProductModel] = []
     
     static let cellIdentifier = "TAPMallPageDealsCell"
     let leftRightPadding = 15.0
     let cellPadding = 10.0
     let cellHeightWidhtRatio = 1.3
-    let expandHeaderHeight: CGFloat = 90.0
-    let collapseHeaderHeight: CGFloat = 44.0
-    let animationDuration = 0.3
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getData()
     }
 
     // MARK: Public methods
@@ -35,6 +39,29 @@ class TAPMallPageDealViewController: TAPBaseViewController {
         mainHeaderHeight.constant = expandHeaderHeight
         
         contentCollectionView.register(UINib.init(nibName: "TAPMallPageDealsCell", bundle: nil), forCellWithReuseIdentifier: TAPMallPageDealViewController.cellIdentifier)
+    }
+    
+    private func getData() {
+        let params: [String: Any] = [:]
+        
+        SVProgressHUD.show()
+        TAPWebservice.shareInstance.sendGETRequest(path: TAPConstants.APIPath.getProducts, params: params, responseObjectClass: TAPProductListModel()) { [weak self] (success, responseEntity) in
+            if success, let productListModel = responseEntity as? TAPProductListModel {
+                self?.productList = productListModel.productList
+                self?.reloadData()
+            }
+            SVProgressHUD.dismiss()
+        }
+    }
+    private func reloadData() {
+        if productList.count == 0 {
+            emptyLabel.isHidden = false
+            contentCollectionView.isHidden = true
+        } else {
+            emptyLabel.isHidden = true
+            contentCollectionView.isHidden = false
+            contentCollectionView.reloadData()
+        }
     }
 }
 
@@ -60,18 +87,22 @@ extension TAPMallPageDealViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return productList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TAPMallPageDealViewController.cellIdentifier, for: indexPath) as! TAPMallPageDealsCell
+        let row = indexPath.row
+        cell.fillData(product: productList[row])
         return cell
     }
 }
 
 // MARK: UICollectionViewDelegate
 extension TAPMallPageDealViewController: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        let row = indexPath.row
+    }
 }
 
 // MARK: UICollectionViewDelegateFlowLayout
@@ -80,38 +111,5 @@ extension TAPMallPageDealViewController: UICollectionViewDelegateFlowLayout {
         let cellWidth = (Double(SCREEN_WIDTH) - leftRightPadding * 2 - cellPadding) / 2
         let cellHeight = cellWidth * cellHeightWidhtRatio
         return CGSize(width: cellWidth, height: cellHeight)
-    }
-}
-
-extension TAPMallPageDealViewController: UIScrollViewDelegate {
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        guard let headerView = headerView else {
-            return
-        }
-        
-        let contentOffset = scrollView.contentOffset.y
-        let baseContentOffset: CGFloat = 10.0
-        
-        if contentOffset > baseContentOffset {
-            if headerView.isExpand {
-                mainHeaderHeight.constant = collapseHeaderHeight
-                UIView.animate(withDuration: animationDuration, animations: {
-                    headerView.expandViewAnimation(false)
-                    self.view.layoutIfNeeded()
-                }) { (isComplete) in
-                    
-                }
-            }
-        } else if contentOffset < -baseContentOffset {
-            if headerView.isExpand == false {
-                mainHeaderHeight.constant = expandHeaderHeight
-                UIView.animate(withDuration: animationDuration, animations: {
-                    headerView.expandViewAnimation(true)
-                    self.view.layoutIfNeeded()
-                }) { (isComplete) in
-                    
-                }
-            }
-        }
     }
 }

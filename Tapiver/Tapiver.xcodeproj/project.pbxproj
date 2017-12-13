@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		033458281FE15BF200BFC66E /* TAPMallPageBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033458271FE15BF200BFC66E /* TAPMallPageBaseViewController.swift */; };
+		0334582A1FE1677200BFC66E /* TAPProductListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033458291FE1677200BFC66E /* TAPProductListModel.swift */; };
+		0334582C1FE1769400BFC66E /* TAPSellerAddressModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0334582B1FE1769400BFC66E /* TAPSellerAddressModel.swift */; };
 		03AE84021FDEE3B7006D6986 /* TAPMallPageDealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AE84001FDEE3B7006D6986 /* TAPMallPageDealViewController.swift */; };
 		03AE84031FDEE3B7006D6986 /* TAPMallPageDealViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03AE84011FDEE3B7006D6986 /* TAPMallPageDealViewController.xib */; };
 		03AE84061FDEE416006D6986 /* TAPBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AE84051FDEE416006D6986 /* TAPBaseViewController.swift */; };
@@ -82,6 +85,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		033458271FE15BF200BFC66E /* TAPMallPageBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPMallPageBaseViewController.swift; sourceTree = "<group>"; };
+		033458291FE1677200BFC66E /* TAPProductListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPProductListModel.swift; sourceTree = "<group>"; };
+		0334582B1FE1769400BFC66E /* TAPSellerAddressModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPSellerAddressModel.swift; sourceTree = "<group>"; };
 		03AE84001FDEE3B7006D6986 /* TAPMallPageDealViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPMallPageDealViewController.swift; sourceTree = "<group>"; };
 		03AE84011FDEE3B7006D6986 /* TAPMallPageDealViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TAPMallPageDealViewController.xib; sourceTree = "<group>"; };
 		03AE84051FDEE416006D6986 /* TAPBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPBaseViewController.swift; sourceTree = "<group>"; };
@@ -177,6 +183,7 @@
 		03AE83FD1FDEE319006D6986 /* Mall Page */ = {
 			isa = PBXGroup;
 			children = (
+				033458271FE15BF200BFC66E /* TAPMallPageBaseViewController.swift */,
 				03AE84071FDEE53D006D6986 /* Tabbar */,
 				03AE83FE1FDEE353006D6986 /* Shop */,
 				03AE83FF1FDEE374006D6986 /* Deals */,
@@ -606,6 +613,8 @@
 				6C8D08F81FD7D50D00B208DA /* TAPAddressModel.swift */,
 				6C8D08FA1FD7D70200B208DA /* TAPProductModel.swift */,
 				6C1E68631FDA864D00BC1183 /* TAPFeedApiModel.swift */,
+				033458291FE1677200BFC66E /* TAPProductListModel.swift */,
+				0334582B1FE1769400BFC66E /* TAPSellerAddressModel.swift */,
 			);
 			path = ApiModel;
 			sourceTree = "<group>";
@@ -810,13 +819,16 @@
 				03AE84121FDEE997006D6986 /* TAPMallPageShopViewController.swift in Sources */,
 				6C8D08F91FD7D50D00B208DA /* TAPAddressModel.swift in Sources */,
 				6CCEEFC71FCEB6600018FDB3 /* TAPFeedViewController.swift in Sources */,
+				033458281FE15BF200BFC66E /* TAPMallPageBaseViewController.swift in Sources */,
 				6C8D08F71FD7D48000B208DA /* TAPFeedModel.swift in Sources */,
 				6C4DA0091FE13A4A00E0774A /* TAPProductDescriptionViewCell.swift in Sources */,
 				6C4DA0001FE132DF00E0774A /* TAPProductMainPageViewController.swift in Sources */,
 				6C8D08FB1FD7D70200B208DA /* TAPProductModel.swift in Sources */,
 				03AE84191FDEFE5F006D6986 /* TAPMallPageDealsCell.swift in Sources */,
+				0334582A1FE1677200BFC66E /* TAPProductListModel.swift in Sources */,
 				6C86012A1FCD6D3E004E7CAE /* TAPSplashViewController.swift in Sources */,
 				6CCEEFC21FCEB6400018FDB3 /* TAPDiscoverViewController.swift in Sources */,
+				0334582C1FE1769400BFC66E /* TAPSellerAddressModel.swift in Sources */,
 				6C1070A71FD92A99001887BB /* TAPFeedCollectionViewCell.swift in Sources */,
 				6C66BFB71FCEB3870092A006 /* TAPMainTabbarViewController.swift in Sources */,
 			);

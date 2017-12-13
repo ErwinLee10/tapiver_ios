@@ -58,8 +58,8 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="15" id="77W-NL-EOj"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                <color key="textColor" red="0.51764705879999995" green="0.52156862749999999" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <color key="textColor" red="0.4392156862745098" green="0.4392156862745098" blue="0.4392156862745098" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TSl-bz-lE7">
@@ -191,6 +191,7 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="172" height="232"/>
             <connections>
+                <outlet property="containerView" destination="HFX-jd-HeY" id="nbn-df-Kn2"/>
                 <outlet property="likeButton" destination="pB5-OE-gbC" id="ary-cI-vol"/>
                 <outlet property="nameLabel" destination="3bT-DC-eoW" id="QnC-h8-Ck2"/>
                 <outlet property="numOfLikesLabel" destination="wvN-lV-Ph0" id="6Z7-Xs-mQ7"/>

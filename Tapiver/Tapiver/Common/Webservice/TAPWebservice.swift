@@ -40,6 +40,21 @@ class TAPWebservice: NSObject {
         }
     }
     
+    // MARK: - Public methods
+    
+    func sendGETRequest(path:String!,
+                        params:[String: Any]?,
+                        responseObjectClass:TAPBaseEntity!,
+                        responseHandler:@escaping ServerResponseHandler) {
+        
+        let header = ["Content-Type": "application/json",
+                     "Authorization": TAPGlobal.shared.getLoginModel()?.webSessionId ?? ""
+                    ]
+        let apiPath = API_PATH(path: path)
+        
+        sendGETRequest(path: apiPath, params: params as NSDictionary?, headers: header as NSDictionary, responseObjectClass: responseObjectClass, responseHandler: responseHandler)
+    }
+    
     func sendGETRequest(path:String!,
                         params:NSDictionary?,
                         headers:NSDictionary?,
@@ -52,8 +67,10 @@ class TAPWebservice: NSObject {
             self.requestManager.requestSerializer.setValue(value as? String, forHTTPHeaderField: key)
         }
         
+        print("====================\nRequest: path: \(path) \n params: \n \(String(describing: params))")
+        
         self.requestManager!.get(path, parameters: params, progress: nil, success: {(task, responseObject) -> Void in
-            print("responseObject ->> \(String(describing: responseObject))")
+            print("responseObject ->> \n\(String(describing: responseObject))")
             if let response = responseObject as? NSDictionary {
                 responseObjectClass?.parserResponse(dic: response)
             } else if let response = responseObject as? [NSDictionary] {
@@ -67,6 +84,19 @@ class TAPWebservice: NSObject {
         }, failure: { (task, responseOBJ) -> Void in
             responseHandler(false, nil);
         })
+    }
+    
+    func sendPOSTRequest(path:String!,
+                        params:[String: Any]?,
+                        responseObjectClass:TAPBaseEntity!,
+                        responseHandler:@escaping ServerResponseHandler) {
+        
+        let header = ["Content-Type": "application/json",
+                      "Authorization": TAPGlobal.shared.getLoginModel()?.webSessionId ?? ""
+        ]
+        let apiPath = API_PATH(path: path)
+        
+        sendPOSTRequest(path: apiPath, params: params as NSDictionary?, headers: header as NSDictionary, responseObjectClass: responseObjectClass, responseHandler: responseHandler)
     }
     
     func sendPOSTRequest (path:String!,
@@ -113,7 +143,7 @@ class TAPWebservice: NSObject {
             self.requestManager.requestSerializer.setValue(value as? String, forHTTPHeaderField: key)
         }
         self.requestManager!.post(path, parameters: params, constructingBodyWith: { (data: AFMultipartFormData!) in
-            
+
             data.appendPart(withFileData: fileData, name: "", fileName: fileName, mimeType: "image/*")
         }, progress: nil,success: {(task, responseObject) -> Void in
             
@@ -136,7 +166,12 @@ class TAPWebservice: NSObject {
     }
     
     
-    private func convertParamsToJson(params:NSDictionary) -> String {
+   
+}
+
+// MARK: - Private methods
+extension TAPWebservice {
+    fileprivate func convertParamsToJson(params:NSDictionary) -> String {
         do {
             if let data:NSData = try JSONSerialization.data(withJSONObject: params, options: .prettyPrinted) as NSData? {
                 if let jsonString = String.init(data: data as Data, encoding: String.Encoding.utf8) {
