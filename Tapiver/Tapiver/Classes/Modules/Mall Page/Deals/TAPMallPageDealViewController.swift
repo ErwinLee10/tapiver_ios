@@ -29,8 +29,6 @@ class TAPMallPageDealViewController: TAPMallPageBaseViewController {
         super.viewWillAppear(animated)
         getData()
     }
-
-    // MARK: Public methods
     
     // MARK: Private methods
     private func setupView() {
@@ -42,7 +40,7 @@ class TAPMallPageDealViewController: TAPMallPageBaseViewController {
     }
     
     private func getData() {
-        let params: [String: Any] = [:]
+        let params: [String: Any] = [:] // TODO: check later
         
         SVProgressHUD.show()
         TAPWebservice.shareInstance.sendGETRequest(path: TAPConstants.APIPath.getProducts, params: params, responseObjectClass: TAPProductListModel()) { [weak self] (success, responseEntity) in

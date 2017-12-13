@@ -7,29 +7,108 @@
 //
 
 import UIKit
+import SVProgressHUD
 
-class TAPDealsViewController: UIViewController {
-
+class TAPDealsViewController: TAPBaseViewController {
+    @IBOutlet weak var mainPageHeaderView: TAPMainPageHeaderView!
+    @IBOutlet weak var contentCollectionView: UICollectionView!
+    @IBOutlet weak var emptyLabel: UILabel!
+    
+    var productList: [TAPProductModel] = []
+    
+    static let cellIdentifier = "TAPMallPageDealsCell"
+    let leftRightPadding = 15.0
+    let cellPadding = 10.0
+    let cellHeightWidhtRatio = 1.3
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        setupView()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getData()
     }
-    */
+    
+    // MARK: Private methods
+    private func setupView() {
+        mainPageHeaderView.delegate = self
+        contentCollectionView.register(UINib.init(nibName: "TAPMallPageDealsCell", bundle: nil), forCellWithReuseIdentifier: TAPMallPageDealViewController.cellIdentifier)
+    }
+    
+    private func getData() {
+        let params: [String: Any] = [:] // TODO: check later
+        
+        SVProgressHUD.show()
+        TAPWebservice.shareInstance.sendGETRequest(path: TAPConstants.APIPath.getProducts, params: params, responseObjectClass: TAPProductListModel()) { [weak self] (success, responseEntity) in
+            if success, let productListModel = responseEntity as? TAPProductListModel {
+                self?.productList = productListModel.productList
+                self?.reloadData()
+            }
+            SVProgressHUD.dismiss()
+        }
+    }
+    private func reloadData() {
+        if productList.count == 0 {
+            emptyLabel.isHidden = false
+            contentCollectionView.isHidden = true
+        } else {
+            emptyLabel.isHidden = true
+            contentCollectionView.isHidden = false
+            contentCollectionView.reloadData()
+        }
+    }
 
+}
+
+extension TAPDealsViewController: UICollectionViewDataSource {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return productList.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TAPMallPageDealViewController.cellIdentifier, for: indexPath) as! TAPMallPageDealsCell
+        let row = indexPath.row
+        cell.fillData(product: productList[row])
+        return cell
+    }
+}
+
+extension TAPDealsViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("didSelectItemAt \(indexPath.row)")
+    }
+}
+
+// MARK: UICollectionViewDelegateFlowLayout
+extension TAPDealsViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let cellWidth = (Double(SCREEN_WIDTH) - leftRightPadding * 2 - cellPadding) / 2
+        let cellHeight = cellWidth * cellHeightWidhtRatio
+        return CGSize(width: cellWidth, height: cellHeight)
+    }
+}
+
+extension TAPDealsViewController: TAPMainPageHeaderViewDelegate {
+    func mainPageHeaderViewDidTouchLeftMenu() {
+        
+    }
+    
+    func mainPageHeaderViewDidTouchRightMenu() {
+        
+    }
+    
+    func mainPageHeaderViewDidTouchSearch() {
+        
+    }
+    
+    func mainPageHeaderViewDidTouchCart() {
+        
+    }
 }

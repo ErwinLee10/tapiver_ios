@@ -10,6 +10,8 @@
 		033458281FE15BF200BFC66E /* TAPMallPageBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033458271FE15BF200BFC66E /* TAPMallPageBaseViewController.swift */; };
 		0334582A1FE1677200BFC66E /* TAPProductListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033458291FE1677200BFC66E /* TAPProductListModel.swift */; };
 		0334582C1FE1769400BFC66E /* TAPSellerAddressModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0334582B1FE1769400BFC66E /* TAPSellerAddressModel.swift */; };
+		033458301FE1941900BFC66E /* TAPMainPageHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0334582F1FE1941900BFC66E /* TAPMainPageHeaderView.swift */; };
+		033458321FE1943400BFC66E /* TAPMainPageHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 033458311FE1943400BFC66E /* TAPMainPageHeaderView.xib */; };
 		03AE84021FDEE3B7006D6986 /* TAPMallPageDealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AE84001FDEE3B7006D6986 /* TAPMallPageDealViewController.swift */; };
 		03AE84031FDEE3B7006D6986 /* TAPMallPageDealViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03AE84011FDEE3B7006D6986 /* TAPMallPageDealViewController.xib */; };
 		03AE84061FDEE416006D6986 /* TAPBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AE84051FDEE416006D6986 /* TAPBaseViewController.swift */; };
@@ -88,6 +90,8 @@
 		033458271FE15BF200BFC66E /* TAPMallPageBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPMallPageBaseViewController.swift; sourceTree = "<group>"; };
 		033458291FE1677200BFC66E /* TAPProductListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPProductListModel.swift; sourceTree = "<group>"; };
 		0334582B1FE1769400BFC66E /* TAPSellerAddressModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPSellerAddressModel.swift; sourceTree = "<group>"; };
+		0334582F1FE1941900BFC66E /* TAPMainPageHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPMainPageHeaderView.swift; sourceTree = "<group>"; };
+		033458311FE1943400BFC66E /* TAPMainPageHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TAPMainPageHeaderView.xib; sourceTree = "<group>"; };
 		03AE84001FDEE3B7006D6986 /* TAPMallPageDealViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPMallPageDealViewController.swift; sourceTree = "<group>"; };
 		03AE84011FDEE3B7006D6986 /* TAPMallPageDealViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TAPMallPageDealViewController.xib; sourceTree = "<group>"; };
 		03AE84051FDEE416006D6986 /* TAPBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPBaseViewController.swift; sourceTree = "<group>"; };
@@ -239,6 +243,8 @@
 			children = (
 				03AE840C1FDEE80B006D6986 /* TAPHeaderView.swift */,
 				03AE840E1FDEE82F006D6986 /* TAPHeaderView.xib */,
+				0334582F1FE1941900BFC66E /* TAPMainPageHeaderView.swift */,
+				033458311FE1943400BFC66E /* TAPMainPageHeaderView.xib */,
 			);
 			path = Header;
 			sourceTree = "<group>";
@@ -699,6 +705,7 @@
 				6C86013A1FCD70E5004E7CAE /* splash01@2x.png in Resources */,
 				03AE841A1FDEFE5F006D6986 /* TAPMallPageDealsCell.xib in Resources */,
 				6C8601311FCD6D70004E7CAE /* TAPIntroAppViewController.xib in Resources */,
+				033458321FE1943400BFC66E /* TAPMainPageHeaderView.xib in Resources */,
 				6CCEEFBB1FCEB5B70018FDB3 /* TAPCategoryViewController.xib in Resources */,
 				6C8601361FCD6E69004E7CAE /* TAPIntroPageViewController.xib in Resources */,
 				B0B056841FC084CD001E4659 /* Assets.xcassets in Resources */,
@@ -801,6 +808,7 @@
 				6C1E68641FDA864D00BC1183 /* TAPFeedApiModel.swift in Sources */,
 				6CCEEFBE1FCEB5C50018FDB3 /* TAPDealsViewController.swift in Sources */,
 				6C86011B1FCD6902004E7CAE /* TAPBaseEntity.swift in Sources */,
+				033458301FE1941900BFC66E /* TAPMainPageHeaderView.swift in Sources */,
 				6C8601351FCD6E69004E7CAE /* TAPIntroPageViewController.swift in Sources */,
 				03AE84061FDEE416006D6986 /* TAPBaseViewController.swift in Sources */,
 				6C8601301FCD6D70004E7CAE /* TAPIntroAppViewController.swift in Sources */,

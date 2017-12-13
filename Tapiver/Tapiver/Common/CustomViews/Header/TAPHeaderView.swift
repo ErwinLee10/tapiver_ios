@@ -68,12 +68,6 @@ class TAPHeaderView: UIView {
         }
     }
     
-    // MARK: Private methods
-    private func setupView() {
-        bgImageView.isHidden = false
-        bgImageView.alpha = 0.0
-    }
-    
     // MARK: Actions
     
     @IBAction func backTouched(_ sender: Any) {
@@ -94,6 +88,12 @@ class TAPHeaderView: UIView {
     @IBAction func menuTouched(_ sender: Any) {
         print("menuTouched")
         delegate?.headerViewDidTouchMenu()
+    }
+    
+    // MARK: Private methods
+    private func setupView() {
+        bgImageView.isHidden = false
+        bgImageView.alpha = 0.0
     }
     
 }

@@ -14,7 +14,7 @@ class TAPBaseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        self.view.backgroundColor = UIColor.init(netHex: 0xDEDEDE)
     }
 
     override func didReceiveMemoryWarning() {
