@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TAPProductMainPageViewController" customModule="Tapiver" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yJK-bh-2l7">
+                    <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="eID-Mn-AZf"/>
+                    </constraints>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nrj-aS-qhV">
+                    <rect key="frame" x="0.0" y="64" width="375" height="555"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yPg-5Z-eJO">
+                    <rect key="frame" x="0.0" y="619" width="375" height="48"/>
+                    <color key="backgroundColor" red="0.10980392156862745" green="0.66666666666666663" blue="0.71372549019607845" alpha="0.90000000000000002" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="fg0-7Q-w1d"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                    <state key="normal" title="ADD TO CART">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="yJK-bh-2l7" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="02J-Fg-uhb"/>
+                <constraint firstItem="yPg-5Z-eJO" firstAttribute="top" secondItem="nrj-aS-qhV" secondAttribute="bottom" id="C9i-tN-ZmG"/>
+                <constraint firstItem="nrj-aS-qhV" firstAttribute="top" secondItem="yJK-bh-2l7" secondAttribute="bottom" id="F1O-RS-urp"/>
+                <constraint firstItem="yPg-5Z-eJO" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="FR9-G1-Q8z"/>
+                <constraint firstItem="yPg-5Z-eJO" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="IFo-Q5-fUN"/>
+                <constraint firstItem="yJK-bh-2l7" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="ZsY-9u-DFY"/>
+                <constraint firstItem="nrj-aS-qhV" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="ej5-TI-2IF"/>
+                <constraint firstItem="yJK-bh-2l7" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="hFs-Ia-hay"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="yPg-5Z-eJO" secondAttribute="trailing" id="lRs-Uq-SZ5"/>
+                <constraint firstItem="nrj-aS-qhV" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="lsh-Ur-OuR"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="25.5" y="52.5"/>
+        </view>
+    </objects>
+</document>
