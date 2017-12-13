@@ -24,6 +24,7 @@ class TAPFeedCollectionViewCell: UICollectionViewCell {
     @IBOutlet private weak var fromLbl: UILabel!
     @IBOutlet private weak var priceLbl: UILabel!
     @IBOutlet private weak var newPriceLbl: UILabel!
+    @IBOutlet weak var viewAllView: UIView!
     
     
     private var currentIdex: Int = 0
@@ -41,8 +42,11 @@ class TAPFeedCollectionViewCell: UICollectionViewCell {
         self.pageView.isPagingEnabled = true
         self.pageView.delegate = self
         self.pageView.dataSource = self
-        
         self.pageControl.numberOfPages = items.count
+    }
+    
+    func hiddenViewAll(isHidden: Bool) {
+        self.viewAllView.isHidden = isHidden
     }
     
     func fillDataToView(model: TAPProductModel) {
@@ -57,6 +61,7 @@ class TAPFeedCollectionViewCell: UICollectionViewCell {
         nameProdctLbl.text = model.brand
         contentLbl.text = model.name
         items = model.variationsOverview?.pictures ?? []
+        self.pageControl.numberOfPages = items.count
         pageView.reloadData()
         let price = model.variationsOverview?.originalPrice ?? 0
         guard let salePrice = model.variationsOverview?.salePrice else {

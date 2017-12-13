@@ -48,6 +48,7 @@ extension TAPFeedTableViewCell: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         cell.fillDataToView(model: items[indexPath.item])
+        cell.hiddenViewAll(isHidden: indexPath.item != items.count - 1)
         return cell
     }
 }
