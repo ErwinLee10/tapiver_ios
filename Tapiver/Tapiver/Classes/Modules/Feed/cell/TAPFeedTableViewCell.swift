@@ -9,6 +9,15 @@
 import UIKit
 import SDWebImage
 
+@objc protocol TAPFeedTableViewCellDelegate {
+    @objc func tapIteamAt (index: NSIndexPath , indexItem: NSIndexPath)
+    
+}
+enum MainPageViewType: Int {
+    case MainPageViewTypeFeed
+    case MainPageViewTypeDiscover
+}
+
 class TAPFeedTableViewCell: UITableViewCell {
 
     @IBOutlet private weak var collectionHot: UICollectionView!
@@ -17,6 +26,8 @@ class TAPFeedTableViewCell: UITableViewCell {
     @IBOutlet private weak var nameLbl: UILabel!
     @IBOutlet private weak var titleLbl: UILabel!
     var items:[TAPProductModel] = []
+    var typeView: MainPageViewType?
+    weak var delegate :TAPFeedTableViewCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()

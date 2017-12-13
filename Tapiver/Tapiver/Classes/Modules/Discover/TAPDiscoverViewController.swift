@@ -7,29 +7,87 @@
 //
 
 import UIKit
+import SVProgressHUD
 
-class TAPDiscoverViewController: UIViewController {
-
+class TAPDiscoverViewController: UIViewController,TAPFeedTableViewCellDelegate {
+    @IBOutlet weak var tableView: UITableView!
+    private var feedsApiModels: TAPFeedApiModel?
+    public var landMarkId :String?
+    var isLoadMore: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        initIB()
+        initData()
     }
-
+ 
+    func initIB() {
+        self.tableView.register(UINib.init(nibName: "TAPFeedTableViewCell", bundle: nil), forCellReuseIdentifier: "TAPFeedTableViewCell")
+    }
+    func initData() {
+        let header = NSMutableDictionary()
+        header.setValue("application/json", forKey: "Content-Type")
+        header.setValue(TAPGlobal.shared.getLoginModel()?.webSessionId ?? "", forKey: "Authorization")
+        let params = NSMutableDictionary()
+        var apiPath: String
+        params.setValue(landMarkId ?? "" , forKey: "landMarkId")
+        params.setValue(self.feedsApiModels?.feedModels.count , forKey: "page")
+        if(TAPGlobal.shared.hasLogin()) {
+            apiPath = API_PATH(path: String.init(format: "/api/v1/discover", TAPGlobal.shared.getLoginModel()?.userId ?? ""))
+        } else {
+            apiPath = API_PATH(path: String.init(format: "/api/v1/s/overview", TAPGlobal.shared.getLoginModel()?.userId ?? ""))
+        }
+        SVProgressHUD.show()
+        TAPWebservice.shareInstance.sendGETRequest(path: apiPath, params: params, headers: header, responseObjectClass: TAPFeedApiModel()) { (success, response) in
+            if success {
+                guard let model = response as? TAPFeedApiModel else {
+                    return
+                }
+                self.feedsApiModels = model
+                self.tableView.reloadData()
+            } else {
+                TAPDialogUtils.shareInstance.showAlertMessageOneButton(title: "", message: "Server error, please contact Tapiver team for assistance", positive: "OK", positiveHandler: nil, vc: self)
+            }
+            SVProgressHUD.dismiss()
+        }
+    }
+    func tapIteamAt(index: NSIndexPath, indexItem: NSIndexPath) {
+        
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
+    }
+}
+extension TAPDiscoverViewController: UITableViewDelegate {
+    
+}
+
+extension TAPDiscoverViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard let data = self.feedsApiModels else {
+            return 0
+        }
+        return data.feedModels.count
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 280.0
     }
-    */
-
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let data = self.feedsApiModels else {
+            return UITableViewCell()
+        }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "TAPFeedTableViewCell", for: indexPath) as? TAPFeedTableViewCell else {
+            return UITableViewCell()
+        }
+        cell.delegate = self
+        cell.typeView = MainPageViewType.MainPageViewTypeDiscover
+        cell.fillDataToView(model: data.feedModels[indexPath.row])
+        return cell
+    }
+    
+    
 }
