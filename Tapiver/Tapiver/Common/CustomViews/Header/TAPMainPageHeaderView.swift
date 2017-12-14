@@ -8,21 +8,11 @@
 
 import UIKit
 
-protocol TAPMainPageHeaderViewDelegate: class {
-    func mainPageHeaderViewDidTouchLeftMenu()
-    func mainPageHeaderViewDidTouchRightMenu()
-    func mainPageHeaderViewDidTouchCart()
-    func mainPageHeaderViewDidTouchSearch()
+protocol TAPMainPageHeaderViewDelegate: TAPBaseHeaderViewDelegate {
+    func headerViewDidTouchLeftMenu()
 }
 
-extension TAPMainPageHeaderViewDelegate {
-    func mainPageHeaderViewDidTouchLeftMenu() {}
-    func mainPageHeaderViewDidTouchRightMenu() {}
-    func mainPageHeaderViewDidTouchCart() {}
-    func mainPageHeaderViewDidTouchSearch() {}
-}
-
-class TAPMainPageHeaderView: UIView {
+class TAPMainPageHeaderView: TAPBaseHeaderView {
     @IBOutlet weak var searchTextField: UITextField!
     weak var delegate: TAPMainPageHeaderViewDelegate?
     
@@ -32,11 +22,7 @@ class TAPMainPageHeaderView: UIView {
         let mainView = views?[0] as! UIView
         self.addSubview(mainView)
         
-        mainView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint(item: mainView, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leading, multiplier: 1.0, constant: 0.0).isActive = true
-        NSLayoutConstraint(item: mainView, attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 1.0, constant: 0.0).isActive = true
-        NSLayoutConstraint(item: mainView, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1.0, constant: 0.0).isActive = true
-        NSLayoutConstraint(item: mainView, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1.0, constant: 0.0).isActive = true
+        mainView.makeContraintToFullWithParentView()
         
     }
     
@@ -50,15 +36,15 @@ class TAPMainPageHeaderView: UIView {
     // MARK: Action methods
 
     @IBAction func leftMenuTouched(_ sender: Any) {
-        delegate?.mainPageHeaderViewDidTouchLeftMenu()
+        delegate?.headerViewDidTouchLeftMenu()
     }
     
     @IBAction func cartTouched(_ sender: Any) {
-        delegate?.mainPageHeaderViewDidTouchCart()
+        delegate?.headerViewDidTouchCart()
     }
     
     @IBAction func rightMenuTouched(_ sender: Any) {
-        delegate?.mainPageHeaderViewDidTouchRightMenu()
+        delegate?.headerViewDidTouchMenu()
     }
     
     // MARK: Private methods
@@ -74,6 +60,6 @@ extension TAPMainPageHeaderView: UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         print("textFieldDidEndEditing")
-        delegate?.mainPageHeaderViewDidTouchSearch()
+        delegate?.headerViewDidTouchSearch()
     }
 }

@@ -33,14 +33,16 @@ class TAPMallPageDealsCell: UICollectionViewCell {
         
         let variations = product.variationsOverview
         if let originPrice = variations?.originalPrice, originPrice > 0 {
-            let priceAttStr = NSMutableAttributedString(string: "\(originPrice)")
+            let stdOriginPrice = NSNumber(value: originPrice).moneyString()
+            let priceAttStr = NSMutableAttributedString(string: stdOriginPrice)
             priceAttStr.addAttributes([NSAttributedStringKey.strikethroughStyle: 1], range: NSMakeRange(0, priceAttStr.length))
             originPriceLabel.attributedText = priceAttStr
         } else {
             originPriceLabel.text = ""
         }
         
-        realPriceLabel.text = "\(variations?.salePrice ?? 0)"
+        let stdSalePrice = NSNumber(value: variations?.salePrice ?? 0).moneyString()
+        realPriceLabel.text = stdSalePrice
         numOfLikesLabel.text = "\(product.likes)"
     }
 

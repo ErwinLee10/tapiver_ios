@@ -171,3 +171,22 @@ extension NSDictionary {
         return "?"+parts.joined(separator: "&")
     }
 }
+
+extension NSNumber {
+    func string(numberStyle: NumberFormatter.Style = .decimal, maximumFractionDigits: Int = 2) -> String? {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = numberStyle
+        formatter.maximumFractionDigits = maximumFractionDigits
+        formatter.locale = Locale(identifier: "en_US")
+        let outputString = formatter.string(from: self)
+        
+        return outputString
+    }
+    
+    func moneyString() -> String {
+        guard let result = string(numberStyle: .currency, maximumFractionDigits: 2) else {
+            return ""
+        }
+        return "S\(result)"
+    }
+}

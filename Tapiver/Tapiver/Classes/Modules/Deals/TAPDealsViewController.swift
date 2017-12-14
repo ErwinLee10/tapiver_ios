@@ -36,6 +36,7 @@ class TAPDealsViewController: TAPBaseViewController {
     private func setupView() {
         mainPageHeaderView.delegate = self
         contentCollectionView.register(UINib.init(nibName: "TAPMallPageDealsCell", bundle: nil), forCellWithReuseIdentifier: TAPMallPageDealViewController.cellIdentifier)
+        emptyLabel.isHidden = true
     }
     
     private func getData() {
@@ -96,19 +97,19 @@ extension TAPDealsViewController: UICollectionViewDelegateFlowLayout {
 }
 
 extension TAPDealsViewController: TAPMainPageHeaderViewDelegate {
-    func mainPageHeaderViewDidTouchLeftMenu() {
+    func headerViewDidTouchLeftMenu() {
         
     }
     
-    func mainPageHeaderViewDidTouchRightMenu() {
+    func headerViewDidTouchMenu() {
         
     }
     
-    func mainPageHeaderViewDidTouchSearch() {
+    func headerViewDidTouchCart() {
         
     }
     
-    func mainPageHeaderViewDidTouchCart() {
+    func headerViewDidTouchSearch() {
         
     }
 }

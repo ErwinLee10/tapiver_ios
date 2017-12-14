@@ -1,40 +1,49 @@
 //
-//  TAPMallPageDealViewController.swift
+//  TAPStorePageViewController.swift
 //  Tapiver
 //
-//  Created by Le Duc Canh on 12/11/17.
+//  Created by Le Duc Canh on 12/14/17.
 //  Copyright © 2017 hunghoang. All rights reserved.
 //
 
 import UIKit
 import SVProgressHUD
 
-class TAPMallPageDealViewController: TAPMallPageBaseViewController {
+class TAPStorePageViewController: TAPBaseViewController {
+
+    @IBOutlet weak var storePageHeaderView: TAPStorePageHeaderView!
+    @IBOutlet var headerViewHeight: NSLayoutConstraint!
     @IBOutlet weak var contentCollectionView: UICollectionView!
     @IBOutlet weak var emptyLabel: UILabel!
     var productList: [TAPProductModel] = []
+    var feedModel: TAPFeedModel?
     
     static let cellIdentifier = "TAPMallPageDealsCell"
     let leftRightPadding = 15.0
     let cellPadding = 10.0
     let cellHeightWidhtRatio = 1.3
+    let expandHeaderHeight: CGFloat = 90.0
+    let collapseHeaderHeight: CGFloat = 44.0
+    let animationDuration = 0.3
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupView()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        if let feedModel = self.feedModel {
+            storePageHeaderView.fillData(entity: feedModel)
+        }
         getData()
     }
     
     // MARK: Private methods
     private func setupView() {
-        headerView?.delegate = self
-        headerView?.expandViewAnimation(true)
-        mainHeaderHeight.constant = expandHeaderHeight
+        storePageHeaderView.delegate = self
+//        headerViewHeight.constant = expandHeaderHeight
         
         contentCollectionView.register(UINib.init(nibName: "TAPMallPageDealsCell", bundle: nil), forCellWithReuseIdentifier: TAPMallPageDealViewController.cellIdentifier)
         emptyLabel.isHidden = true
@@ -62,29 +71,11 @@ class TAPMallPageDealViewController: TAPMallPageBaseViewController {
             contentCollectionView.reloadData()
         }
     }
-}
 
-// MARK: TAPHeaderViewDelegate
-extension TAPMallPageDealViewController: TAPHeaderViewDelegate {
-    func headerViewDidTouchBack() {
-        TAPMainFrame.getNavi().popViewController(animated: true)
-    }
-    
-    func headerViewDidTouchSearch() {
-        
-    }
-    
-    func headerViewDidTouchCart() {
-        
-    }
-    
-    func headerViewDidTouchMenu() {
-        
-    }
 }
 
 // MARK: UICollectionViewDataSource
-extension TAPMallPageDealViewController: UICollectionViewDataSource {
+extension TAPStorePageViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -102,17 +93,44 @@ extension TAPMallPageDealViewController: UICollectionViewDataSource {
 }
 
 // MARK: UICollectionViewDelegate
-extension TAPMallPageDealViewController: UICollectionViewDelegate {
+extension TAPStorePageViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        let row = indexPath.row
+        //        let row = indexPath.row
     }
 }
 
 // MARK: UICollectionViewDelegateFlowLayout
-extension TAPMallPageDealViewController: UICollectionViewDelegateFlowLayout {
+extension TAPStorePageViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let cellWidth = (Double(SCREEN_WIDTH) - leftRightPadding * 2 - cellPadding) / 2
         let cellHeight = cellWidth * cellHeightWidhtRatio
         return CGSize(width: cellWidth, height: cellHeight)
+    }
+}
+
+// MARK: TAPHeaderViewDelegate
+extension TAPStorePageViewController: TAPStorePageHeaderViewDelegate {
+    func headerViewDidTouchBack() {
+        TAPMainFrame.getNavi().popViewController(animated: true)
+    }
+    
+    func headerViewDidTouchSearch() {
+        
+    }
+    
+    func headerViewDidTouchCart() {
+        
+    }
+    
+    func headerViewDidTouchMenu() {
+        
+    }
+    
+    func headerViewDidTouchInfo() {
+        
+    }
+    
+    func headerViewDidTouchFollow() {
+        
     }
 }

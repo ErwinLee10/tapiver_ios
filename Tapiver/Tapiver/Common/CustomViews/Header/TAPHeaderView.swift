@@ -8,21 +8,10 @@
 
 import UIKit
 
-protocol TAPHeaderViewDelegate: class {
-    func headerViewDidTouchBack()
-    func headerViewDidTouchSearch()
-    func headerViewDidTouchCard()
-    func headerViewDidTouchMenu()
+protocol TAPHeaderViewDelegate: TAPBaseHeaderViewDelegate {
 }
 
-extension TAPHeaderViewDelegate {
-    func headerViewDidTouchBack() {}
-    func headerViewDidTouchSearch() {}
-    func headerViewDidTouchCard() {}
-    func headerViewDidTouchMenu() {}
-}
-
-class TAPHeaderView: UIView {
+class TAPHeaderView: TAPBaseHeaderView {
     
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
@@ -38,11 +27,7 @@ class TAPHeaderView: UIView {
         let mainView = views?[0] as! UIView
         self.addSubview(mainView)
         
-        mainView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint(item: mainView, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leading, multiplier: 1.0, constant: 0.0).isActive = true
-        NSLayoutConstraint(item: mainView, attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 1.0, constant: 0.0).isActive = true
-        NSLayoutConstraint(item: mainView, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1.0, constant: 0.0).isActive = true
-        NSLayoutConstraint(item: mainView, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1.0, constant: 0.0).isActive = true
+        mainView.makeContraintToFullWithParentView()
         
     }
     
@@ -82,7 +67,7 @@ class TAPHeaderView: UIView {
     
     @IBAction func cartTouched(_ sender: Any) {
         print("cartTouched")
-        delegate?.headerViewDidTouchCard()
+        delegate?.headerViewDidTouchCart()
     }
     
     @IBAction func menuTouched(_ sender: Any) {
