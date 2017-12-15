@@ -60,7 +60,7 @@ struct TAPConstants {
         static let originalPrice            = "originalPrice"
         static let salePrice                = "salePrice"
         static let stock                    = "stock"
-        
+        static let hasProducts              = "hasProducts"
     }
 }
 
