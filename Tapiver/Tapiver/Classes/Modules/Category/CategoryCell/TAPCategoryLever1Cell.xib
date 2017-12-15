@@ -44,6 +44,7 @@
                         </constraints>
                     </view>
                 </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
                     <constraint firstItem="LiT-LJ-ERg" firstAttribute="top" secondItem="m4l-gp-KKH" secondAttribute="bottom" id="1Gg-p7-Vuc"/>
                     <constraint firstAttribute="trailing" secondItem="LiT-LJ-ERg" secondAttribute="trailing" id="GQO-FU-0cG"/>
@@ -57,6 +58,7 @@
                     <constraint firstItem="3e3-f5-Zkz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="yhg-gS-6Jw"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="lbNameSubMenu" destination="m4l-gp-KKH" id="VBf-1C-1Dp"/>

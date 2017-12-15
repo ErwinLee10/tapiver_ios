@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol TAPMainPageHeaderViewDelegate: TAPBaseHeaderViewDelegate {
+protocol TAPMainPageHeaderViewDelegate: TAPBaseHeaderViewDelegate  {
     func headerViewDidTouchLeftMenu()
 }
 
@@ -37,6 +37,7 @@ class TAPMainPageHeaderView: TAPBaseHeaderView {
 
     @IBAction func leftMenuTouched(_ sender: Any) {
         delegate?.headerViewDidTouchLeftMenu()
+        self.createLandMark()
     }
     
     @IBAction func cartTouched(_ sender: Any) {
@@ -51,6 +52,15 @@ class TAPMainPageHeaderView: TAPBaseHeaderView {
     private func setupView() {
         
     }
+    
+    // MARK: Create LandMarkView
+    private func createLandMark() {
+        let landMark:TAPLandMarkView = TAPLandMarkView.init(frame: (WINDOW?.frame)!)
+        landMark.delegate = self
+        landMark.initData()
+        UIApplication.shared.keyWindow?.addSubview(landMark)
+    }
+    
 }
 
 extension TAPMainPageHeaderView: UITextFieldDelegate {
@@ -63,3 +73,10 @@ extension TAPMainPageHeaderView: UITextFieldDelegate {
         delegate?.headerViewDidTouchSearch()
     }
 }
+
+extension TAPMainPageHeaderView: TAPLandMarkViewDelegate {
+    func landMarkSelectAt(index: Int, isSelect: Bool) {
+    }
+    
+}
+

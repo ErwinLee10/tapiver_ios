@@ -33,6 +33,7 @@
                         </constraints>
                     </view>
                 </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
                     <constraint firstItem="Zpt-GO-Zqm" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="50" id="26I-FZ-dnd"/>
                     <constraint firstAttribute="trailing" secondItem="3V0-c7-DZZ" secondAttribute="trailing" id="Mb3-s9-zcw"/>
@@ -43,9 +44,11 @@
                     <constraint firstAttribute="bottom" secondItem="Zpt-GO-Zqm" secondAttribute="bottom" id="rLe-mt-Yet"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="lbNameMenu2" destination="Zpt-GO-Zqm" id="jgC-fW-Y8r"/>
+                <outlet property="lineBreak" destination="3V0-c7-DZZ" id="WQV-Rh-gcO"/>
             </connections>
         </tableViewCell>
     </objects>
