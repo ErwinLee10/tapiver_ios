@@ -64,6 +64,11 @@ class TAPLandMarkView: UIView {
             self.sView.frame = CGRect(x: -self.sView.frame.size.width, y: self.sView.frame.origin.y, width: self.sView.frame.size.width, height: self.sView.frame.size.height)
         }) { (isSuccess) in
               self.diss()
+            
+            // Show Mall page
+            // TODO: truyen data
+            let mallPage = TAPMallPageTabBarViewController()
+            TAPMainFrame.getNavi().pushViewController(mallPage, animated: true)
         }
       
     }

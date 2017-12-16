@@ -57,6 +57,7 @@ class TAPHeaderView: TAPBaseHeaderView {
     
     @IBAction func backTouched(_ sender: Any) {
         print("Back touch")
+        handleBackTouch()
         delegate?.headerViewDidTouchBack()
     }
     
@@ -67,11 +68,13 @@ class TAPHeaderView: TAPBaseHeaderView {
     
     @IBAction func cartTouched(_ sender: Any) {
         print("cartTouched")
+        handleCartTouch()
         delegate?.headerViewDidTouchCart()
     }
     
     @IBAction func menuTouched(_ sender: Any) {
         print("menuTouched")
+        handleMenuTouch()
         delegate?.headerViewDidTouchMenu()
     }
     

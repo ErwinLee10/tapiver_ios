@@ -11,12 +11,12 @@ import SVProgressHUD
 
 class TAPStorePageViewController: TAPBaseViewController {
 
-    @IBOutlet weak var storePageHeaderView: TAPStorePageHeaderView!
     @IBOutlet var headerViewHeight: NSLayoutConstraint!
     @IBOutlet weak var contentCollectionView: UICollectionView!
     @IBOutlet weak var emptyLabel: UILabel!
     var productList: [TAPProductModel] = []
     var feedModel: TAPFeedModel?
+    var storePageHeaderView: TAPStorePageHeaderView?
     
     static let cellIdentifier = "TAPMallPageDealsCell"
     let leftRightPadding = 15.0
@@ -35,14 +35,15 @@ class TAPStorePageViewController: TAPBaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if let feedModel = self.feedModel {
-            storePageHeaderView.fillData(entity: feedModel)
+            storePageHeaderView?.fillData(entity: feedModel)
         }
         getData()
     }
     
     // MARK: Private methods
     private func setupView() {
-        storePageHeaderView.delegate = self
+        storePageHeaderView = headerView as? TAPStorePageHeaderView
+        storePageHeaderView?.delegate = self
 //        headerViewHeight.constant = expandHeaderHeight
         
         contentCollectionView.register(UINib.init(nibName: "TAPMallPageDealsCell", bundle: nil), forCellWithReuseIdentifier: TAPMallPageDealViewController.cellIdentifier)
@@ -111,7 +112,7 @@ extension TAPStorePageViewController: UICollectionViewDelegateFlowLayout {
 // MARK: TAPHeaderViewDelegate
 extension TAPStorePageViewController: TAPStorePageHeaderViewDelegate {
     func headerViewDidTouchBack() {
-        TAPMainFrame.getNavi().popViewController(animated: true)
+        
     }
     
     func headerViewDidTouchSearch() {
@@ -123,7 +124,7 @@ extension TAPStorePageViewController: TAPStorePageHeaderViewDelegate {
     }
     
     func headerViewDidTouchMenu() {
-        
+        showRightMenu()
     }
     
     func headerViewDidTouchInfo() {

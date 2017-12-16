@@ -14,8 +14,8 @@
             <connections>
                 <outlet property="contentCollectionView" destination="u9C-sa-CJV" id="AXl-ap-Hwj"/>
                 <outlet property="emptyLabel" destination="nNT-by-dvj" id="Ya2-Su-ItJ"/>
+                <outlet property="headerView" destination="11v-Wh-EhZ" id="CRR-V5-Pep"/>
                 <outlet property="headerViewHeight" destination="Jgd-QM-ydY" id="HbK-57-hzF"/>
-                <outlet property="storePageHeaderView" destination="11v-Wh-EhZ" id="G9k-7p-rVZ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

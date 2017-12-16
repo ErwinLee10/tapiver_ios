@@ -11,6 +11,7 @@ import UIKit
 class TAPMenuViewController: UIViewController {
 
     @IBOutlet weak var contentTableView: UITableView!
+    var selectionHandler:((Int) -> Void)?
     private var contentDic:[(String, String)]!
     
     override func viewDidLoad() {
@@ -20,18 +21,22 @@ class TAPMenuViewController: UIViewController {
         makeData()
     }
 
-    
+    static func menuViewController(handler:@escaping ((Int) -> Void)) -> TAPMenuViewController {
+        let vc = TAPMenuViewController(nibName: "TAPMenuViewController", bundle: nil)
+        vc.selectionHandler = handler
+        return vc
+    }
     
     private func setupView() {
         contentTableView.register(UINib.init(nibName: "TAPMenuTableViewCell", bundle: nil), forCellReuseIdentifier: "TAPMenuTableViewCell")
     }
     
     private func makeData() {
-        contentDic = [("","Notifications"),
-                    ("","Orders"),
-                    ("","Cashback"),
-                    ("","Account"),
-                    ("","Feedback")
+        contentDic = [("menu_notif-icon","Notifications"),
+                    ("menu_orders-icon","Orders"),
+                    ("menu_cashback-icon","Cashback"),
+                    ("menu_user-icon","Account"),
+                    ("menu_feedback-icon","Feedback")
                     ]
     }
 }
@@ -52,5 +57,10 @@ extension TAPMenuViewController: UITableViewDataSource {
 extension TAPMenuViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("didSelectRowAt")
+        if selectionHandler != nil {
+            selectionHandler!(indexPath.row)
+        }
+        
+        self.dismiss(animated: true, completion: nil)
     }
 }

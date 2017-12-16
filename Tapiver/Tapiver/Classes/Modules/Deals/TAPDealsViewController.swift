@@ -10,7 +10,6 @@ import UIKit
 import SVProgressHUD
 
 class TAPDealsViewController: TAPBaseViewController {
-    @IBOutlet weak var mainPageHeaderView: TAPMainPageHeaderView!
     @IBOutlet weak var contentCollectionView: UICollectionView!
     @IBOutlet weak var emptyLabel: UILabel!
     
@@ -34,7 +33,8 @@ class TAPDealsViewController: TAPBaseViewController {
     
     // MARK: Private methods
     private func setupView() {
-        mainPageHeaderView.delegate = self
+        let mainPageHeaderView = headerView as? TAPMainPageHeaderView
+        mainPageHeaderView?.delegate = self
         contentCollectionView.register(UINib.init(nibName: "TAPMallPageDealsCell", bundle: nil), forCellWithReuseIdentifier: TAPMallPageDealViewController.cellIdentifier)
         emptyLabel.isHidden = true
     }
@@ -102,7 +102,7 @@ extension TAPDealsViewController: TAPMainPageHeaderViewDelegate {
     }
     
     func headerViewDidTouchMenu() {
-        
+        showRightMenu()
     }
     
     func headerViewDidTouchCart() {

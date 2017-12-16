@@ -12,7 +12,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TAPHeaderView" customModule="Tapiver" customModuleProvider="target">
             <connections>
+                <outlet property="backButton" destination="R9c-2G-NZt" id="Prt-uh-m1l"/>
                 <outlet property="bgImageView" destination="eKl-Ek-xzy" id="TO6-dM-OB8"/>
+                <outlet property="menuButton" destination="Dmo-lp-RNj" id="Jiw-77-0oI"/>
                 <outlet property="searchButton" destination="kbO-jL-g0S" id="PzZ-VX-j2g"/>
                 <outlet property="titleLabel" destination="BXu-PR-AU1" id="geN-Y6-vXd"/>
             </connections>

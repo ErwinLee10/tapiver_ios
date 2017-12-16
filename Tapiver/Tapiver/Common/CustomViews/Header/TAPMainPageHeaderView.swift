@@ -12,6 +12,10 @@ protocol TAPMainPageHeaderViewDelegate: TAPBaseHeaderViewDelegate  {
     func headerViewDidTouchLeftMenu()
 }
 
+extension TAPMainPageHeaderViewDelegate {
+    func headerViewDidTouchLeftMenu() {}
+}
+
 class TAPMainPageHeaderView: TAPBaseHeaderView {
     @IBOutlet weak var searchTextField: UITextField!
     weak var delegate: TAPMainPageHeaderViewDelegate?
@@ -36,15 +40,17 @@ class TAPMainPageHeaderView: TAPBaseHeaderView {
     // MARK: Action methods
 
     @IBAction func leftMenuTouched(_ sender: Any) {
-        delegate?.headerViewDidTouchLeftMenu()
         self.createLandMark()
+        delegate?.headerViewDidTouchLeftMenu()
     }
     
     @IBAction func cartTouched(_ sender: Any) {
+        handleCartTouch()
         delegate?.headerViewDidTouchCart()
     }
     
     @IBAction func rightMenuTouched(_ sender: Any) {
+        handleMenuTouch()
         delegate?.headerViewDidTouchMenu()
     }
     

@@ -122,6 +122,13 @@ extension UIView {
             }
         }
     }
+    
+    func convertFrameToView(view: UIView) -> CGRect? {
+        guard let superview = self.superview else {
+            return nil
+        }
+        return superview.convert(view.frame, to: view)
+    }
 
 }
 

@@ -32,8 +32,9 @@ class TAPMallPageDealViewController: TAPMallPageBaseViewController {
     
     // MARK: Private methods
     private func setupView() {
-        headerView?.delegate = self
-        headerView?.expandViewAnimation(true)
+        let header  = headerView as? TAPHeaderView
+        header?.delegate = self
+        header?.expandViewAnimation(true)
         mainHeaderHeight.constant = expandHeaderHeight
         
         contentCollectionView.register(UINib.init(nibName: "TAPMallPageDealsCell", bundle: nil), forCellWithReuseIdentifier: TAPMallPageDealViewController.cellIdentifier)
@@ -67,7 +68,7 @@ class TAPMallPageDealViewController: TAPMallPageBaseViewController {
 // MARK: TAPHeaderViewDelegate
 extension TAPMallPageDealViewController: TAPHeaderViewDelegate {
     func headerViewDidTouchBack() {
-        TAPMainFrame.getNavi().popViewController(animated: true)
+        
     }
     
     func headerViewDidTouchSearch() {
@@ -79,7 +80,7 @@ extension TAPMallPageDealViewController: TAPHeaderViewDelegate {
     }
     
     func headerViewDidTouchMenu() {
-        
+        showRightMenu()
     }
 }
 

@@ -13,6 +13,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TAPMainPageHeaderView" customModule="Tapiver" customModuleProvider="target">
             <connections>
+                <outlet property="cartButton" destination="doZ-aS-B9W" id="IBh-I6-Ukq"/>
+                <outlet property="menuButton" destination="9Wg-Kr-hLT" id="2qb-Ht-cWo"/>
                 <outlet property="searchTextField" destination="Aub-51-jso" id="j8C-vv-aLh"/>
             </connections>
         </placeholder>

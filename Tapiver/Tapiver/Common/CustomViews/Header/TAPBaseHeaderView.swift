@@ -17,8 +17,30 @@ protocol TAPBaseHeaderViewDelegate: class {
 
 extension TAPBaseHeaderViewDelegate {
     func headerViewDidTouchBack() {}
+    func headerViewDidTouchSearch() {}
+    func headerViewDidTouchCart() {}
+    func headerViewDidTouchMenu() {}
 }
 
 class TAPBaseHeaderView: UIView {
-
+    @IBOutlet weak var cartButton: UIButton!
+    @IBOutlet weak var menuButton: UIButton!
+    @IBOutlet weak var backButton: UIButton?
+    
+    
+    func handleCartTouch() {
+        
+    }
+    
+    func handleSearchTouch() {
+        
+    }
+    
+    func handleBackTouch() {
+        TAPMainFrame.getNavi().popViewController(animated: true)
+    }
+    
+    func handleMenuTouch() {
+        // Show menu
+    }
 }

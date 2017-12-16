@@ -46,6 +46,7 @@ class TAPStorePageHeaderView: TAPBaseHeaderView {
     }
 
     @IBAction func backTouched(_ sender: Any) {
+        handleBackTouch()
         delegate?.headerViewDidTouchBack()
     }
     
@@ -54,10 +55,12 @@ class TAPStorePageHeaderView: TAPBaseHeaderView {
     }
     
     @IBAction func cartTouched(_ sender: Any) {
+        handleCartTouch()
         delegate?.headerViewDidTouchCart()
     }
     
     @IBAction func menuTouched(_ sender: Any) {
+        handleMenuTouch()
         delegate?.headerViewDidTouchMenu()
     }
     

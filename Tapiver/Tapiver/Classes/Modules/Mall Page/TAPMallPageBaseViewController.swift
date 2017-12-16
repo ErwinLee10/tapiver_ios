@@ -24,7 +24,7 @@ class TAPMallPageBaseViewController: TAPBaseViewController {
 
 extension TAPMallPageBaseViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        guard let headerView = headerView else {
+        guard let headerView = headerView as? TAPHeaderView else {
             return
         }
         

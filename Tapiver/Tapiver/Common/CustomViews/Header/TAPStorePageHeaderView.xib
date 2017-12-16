@@ -15,9 +15,12 @@
             <connections>
                 <outlet property="avatarContainer" destination="KF2-lq-Pjh" id="nHr-ct-7uN"/>
                 <outlet property="avatarImageView" destination="77J-2L-ob7" id="hDA-1I-Doi"/>
+                <outlet property="backButton" destination="aGd-n8-gVl" id="bZA-E1-bfV"/>
+                <outlet property="cartButton" destination="QsR-oc-bzs" id="pKj-jn-2U4"/>
                 <outlet property="followButton" destination="fNx-7k-dtT" id="jHg-1v-ybG"/>
                 <outlet property="followContainer" destination="DYV-Cc-ACv" id="hda-oe-mfC"/>
                 <outlet property="followersLabel" destination="ImM-j1-o8s" id="TdI-GP-gQH"/>
+                <outlet property="menuButton" destination="md3-mN-ru2" id="mew-6i-9Uj"/>
                 <outlet property="nameLabel" destination="Ypm-eC-nTM" id="Gzg-ET-8m7"/>
             </connections>
         </placeholder>

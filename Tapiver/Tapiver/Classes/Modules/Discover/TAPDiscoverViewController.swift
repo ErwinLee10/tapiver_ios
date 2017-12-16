@@ -9,7 +9,7 @@
 import UIKit
 import SVProgressHUD
 
-class TAPDiscoverViewController: UIViewController,TAPFeedTableViewCellDelegate {
+class TAPDiscoverViewController: TAPBaseViewController,TAPFeedTableViewCellDelegate {
     @IBOutlet weak var tableView: UITableView!
     private var feedsApiModels: TAPFeedApiModel?
     public var landMarkId :String?
@@ -22,6 +22,7 @@ class TAPDiscoverViewController: UIViewController,TAPFeedTableViewCellDelegate {
     }
  
     func initIB() {
+        (self.headerView as? TAPMainPageHeaderView)?.delegate = self
         self.tableView.register(UINib.init(nibName: "TAPFeedTableViewCell", bundle: nil), forCellReuseIdentifier: "TAPFeedTableViewCell")
     }
     func initData() {
@@ -90,4 +91,10 @@ extension TAPDiscoverViewController: UITableViewDataSource {
     }
     
     
+}
+
+extension TAPDiscoverViewController: TAPMainPageHeaderViewDelegate {
+    func headerViewDidTouchMenu() {
+        showRightMenu()
+    }
 }
