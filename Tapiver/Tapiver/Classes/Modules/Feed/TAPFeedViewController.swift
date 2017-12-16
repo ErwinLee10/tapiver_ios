@@ -9,7 +9,7 @@
 import UIKit
 import SVProgressHUD
 
-class TAPFeedViewController: UIViewController  {
+class TAPFeedViewController: TAPBaseViewController  {
 
     private var feedsApiModels: TAPFeedApiModel?
     @IBOutlet private weak var tableData: UITableView!
@@ -20,6 +20,7 @@ class TAPFeedViewController: UIViewController  {
 
         // Do any additional setup after loading the view.
         tableData.register(UINib.init(nibName: "TAPFeedTableViewCell", bundle: nil), forCellReuseIdentifier: "TAPFeedTableViewCell")
+        (headerView as? TAPMainPageHeaderView)?.delegate = self
         self.getData()
     }
     
@@ -89,5 +90,20 @@ extension TAPFeedViewController: UITableViewDataSource {
     }
     
     
+}
+
+extension TAPFeedViewController: TAPMainPageHeaderViewDelegate {
+    
+    func headerViewDidTouchMenu() {
+        showRightMenu()
+    }
+    
+    func headerViewDidTouchCart() {
+        
+    }
+    
+    func headerViewDidTouchSearch() {
+        
+    }
 }
 

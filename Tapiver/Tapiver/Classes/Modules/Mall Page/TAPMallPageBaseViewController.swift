@@ -19,6 +19,12 @@ class TAPMallPageBaseViewController: TAPBaseViewController {
 
         // Do any additional setup after loading the view.
     }
+    
+    func setupView() {
+        let header  = headerView as? TAPHeaderView
+        header?.expandViewAnimation(true)
+        mainHeaderHeight.constant = expandHeaderHeight
+    }
 
 }
 

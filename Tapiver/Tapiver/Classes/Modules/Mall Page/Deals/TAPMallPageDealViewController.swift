@@ -30,12 +30,13 @@ class TAPMallPageDealViewController: TAPMallPageBaseViewController {
         getData()
     }
     
+    
+    
     // MARK: Private methods
-    private func setupView() {
+    override func setupView() {
+        super.setupView()
         let header  = headerView as? TAPHeaderView
         header?.delegate = self
-        header?.expandViewAnimation(true)
-        mainHeaderHeight.constant = expandHeaderHeight
         
         contentCollectionView.register(UINib.init(nibName: "TAPMallPageDealsCell", bundle: nil), forCellWithReuseIdentifier: TAPMallPageDealViewController.cellIdentifier)
         emptyLabel.isHidden = true

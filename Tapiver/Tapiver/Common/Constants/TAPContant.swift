@@ -14,6 +14,7 @@ struct TAPConstants {
     // MARK: Path -
     struct APIPath {
         static let getProducts              = "/api/v1/products"
+        static let overview                 = "/api/v1/s/overview"
     }
     
     // MARK: Params -

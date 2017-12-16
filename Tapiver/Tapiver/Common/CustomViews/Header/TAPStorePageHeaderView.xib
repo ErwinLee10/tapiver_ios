@@ -71,7 +71,7 @@
                             <constraints>
                                 <constraint firstAttribute="width" constant="30" id="MS4-bR-kka"/>
                             </constraints>
-                            <state key="normal" image="three-dot"/>
+                            <state key="normal" image="icon_menu"/>
                             <connections>
                                 <action selector="menuTouched:" destination="-1" eventType="touchUpInside" id="mmr-s3-2qQ"/>
                             </connections>
@@ -181,9 +181,9 @@
         </view>
     </objects>
     <resources>
-        <image name="icon_cart" width="48" height="48"/>
+        <image name="icon_cart" width="32" height="32"/>
         <image name="icon_info" width="52" height="52"/>
-        <image name="icons_search" width="48" height="48"/>
-        <image name="three-dot" width="21" height="21"/>
+        <image name="icon_menu" width="32" height="32"/>
+        <image name="icons_search" width="32" height="32"/>
     </resources>
 </document>

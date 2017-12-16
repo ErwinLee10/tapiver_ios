@@ -29,6 +29,7 @@ class TAPMenuViewController: UIViewController {
     
     private func setupView() {
         contentTableView.register(UINib.init(nibName: "TAPMenuTableViewCell", bundle: nil), forCellReuseIdentifier: "TAPMenuTableViewCell")
+        contentTableView.isScrollEnabled = false
     }
     
     private func makeData() {

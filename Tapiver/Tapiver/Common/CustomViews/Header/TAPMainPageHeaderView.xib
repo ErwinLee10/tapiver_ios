@@ -85,7 +85,7 @@
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="9Wg-Kr-hLT" secondAttribute="height" multiplier="1:1" id="M1p-pi-0za"/>
                                     </constraints>
-                                    <state key="normal" image="three-dot"/>
+                                    <state key="normal" image="icon_menu"/>
                                     <connections>
                                         <action selector="rightMenuTouched:" destination="-1" eventType="touchUpInside" id="e9l-zK-iQo"/>
                                     </connections>
@@ -140,9 +140,9 @@
         </view>
     </objects>
     <resources>
-        <image name="icon_cart" width="48" height="48"/>
-        <image name="icons_search" width="48" height="48"/>
+        <image name="icon_cart" width="32" height="32"/>
+        <image name="icon_menu" width="32" height="32"/>
+        <image name="icons_search" width="32" height="32"/>
         <image name="tapiver-logo-1" width="32" height="31"/>
-        <image name="three-dot" width="21" height="21"/>
     </resources>
 </document>
