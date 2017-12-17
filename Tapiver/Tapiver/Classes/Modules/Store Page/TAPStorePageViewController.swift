@@ -128,7 +128,7 @@ extension TAPStorePageViewController: TAPStorePageHeaderViewDelegate {
     }
     
     func headerViewDidTouchInfo() {
-        
+        TAPStorePageInformationViewController.showStorePageInformation(data: nil)
     }
     
     func headerViewDidTouchFollow() {

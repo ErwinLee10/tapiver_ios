@@ -15,6 +15,12 @@
 		0315551C1FE2F5510082E709 /* TAPMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0315551A1FE2F5510082E709 /* TAPMenuViewController.xib */; };
 		031555201FE2F6720082E709 /* TAPMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0315551E1FE2F6720082E709 /* TAPMenuTableViewCell.swift */; };
 		031555211FE2F6720082E709 /* TAPMenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0315551F1FE2F6720082E709 /* TAPMenuTableViewCell.xib */; };
+		031555251FE58AA20082E709 /* TAPStorePageInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031555231FE58AA20082E709 /* TAPStorePageInformationViewController.swift */; };
+		031555261FE58AA20082E709 /* TAPStorePageInformationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 031555241FE58AA20082E709 /* TAPStorePageInformationViewController.xib */; };
+		0315552A1FE591810082E709 /* TAPStorePageInfoDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031555281FE591810082E709 /* TAPStorePageInfoDescriptionCell.swift */; };
+		0315552B1FE591810082E709 /* TAPStorePageInfoDescriptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 031555291FE591810082E709 /* TAPStorePageInfoDescriptionCell.xib */; };
+		0315552E1FE591F60082E709 /* TAPStorePageInfoLocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0315552C1FE591F60082E709 /* TAPStorePageInfoLocationCell.swift */; };
+		0315552F1FE591F60082E709 /* TAPStorePageInfoLocationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0315552D1FE591F60082E709 /* TAPStorePageInfoLocationCell.xib */; };
 		033458281FE15BF200BFC66E /* TAPMallPageBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033458271FE15BF200BFC66E /* TAPMallPageBaseViewController.swift */; };
 		0334582A1FE1677200BFC66E /* TAPProductListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033458291FE1677200BFC66E /* TAPProductListModel.swift */; };
 		0334582C1FE1769400BFC66E /* TAPSellerAddressModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0334582B1FE1769400BFC66E /* TAPSellerAddressModel.swift */; };
@@ -115,6 +121,12 @@
 		0315551A1FE2F5510082E709 /* TAPMenuViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TAPMenuViewController.xib; sourceTree = "<group>"; };
 		0315551E1FE2F6720082E709 /* TAPMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPMenuTableViewCell.swift; sourceTree = "<group>"; };
 		0315551F1FE2F6720082E709 /* TAPMenuTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TAPMenuTableViewCell.xib; sourceTree = "<group>"; };
+		031555231FE58AA20082E709 /* TAPStorePageInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPStorePageInformationViewController.swift; sourceTree = "<group>"; };
+		031555241FE58AA20082E709 /* TAPStorePageInformationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TAPStorePageInformationViewController.xib; sourceTree = "<group>"; };
+		031555281FE591810082E709 /* TAPStorePageInfoDescriptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPStorePageInfoDescriptionCell.swift; sourceTree = "<group>"; };
+		031555291FE591810082E709 /* TAPStorePageInfoDescriptionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TAPStorePageInfoDescriptionCell.xib; sourceTree = "<group>"; };
+		0315552C1FE591F60082E709 /* TAPStorePageInfoLocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPStorePageInfoLocationCell.swift; sourceTree = "<group>"; };
+		0315552D1FE591F60082E709 /* TAPStorePageInfoLocationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TAPStorePageInfoLocationCell.xib; sourceTree = "<group>"; };
 		033458271FE15BF200BFC66E /* TAPMallPageBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPMallPageBaseViewController.swift; sourceTree = "<group>"; };
 		033458291FE1677200BFC66E /* TAPProductListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPProductListModel.swift; sourceTree = "<group>"; };
 		0334582B1FE1769400BFC66E /* TAPSellerAddressModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPSellerAddressModel.swift; sourceTree = "<group>"; };
@@ -251,9 +263,31 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		031555221FE58A730082E709 /* Information */ = {
+			isa = PBXGroup;
+			children = (
+				031555271FE591460082E709 /* Cells */,
+				031555231FE58AA20082E709 /* TAPStorePageInformationViewController.swift */,
+				031555241FE58AA20082E709 /* TAPStorePageInformationViewController.xib */,
+			);
+			path = Information;
+			sourceTree = "<group>";
+		};
+		031555271FE591460082E709 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				031555281FE591810082E709 /* TAPStorePageInfoDescriptionCell.swift */,
+				031555291FE591810082E709 /* TAPStorePageInfoDescriptionCell.xib */,
+				0315552C1FE591F60082E709 /* TAPStorePageInfoLocationCell.swift */,
+				0315552D1FE591F60082E709 /* TAPStorePageInfoLocationCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		033458331FE1A54300BFC66E /* Store Page */ = {
 			isa = PBXGroup;
 			children = (
+				031555221FE58A730082E709 /* Information */,
 				033458341FE1A56800BFC66E /* TAPStorePageViewController.swift */,
 				033458351FE1A56800BFC66E /* TAPStorePageViewController.xib */,
 			);
@@ -824,6 +858,8 @@
 				031555211FE2F6720082E709 /* TAPMenuTableViewCell.xib in Resources */,
 				6C4DA00A1FE13A4A00E0774A /* TAPProductDescriptionViewCell.xib in Resources */,
 				C5C953181FE2195D008D2B6F /* TAPCategoryLever0Cell.xib in Resources */,
+				0315552F1FE591F60082E709 /* TAPStorePageInfoLocationCell.xib in Resources */,
+				0315552B1FE591810082E709 /* TAPStorePageInfoDescriptionCell.xib in Resources */,
 				6C66BFB21FCEAE160092A006 /* TAPForgotPasswordViewController.xib in Resources */,
 				6C66BFB81FCEB3870092A006 /* TAPMainTabbarViewController.xib in Resources */,
 				6CCEEFC81FCEB6600018FDB3 /* TAPFeedViewController.xib in Resources */,
@@ -834,6 +870,7 @@
 				03AE841A1FDEFE5F006D6986 /* TAPMallPageDealsCell.xib in Resources */,
 				6C8601311FCD6D70004E7CAE /* TAPIntroAppViewController.xib in Resources */,
 				033458321FE1943400BFC66E /* TAPMainPageHeaderView.xib in Resources */,
+				031555261FE58AA20082E709 /* TAPStorePageInformationViewController.xib in Resources */,
 				6CCEEFBB1FCEB5B70018FDB3 /* TAPCategoryViewController.xib in Resources */,
 				6C8601361FCD6E69004E7CAE /* TAPIntroPageViewController.xib in Resources */,
 				B0B056841FC084CD001E4659 /* Assets.xcassets in Resources */,
@@ -947,6 +984,7 @@
 				6CCEEFBE1FCEB5C50018FDB3 /* TAPDealsViewController.swift in Sources */,
 				6C86011B1FCD6902004E7CAE /* TAPBaseEntity.swift in Sources */,
 				033458301FE1941900BFC66E /* TAPMainPageHeaderView.swift in Sources */,
+				031555251FE58AA20082E709 /* TAPStorePageInformationViewController.swift in Sources */,
 				6C8601351FCD6E69004E7CAE /* TAPIntroPageViewController.swift in Sources */,
 				C5C953171FE2195D008D2B6F /* TAPCategoryLever0Cell.swift in Sources */,
 				03AE84061FDEE416006D6986 /* TAPBaseViewController.swift in Sources */,
@@ -979,10 +1017,12 @@
 				03AE84191FDEFE5F006D6986 /* TAPMallPageDealsCell.swift in Sources */,
 				0334582A1FE1677200BFC66E /* TAPProductListModel.swift in Sources */,
 				6C86012A1FCD6D3E004E7CAE /* TAPSplashViewController.swift in Sources */,
+				0315552A1FE591810082E709 /* TAPStorePageInfoDescriptionCell.swift in Sources */,
 				6CCEEFC21FCEB6400018FDB3 /* TAPDiscoverViewController.swift in Sources */,
 				0334582C1FE1769400BFC66E /* TAPSellerAddressModel.swift in Sources */,
 				6C1070A71FD92A99001887BB /* TAPFeedCollectionViewCell.swift in Sources */,
 				6C66BFB71FCEB3870092A006 /* TAPMainTabbarViewController.swift in Sources */,
+				0315552E1FE591F60082E709 /* TAPStorePageInfoLocationCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
