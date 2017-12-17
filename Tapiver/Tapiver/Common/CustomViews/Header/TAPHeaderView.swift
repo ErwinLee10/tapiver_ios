@@ -53,6 +53,18 @@ class TAPHeaderView: TAPBaseHeaderView {
         }
     }
     
+    func hideSearchButton(_ hide: Bool) {
+        searchButton.isHidden = hide
+    }
+    
+    func hideCartButton(_ hide: Bool) {
+        cartButton.isHidden = hide
+    }
+    
+    func hideMenuButton(_ hide: Bool) {
+        menuButton.isHidden = hide
+    }
+    
     // MARK: Actions
     
     @IBAction func backTouched(_ sender: Any) {

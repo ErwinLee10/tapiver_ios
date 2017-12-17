@@ -17,7 +17,7 @@
             <rect key="frame" x="0.0" y="0.0" width="384" height="290"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="384" height="290"/>
+                <rect key="frame" x="0.0" y="0.0" width="384" height="289.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7ap-W9-7xd">
@@ -26,6 +26,16 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jaV-UB-hUH">
                                 <rect key="frame" x="0.0" y="5" width="384" height="50"/>
                                 <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2dp-aW-DQ3" customClass="UIControl">
+                                        <rect key="frame" x="0.0" y="0.0" width="170" height="50"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="170" id="MoP-Ye-OuC"/>
+                                        </constraints>
+                                        <connections>
+                                            <action selector="shopTouched:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="T3X-5D-hDC"/>
+                                        </connections>
+                                    </view>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="q12-Q5-n1R">
                                         <rect key="frame" x="20" y="5" width="40" height="40"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -90,8 +100,11 @@
                                     <constraint firstItem="Vhm-KK-kIx" firstAttribute="leading" secondItem="q12-Q5-n1R" secondAttribute="trailing" constant="10" id="cBe-FQ-v3n"/>
                                     <constraint firstAttribute="bottom" secondItem="q12-Q5-n1R" secondAttribute="bottom" constant="5" id="fyv-7d-rzh"/>
                                     <constraint firstItem="sF8-Wo-hJQ" firstAttribute="leading" secondItem="q12-Q5-n1R" secondAttribute="trailing" constant="10" id="gLK-1z-lYr"/>
+                                    <constraint firstItem="2dp-aW-DQ3" firstAttribute="leading" secondItem="jaV-UB-hUH" secondAttribute="leading" id="h4I-b7-PAB"/>
                                     <constraint firstItem="sF8-Wo-hJQ" firstAttribute="top" secondItem="q12-Q5-n1R" secondAttribute="top" id="iSF-FW-Wbz"/>
+                                    <constraint firstItem="2dp-aW-DQ3" firstAttribute="top" secondItem="jaV-UB-hUH" secondAttribute="top" id="kgi-H4-Jy5"/>
                                     <constraint firstAttribute="trailing" secondItem="iDS-vF-I7x" secondAttribute="trailing" constant="20" id="nQf-1D-RtL"/>
+                                    <constraint firstAttribute="bottom" secondItem="2dp-aW-DQ3" secondAttribute="bottom" id="p5f-jv-e04"/>
                                     <constraint firstItem="iDS-vF-I7x" firstAttribute="centerY" secondItem="jaV-UB-hUH" secondAttribute="centerY" id="pvh-sK-HMl"/>
                                     <constraint firstItem="q12-Q5-n1R" firstAttribute="leading" secondItem="jaV-UB-hUH" secondAttribute="leading" constant="20" id="x5R-Cb-PzP"/>
                                 </constraints>

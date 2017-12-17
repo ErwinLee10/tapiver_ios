@@ -10,7 +10,8 @@ import UIKit
 import SDWebImage
 
 @objc protocol TAPFeedTableViewCellDelegate {
-    @objc func tapIteamAt (index: NSIndexPath , indexItem: NSIndexPath)
+    @objc optional func tapIteamAt (index: NSIndexPath , indexItem: NSIndexPath)
+    @objc optional func tapShop(at row: Int)
     
 }
 enum MainPageViewType: Int {
@@ -25,9 +26,11 @@ class TAPFeedTableViewCell: UITableViewCell {
     @IBOutlet private weak var followBtn: UIButton!
     @IBOutlet private weak var nameLbl: UILabel!
     @IBOutlet private weak var titleLbl: UILabel!
+    
     var items:[TAPProductModel] = []
     var typeView: MainPageViewType?
     weak var delegate :TAPFeedTableViewCellDelegate?
+    var row: Int?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -46,6 +49,11 @@ class TAPFeedTableViewCell: UITableViewCell {
         followBtn.setTitle(model.isFollowedByThisUser ? "FOLLOWING" : "FOLLOW", for: UIControlState.normal)
     }
     
+    @IBAction func shopTouched(_ sender: Any) {
+        if let row = self.row {
+            delegate?.tapShop?(at: row)
+        }
+    }
 }
 
 extension TAPFeedTableViewCell: UICollectionViewDataSource {

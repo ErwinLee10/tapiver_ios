@@ -60,8 +60,25 @@ struct TAPConstants {
         static let labels                   = "labels"
         static let originalPrice            = "originalPrice"
         static let salePrice                = "salePrice"
+        static let finalPrice               = "finalPrice"
         static let stock                    = "stock"
         static let hasProducts              = "hasProducts"
+        static let cartItemsPerSeller       = "cartItemsPerSeller"
+        static let totalPrice               = "totalPrice"
+        static let productVariations        = "productVariations"
+        static let quantity                 = "quantity"
+        static let availableStock           = "availableStock"
+        static let pictureUrl               = "pictureUrl"
+        static let categoryName             = "categoryName"
+        static let onSale                   = "onSale"
+        static let coupon                   = "coupon"
+        static let finalTotalAmount         = "finalTotalAmount"
+        static let originalTotalAmount      = "originalTotalAmount"
+        static let totalSaving              = "totalSaving"
+        static let percentage               = "percentage"
+        static let message                  = "message"
+        static let isPercentageDiscount     = "isPercentageDiscount"
+        
     }
 }
 
