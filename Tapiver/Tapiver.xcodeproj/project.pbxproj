@@ -109,6 +109,14 @@
 		C5C9531B1FE21980008D2B6F /* TAPCategoryLever1Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C953191FE21980008D2B6F /* TAPCategoryLever1Cell.swift */; };
 		C5C9531C1FE21980008D2B6F /* TAPCategoryLever1Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5C9531A1FE21980008D2B6F /* TAPCategoryLever1Cell.xib */; };
 		C5C9531F1FE21F9C008D2B6F /* TAPCategoryMenuEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C9531E1FE21F9C008D2B6F /* TAPCategoryMenuEntity.swift */; };
+		C5DCD4941FE813B000F4F134 /* TAPAddressMethodController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5DCD4921FE813B000F4F134 /* TAPAddressMethodController.swift */; };
+		C5DCD4951FE813B000F4F134 /* TAPAddressMethodController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5DCD4931FE813B000F4F134 /* TAPAddressMethodController.xib */; };
+		C5DCD4991FE8149300F4F134 /* TAPHeaderAddTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5DCD4971FE8149300F4F134 /* TAPHeaderAddTableViewCell.swift */; };
+		C5DCD49A1FE8149300F4F134 /* TAPHeaderAddTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5DCD4981FE8149300F4F134 /* TAPHeaderAddTableViewCell.xib */; };
+		C5DCD49D1FE814AD00F4F134 /* TAPAddessCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5DCD49B1FE814AD00F4F134 /* TAPAddessCell.swift */; };
+		C5DCD49E1FE814AD00F4F134 /* TAPAddessCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5DCD49C1FE814AD00F4F134 /* TAPAddessCell.xib */; };
+		C5DCD4A11FE814D200F4F134 /* TAPShippingMethodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5DCD49F1FE814D200F4F134 /* TAPShippingMethodCell.swift */; };
+		C5DCD4A21FE814D200F4F134 /* TAPShippingMethodCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5DCD4A01FE814D200F4F134 /* TAPShippingMethodCell.xib */; };
 		D33DB5415B68BDBD3452755B /* Pods_Tapiver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D246665402A90FDB19ADE64 /* Pods_Tapiver.framework */; };
 /* End PBXBuildFile section */
 
@@ -222,6 +230,14 @@
 		C5C953191FE21980008D2B6F /* TAPCategoryLever1Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPCategoryLever1Cell.swift; sourceTree = "<group>"; };
 		C5C9531A1FE21980008D2B6F /* TAPCategoryLever1Cell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TAPCategoryLever1Cell.xib; sourceTree = "<group>"; };
 		C5C9531E1FE21F9C008D2B6F /* TAPCategoryMenuEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPCategoryMenuEntity.swift; sourceTree = "<group>"; };
+		C5DCD4921FE813B000F4F134 /* TAPAddressMethodController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPAddressMethodController.swift; sourceTree = "<group>"; };
+		C5DCD4931FE813B000F4F134 /* TAPAddressMethodController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TAPAddressMethodController.xib; sourceTree = "<group>"; };
+		C5DCD4971FE8149300F4F134 /* TAPHeaderAddTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPHeaderAddTableViewCell.swift; sourceTree = "<group>"; };
+		C5DCD4981FE8149300F4F134 /* TAPHeaderAddTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TAPHeaderAddTableViewCell.xib; sourceTree = "<group>"; };
+		C5DCD49B1FE814AD00F4F134 /* TAPAddessCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPAddessCell.swift; sourceTree = "<group>"; };
+		C5DCD49C1FE814AD00F4F134 /* TAPAddessCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TAPAddessCell.xib; sourceTree = "<group>"; };
+		C5DCD49F1FE814D200F4F134 /* TAPShippingMethodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPShippingMethodCell.swift; sourceTree = "<group>"; };
+		C5DCD4A01FE814D200F4F134 /* TAPShippingMethodCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TAPShippingMethodCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -711,6 +727,7 @@
 		B0B056971FC0861C001E4659 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				C5DCD48B1FE812FF00F4F134 /* CheckOut */,
 				031555181FE2F5370082E709 /* Menu */,
 				033458331FE1A54300BFC66E /* Store Page */,
 				6C4D9FFC1FE132B300E0774A /* ProductPage */,
@@ -783,6 +800,37 @@
 			path = CategoryModel;
 			sourceTree = "<group>";
 		};
+		C5DCD48B1FE812FF00F4F134 /* CheckOut */ = {
+			isa = PBXGroup;
+			children = (
+				C5DCD48C1FE8133200F4F134 /* AddressMethod */,
+			);
+			path = CheckOut;
+			sourceTree = "<group>";
+		};
+		C5DCD48C1FE8133200F4F134 /* AddressMethod */ = {
+			isa = PBXGroup;
+			children = (
+				C5DCD4961FE8141F00F4F134 /* Cell */,
+				C5DCD4921FE813B000F4F134 /* TAPAddressMethodController.swift */,
+				C5DCD4931FE813B000F4F134 /* TAPAddressMethodController.xib */,
+			);
+			path = AddressMethod;
+			sourceTree = "<group>";
+		};
+		C5DCD4961FE8141F00F4F134 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				C5DCD4971FE8149300F4F134 /* TAPHeaderAddTableViewCell.swift */,
+				C5DCD4981FE8149300F4F134 /* TAPHeaderAddTableViewCell.xib */,
+				C5DCD49B1FE814AD00F4F134 /* TAPAddessCell.swift */,
+				C5DCD49C1FE814AD00F4F134 /* TAPAddessCell.xib */,
+				C5DCD49F1FE814D200F4F134 /* TAPShippingMethodCell.swift */,
+				C5DCD4A01FE814D200F4F134 /* TAPShippingMethodCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -848,6 +896,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6C86013B1FCD70E5004E7CAE /* splash02@2x.png in Resources */,
+				C5DCD4951FE813B000F4F134 /* TAPAddressMethodController.xib in Resources */,
 				6C66BFAA1FCE6FA10092A006 /* TAPSignupPasswordViewController.xib in Resources */,
 				6C8601251FCD6CD0004E7CAE /* splash@2x.png in Resources */,
 				6C4DA0061FE1353100E0774A /* TAPProductTableViewCell.xib in Resources */,
@@ -863,9 +912,12 @@
 				6C66BFB21FCEAE160092A006 /* TAPForgotPasswordViewController.xib in Resources */,
 				6C66BFB81FCEB3870092A006 /* TAPMainTabbarViewController.xib in Resources */,
 				6CCEEFC81FCEB6600018FDB3 /* TAPFeedViewController.xib in Resources */,
+				C5DCD4A21FE814D200F4F134 /* TAPShippingMethodCell.xib in Resources */,
 				6C86012B1FCD6D3E004E7CAE /* TAPSplashViewController.xib in Resources */,
 				6CCEEFBF1FCEB5C50018FDB3 /* TAPDealsViewController.xib in Resources */,
+				C5DCD49E1FE814AD00F4F134 /* TAPAddessCell.xib in Resources */,
 				6CCEEFC31FCEB6400018FDB3 /* TAPDiscoverViewController.xib in Resources */,
+				C5DCD49A1FE8149300F4F134 /* TAPHeaderAddTableViewCell.xib in Resources */,
 				6C86013A1FCD70E5004E7CAE /* splash01@2x.png in Resources */,
 				03AE841A1FDEFE5F006D6986 /* TAPMallPageDealsCell.xib in Resources */,
 				6C8601311FCD6D70004E7CAE /* TAPIntroAppViewController.xib in Resources */,
@@ -975,6 +1027,7 @@
 				031555121FE2D5C00082E709 /* TAPStorePageHeaderView.swift in Sources */,
 				033458361FE1A56800BFC66E /* TAPStorePageViewController.swift in Sources */,
 				C5B694BB1FE3869200751857 /* TAPCategoryLever2Cell.swift in Sources */,
+				C5DCD4991FE8149300F4F134 /* TAPHeaderAddTableViewCell.swift in Sources */,
 				6C8F83031FD6ACD300BC6F99 /* TAPHelpers.swift in Sources */,
 				B0B056961FC0860F001E4659 /* StringCommon.swift in Sources */,
 				B0ECB4BD1FD2D6CD00E97703 /* TAPUtils.swift in Sources */,
@@ -990,6 +1043,7 @@
 				03AE84061FDEE416006D6986 /* TAPBaseViewController.swift in Sources */,
 				6C8601301FCD6D70004E7CAE /* TAPIntroAppViewController.swift in Sources */,
 				B0B0567D1FC084CD001E4659 /* AppDelegate.swift in Sources */,
+				C5DCD4941FE813B000F4F134 /* TAPAddressMethodController.swift in Sources */,
 				6C86013F1FCD732B004E7CAE /* TAPMainFrame.swift in Sources */,
 				031555101FE2D2A40082E709 /* TAPBaseHeaderView.swift in Sources */,
 				6C8601201FCD696A004E7CAE /* TAPLoginPageMainViewController.swift in Sources */,
@@ -999,9 +1053,11 @@
 				6C66BFB11FCEAE160092A006 /* TAPForgotPasswordViewController.swift in Sources */,
 				03AE84021FDEE3B7006D6986 /* TAPMallPageDealViewController.swift in Sources */,
 				03AE840D1FDEE80B006D6986 /* TAPHeaderView.swift in Sources */,
+				C5DCD49D1FE814AD00F4F134 /* TAPAddessCell.swift in Sources */,
 				6C66BFA91FCE6FA10092A006 /* TAPSignupPasswordViewController.swift in Sources */,
 				6C1E68671FDA9B9A00BC1183 /* TAPFeedTableViewCell.swift in Sources */,
 				6C86010E1FCD683B004E7CAE /* TAPWebservice.swift in Sources */,
+				C5DCD4A11FE814D200F4F134 /* TAPShippingMethodCell.swift in Sources */,
 				6C7DA0511FCFE95300E3F3E4 /* TAPContant.swift in Sources */,
 				03AE84121FDEE997006D6986 /* TAPMallPageShopViewController.swift in Sources */,
 				6C8D08F91FD7D50D00B208DA /* TAPAddressModel.swift in Sources */,
