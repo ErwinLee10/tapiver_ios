@@ -12,6 +12,7 @@ import UIKit
 }
 class TAPShippingMethodCell: UITableViewCell {
     
+    @IBOutlet weak var tableShippingMethod: UITableView!
     @IBOutlet weak var tableStyle: UITableView!
     var listData :[TAPSubShippingEntity]?
     public weak var delegate: TAPShippingMethodCellDelegate?
@@ -25,6 +26,9 @@ class TAPShippingMethodCell: UITableViewCell {
         self.tableStyle.register(UINib.init(nibName: "TAPSubShippingMethod", bundle: nil), forCellReuseIdentifier: "TAPSubShippingMethod")
         self.tableStyle.delegate = self
         self.tableStyle.dataSource = self
+        self.tableShippingMethod.register(UINib.init(nibName: "TAPSubShippingMethod", bundle: nil), forCellReuseIdentifier: "TAPSubShippingMethod")
+        self.tableShippingMethod.delegate = self
+        self.tableShippingMethod.dataSource = self
     }
     func initData() {
         self.listData = TAPListSubShippingEntity().listData
@@ -50,10 +54,15 @@ extension TAPShippingMethodCell: UITableViewDelegate {
 extension TAPShippingMethodCell: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let counts = self.listData?.count else {
-            return 0
+        if tableView == self.tableStyle {
+            guard let counts = self.listData?.count else {
+                return 0
+            }
+            return counts
+        }else {
+            return 1
         }
-        return counts
+        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -68,7 +77,13 @@ extension TAPShippingMethodCell: UITableViewDataSource {
         }
         cell.delegate = self
         cell.index = indexPath
-        cell.obj = self.listData![indexPath.row]
+        if tableView == self.tableStyle {
+            cell.obj = self.listData![indexPath.row]
+        }else {
+            let ob = TAPSubShippingEntity.init(title: "Store Pickup", cost: "Free", isSelect: false, cashBack: 5)
+            cell.obj = ob
+            
+        }
         cell.setData()
         return cell
     }
