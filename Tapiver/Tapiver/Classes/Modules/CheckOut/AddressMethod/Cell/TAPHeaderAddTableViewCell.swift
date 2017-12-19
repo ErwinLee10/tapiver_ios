@@ -8,7 +8,6 @@
 
 import UIKit
 @objc protocol TAPHeaderAddCellDelegate : class {
-    
     func tapSelectSameasShipping(isSelect: Bool)
 }
 
@@ -18,14 +17,15 @@ class TAPHeaderAddTableViewCell: UITableViewCell {
     @IBOutlet weak var btCheckBox: UIButton!
     @IBOutlet weak var lbSelectSameAs: UILabel!
     public var isHeaderCheckBox: Bool?
+    public weak var delegate: TAPHeaderAddCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
     }
     public func setData() {
-        btCheckBox.isHidden  =  !isHeaderCheckBox!
-        lbSelectSameAs.isHidden =  !isHeaderCheckBox!
+        btCheckBox.isHidden  =  isHeaderCheckBox!
+        lbSelectSameAs.isHidden =  isHeaderCheckBox!
         if isHeaderCheckBox == true {
             lbHeade.text = "Shipping Address"
         }else {
@@ -36,6 +36,9 @@ class TAPHeaderAddTableViewCell: UITableViewCell {
     
     @IBAction func acCheckBox(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
+        if self.delegate != nil {
+            self.delegate?.tapSelectSameasShipping(isSelect: sender.isSelected)
+        }
     }
     
     @IBOutlet weak var acSelectSameAS: UIButton!

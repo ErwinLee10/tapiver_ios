@@ -109,6 +109,12 @@
 		C5C9531B1FE21980008D2B6F /* TAPCategoryLever1Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C953191FE21980008D2B6F /* TAPCategoryLever1Cell.swift */; };
 		C5C9531C1FE21980008D2B6F /* TAPCategoryLever1Cell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5C9531A1FE21980008D2B6F /* TAPCategoryLever1Cell.xib */; };
 		C5C9531F1FE21F9C008D2B6F /* TAPCategoryMenuEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5C9531E1FE21F9C008D2B6F /* TAPCategoryMenuEntity.swift */; };
+		C5D8E8951FE8B58400E12E9F /* TAPChecOutEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D8E8941FE8B58400E12E9F /* TAPChecOutEntity.swift */; };
+		C5D8E8981FE8C87A00E12E9F /* TAPAddNewAddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D8E8961FE8C87A00E12E9F /* TAPAddNewAddressCell.swift */; };
+		C5D8E8991FE8C87A00E12E9F /* TAPAddNewAddressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5D8E8971FE8C87A00E12E9F /* TAPAddNewAddressCell.xib */; };
+		C5D8E89C1FE8DF7A00E12E9F /* TAPSubShippingMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D8E89A1FE8DF7A00E12E9F /* TAPSubShippingMethod.swift */; };
+		C5D8E89D1FE8DF7A00E12E9F /* TAPSubShippingMethod.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5D8E89B1FE8DF7A00E12E9F /* TAPSubShippingMethod.xib */; };
+		C5D8E89F1FE8EE9C00E12E9F /* TAPSubShippingEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D8E89E1FE8EE9C00E12E9F /* TAPSubShippingEntity.swift */; };
 		C5DCD4941FE813B000F4F134 /* TAPAddressMethodController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5DCD4921FE813B000F4F134 /* TAPAddressMethodController.swift */; };
 		C5DCD4951FE813B000F4F134 /* TAPAddressMethodController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5DCD4931FE813B000F4F134 /* TAPAddressMethodController.xib */; };
 		C5DCD4991FE8149300F4F134 /* TAPHeaderAddTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5DCD4971FE8149300F4F134 /* TAPHeaderAddTableViewCell.swift */; };
@@ -230,6 +236,12 @@
 		C5C953191FE21980008D2B6F /* TAPCategoryLever1Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPCategoryLever1Cell.swift; sourceTree = "<group>"; };
 		C5C9531A1FE21980008D2B6F /* TAPCategoryLever1Cell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TAPCategoryLever1Cell.xib; sourceTree = "<group>"; };
 		C5C9531E1FE21F9C008D2B6F /* TAPCategoryMenuEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPCategoryMenuEntity.swift; sourceTree = "<group>"; };
+		C5D8E8941FE8B58400E12E9F /* TAPChecOutEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPChecOutEntity.swift; sourceTree = "<group>"; };
+		C5D8E8961FE8C87A00E12E9F /* TAPAddNewAddressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPAddNewAddressCell.swift; sourceTree = "<group>"; };
+		C5D8E8971FE8C87A00E12E9F /* TAPAddNewAddressCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TAPAddNewAddressCell.xib; sourceTree = "<group>"; };
+		C5D8E89A1FE8DF7A00E12E9F /* TAPSubShippingMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPSubShippingMethod.swift; sourceTree = "<group>"; };
+		C5D8E89B1FE8DF7A00E12E9F /* TAPSubShippingMethod.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TAPSubShippingMethod.xib; sourceTree = "<group>"; };
+		C5D8E89E1FE8EE9C00E12E9F /* TAPSubShippingEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPSubShippingEntity.swift; sourceTree = "<group>"; };
 		C5DCD4921FE813B000F4F134 /* TAPAddressMethodController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPAddressMethodController.swift; sourceTree = "<group>"; };
 		C5DCD4931FE813B000F4F134 /* TAPAddressMethodController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TAPAddressMethodController.xib; sourceTree = "<group>"; };
 		C5DCD4971FE8149300F4F134 /* TAPHeaderAddTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPHeaderAddTableViewCell.swift; sourceTree = "<group>"; };
@@ -512,6 +524,7 @@
 		6C8601131FCD6902004E7CAE /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C5D8E8901FE8B51D00E12E9F /* CheckOutModel */,
 				C5460A791FE3C8770028B446 /* LandMarkModel */,
 				C5C9531D1FE21F4D008D2B6F /* CategoryModel */,
 				B0ECB4B31FD2B7E600E97703 /* ApiModel */,
@@ -800,6 +813,15 @@
 			path = CategoryModel;
 			sourceTree = "<group>";
 		};
+		C5D8E8901FE8B51D00E12E9F /* CheckOutModel */ = {
+			isa = PBXGroup;
+			children = (
+				C5D8E8941FE8B58400E12E9F /* TAPChecOutEntity.swift */,
+				C5D8E89E1FE8EE9C00E12E9F /* TAPSubShippingEntity.swift */,
+			);
+			path = CheckOutModel;
+			sourceTree = "<group>";
+		};
 		C5DCD48B1FE812FF00F4F134 /* CheckOut */ = {
 			isa = PBXGroup;
 			children = (
@@ -825,8 +847,12 @@
 				C5DCD4981FE8149300F4F134 /* TAPHeaderAddTableViewCell.xib */,
 				C5DCD49B1FE814AD00F4F134 /* TAPAddessCell.swift */,
 				C5DCD49C1FE814AD00F4F134 /* TAPAddessCell.xib */,
+				C5D8E8961FE8C87A00E12E9F /* TAPAddNewAddressCell.swift */,
+				C5D8E8971FE8C87A00E12E9F /* TAPAddNewAddressCell.xib */,
 				C5DCD49F1FE814D200F4F134 /* TAPShippingMethodCell.swift */,
 				C5DCD4A01FE814D200F4F134 /* TAPShippingMethodCell.xib */,
+				C5D8E89A1FE8DF7A00E12E9F /* TAPSubShippingMethod.swift */,
+				C5D8E89B1FE8DF7A00E12E9F /* TAPSubShippingMethod.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -924,6 +950,7 @@
 				033458321FE1943400BFC66E /* TAPMainPageHeaderView.xib in Resources */,
 				031555261FE58AA20082E709 /* TAPStorePageInformationViewController.xib in Resources */,
 				6CCEEFBB1FCEB5B70018FDB3 /* TAPCategoryViewController.xib in Resources */,
+				C5D8E89D1FE8DF7A00E12E9F /* TAPSubShippingMethod.xib in Resources */,
 				6C8601361FCD6E69004E7CAE /* TAPIntroPageViewController.xib in Resources */,
 				B0B056841FC084CD001E4659 /* Assets.xcassets in Resources */,
 				6C8601211FCD696A004E7CAE /* TAPLoginPageMainViewController.xib in Resources */,
@@ -940,6 +967,7 @@
 				031555141FE2D5D10082E709 /* TAPStorePageHeaderView.xib in Resources */,
 				03AE84031FDEE3B7006D6986 /* TAPMallPageDealViewController.xib in Resources */,
 				0315551C1FE2F5510082E709 /* TAPMenuViewController.xib in Resources */,
+				C5D8E8991FE8C87A00E12E9F /* TAPAddNewAddressCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1025,6 +1053,7 @@
 				B0B056951FC0860F001E4659 /* BCAExtention.swift in Sources */,
 				B0ECB4BF1FD2D77600E97703 /* TAPDialogUtils.swift in Sources */,
 				031555121FE2D5C00082E709 /* TAPStorePageHeaderView.swift in Sources */,
+				C5D8E89C1FE8DF7A00E12E9F /* TAPSubShippingMethod.swift in Sources */,
 				033458361FE1A56800BFC66E /* TAPStorePageViewController.swift in Sources */,
 				C5B694BB1FE3869200751857 /* TAPCategoryLever2Cell.swift in Sources */,
 				C5DCD4991FE8149300F4F134 /* TAPHeaderAddTableViewCell.swift in Sources */,
@@ -1040,8 +1069,10 @@
 				031555251FE58AA20082E709 /* TAPStorePageInformationViewController.swift in Sources */,
 				6C8601351FCD6E69004E7CAE /* TAPIntroPageViewController.swift in Sources */,
 				C5C953171FE2195D008D2B6F /* TAPCategoryLever0Cell.swift in Sources */,
+				C5D8E8951FE8B58400E12E9F /* TAPChecOutEntity.swift in Sources */,
 				03AE84061FDEE416006D6986 /* TAPBaseViewController.swift in Sources */,
 				6C8601301FCD6D70004E7CAE /* TAPIntroAppViewController.swift in Sources */,
+				C5D8E89F1FE8EE9C00E12E9F /* TAPSubShippingEntity.swift in Sources */,
 				B0B0567D1FC084CD001E4659 /* AppDelegate.swift in Sources */,
 				C5DCD4941FE813B000F4F134 /* TAPAddressMethodController.swift in Sources */,
 				6C86013F1FCD732B004E7CAE /* TAPMainFrame.swift in Sources */,
@@ -1059,6 +1090,7 @@
 				6C86010E1FCD683B004E7CAE /* TAPWebservice.swift in Sources */,
 				C5DCD4A11FE814D200F4F134 /* TAPShippingMethodCell.swift in Sources */,
 				6C7DA0511FCFE95300E3F3E4 /* TAPContant.swift in Sources */,
+				C5D8E8981FE8C87A00E12E9F /* TAPAddNewAddressCell.swift in Sources */,
 				03AE84121FDEE997006D6986 /* TAPMallPageShopViewController.swift in Sources */,
 				6C8D08F91FD7D50D00B208DA /* TAPAddressModel.swift in Sources */,
 				0315551B1FE2F5510082E709 /* TAPMenuViewController.swift in Sources */,
