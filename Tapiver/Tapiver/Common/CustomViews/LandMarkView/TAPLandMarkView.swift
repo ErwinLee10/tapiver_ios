@@ -20,7 +20,7 @@ class TAPLandMarkView: UIView {
     @IBOutlet weak var sView: UIView!
     @IBOutlet var viewSup: UIControl!
     weak var delegate: TAPLandMarkViewDelegate?
-    var listData: [TAPLandMark]?
+    var listData: [TAPLandmarkModel]?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
