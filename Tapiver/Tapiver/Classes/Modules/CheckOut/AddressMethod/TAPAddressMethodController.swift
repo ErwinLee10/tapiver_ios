@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class TAPAddressMethodController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
-    private var isLoadedApi: Bool! = false
+    private var isLoadedApi: Bool = false
     var listData = NSMutableArray()
+    
     @IBOutlet weak var headerView: TAPHeaderView!
     
     override func viewDidLoad() {
@@ -22,60 +24,84 @@ class TAPAddressMethodController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if isLoadedApi {
-            callApi()
+            initData()
         }
     }
     func initData() {
-        let bottomButtonShipping:TAPChecOutEntity = TAPChecOutEntity()
-        bottomButtonShipping.typeCheckOutCell = CheckOutEntytiType.addNewAdressShipping
-        
-        let bottomButtonBilling:TAPChecOutEntity = TAPChecOutEntity()
-        bottomButtonBilling.typeCheckOutCell = CheckOutEntytiType.addNewAdressBilling
-        
+        self.listData.removeAllObjects()
+        callApi()
+//        for var i in 0...2 {
+//            let checkout = TAPChecOutEntity()
+//            checkout.typeCheckOutCell =  CheckOutEntytiType.address
+//            checkout.addObj = TAPAddressModel()
+//            checkout.addObj?.contact = "Jasper Teo-\(i)"
+//            checkout.addObj?.streetName = """
+//            Blk 220 Lorong 3 Anson Road-\(i)
+//            #01-03 - \(i)
+//            s456723 - \(i)
+//            84182240 - \(i)
+//            """
+//            listDataSection0.add(checkout)
+//        }
+//        listDataSection0.add(bottomButtonShipping)
+//        listDataSection0.add(headerBill)
+//        for var i in 0...1 {
+//            let checkout = TAPChecOutEntity()
+//            checkout.typeCheckOutCell =  CheckOutEntytiType.address
+//            checkout.addObj = TAPAddressModel()
+//            checkout.addObj?.contact = "Jasper Teo-\(i)"
+//            checkout.addObj?.streetName = """
+//            Blk 220 Lorong 3 Anson Road-\(i)
+//            #01-03 - \(i)
+//            s456723 - \(i)
+//            84182240 - \(i)
+//            """
+//            listDataSection0.add(checkout)
+//        }
+//        listDataSection0.add(bottomButtonBilling)
+//
+//        self.listData.add(listDataSection0)
+//
+//        let listDataSection1:NSMutableArray = NSMutableArray()
+//        let cellShippingMethod: TAPChecOutEntity = TAPChecOutEntity()
+//        cellShippingMethod.typeCheckOutCell = CheckOutEntytiType.shippingMethod
+//        listDataSection1.add(cellShippingMethod)
+//
+//        self.listData.add(listDataSection1)
+    }
+    func createListData(listShipping:[TAPChecOutEntity], listBilling:[TAPChecOutEntity]) {
+    
         let listDataSection0:NSMutableArray = NSMutableArray()
         let header: TAPChecOutEntity = TAPChecOutEntity()
         header.typeCheckOutCell = CheckOutEntytiType.headerShippingAddress
+        listDataSection0.add(header)
+        for item in listShipping {
+            item.typeCheckOutCell  = CheckOutEntytiType.address
+            listDataSection0.add(item)
+        }
+        let bottomButtonShipping:TAPChecOutEntity = TAPChecOutEntity()
+        bottomButtonShipping.typeCheckOutCell = CheckOutEntytiType.addNewAdressShipping
+        listDataSection0.add(bottomButtonShipping)
+        
         let headerBill: TAPChecOutEntity = TAPChecOutEntity()
         header.typeCheckOutCell = CheckOutEntytiType.headerBillingAddress
-        listDataSection0.add(header)
-        for var i in 0...2 {
-            let checkout = TAPChecOutEntity()
-            checkout.typeCheckOutCell =  CheckOutEntytiType.address
-            checkout.addObj = TAPAddressModel()
-            checkout.addObj?.contact = "Jasper Teo-\(i)"
-            checkout.addObj?.streetName = """
-            Blk 220 Lorong 3 Anson Road-\(i)
-            #01-03 - \(i)
-            s456723 - \(i)
-            84182240 - \(i)
-            """
-            listDataSection0.add(checkout)
-        }
-        listDataSection0.add(bottomButtonShipping)
         listDataSection0.add(headerBill)
-        for var i in 0...1 {
-            let checkout = TAPChecOutEntity()
-            checkout.typeCheckOutCell =  CheckOutEntytiType.address
-            checkout.addObj = TAPAddressModel()
-            checkout.addObj?.contact = "Jasper Teo-\(i)"
-            checkout.addObj?.streetName = """
-            Blk 220 Lorong 3 Anson Road-\(i)
-            #01-03 - \(i)
-            s456723 - \(i)
-            84182240 - \(i)
-            """
-            listDataSection0.add(checkout)
+        for item in listBilling {
+            item.typeCheckOutCell  = CheckOutEntytiType.address
+            listDataSection0.add(item)
         }
+        let bottomButtonBilling:TAPChecOutEntity = TAPChecOutEntity()
+        bottomButtonBilling.typeCheckOutCell = CheckOutEntytiType.addNewAdressBilling
         listDataSection0.add(bottomButtonBilling)
-        
         self.listData.add(listDataSection0)
         
         let listDataSection1:NSMutableArray = NSMutableArray()
         let cellShippingMethod: TAPChecOutEntity = TAPChecOutEntity()
         cellShippingMethod.typeCheckOutCell = CheckOutEntytiType.shippingMethod
         listDataSection1.add(cellShippingMethod)
-        
         self.listData.add(listDataSection1)
+        
+        self.tableView.reloadData()
     }
     func initIb() {
         self.headerView.delegate = self
@@ -90,6 +116,29 @@ class TAPAddressMethodController: UIViewController {
     }
     // MARK: call api
     func callApi() {
+        var apiPath: String
+        if(TAPGlobal.shared.hasLogin()) {
+            let userId: String! = TAPGlobal.shared.getLoginModel()?.userId ?? ""
+            apiPath = API_PATH(path: String.init(format: "/api/v1/u/%@%@", userId , "/address"))
+        }else {
+            return
+        }
+        let header = NSMutableDictionary()
+        header.setValue("application/json", forKey: "Content-Type")
+        header.setValue(TAPGlobal.shared.getLoginModel()?.webSessionId ?? "", forKey: "Authorization")
+        SVProgressHUD.show()
+        TAPWebservice.shareInstance.sendGETRequest(path: apiPath, params: nil, headers: header, responseObjectClass: TAPListChecOutEntity()) { (success, response) in
+            if success {
+                self.isLoadedApi = true
+                guard let model = response as? TAPListChecOutEntity else {
+                    return
+                }
+                self.createListData(listShipping: model.listCheckOut, listBilling: [])
+            } else {
+                TAPDialogUtils.shareInstance.showAlertMessageOneButton(title: "", message: "Server error, please contact Tapiver team for assistance", positive: "OK", positiveHandler: nil, vc: self)
+            }
+            SVProgressHUD.dismiss()
+        }
         
     }
     
@@ -166,7 +215,7 @@ extension TAPAddressMethodController: UITableViewDelegate {
 }
 extension TAPAddressMethodController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return self.listData.count
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let listSection0:[TAPChecOutEntity] = self.listData[section] as? [TAPChecOutEntity] else {
