@@ -9,7 +9,7 @@
 import UIKit
 import SVProgressHUD
 
-class TAPDiscoverViewController: TAPBaseViewController,TAPFeedTableViewCellDelegate {
+class TAPDiscoverViewController: TAPBaseViewController {
     @IBOutlet weak var tableView: UITableView!
     private var feedsApiModels: TAPFeedApiModel?
     public var landMarkId :String?
@@ -85,13 +85,10 @@ extension TAPDiscoverViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         cell.delegate = self
+        cell.row = indexPath.row
         cell.typeView = MainPageViewType.MainPageViewTypeDiscover
         cell.fillDataToView(model: data.feedModels[indexPath.row])
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
     }
     
 }
@@ -99,5 +96,15 @@ extension TAPDiscoverViewController: UITableViewDataSource {
 extension TAPDiscoverViewController: TAPMainPageHeaderViewDelegate {
     func headerViewDidTouchMenu() {
         showRightMenu()
+    }
+}
+
+extension TAPDiscoverViewController: TAPFeedTableViewCellDelegate {
+    func tapShop(at row: Int) {
+        
+    }
+    
+    func tapIteamAt(index: IndexPath, item: TAPProductModel) {
+        
     }
 }
