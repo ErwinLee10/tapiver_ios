@@ -9,7 +9,7 @@
 import UIKit
 
 class TAPProductModel: TAPBaseEntity {
-    var id: Int?
+    var id: String?
     var name: String?
     var likes: Int = 0
     var isLikedByThisUser: Bool = false
@@ -23,7 +23,7 @@ class TAPProductModel: TAPBaseEntity {
     var sellerAddress: TAPSellerAddressModel?
     
     override func parserResponse(dic: NSDictionary) {
-        id = dic.value(forKey: TAPConstants.APIParams.id) as? Int
+        id = dic.value(forKey: TAPConstants.APIParams.id) as? String
         name = dic.value(forKey: TAPConstants.APIParams.name) as? String
         likes = dic.value(forKey: TAPConstants.APIParams.likes) as? Int ?? 0
         brand = dic.value(forKey: TAPConstants.APIParams.brand) as? String

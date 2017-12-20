@@ -86,13 +86,20 @@ class TAPAddressMethodController: UIViewController {
         
         self.tableView.estimatedRowHeight = 100
         self.tableView.rowHeight = UITableViewAutomaticDimension
-        self.tableView.tableHeaderView?.backgroundColor  = UIColor.clear
-        self.tableView.tableFooterView?.backgroundColor  = UIColor.clear
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none
     }
     // MARK: call api
     func callApi() {
         
     }
+    
+    @IBAction func acPushOrder(_ sender: Any) {
+        let review = TAPReViewOrderController.init(nibName: "TAPReViewOrderController", bundle: nil)
+        self.navigationController?.pushViewController(review, animated: true)
+    }
+    
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -135,7 +142,7 @@ extension TAPAddressMethodController: UITableViewDelegate {
             layer.path = pathRef
             //CFRelease(pathRef)
             //set the border color
-            layer.strokeColor = UIColor.lightGray.cgColor;
+            layer.strokeColor = UIColor.clear.cgColor;
             //set the border width
             layer.lineWidth = 1
             layer.fillColor = UIColor.white.cgColor
@@ -172,7 +179,6 @@ extension TAPAddressMethodController: UITableViewDataSource {
         var viewF = UIView()
         if section == 0 {
             viewF = UIView.init(frame: CGRect(x:0, y:0, width:self.tableView.frame.size.width, height:5))
-            
         }else {
             viewF = UIView.init(frame: CGRect(x:0, y:0, width:self.tableView.frame.size.width, height:2))
         }
@@ -184,7 +190,7 @@ extension TAPAddressMethodController: UITableViewDataSource {
         if indexPath.section == 0 {
             return UITableViewAutomaticDimension
         }else {
-            return 356
+            return 366
         }
     }
     
@@ -222,6 +228,13 @@ extension TAPAddressMethodController: UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "TAPAddNewAddressCell", for: indexPath) as? TAPAddNewAddressCell else {
                 return UITableViewCell()
             }
+            cell.delegate = self
+            cell.index = indexPath
+            if checkOut.typeCheckOutCell == .addNewAdressShipping {
+                cell.isAdressShipping = true
+            }else {
+                cell.isAdressShipping = false
+            }
             reCell = cell
             break
         case .shippingMethod:
@@ -258,6 +271,12 @@ extension TAPAddressMethodController: TAPAddessCellDelegate {
 
 extension TAPAddressMethodController: TAPHeaderAddCellDelegate {
     func tapSelectSameasShipping(isSelect: Bool) {
-        
+        print("tapSelectSameasShipping")
+    }
+}
+extension TAPAddressMethodController: TAPAddNewAddressCellDelegate {
+    
+    func tapAddNewAddAt(index: IndexPath, isAddShipping: Bool) {
+        print("add new")
     }
 }

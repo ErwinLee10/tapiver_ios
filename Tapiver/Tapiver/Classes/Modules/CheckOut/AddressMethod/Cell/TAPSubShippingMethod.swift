@@ -12,7 +12,7 @@ import UIKit
 }
 
 class TAPSubShippingMethod: UITableViewCell {
-
+    @IBOutlet weak var lbCashBack: UILabel!
     @IBOutlet weak var btCheckBox: UIButton!
     @IBOutlet weak var lbTitle: UILabel!
     @IBOutlet weak var lbNumber: UILabel!
@@ -28,6 +28,12 @@ class TAPSubShippingMethod: UITableViewCell {
         self.btCheckBox.isSelected = (self.obj?.isSelect)!
         self.lbTitle.text = self.obj?.titleSub
         self.lbNumber.text = self.obj?.cost
+        if self.obj!.cashBack > 0 {
+            self.lbCashBack.isHidden = false
+        }else {
+            self.lbCashBack.isHidden = true
+        }
+        self.lbCashBack.text  = "Cashback \(self.obj?.cashBack ?? 0)%"
     }
     
     @IBAction func acSelect(_ sender: UIButton) {
@@ -38,7 +44,7 @@ class TAPSubShippingMethod: UITableViewCell {
     }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     

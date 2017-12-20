@@ -10,7 +10,7 @@ import UIKit
 import SDWebImage
 
 @objc protocol TAPFeedTableViewCellDelegate {
-    @objc optional func tapIteamAt (index: NSIndexPath , indexItem: NSIndexPath)
+    @objc optional func tapIteamAt (index: IndexPath , item: TAPProductModel)
     @objc optional func tapShop(at row: Int)
     
 }
@@ -69,6 +69,12 @@ extension TAPFeedTableViewCell: UICollectionViewDataSource {
         cell.fillDataToView(model: items[indexPath.item])
         cell.hiddenViewAll(isHidden: indexPath.item != items.count - 1)
         return cell
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if delegate != nil {
+            let item = items[indexPath.row]
+            delegate?.tapIteamAt!(index: indexPath, item: item)
+        }
     }
 }
 

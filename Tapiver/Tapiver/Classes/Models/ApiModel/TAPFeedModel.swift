@@ -10,6 +10,7 @@ import UIKit
 
 class TAPFeedModel: TAPBaseEntity  {
     
+    var idItem: Int?
     var sellerId: Int?
     var sellerName: String?
     var sellerAddress: TAPAddressModel?
@@ -20,6 +21,7 @@ class TAPFeedModel: TAPBaseEntity  {
     var products: [TAPProductModel]? = []
     
     override func parserResponse(dic: NSDictionary) {
+        idItem = dic.value(forKey: "id") as? Int
         sellerId = dic.value(forKey: "sellerId") as? Int
         sellerName = dic.value(forKey: "sellerName") as? String
         sellerPicture = dic.value(forKey: "sellerPicture") as? String
