@@ -86,13 +86,20 @@ class TAPAddressMethodController: UIViewController {
         
         self.tableView.estimatedRowHeight = 100
         self.tableView.rowHeight = UITableViewAutomaticDimension
-        self.tableView.tableHeaderView?.backgroundColor  = UIColor.clear
-        self.tableView.tableFooterView?.backgroundColor  = UIColor.clear
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none
     }
     // MARK: call api
     func callApi() {
         
     }
+    
+    @IBAction func acPushOrder(_ sender: Any) {
+        let review = TAPReViewOrderController.init(nibName: "TAPReViewOrderController", bundle: nil)
+        self.navigationController?.pushViewController(review, animated: true)
+    }
+    
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
