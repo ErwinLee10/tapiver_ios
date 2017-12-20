@@ -62,6 +62,39 @@ extension TAPMenuViewController: UITableViewDelegate {
             selectionHandler!(indexPath.row)
         }
         
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true, completion: {
+            switch indexPath.row {
+            case 0: // Notifications
+                break
+            case 1: // Order
+                break
+            case 2: // Cashback
+                break
+            case 3: // Account
+                if TAPGlobal.shared.hasLogin() {
+                    // get top ViewController
+                    let root = UIApplication.shared.keyWindow?.rootViewController as! UINavigationController
+                    let tabBar = root.topViewController as! TAPMainTabbarViewController
+                    let naviTabBar = tabBar.viewControllers![tabBar.selectedIndex] as! UINavigationController
+                    let topViewController = naviTabBar.topViewController
+                    
+                    // present TAPAccountViewController
+                    let accountViewController: TAPAccountTableViewController = TAPAccountTableViewController(nibName: "TAPAccountTableViewController", bundle: nil)
+                    let navi = UINavigationController(rootViewController: accountViewController)
+                    navi.navigationBar.barTintColor = UIColor.init(netHex: 0x195B79)
+                    topViewController?.present(navi, animated: true, completion: {
+                        
+                    })
+                }
+                else {
+                    TAPMainFrame.showLoginPageMain()
+                }
+                break
+            case 4: // Feedback
+                break
+            default:
+                break
+            }
+        })
     }
 }

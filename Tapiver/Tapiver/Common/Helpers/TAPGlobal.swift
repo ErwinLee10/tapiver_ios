@@ -32,4 +32,24 @@ class TAPGlobal: NSObject {
     func hasLogin() -> Bool{
         return self.userDefault.bool(forKey: "KEY_USER_HAS_LOGIN")
     }
+    
+    func saveProfileModel(model: TAPProfileModel) {
+        let encodedData = NSKeyedArchiver.archivedData(withRootObject: model)
+        self.userDefault.set(encodedData, forKey: "KEY_USER_PROFILE_DATA")
+    }
+    
+    func getProfileModel() -> TAPProfileModel? {
+        guard let data = self.userDefault.data(forKey: "KEY_USER_PROFILE_DATA") else {
+            return nil
+        }
+        return NSKeyedUnarchiver.unarchiveObject(with: data) as? TAPProfileModel
+    }
+    
+    func deleteProfileModel() {
+        self.userDefault.removeObject(forKey: "KEY_USER_PROFILE_DATA")
+    }
+    
+    func deleteLoginModel() {
+        self.userDefault.removeObject(forKey: "KEY_USER_LOGIN_DATA")
+    }
 }

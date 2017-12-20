@@ -11,4 +11,6 @@ target 'Tapiver' do
     pod 'FBSDKCoreKit'
     pod 'FBSDKLoginKit'
     pod 'SDWebImage', '~> 4.0'
+    pod 'IQKeyboardManagerSwift'
+    pod 'AMPopTip'
 end

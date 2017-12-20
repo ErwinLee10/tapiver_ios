@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" restorationIdentifier="TAPAddressView" id="iN0-l3-epB" customClass="TAPAddressView" customModule="Tapiver" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="119"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="LLP-d5-UzR">
+                    <rect key="frame" x="16" y="8" width="87.5" height="102.5"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rgh-du-TAz">
+                            <rect key="frame" x="0.0" y="0.0" width="45" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MD0-7N-6nL">
+                            <rect key="frame" x="0.0" y="20.5" width="61" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Street" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cvp-Vo-kRb">
+                            <rect key="frame" x="0.0" y="41" width="46.5" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#Floor-Unit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vCg-Zn-RmN">
+                            <rect key="frame" x="0.0" y="61.5" width="87.5" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Postal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ziG-Ai-ETW">
+                            <rect key="frame" x="0.0" y="82" width="47" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f34-lW-sON">
+                    <rect key="frame" x="309" y="34" width="50" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="3xR-6w-SRe"/>
+                        <constraint firstAttribute="width" secondItem="f34-lW-sON" secondAttribute="height" multiplier="1:1" id="GB1-5g-DB8"/>
+                    </constraints>
+                    <state key="normal" image="trash"/>
+                    <connections>
+                        <action selector="deleteButtonTap:" destination="iN0-l3-epB" eventType="touchUpInside" id="Jvc-6v-20E"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="f34-lW-sON" secondAttribute="trailing" constant="16" id="ZCq-rk-B6p"/>
+                <constraint firstItem="LLP-d5-UzR" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="8" id="aL8-1j-fSF"/>
+                <constraint firstItem="LLP-d5-UzR" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="oys-lY-9zr"/>
+                <constraint firstItem="f34-lW-sON" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="34" id="ykx-22-v1V"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="contactLabel" destination="MD0-7N-6nL" id="AmI-vr-ti8"/>
+                <outlet property="deleteButton" destination="f34-lW-sON" id="Op5-9X-XUY"/>
+                <outlet property="floor_unitLabel" destination="vCg-Zn-RmN" id="RHq-Mp-Bbv"/>
+                <outlet property="nameLabel" destination="rgh-du-TAz" id="h17-6s-0yu"/>
+                <outlet property="postalLabel" destination="ziG-Ai-ETW" id="3Y2-LR-dNf"/>
+                <outlet property="stackLabelView" destination="LLP-d5-UzR" id="euU-49-ZF5"/>
+                <outlet property="streetLabel" destination="Cvp-Vo-kRb" id="WD0-gq-U5s"/>
+            </connections>
+            <point key="canvasLocation" x="33.5" y="-119"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="trash" width="240" height="240"/>
+    </resources>
+</document>

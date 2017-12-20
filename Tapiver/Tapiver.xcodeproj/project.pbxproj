@@ -91,6 +91,17 @@
 		6CCEEFC31FCEB6400018FDB3 /* TAPDiscoverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6CCEEFC11FCEB6400018FDB3 /* TAPDiscoverViewController.xib */; };
 		6CCEEFC71FCEB6600018FDB3 /* TAPFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CCEEFC51FCEB6600018FDB3 /* TAPFeedViewController.swift */; };
 		6CCEEFC81FCEB6600018FDB3 /* TAPFeedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6CCEEFC61FCEB6600018FDB3 /* TAPFeedViewController.xib */; };
+		840AE7971FE786A100B34260 /* TAPAddressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 840AE7961FE786A100B34260 /* TAPAddressView.xib */; };
+		840AE7991FE7884300B34260 /* TAPAddressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840AE7981FE7884300B34260 /* TAPAddressView.swift */; };
+		8420B5781FE8C3EC00FCC383 /* TAPAddNewAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8420B5761FE8C3EC00FCC383 /* TAPAddNewAddressViewController.swift */; };
+		8420B5791FE8C3EC00FCC383 /* TAPAddNewAddressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8420B5771FE8C3EC00FCC383 /* TAPAddNewAddressViewController.xib */; };
+		84562CB21FE7BD5800DAB39D /* TAPAccountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84562CB01FE7BD5800DAB39D /* TAPAccountTableViewController.swift */; };
+		84562CB31FE7BD5800DAB39D /* TAPAccountTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84562CB11FE7BD5800DAB39D /* TAPAccountTableViewController.xib */; };
+		84562CB51FE7C85300DAB39D /* TAPProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84562CB41FE7C85300DAB39D /* TAPProfileModel.swift */; };
+		848054801FE91C630064C203 /* TAPEmailChangeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8480547F1FE91C630064C203 /* TAPEmailChangeView.xib */; };
+		848054821FE91C6D0064C203 /* TAPEmailChangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848054811FE91C6D0064C203 /* TAPEmailChangeView.swift */; };
+		848054851FE925880064C203 /* TAPAboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 848054841FE925880064C203 /* TAPAboutViewController.xib */; };
+		848054871FE925930064C203 /* TAPAboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848054861FE925930064C203 /* TAPAboutViewController.swift */; };
 		B0B0567D1FC084CD001E4659 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B0567C1FC084CD001E4659 /* AppDelegate.swift */; };
 		B0B056841FC084CD001E4659 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0B056831FC084CD001E4659 /* Assets.xcassets */; };
 		B0B056871FC084CD001E4659 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0B056851FC084CD001E4659 /* LaunchScreen.storyboard */; };
@@ -202,6 +213,17 @@
 		6CCEEFC11FCEB6400018FDB3 /* TAPDiscoverViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TAPDiscoverViewController.xib; sourceTree = "<group>"; };
 		6CCEEFC51FCEB6600018FDB3 /* TAPFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPFeedViewController.swift; sourceTree = "<group>"; };
 		6CCEEFC61FCEB6600018FDB3 /* TAPFeedViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TAPFeedViewController.xib; sourceTree = "<group>"; };
+		840AE7961FE786A100B34260 /* TAPAddressView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TAPAddressView.xib; sourceTree = "<group>"; };
+		840AE7981FE7884300B34260 /* TAPAddressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPAddressView.swift; sourceTree = "<group>"; };
+		8420B5761FE8C3EC00FCC383 /* TAPAddNewAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPAddNewAddressViewController.swift; sourceTree = "<group>"; };
+		8420B5771FE8C3EC00FCC383 /* TAPAddNewAddressViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TAPAddNewAddressViewController.xib; sourceTree = "<group>"; };
+		84562CB01FE7BD5800DAB39D /* TAPAccountTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPAccountTableViewController.swift; sourceTree = "<group>"; };
+		84562CB11FE7BD5800DAB39D /* TAPAccountTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TAPAccountTableViewController.xib; sourceTree = "<group>"; };
+		84562CB41FE7C85300DAB39D /* TAPProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPProfileModel.swift; sourceTree = "<group>"; };
+		8480547F1FE91C630064C203 /* TAPEmailChangeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TAPEmailChangeView.xib; sourceTree = "<group>"; };
+		848054811FE91C6D0064C203 /* TAPEmailChangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPEmailChangeView.swift; sourceTree = "<group>"; };
+		848054841FE925880064C203 /* TAPAboutViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TAPAboutViewController.xib; sourceTree = "<group>"; };
+		848054861FE925930064C203 /* TAPAboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPAboutViewController.swift; sourceTree = "<group>"; };
 		B0B056791FC084CD001E4659 /* Tapiver.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tapiver.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0B0567C1FC084CD001E4659 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B0B056831FC084CD001E4659 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -625,6 +647,47 @@
 			path = Category;
 			sourceTree = "<group>";
 		};
+		840AE7831FE77A7200B34260 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				8480547E1FE91C390064C203 /* EmailChangeView */,
+				848054831FE925670064C203 /* AboutView */,
+				840AE7951FE780C600B34260 /* AddressView */,
+				84562CB01FE7BD5800DAB39D /* TAPAccountTableViewController.swift */,
+				84562CB11FE7BD5800DAB39D /* TAPAccountTableViewController.xib */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
+		840AE7951FE780C600B34260 /* AddressView */ = {
+			isa = PBXGroup;
+			children = (
+				840AE7981FE7884300B34260 /* TAPAddressView.swift */,
+				840AE7961FE786A100B34260 /* TAPAddressView.xib */,
+				8420B5761FE8C3EC00FCC383 /* TAPAddNewAddressViewController.swift */,
+				8420B5771FE8C3EC00FCC383 /* TAPAddNewAddressViewController.xib */,
+			);
+			path = AddressView;
+			sourceTree = "<group>";
+		};
+		8480547E1FE91C390064C203 /* EmailChangeView */ = {
+			isa = PBXGroup;
+			children = (
+				848054811FE91C6D0064C203 /* TAPEmailChangeView.swift */,
+				8480547F1FE91C630064C203 /* TAPEmailChangeView.xib */,
+			);
+			path = EmailChangeView;
+			sourceTree = "<group>";
+		};
+		848054831FE925670064C203 /* AboutView */ = {
+			isa = PBXGroup;
+			children = (
+				848054861FE925930064C203 /* TAPAboutViewController.swift */,
+				848054841FE925880064C203 /* TAPAboutViewController.xib */,
+			);
+			path = AboutView;
+			sourceTree = "<group>";
+		};
 		B0B056701FC084CD001E4659 = {
 			isa = PBXGroup;
 			children = (
@@ -727,6 +790,7 @@
 				6C86012C1FCD6D56004E7CAE /* IntroApp */,
 				6C8601261FCD6D21004E7CAE /* Splash */,
 				6C86011D1FCD693D004E7CAE /* LoginPageMain */,
+				840AE7831FE77A7200B34260 /* Account */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -741,6 +805,7 @@
 				6C1E68631FDA864D00BC1183 /* TAPFeedApiModel.swift */,
 				033458291FE1677200BFC66E /* TAPProductListModel.swift */,
 				0334582B1FE1769400BFC66E /* TAPSellerAddressModel.swift */,
+				84562CB41FE7C85300DAB39D /* TAPProfileModel.swift */,
 			);
 			path = ApiModel;
 			sourceTree = "<group>";
@@ -848,6 +913,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6C86013B1FCD70E5004E7CAE /* splash02@2x.png in Resources */,
+				848054801FE91C630064C203 /* TAPEmailChangeView.xib in Resources */,
 				6C66BFAA1FCE6FA10092A006 /* TAPSignupPasswordViewController.xib in Resources */,
 				6C8601251FCD6CD0004E7CAE /* splash@2x.png in Resources */,
 				6C4DA0061FE1353100E0774A /* TAPProductTableViewCell.xib in Resources */,
@@ -859,6 +925,7 @@
 				6C4DA00A1FE13A4A00E0774A /* TAPProductDescriptionViewCell.xib in Resources */,
 				C5C953181FE2195D008D2B6F /* TAPCategoryLever0Cell.xib in Resources */,
 				0315552F1FE591F60082E709 /* TAPStorePageInfoLocationCell.xib in Resources */,
+				84562CB31FE7BD5800DAB39D /* TAPAccountTableViewController.xib in Resources */,
 				0315552B1FE591810082E709 /* TAPStorePageInfoDescriptionCell.xib in Resources */,
 				6C66BFB21FCEAE160092A006 /* TAPForgotPasswordViewController.xib in Resources */,
 				6C66BFB81FCEB3870092A006 /* TAPMainTabbarViewController.xib in Resources */,
@@ -867,6 +934,7 @@
 				6CCEEFBF1FCEB5C50018FDB3 /* TAPDealsViewController.xib in Resources */,
 				6CCEEFC31FCEB6400018FDB3 /* TAPDiscoverViewController.xib in Resources */,
 				6C86013A1FCD70E5004E7CAE /* splash01@2x.png in Resources */,
+				8420B5791FE8C3EC00FCC383 /* TAPAddNewAddressViewController.xib in Resources */,
 				03AE841A1FDEFE5F006D6986 /* TAPMallPageDealsCell.xib in Resources */,
 				6C8601311FCD6D70004E7CAE /* TAPIntroAppViewController.xib in Resources */,
 				033458321FE1943400BFC66E /* TAPMainPageHeaderView.xib in Resources */,
@@ -881,6 +949,8 @@
 				6C1070A81FD92A99001887BB /* TAPFeedCollectionViewCell.xib in Resources */,
 				033458371FE1A56800BFC66E /* TAPStorePageViewController.xib in Resources */,
 				6C1E68681FDA9B9A00BC1183 /* TAPFeedTableViewCell.xib in Resources */,
+				840AE7971FE786A100B34260 /* TAPAddressView.xib in Resources */,
+				848054851FE925880064C203 /* TAPAboutViewController.xib in Resources */,
 				6C7DA0531FCFEDDE00E3F3E4 /* bg_signup.png in Resources */,
 				C5C9531C1FE21980008D2B6F /* TAPCategoryLever1Cell.xib in Resources */,
 				03AE840F1FDEE82F006D6986 /* TAPHeaderView.xib in Resources */,
@@ -902,18 +972,22 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Tapiver/Pods-Tapiver-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/AMPopTip/AMPopTip.framework",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AMPopTip.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 			);
@@ -988,9 +1062,12 @@
 				6C8601351FCD6E69004E7CAE /* TAPIntroPageViewController.swift in Sources */,
 				C5C953171FE2195D008D2B6F /* TAPCategoryLever0Cell.swift in Sources */,
 				03AE84061FDEE416006D6986 /* TAPBaseViewController.swift in Sources */,
+				8420B5781FE8C3EC00FCC383 /* TAPAddNewAddressViewController.swift in Sources */,
 				6C8601301FCD6D70004E7CAE /* TAPIntroAppViewController.swift in Sources */,
+				84562CB21FE7BD5800DAB39D /* TAPAccountTableViewController.swift in Sources */,
 				B0B0567D1FC084CD001E4659 /* AppDelegate.swift in Sources */,
 				6C86013F1FCD732B004E7CAE /* TAPMainFrame.swift in Sources */,
+				848054821FE91C6D0064C203 /* TAPEmailChangeView.swift in Sources */,
 				031555101FE2D2A40082E709 /* TAPBaseHeaderView.swift in Sources */,
 				6C8601201FCD696A004E7CAE /* TAPLoginPageMainViewController.swift in Sources */,
 				6CCEEFBA1FCEB5B70018FDB3 /* TAPCategoryViewController.swift in Sources */,
@@ -1001,6 +1078,7 @@
 				03AE840D1FDEE80B006D6986 /* TAPHeaderView.swift in Sources */,
 				6C66BFA91FCE6FA10092A006 /* TAPSignupPasswordViewController.swift in Sources */,
 				6C1E68671FDA9B9A00BC1183 /* TAPFeedTableViewCell.swift in Sources */,
+				840AE7991FE7884300B34260 /* TAPAddressView.swift in Sources */,
 				6C86010E1FCD683B004E7CAE /* TAPWebservice.swift in Sources */,
 				6C7DA0511FCFE95300E3F3E4 /* TAPContant.swift in Sources */,
 				03AE84121FDEE997006D6986 /* TAPMallPageShopViewController.swift in Sources */,
@@ -1015,9 +1093,11 @@
 				6C4DA0001FE132DF00E0774A /* TAPProductMainPageViewController.swift in Sources */,
 				6C8D08FB1FD7D70200B208DA /* TAPProductModel.swift in Sources */,
 				03AE84191FDEFE5F006D6986 /* TAPMallPageDealsCell.swift in Sources */,
+				84562CB51FE7C85300DAB39D /* TAPProfileModel.swift in Sources */,
 				0334582A1FE1677200BFC66E /* TAPProductListModel.swift in Sources */,
 				6C86012A1FCD6D3E004E7CAE /* TAPSplashViewController.swift in Sources */,
 				0315552A1FE591810082E709 /* TAPStorePageInfoDescriptionCell.swift in Sources */,
+				848054871FE925930064C203 /* TAPAboutViewController.swift in Sources */,
 				6CCEEFC21FCEB6400018FDB3 /* TAPDiscoverViewController.swift in Sources */,
 				0334582C1FE1769400BFC66E /* TAPSellerAddressModel.swift in Sources */,
 				6C1070A71FD92A99001887BB /* TAPFeedCollectionViewCell.swift in Sources */,
@@ -1154,7 +1234,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 8V336PTMDN;
 				INFOPLIST_FILE = "$(SRCROOT)/Tapiver/Application/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1174,7 +1254,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 8V336PTMDN;
 				INFOPLIST_FILE = "$(SRCROOT)/Tapiver/Application/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

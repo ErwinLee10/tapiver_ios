@@ -27,7 +27,7 @@ class TAPWebservice: NSObject {
         let requestSerializer = AFJSONRequestSerializer()
         requestSerializer.stringEncoding = String.Encoding.utf8.rawValue
         self.requestManager.requestSerializer = requestSerializer
-        self.requestManager.responseSerializer = AFJSONResponseSerializer()
+        self.requestManager.responseSerializer = AFJSONResponseSerializer(readingOptions: .allowFragments)
         self.requestManager.requestSerializer.timeoutInterval = TimeInterval(60)
         
         if let contentType = self.requestManager.responseSerializer.acceptableContentTypes {
@@ -99,6 +99,25 @@ class TAPWebservice: NSObject {
         sendPOSTRequest(path: apiPath, params: params as NSDictionary?, headers: header as NSDictionary, responseObjectClass: responseObjectClass, responseHandler: responseHandler)
     }
     
+    func logout(responseHandler: @escaping(_ success: Bool) -> Void) {
+        let header = ["Content-Type": "application/json",
+                      "Authorization": TAPGlobal.shared.getLoginModel()?.webSessionId ?? ""] as NSDictionary
+        let allKeys = header.allKeys as? [String] ?? []
+        for key in allKeys {
+            let value = header.object(forKey: key)
+            self.requestManager.requestSerializer.setValue(value as? String, forHTTPHeaderField: key)
+        }
+        let path = API_PATH(path: "/api/v1/u/\(TAPGlobal.shared.getLoginModel()?.userId ?? "0")/logout")
+        self.requestManager.delete(path, parameters: nil, success: { (task, responseObject) in
+            TAPGlobal.shared.deleteProfileModel()
+            TAPGlobal.shared.deleteLoginModel()
+            TAPGlobal.shared.saveHasLogin(isLogin: false)
+            responseHandler(true)
+        }, failure: { (task, responseObject) in
+            responseHandler(false)
+        })
+    }
+    
     func sendPOSTRequest (path:String!,
                           params:NSDictionary?,
                           headers:NSDictionary?,
@@ -128,6 +147,54 @@ class TAPWebservice: NSObject {
             responseHandler(false, nil);
         })
         
+    }
+    
+    func sendPOSTRequest (path:String!, params:NSDictionary?, responseHandler: @escaping(_ success: Bool, _ value: Int) -> Void) {
+        let header = ["Content-Type": "application/json",
+                      "Authorization": TAPGlobal.shared.getLoginModel()?.webSessionId ?? ""] as NSDictionary
+        let allKeys = header.allKeys as? [String] ?? []
+        for key in allKeys {
+            let value = header.object(forKey: key)
+            self.requestManager.requestSerializer.setValue(value as? String, forHTTPHeaderField: key)
+        }
+        
+        self.requestManager!.post(path, parameters:params , progress: nil, success: {(task, responseObject) -> Void in
+            
+            print("responseObject ->> \(String(describing: responseObject))")
+            responseHandler(true, responseObject as! Int)
+            
+        }, failure: { (task, responseOBJ) -> Void in
+            
+            print("errorObject ->> \(String(describing: responseOBJ))")
+            responseHandler(false, 0)
+        })
+        
+    }
+    
+    func sendDELETERequest(path: String, responseHandler: @escaping(_ success: Bool) -> Void) {
+        
+        let apiPath = API_PATH(path: path)
+        
+        print("====================\nRequest: path: \(apiPath)")
+        self.requestManager.delete(apiPath, parameters: nil, success: { (task, responseObject) -> Void in
+            responseHandler(true);
+        }) { (task, responseOBJ) in
+            print("errorObject ->> \(String(describing: responseOBJ))")
+            responseHandler(false);
+        }
+    }
+    
+    func sendPUTRequest(path: String, parameters: [String: Any]?, responseHandler: @escaping(_ success: Bool) -> Void) {
+        
+        let apiPath = API_PATH(path: path)
+        
+        print("====================\nRequest: path: \(apiPath)")
+        self.requestManager.put(apiPath, parameters: parameters, success: { (task, responseObject) -> Void in
+            responseHandler(true);
+        }) { (task, responseOBJ) in
+            print("errorObject ->> \(String(describing: responseOBJ))")
+            responseHandler(false);
+        }
     }
     
     func sendMultiPartFile(path: String,
