@@ -31,6 +31,7 @@ class TAPStorePageInformationViewController: UIViewController {
         contentTableView.tableHeaderView = UIView(frame: CGRect.init(x: 0, y: 0, width: contentTableView.frame.width, height: 0.01))
         contentTableView.tableFooterView = UIView(frame: CGRect.init(x: 0, y: 0, width: contentTableView.frame.width, height: 0.01))
 //        self.edgesForExtendedLayout = UIRectEdge.init(rawValue: 0)
+        containerView.layer.masksToBounds = true
     }
     
     private func showView() {
