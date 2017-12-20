@@ -38,6 +38,7 @@ class TAPAddressView: UIView {
         streetLabel.text = street
         floor_unitLabel.text = "#" + floor + "-" + unit
         postalLabel.text = postal
+        nameLabel.font = UIFont.boldSystemFont(ofSize: 14.0)
     }
     @IBAction func deleteButtonTap(_ sender: UIButton) {
         TAPWebservice.shareInstance.sendDELETERequest(path: "/api/v1/u/\(TAPGlobal.shared.getLoginModel()?.userId ?? "")/address/\(String(id))") { (check) in

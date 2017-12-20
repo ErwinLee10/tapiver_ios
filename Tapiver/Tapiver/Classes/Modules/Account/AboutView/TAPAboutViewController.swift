@@ -9,6 +9,7 @@
 import Foundation
 
 class TAPAboutViewController: UIViewController {
+    @IBOutlet weak var version: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,5 +19,6 @@ class TAPAboutViewController: UIViewController {
         self.navigationController!.navigationBar.topItem!.backBarButtonItem = backButton
         self.title = "About"
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+        self.version.text = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
     }
 }

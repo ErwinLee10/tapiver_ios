@@ -46,6 +46,8 @@ class TAPAccountTableViewController: UIViewController, TAPEmailChangeViewDelegat
         self.navigationItem.leftBarButtonItem = backButton
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         
+        nameTextField.font = UIFont.boldSystemFont(ofSize: 17.0)
+        
         setupEvent()
         
     }
@@ -81,14 +83,14 @@ class TAPAccountTableViewController: UIViewController, TAPEmailChangeViewDelegat
             
             var y: CGFloat = 50
             for i in 0..<addressViewList.count {
-                addressViewList[i].heightAnchor.constraint(equalToConstant: 119.0).isActive = true
+                addressViewList[i].heightAnchor.constraint(equalToConstant: 111.0).isActive = true
                 addressViewList[i].widthAnchor.constraint(equalToConstant: self.addressStackView.frame.width).isActive = true
 
                 self.addressStackView.addArrangedSubview(addressViewList[i])
-                y += 119
+                y += 111
             }
             
-            y -= 119
+            y -= 111
             self.viewContainAddress.frame = CGRect(x: self.viewContainAddress.frame.origin.x, y: self.viewContainAddress.frame.origin.y, width: self.viewContainAddress.frame.width, height: y)
             
             y -= 50
@@ -225,13 +227,13 @@ class TAPAccountTableViewController: UIViewController, TAPEmailChangeViewDelegat
         let addressView: TAPAddressView = Bundle.main.loadNibNamed("TAPAddressView", owner: nil, options: nil)?.first as! TAPAddressView
         addressView.setData(name: address.alias!, contactNumber: address.contact!, street: address.streetName!, floor: address.floor!, unit: address.unitNumber!, postal: address.postalCode!)
         addressView.id = address.id
-        addressView.heightAnchor.constraint(equalToConstant: 119.0).isActive = true
+        addressView.heightAnchor.constraint(equalToConstant: 111.0).isActive = true
         addressView.widthAnchor.constraint(equalToConstant: self.addressStackView.frame.width).isActive = true
         self.addressStackView.addArrangedSubview(addressView)
         
         self.scrollView.layoutIfNeeded()
         self.scrollView.layoutSubviews()
-        self.scrollView.contentSize = CGSize(width: self.scrollView.contentSize.width, height: self.scrollView.contentSize.height + 119)
+        self.scrollView.contentSize = CGSize(width: self.scrollView.contentSize.width, height: self.scrollView.contentSize.height + 111)
     }
     
     func deleteAddress(id: Int) {
@@ -240,7 +242,7 @@ class TAPAccountTableViewController: UIViewController, TAPEmailChangeViewDelegat
                 profileData.address?.listProfileAddress?.remove(at: i)
                 self.addressStackView.arrangedSubviews[i+1].isHidden = true
                 self.addressStackView.removeArrangedSubview(self.addressStackView.arrangedSubviews[i+1])
-                self.scrollView.contentSize = CGSize(width: self.scrollView.contentSize.width, height: self.scrollView.contentSize.height - 119)
+                self.scrollView.contentSize = CGSize(width: self.scrollView.contentSize.width, height: self.scrollView.contentSize.height - 111)
                 break
             }
         }
