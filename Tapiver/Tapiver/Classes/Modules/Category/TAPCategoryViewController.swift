@@ -57,6 +57,12 @@ class TAPCategoryViewController: UIViewController {
         }
         
     }
+    
+    @IBAction func acTap(_ sender: Any) {
+        let tap: TAPAddressMethodController = TAPAddressMethodController()
+        self.navigationController?.pushViewController(tap, animated: true)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

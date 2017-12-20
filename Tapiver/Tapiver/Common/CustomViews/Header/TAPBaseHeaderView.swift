@@ -29,7 +29,8 @@ class TAPBaseHeaderView: UIView {
     
     
     func handleCartTouch() {
-        
+        let cartVC = TAPCartViewController(nibName: "TAPCartViewController", bundle: nil)
+        TAPMainFrame.getNavi().pushViewController(cartVC, animated: true)
     }
     
     func handleSearchTouch() {

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="124" id="KGk-i7-Jjw" customClass="TAPCartCouponTableViewCell" customModule="Tapiver" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="124"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="123.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UlT-3V-Pj2">
+                        <rect key="frame" x="25" y="66" width="270" height="35"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zGj-Xd-jxP">
+                                <rect key="frame" x="0.0" y="0.0" width="220" height="35"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter code here" textAlignment="natural" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="Y8d-Ca-wby">
+                                        <rect key="frame" x="0.0" y="0.0" width="220" height="35"/>
+                                        <color key="textColor" white="0.43196614579999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="Y8d-Ca-wby" secondAttribute="bottom" id="OHA-gO-TT3"/>
+                                    <constraint firstAttribute="trailing" secondItem="Y8d-Ca-wby" secondAttribute="trailing" id="Zm1-Xx-V00"/>
+                                    <constraint firstItem="Y8d-Ca-wby" firstAttribute="top" secondItem="zGj-Xd-jxP" secondAttribute="top" id="dcP-AB-vCg"/>
+                                    <constraint firstItem="Y8d-Ca-wby" firstAttribute="leading" secondItem="zGj-Xd-jxP" secondAttribute="leading" id="hgl-WA-xaz"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8R4-fL-eVl">
+                                <rect key="frame" x="225" y="0.0" width="45" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="45" id="2xS-rj-NmY"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
+                                <state key="normal" title="SUBMIT">
+                                    <color key="titleColor" red="0.10980392156862745" green="0.66666666666666663" blue="0.71372549019607845" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="submitTouched:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="57d-YO-HaP"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="8R4-fL-eVl" firstAttribute="leading" secondItem="zGj-Xd-jxP" secondAttribute="trailing" constant="5" id="AcO-P0-eQc"/>
+                            <constraint firstAttribute="bottom" secondItem="zGj-Xd-jxP" secondAttribute="bottom" id="SGj-vC-cNY"/>
+                            <constraint firstAttribute="bottom" secondItem="8R4-fL-eVl" secondAttribute="bottom" id="SxX-zq-92K"/>
+                            <constraint firstAttribute="height" constant="35" id="bCk-5B-96p"/>
+                            <constraint firstItem="zGj-Xd-jxP" firstAttribute="top" secondItem="UlT-3V-Pj2" secondAttribute="top" id="jnc-jA-FSd"/>
+                            <constraint firstAttribute="trailing" secondItem="8R4-fL-eVl" secondAttribute="trailing" id="o5K-ww-dnD"/>
+                            <constraint firstItem="zGj-Xd-jxP" firstAttribute="leading" secondItem="UlT-3V-Pj2" secondAttribute="leading" id="xwN-rG-Pg3"/>
+                            <constraint firstItem="8R4-fL-eVl" firstAttribute="top" secondItem="UlT-3V-Pj2" secondAttribute="top" id="zgR-fo-ovI"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8DI-8P-XxF">
+                        <rect key="frame" x="25" y="25" width="44.5" height="26"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="8DI-8P-XxF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="25" id="83b-hY-joD"/>
+                    <constraint firstAttribute="trailing" secondItem="UlT-3V-Pj2" secondAttribute="trailing" constant="25" id="Nvj-oU-st5"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="UlT-3V-Pj2" secondAttribute="bottom" constant="12" id="OOd-6h-8O7"/>
+                    <constraint firstItem="UlT-3V-Pj2" firstAttribute="top" secondItem="8DI-8P-XxF" secondAttribute="bottom" constant="15" id="f3U-Fx-rAW"/>
+                    <constraint firstItem="UlT-3V-Pj2" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="25" id="h7X-cM-WaV"/>
+                    <constraint firstItem="8DI-8P-XxF" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="14" id="r4Y-8q-MIW"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="couponTextField" destination="Y8d-Ca-wby" id="cVK-FG-a7Q"/>
+                <outlet property="headerTitleLabel" destination="8DI-8P-XxF" id="m4i-iF-0mI"/>
+            </connections>
+            <point key="canvasLocation" x="34" y="94"/>
+        </tableViewCell>
+    </objects>
+</document>

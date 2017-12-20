@@ -37,7 +37,7 @@
                             <constraints>
                                 <constraint firstAttribute="width" constant="30" id="iX5-C8-7tX"/>
                             </constraints>
-                            <state key="normal" image="icons_search"/>
+                            <state key="normal" image="ic_back"/>
                             <connections>
                                 <action selector="backTouched:" destination="-1" eventType="touchUpInside" id="NhE-0P-1nm"/>
                             </connections>
@@ -181,6 +181,7 @@
         </view>
     </objects>
     <resources>
+        <image name="ic_back" width="32" height="32"/>
         <image name="icon_cart" width="32" height="32"/>
         <image name="icon_info" width="52" height="52"/>
         <image name="icon_menu" width="32" height="32"/>
