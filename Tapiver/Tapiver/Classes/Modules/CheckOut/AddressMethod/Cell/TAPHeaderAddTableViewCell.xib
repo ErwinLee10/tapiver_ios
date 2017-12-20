@@ -41,7 +41,7 @@
                             <constraint firstAttribute="width" secondItem="SkF-lU-2WI" secondAttribute="height" multiplier="1:1" id="L6v-Q5-l19"/>
                             <constraint firstAttribute="height" constant="16" id="THT-CV-AWL"/>
                         </constraints>
-                        <state key="normal" image="menu_cashback-icon"/>
+                        <state key="normal" image="ic_checkbox"/>
                         <state key="selected" image="ic_checkBox_select"/>
                         <connections>
                             <action selector="acCheckBox:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Un0-8n-dD8"/>
@@ -69,7 +69,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="ic_checkBox_select" width="8" height="8"/>
-        <image name="menu_cashback-icon" width="25" height="26"/>
+        <image name="ic_checkBox_select" width="25" height="25"/>
+        <image name="ic_checkbox" width="25" height="25"/>
     </resources>
 </document>
