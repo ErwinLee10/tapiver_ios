@@ -10,4 +10,12 @@ import UIKit
 
 class TAPHistoryModel: TAPBaseEntity {
     var orderList: [TAPOrderModel] = []
+    
+    override func parserResponseArray(dics: [NSDictionary]) {
+        for item in dics {
+            let orderModel = TAPOrderModel()
+            orderModel.parserResponse(dic: item)
+            orderList.append(orderModel)
+        }
+    }
 }

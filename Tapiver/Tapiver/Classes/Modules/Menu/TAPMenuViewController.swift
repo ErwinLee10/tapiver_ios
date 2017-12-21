@@ -58,10 +58,11 @@ extension TAPMenuViewController: UITableViewDataSource {
 extension TAPMenuViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("didSelectRowAt")
+        self.dismiss(animated: false, completion: nil)
         if selectionHandler != nil {
             selectionHandler!(indexPath.row)
         }
         
-        self.dismiss(animated: true, completion: nil)
+        
     }
 }

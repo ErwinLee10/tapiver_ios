@@ -33,6 +33,22 @@ class TAPHistoryOrderInformationTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    func fillData(orderData: TAPOrderModel) {
+        addressLabel.text = orderData.sellerAddress?.formattedAddress ?? ""
+        moneyValueLabel.text = "\(orderData.cashback ?? 0)"
+        totalMoneyLabel.text = "0"
+        
+        if orderData.orderStatus != "Ready for Pick up" {
+            confirmHeightConstraint.constant = 0
+            reportHeightConstraint.constant = 0
+        } else {
+            confirmHeightConstraint.constant = 40
+            reportHeightConstraint.constant = 40
+        }
+        self.layoutIfNeeded()
+    }
+    
     @IBAction func confirmTouched(_ sender: Any) {
     }
     

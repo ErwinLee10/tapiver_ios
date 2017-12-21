@@ -23,14 +23,32 @@ class TAPHistoryHeaderView: UITableViewHeaderFooterView {
 
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
-        //
-        // Call tapHeader when tapping on this header
-        //
-        addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapHeader(_:))))
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        //
+        // Call tapHeader when tapping on this header
+        //
+        addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapHeader(_:))))
+        arrowButton.rotate(.pi)
+        self.backgroundColor = UIColor.white
+        arrowButton.isUserInteractionEnabled = false
+        statusButton.isUserInteractionEnabled = false
+    }
+    
+    func fillData(order: TAPOrderModel?) {
+        guard let orderData = order else {
+            return
+        }
+        orderIdLabel.text = "Order #" + (orderData.id ?? "")
+        timeLabel.text = String.stringFromTimeInterval(orderData.orderDate ?? 0)
+        statusButton.setTitle(orderData.orderStatus ?? "", for: .normal)
     }
     
     //
@@ -48,7 +66,7 @@ class TAPHistoryHeaderView: UITableViewHeaderFooterView {
         //
         // Animate the arrow rotation (see Extensions.swf)
         //
-//        arrowButton.rotate(collapsed ? 0.0 : .pi)
+        arrowButton.rotate(collapsed ? .pi : 0.0)
     }
 
 }
