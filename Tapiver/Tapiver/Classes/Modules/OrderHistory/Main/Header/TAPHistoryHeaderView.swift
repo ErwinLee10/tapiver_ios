@@ -13,6 +13,11 @@ protocol TAPHistoryHeaderViewDelegate: class {
 }
 
 class TAPHistoryHeaderView: UITableViewHeaderFooterView {
+    @IBOutlet weak var orderIdLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var statusButton: UIButton!
+    @IBOutlet weak var arrowButton: UIButton!
+    
     weak var delegate: TAPHistoryHeaderViewDelegate?
     var section: Int = 0
 
@@ -25,7 +30,7 @@ class TAPHistoryHeaderView: UITableViewHeaderFooterView {
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
     }
     
     //
@@ -43,7 +48,7 @@ class TAPHistoryHeaderView: UITableViewHeaderFooterView {
         //
         // Animate the arrow rotation (see Extensions.swf)
         //
-//        arrowLabel.rotate(collapsed ? 0.0 : .pi / 2)
+//        arrowButton.rotate(collapsed ? 0.0 : .pi)
     }
 
 }
