@@ -27,7 +27,9 @@ class TAPCartViewController: TAPBaseViewController {
     }
 
     @IBAction func proceedToCheckoutTouched(_ sender: Any) {
-        
+        let checkout = TAPAddressMethodController.init(nibName: "TAPAddressMethodController", bundle: nil)
+        checkout.cardList = cartListModel
+        self.navigationController?.pushViewController(checkout, animated: true)
     }
     
     @IBAction func couponButtonTouched(_ sender: Any) {

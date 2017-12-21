@@ -115,3 +115,39 @@ class TAPCouponModel: TAPBaseEntity {
         id = dic.value(forKey: TAPConstants.APIParams.id) as? intmax_t
     }
 }
+class TAPShippingModel: TAPBaseEntity {
+    var idShip: String?
+    var provider: String?
+    var type: String?
+    var price: Float = 0.0
+    var isPickup: Bool = false
+    var isfreeShipping: Bool = false
+    var additionalInfor: TAPAdditionalInformation?
+    
+    override func parserResponse(dic: NSDictionary) {
+        idShip = dic.value(forKey: TAPConstants.APIParams.id) as? String
+        provider = dic.value(forKey: TAPConstants.APIParams.provid) as? String
+        type = dic.value(forKey: TAPConstants.APIParams.type) as? String
+        if dic.value(forKey: TAPConstants.APIParams.price) is NSNull {
+            price  = dic.value(forKey: TAPConstants.APIParams.cashbackEarn) as! Float
+        }
+        isPickup = (dic.value(forKey: TAPConstants.APIParams.isPickup) != nil)
+        isfreeShipping  = (dic.value(forKey: TAPConstants.APIParams.freeShipping) != nil)
+        additionalInfor = TAPAdditionalInformation()
+        additionalInfor?.parserResponse(dic: dic.value(forKey: TAPConstants.APIParams.additionalInformation) as! NSDictionary) 
+    }
+}
+class TAPAdditionalInformation: TAPBaseEntity {
+    var time: String?
+    var cashbackPercentage: Float?
+    var cashbackEarned: Float?
+    override func parserResponse(dic: NSDictionary) {
+       time = dic.value(forKey: TAPConstants.APIParams.time) as? String
+        if dic.value(forKey: TAPConstants.APIParams.cashbackPercent) is NSNull {
+            cashbackPercentage  = dic.value(forKey: TAPConstants.APIParams.cashbackPercent) as? Float
+        }
+        if dic.value(forKey: TAPConstants.APIParams.cashbackEarn) is NSNull {
+            cashbackEarned  = dic.value(forKey: TAPConstants.APIParams.cashbackEarn) as? Float
+        }
+    }
+}
