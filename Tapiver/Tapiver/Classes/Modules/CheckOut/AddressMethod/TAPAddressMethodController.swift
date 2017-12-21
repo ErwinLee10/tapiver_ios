@@ -16,6 +16,7 @@ class TAPAddressMethodController: UIViewController {
     var listData = NSMutableArray()
     var listShipping = [TAPChecOutEntity]()
     var listBilling = [TAPChecOutEntity]()
+    public var cardList: TAPCartListModel?
     
     @IBOutlet weak var headerView: TAPHeaderView!
     
@@ -124,7 +125,7 @@ class TAPAddressMethodController: UIViewController {
         }
         
     }
-    
+  
     @IBAction func acPushOrder(_ sender: Any) {
         let review = TAPReViewOrderController.init(nibName: "TAPReViewOrderController", bundle: nil)
         self.navigationController?.pushViewController(review, animated: true)

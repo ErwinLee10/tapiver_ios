@@ -94,8 +94,14 @@ struct TAPConstants {
         static let itemName     = "itemName"
         static let discountPercentage     = "discountPercentage"
         static let itemPictures     = "itemPictures"
-        
-        
+        static let time                     = "time"
+        static let cashbackPercent          = "cashbackPercentage"
+        static let cashbackEarn             = "cashbackEarned"
+        static let provid                   = "provider"
+        static let type                     = "type"
+        static let price                    = "price"
+        static let freeShipping             = "freeShipping"
+        static let additionalInformation    = "additionalInformation"
     }
 }
 
