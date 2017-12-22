@@ -20,6 +20,7 @@ class TAPChecOutEntity: TAPBaseEntity {
     var typeCheckOutCell: CheckOutEntytiType! = .headerShippingAddress
     var addObj: TAPAddressModel?
     var isSelected: Bool = false
+    var listShipping =  [TAPCartItemModel]()
     
     override func parserResponse(dic: NSDictionary) {
         typeCheckOutCell =  CheckOutEntytiType.addressShipping

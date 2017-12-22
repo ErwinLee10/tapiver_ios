@@ -72,6 +72,7 @@ class TAPAddressMethodController: UIViewController {
         let listDataSection1:NSMutableArray = NSMutableArray()
         let cellShippingMethod: TAPChecOutEntity = TAPChecOutEntity()
         cellShippingMethod.typeCheckOutCell = CheckOutEntytiType.shippingMethod
+        cellShippingMethod.listShipping = cardList!.cartItemsPerSeller
         listDataSection1.add(cellShippingMethod)
         self.listData.add(listDataSection1)
         
@@ -125,7 +126,7 @@ class TAPAddressMethodController: UIViewController {
         }
         
     }
-  
+    
     @IBAction func acPushOrder(_ sender: Any) {
         let review = TAPReViewOrderController.init(nibName: "TAPReViewOrderController", bundle: nil)
         self.navigationController?.pushViewController(review, animated: true)
@@ -223,7 +224,11 @@ extension TAPAddressMethodController: UITableViewDataSource {
         if indexPath.section == 0 {
             return UITableViewAutomaticDimension
         }else {
-            return 366
+            var count = self.cardList!.cartItemsPerSeller.count
+            for item in self.cardList!.cartItemsPerSeller {
+               count += item.shippingOptions.count
+            }
+            return CGFloat(count) * 44.0 + 125.0
         }
     }
     
@@ -275,7 +280,6 @@ extension TAPAddressMethodController: UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "TAPShippingMethodCell", for: indexPath) as? TAPShippingMethodCell else {
                 return UITableViewCell()
             }
-            cell.setData()
             reCell = cell
             break
         default:
@@ -293,7 +297,7 @@ extension TAPAddressMethodController: TAPHeaderViewDelegate {
 }
 
 extension TAPAddressMethodController: TAPShippingMethodCellDelegate {
-    func acSelectShippingMethodAt(index: IndexPath, obj: TAPSubShippingEntity) {
+    func acSelectShippingMethodAt(index: IndexPath, obj: TAPShippingModel, withCard: TAPCartItemModel) {
         
     }
 }

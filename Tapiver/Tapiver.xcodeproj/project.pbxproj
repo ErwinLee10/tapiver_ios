@@ -151,7 +151,6 @@
 		C5D8E8991FE8C87A00E12E9F /* TAPAddNewAddressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5D8E8971FE8C87A00E12E9F /* TAPAddNewAddressCell.xib */; };
 		C5D8E89C1FE8DF7A00E12E9F /* TAPSubShippingMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D8E89A1FE8DF7A00E12E9F /* TAPSubShippingMethod.swift */; };
 		C5D8E89D1FE8DF7A00E12E9F /* TAPSubShippingMethod.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5D8E89B1FE8DF7A00E12E9F /* TAPSubShippingMethod.xib */; };
-		C5D8E89F1FE8EE9C00E12E9F /* TAPSubShippingEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5D8E89E1FE8EE9C00E12E9F /* TAPSubShippingEntity.swift */; };
 		C5DCD4941FE813B000F4F134 /* TAPAddressMethodController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5DCD4921FE813B000F4F134 /* TAPAddressMethodController.swift */; };
 		C5DCD4951FE813B000F4F134 /* TAPAddressMethodController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5DCD4931FE813B000F4F134 /* TAPAddressMethodController.xib */; };
 		C5DCD4991FE8149300F4F134 /* TAPHeaderAddTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5DCD4971FE8149300F4F134 /* TAPHeaderAddTableViewCell.swift */; };
@@ -160,6 +159,7 @@
 		C5DCD49E1FE814AD00F4F134 /* TAPAddessCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5DCD49C1FE814AD00F4F134 /* TAPAddessCell.xib */; };
 		C5DCD4A11FE814D200F4F134 /* TAPShippingMethodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5DCD49F1FE814D200F4F134 /* TAPShippingMethodCell.swift */; };
 		C5DCD4A21FE814D200F4F134 /* TAPShippingMethodCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5DCD4A01FE814D200F4F134 /* TAPShippingMethodCell.xib */; };
+		C5EBDB901FEBFE0B006BAD34 /* TAPSubShipingEn.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5EBDB8F1FEBFE0B006BAD34 /* TAPSubShipingEn.swift */; };
 		D33DB5415B68BDBD3452755B /* Pods_Tapiver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D246665402A90FDB19ADE64 /* Pods_Tapiver.framework */; };
 /* End PBXBuildFile section */
 
@@ -315,7 +315,6 @@
 		C5D8E8971FE8C87A00E12E9F /* TAPAddNewAddressCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TAPAddNewAddressCell.xib; sourceTree = "<group>"; };
 		C5D8E89A1FE8DF7A00E12E9F /* TAPSubShippingMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPSubShippingMethod.swift; sourceTree = "<group>"; };
 		C5D8E89B1FE8DF7A00E12E9F /* TAPSubShippingMethod.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TAPSubShippingMethod.xib; sourceTree = "<group>"; };
-		C5D8E89E1FE8EE9C00E12E9F /* TAPSubShippingEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPSubShippingEntity.swift; sourceTree = "<group>"; };
 		C5DCD4921FE813B000F4F134 /* TAPAddressMethodController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPAddressMethodController.swift; sourceTree = "<group>"; };
 		C5DCD4931FE813B000F4F134 /* TAPAddressMethodController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TAPAddressMethodController.xib; sourceTree = "<group>"; };
 		C5DCD4971FE8149300F4F134 /* TAPHeaderAddTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPHeaderAddTableViewCell.swift; sourceTree = "<group>"; };
@@ -324,6 +323,7 @@
 		C5DCD49C1FE814AD00F4F134 /* TAPAddessCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TAPAddessCell.xib; sourceTree = "<group>"; };
 		C5DCD49F1FE814D200F4F134 /* TAPShippingMethodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPShippingMethodCell.swift; sourceTree = "<group>"; };
 		C5DCD4A01FE814D200F4F134 /* TAPShippingMethodCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TAPShippingMethodCell.xib; sourceTree = "<group>"; };
+		C5EBDB8F1FEBFE0B006BAD34 /* TAPSubShipingEn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPSubShipingEn.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1031,7 +1031,7 @@
 			isa = PBXGroup;
 			children = (
 				C5D8E8941FE8B58400E12E9F /* TAPChecOutEntity.swift */,
-				C5D8E89E1FE8EE9C00E12E9F /* TAPSubShippingEntity.swift */,
+				C5EBDB8F1FEBFE0B006BAD34 /* TAPSubShipingEn.swift */,
 			);
 			path = CheckOutModel;
 			sourceTree = "<group>";
@@ -1283,6 +1283,7 @@
 				031555441FE718410082E709 /* TAPCartFooterTableViewCell.swift in Sources */,
 				0315553C1FE7118A0082E709 /* TAPCartCouponTableViewCell.swift in Sources */,
 				C5460A761FE3AE060028B446 /* TAPLandMarkView.swift in Sources */,
+				C5EBDB901FEBFE0B006BAD34 /* TAPSubShipingEn.swift in Sources */,
 				6C4DA00D1FE13B8800E0774A /* TAPProductShipTableViewCell.swift in Sources */,
 				C5B597701FE9E35C00E678C6 /* TAPReViewOrderController.swift in Sources */,
 				6C4DA0051FE1353100E0774A /* TAPProductTableViewCell.swift in Sources */,
@@ -1318,7 +1319,6 @@
 				8420B5781FE8C3EC00FCC383 /* TAPAddNewAddressViewController.swift in Sources */,
 				6C8601301FCD6D70004E7CAE /* TAPIntroAppViewController.swift in Sources */,
 				84562CB21FE7BD5800DAB39D /* TAPAccountTableViewController.swift in Sources */,
-				C5D8E89F1FE8EE9C00E12E9F /* TAPSubShippingEntity.swift in Sources */,
 				0336DB4F1FE815A5002D9A93 /* TAPDropdownListViewController.swift in Sources */,
 				B0B0567D1FC084CD001E4659 /* AppDelegate.swift in Sources */,
 				C5DCD4941FE813B000F4F134 /* TAPAddressMethodController.swift in Sources */,
