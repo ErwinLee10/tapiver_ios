@@ -30,7 +30,7 @@
                     <subviews>
                         <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eKl-Ek-xzy">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                            <color key="backgroundColor" red="0.89583937079999998" green="1" blue="0.21207344829999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" red="0.97647058823529409" green="0.65490196078431373" blue="0.16862745098039217" alpha="1" colorSpace="calibratedRGB"/>
                         </imageView>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="BN2-wb-nDO">
                             <rect key="frame" x="0.0" y="20" width="375" height="44"/>

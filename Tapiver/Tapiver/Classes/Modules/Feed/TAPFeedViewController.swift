@@ -108,6 +108,7 @@ extension TAPFeedViewController: TAPMainPageHeaderViewDelegate {
 extension TAPFeedViewController: TAPFeedTableViewCellDelegate {
     func tapShop(at row: Int) {
         let vc = TAPStorePageViewController(nibName: "TAPStorePageViewController", bundle: nil)
+        vc.feedModel = feedsApiModels?.feedModels[row]
         TAPMainFrame.getNavi().pushViewController(vc, animated: true)
     }
     

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 protocol TAPHeaderViewDelegate: TAPBaseHeaderViewDelegate {
 }
@@ -40,6 +41,10 @@ class TAPHeaderView: TAPBaseHeaderView {
     
     func setHeaderTitle(_ title: String) {
         titleLabel.text = title
+    }
+    
+    func setBackgroundImage(imageUrl: String) {
+        bgImageView.sd_setImage(with: URL.init(string: imageUrl), placeholderImage: nil, options: SDWebImageOptions.retryFailed, completed: nil)
     }
     
     func expandViewAnimation(_ expand: Bool) {

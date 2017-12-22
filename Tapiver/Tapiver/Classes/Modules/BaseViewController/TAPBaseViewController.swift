@@ -14,7 +14,7 @@ class TAPBaseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.view.backgroundColor = UIColor.init(netHex: 0xDEDEDE)
+        self.view.backgroundColor = UIColor.init(netHex: 0xF5F8F7)
     }
 
     override func didReceiveMemoryWarning() {
@@ -39,36 +39,44 @@ class TAPBaseViewController: UIViewController {
     }
     
     fileprivate func menuItemTouchHandler(itemIndex: Int) {
+        guard TAPGlobal.shared.hasLogin() else {
+             TAPMainFrame.showLoginPageMain()
+            return
+        }
+        
         switch itemIndex {
         case 0:
             break
         case 1:
-            let vc = TAPHistoryViewController(nibName: "TAPHistoryViewController", bundle: nil)
-            TAPMainFrame.getNavi().pushViewController(vc, animated: true)
+            showHistoryScreen()
         case 2:
             break
         case 3:
-            if TAPGlobal.shared.hasLogin() {
-                // get top ViewController
-                let root = UIApplication.shared.keyWindow?.rootViewController as! UINavigationController
-                let tabBar = root.topViewController as! TAPMainTabbarViewController
-                let naviTabBar = tabBar.viewControllers![tabBar.selectedIndex] as! UINavigationController
-                let topViewController = naviTabBar.topViewController
-                
-                // present TAPAccountViewController
-                let accountViewController: TAPAccountTableViewController = TAPAccountTableViewController(nibName: "TAPAccountTableViewController", bundle: nil)
-                let navi = UINavigationController(rootViewController: accountViewController)
-                navi.navigationBar.barTintColor = UIColor.init(netHex: 0x195B79)
-                topViewController?.present(navi, animated: true, completion: {
-                    
-                })
-            }
-            else {
-                TAPMainFrame.showLoginPageMain()
-            }
+            showAccountScreen()
         default:
             break
         }
+    }
+    
+    fileprivate func showHistoryScreen() {
+        let vc = TAPHistoryViewController(nibName: "TAPHistoryViewController", bundle: nil)
+        TAPMainFrame.getNavi().pushViewController(vc, animated: true)
+    }
+    
+    fileprivate func showAccountScreen() {
+        // get top ViewController
+        let root = UIApplication.shared.keyWindow?.rootViewController as! UINavigationController
+        let tabBar = root.topViewController as! TAPMainTabbarViewController
+        let naviTabBar = tabBar.viewControllers![tabBar.selectedIndex] as! UINavigationController
+        let topViewController = naviTabBar.topViewController
+        
+        // present TAPAccountViewController
+        let accountViewController: TAPAccountTableViewController = TAPAccountTableViewController(nibName: "TAPAccountTableViewController", bundle: nil)
+        let navi = UINavigationController(rootViewController: accountViewController)
+        navi.navigationBar.barTintColor = UIColor.init(netHex: 0x195B79)
+        topViewController?.present(navi, animated: true, completion: {
+            
+        })
     }
 }
 

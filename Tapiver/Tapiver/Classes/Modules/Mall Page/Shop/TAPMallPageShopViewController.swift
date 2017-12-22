@@ -83,6 +83,8 @@ extension TAPMallPageShopViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TAPFeedTableViewCell", for: indexPath) as! TAPFeedTableViewCell
+        cell.delegate = self
+        cell.row = indexPath.row
         cell.fillDataToView(model: feedModelList[indexPath.row])
         return cell
     }
@@ -108,6 +110,18 @@ extension TAPMallPageShopViewController: TAPHeaderViewDelegate {
     
     func headerViewDidTouchMenu() {
         showRightMenu()
+    }
+}
+
+extension TAPMallPageShopViewController: TAPFeedTableViewCellDelegate {
+    func tapShop(at row: Int) {
+        let vc = TAPStorePageViewController(nibName: "TAPStorePageViewController", bundle: nil)
+        vc.feedModel = feedModelList[row]
+        TAPMainFrame.getNavi().pushViewController(vc, animated: true)
+    }
+    
+    func tapIteamAt(index: NSIndexPath, indexItem: NSIndexPath) {
+        
     }
 }
 
