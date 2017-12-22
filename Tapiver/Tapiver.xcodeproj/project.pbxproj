@@ -50,6 +50,9 @@
 		037B69671FEB2DA500DCBD9D /* TAPOrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037B69661FEB2DA500DCBD9D /* TAPOrderModel.swift */; };
 		037B69691FEC69C400DCBD9D /* TAPOrderItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037B69681FEC69C400DCBD9D /* TAPOrderItemModel.swift */; };
 		037E907A1FED6F7800593983 /* CarDummy.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 037E90791FED6F2E00593983 /* CarDummy.geojson */; };
+		037E907E1FED859D00593983 /* TAPHistoryReportIssueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037E907C1FED859D00593983 /* TAPHistoryReportIssueViewController.swift */; };
+		037E907F1FED859D00593983 /* TAPHistoryReportIssueViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 037E907D1FED859D00593983 /* TAPHistoryReportIssueViewController.xib */; };
+		037E90811FED935800593983 /* UIAlertControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037E90801FED935800593983 /* UIAlertControllerExtension.swift */; };
 		039C57B91FE96EDF001C2BCB /* TAPHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039C57B71FE96EDF001C2BCB /* TAPHistoryViewController.swift */; };
 		039C57BA1FE96EDF001C2BCB /* TAPHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 039C57B81FE96EDF001C2BCB /* TAPHistoryViewController.xib */; };
 		039C57C01FE970F1001C2BCB /* TAPHistoryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039C57BF1FE970F1001C2BCB /* TAPHistoryHeaderView.swift */; };
@@ -212,6 +215,9 @@
 		037B69661FEB2DA500DCBD9D /* TAPOrderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPOrderModel.swift; sourceTree = "<group>"; };
 		037B69681FEC69C400DCBD9D /* TAPOrderItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPOrderItemModel.swift; sourceTree = "<group>"; };
 		037E90791FED6F2E00593983 /* CarDummy.geojson */ = {isa = PBXFileReference; lastKnownFileType = text; path = CarDummy.geojson; sourceTree = "<group>"; };
+		037E907C1FED859D00593983 /* TAPHistoryReportIssueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPHistoryReportIssueViewController.swift; sourceTree = "<group>"; };
+		037E907D1FED859D00593983 /* TAPHistoryReportIssueViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TAPHistoryReportIssueViewController.xib; sourceTree = "<group>"; };
+		037E90801FED935800593983 /* UIAlertControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertControllerExtension.swift; sourceTree = "<group>"; };
 		039C57B71FE96EDF001C2BCB /* TAPHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPHistoryViewController.swift; sourceTree = "<group>"; };
 		039C57B81FE96EDF001C2BCB /* TAPHistoryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TAPHistoryViewController.xib; sourceTree = "<group>"; };
 		039C57BF1FE970F1001C2BCB /* TAPHistoryHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPHistoryHeaderView.swift; sourceTree = "<group>"; };
@@ -453,9 +459,19 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		037E907B1FED854A00593983 /* Report */ = {
+			isa = PBXGroup;
+			children = (
+				037E907C1FED859D00593983 /* TAPHistoryReportIssueViewController.swift */,
+				037E907D1FED859D00593983 /* TAPHistoryReportIssueViewController.xib */,
+			);
+			path = Report;
+			sourceTree = "<group>";
+		};
 		039C57B61FE96E9D001C2BCB /* OrderHistory */ = {
 			isa = PBXGroup;
 			children = (
+				037E907B1FED854A00593983 /* Report */,
 				037B69631FEB2BD200DCBD9D /* Models */,
 				039C57BC1FE97092001C2BCB /* Main */,
 			);
@@ -936,6 +952,7 @@
 				B0B056921FC0860F001E4659 /* BCAExtention.swift */,
 				B0ECB4BC1FD2D6CD00E97703 /* TAPUtils.swift */,
 				B0ECB4BE1FD2D77600E97703 /* TAPDialogUtils.swift */,
+				037E90801FED935800593983 /* UIAlertControllerExtension.swift */,
 			);
 			path = Extention;
 			sourceTree = "<group>";
@@ -1189,6 +1206,7 @@
 				6CCEEFBF1FCEB5C50018FDB3 /* TAPDealsViewController.xib in Resources */,
 				C5B597711FE9E35C00E678C6 /* TAPReViewOrderController.xib in Resources */,
 				C5DCD49E1FE814AD00F4F134 /* TAPAddessCell.xib in Resources */,
+				037E907F1FED859D00593983 /* TAPHistoryReportIssueViewController.xib in Resources */,
 				6CCEEFC31FCEB6400018FDB3 /* TAPDiscoverViewController.xib in Resources */,
 				C5DCD49A1FE8149300F4F134 /* TAPHeaderAddTableViewCell.xib in Resources */,
 				6C86013A1FCD70E5004E7CAE /* splash01@2x.png in Resources */,
@@ -1311,6 +1329,7 @@
 				C5EBDB901FEBFE0B006BAD34 /* TAPSubShipingEn.swift in Sources */,
 				6C4DA00D1FE13B8800E0774A /* TAPProductShipTableViewCell.swift in Sources */,
 				037B69651FEB2BFA00DCBD9D /* TAPHistoryModel.swift in Sources */,
+				037E907E1FED859D00593983 /* TAPHistoryReportIssueViewController.swift in Sources */,
 				C5B597701FE9E35C00E678C6 /* TAPReViewOrderController.swift in Sources */,
 				6C4DA0051FE1353100E0774A /* TAPProductTableViewCell.swift in Sources */,
 				C5460A7B1FE3C8BA0028B446 /* TAPLandMark.swift in Sources */,
@@ -1324,6 +1343,7 @@
 				031555121FE2D5C00082E709 /* TAPStorePageHeaderView.swift in Sources */,
 				C5B597751FE9E39D00E678C6 /* TAPReviewCell.swift in Sources */,
 				C5D8E89C1FE8DF7A00E12E9F /* TAPSubShippingMethod.swift in Sources */,
+				037E90811FED935800593983 /* UIAlertControllerExtension.swift in Sources */,
 				033458361FE1A56800BFC66E /* TAPStorePageViewController.swift in Sources */,
 				C5B694BB1FE3869200751857 /* TAPCategoryLever2Cell.swift in Sources */,
 				C5DCD4991FE8149300F4F134 /* TAPHeaderAddTableViewCell.swift in Sources */,
