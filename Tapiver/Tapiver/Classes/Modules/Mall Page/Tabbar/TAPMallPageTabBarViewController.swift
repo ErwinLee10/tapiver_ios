@@ -9,7 +9,14 @@
 import UIKit
 
 class TAPMallPageTabBarViewController: UITabBarController {
-
+    private var landmark: TAPLandmarkModel?
+    
+    static func mallPageTabBarController(landmark: TAPLandmarkModel?) -> TAPMallPageTabBarViewController {
+        let tabbar = TAPMallPageTabBarViewController()
+        tabbar.landmark = landmark
+        return tabbar
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -27,6 +34,7 @@ class TAPMallPageTabBarViewController: UITabBarController {
         
         // Deals
         let dealsVC = TAPMallPageDealViewController.init(nibName: "TAPMallPageDealViewController", bundle: nil)
+        dealsVC.landmark = landmark
         let dealsNav = UINavigationController(rootViewController: dealsVC)
         dealsNav.navigationBar.isHidden = true
         dealsNav.tabBarItem.image = UIImage(named: "deals")?.withRenderingMode(UIImageRenderingMode.alwaysOriginal)

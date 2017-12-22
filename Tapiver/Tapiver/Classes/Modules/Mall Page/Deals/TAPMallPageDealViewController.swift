@@ -12,6 +12,7 @@ import SVProgressHUD
 class TAPMallPageDealViewController: TAPMallPageBaseViewController {
     @IBOutlet weak var contentCollectionView: UICollectionView!
     @IBOutlet weak var emptyLabel: UILabel!
+    var landmark: TAPLandmarkModel?
     var productList: [TAPProductModel] = []
     
     static let cellIdentifier = "TAPMallPageDealsCell"
