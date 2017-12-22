@@ -79,6 +79,19 @@ struct TAPConstants {
         static let percentage               = "percentage"
         static let message                  = "message"
         static let isPercentageDiscount     = "isPercentageDiscount"
+        static let openingHours             = "openingHours"
+        static let isSellerFollowedByUser   = "isSellerFollowedByUser"
+        static let description              = "description"
+        static let shippingsCost            = "shippingsCost"
+        static let provider                 = "provider"
+        static let type                     = "type"
+        static let price                    = "price"
+        static let additionalInformation    = "additionalInformation"
+        static let time                     = "time"
+        static let cashbackPercentage       = "cashbackPercentage"
+        static let freeShippingThreshold    = "freeShippingThreshold"
+        static let isPickup                 = "isPickup"
+        static let variations               = "variations"
         
     }
 }

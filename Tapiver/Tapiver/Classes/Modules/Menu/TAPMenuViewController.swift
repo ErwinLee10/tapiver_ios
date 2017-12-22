@@ -72,7 +72,7 @@ extension TAPMenuViewController: UITableViewDelegate {
                 break
             case 3: // Account
                 if TAPGlobal.shared.hasLogin() {
-                    // get top ViewController
+                    // get top ViewController (hard code)
                     let root = UIApplication.shared.keyWindow?.rootViewController as! UINavigationController
                     let tabBar = root.topViewController as! TAPMainTabbarViewController
                     let naviTabBar = tabBar.viewControllers![tabBar.selectedIndex] as! UINavigationController

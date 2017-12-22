@@ -171,7 +171,36 @@ class TAPWebservice: NSObject {
         
     }
     
+    func sendPOSTRequest (path:String!, params:NSDictionary?, responseHandler: @escaping(_ success: Bool) -> Void) {
+        let header = ["Content-Type": "application/json",
+                      "Authorization": TAPGlobal.shared.getLoginModel()?.webSessionId ?? ""] as NSDictionary
+        let allKeys = header.allKeys as? [String] ?? []
+        for key in allKeys {
+            let value = header.object(forKey: key)
+            self.requestManager.requestSerializer.setValue(value as? String, forHTTPHeaderField: key)
+        }
+        
+        self.requestManager!.post(path, parameters:params , progress: nil, success: {(task, responseObject) -> Void in
+            
+            print("responseObject ->> \(String(describing: responseObject))")
+            responseHandler(true)
+            
+        }, failure: { (task, responseOBJ) -> Void in
+            
+            print("errorObject ->> \(String(describing: responseOBJ))")
+            responseHandler(false)
+        })
+        
+    }
+    
     func sendDELETERequest(path: String, responseHandler: @escaping(_ success: Bool) -> Void) {
+        let header = ["Content-Type": "application/json",
+                      "Authorization": TAPGlobal.shared.getLoginModel()?.webSessionId ?? ""] as NSDictionary
+        let allKeys = header.allKeys as? [String] ?? []
+        for key in allKeys {
+            let value = header.object(forKey: key)
+            self.requestManager.requestSerializer.setValue(value as? String, forHTTPHeaderField: key)
+        }
         
         let apiPath = API_PATH(path: path)
         
@@ -184,7 +213,35 @@ class TAPWebservice: NSObject {
         }
     }
     
+    func sendDELETERequest(path: String, responseHandler: @escaping(_ success: Bool, _ response: Any?) -> Void) {
+        let header = ["Content-Type": "application/json",
+                      "Authorization": TAPGlobal.shared.getLoginModel()?.webSessionId ?? ""] as NSDictionary
+        let allKeys = header.allKeys as? [String] ?? []
+        for key in allKeys {
+            let value = header.object(forKey: key)
+            self.requestManager.requestSerializer.setValue(value as? String, forHTTPHeaderField: key)
+        }
+        
+        let apiPath = API_PATH(path: path)
+        
+        print("====================\nRequest: path: \(apiPath)")
+        self.requestManager.delete(apiPath, parameters: nil, success: { (task, responseObject) -> Void in
+            responseHandler(true,responseObject);
+        }) { (task, responseOBJ) in
+            print("errorObject ->> \(String(describing: responseOBJ))")
+            responseHandler(false,responseOBJ);
+        }
+    }
+    
     func sendPUTRequest(path: String, parameters: [String: Any]?, responseHandler: @escaping(_ success: Bool) -> Void) {
+        
+        let header = ["Content-Type": "application/json",
+                      "Authorization": TAPGlobal.shared.getLoginModel()?.webSessionId ?? ""] as NSDictionary
+        let allKeys = header.allKeys as? [String] ?? []
+        for key in allKeys {
+            let value = header.object(forKey: key)
+            self.requestManager.requestSerializer.setValue(value as? String, forHTTPHeaderField: key)
+        }
         
         let apiPath = API_PATH(path: path)
         
@@ -194,6 +251,27 @@ class TAPWebservice: NSObject {
         }) { (task, responseOBJ) in
             print("errorObject ->> \(String(describing: responseOBJ))")
             responseHandler(false);
+        }
+    }
+    
+    func sendPUTRequest(path: String, parameters: [String: Any]?, responseHandler: @escaping(_ success: Bool, _ response: Any?) -> Void) {
+        
+        let header = ["Content-Type": "application/json",
+                      "Authorization": TAPGlobal.shared.getLoginModel()?.webSessionId ?? ""] as NSDictionary
+        let allKeys = header.allKeys as? [String] ?? []
+        for key in allKeys {
+            let value = header.object(forKey: key)
+            self.requestManager.requestSerializer.setValue(value as? String, forHTTPHeaderField: key)
+        }
+        
+        let apiPath = API_PATH(path: path)
+        
+        print("====================\nRequest: path: \(apiPath)")
+        self.requestManager.put(apiPath, parameters: parameters, success: { (task, responseObject) -> Void in
+            responseHandler(true, responseObject);
+        }) { (task, responseOBJ) in
+            print("errorObject ->> \(String(describing: responseOBJ))")
+            responseHandler(false, responseOBJ);
         }
     }
     

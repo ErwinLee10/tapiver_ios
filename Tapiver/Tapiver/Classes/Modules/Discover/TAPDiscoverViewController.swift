@@ -105,6 +105,10 @@ extension TAPDiscoverViewController: TAPFeedTableViewCellDelegate {
     }
     
     func tapIteamAt(index: IndexPath, item: TAPProductModel) {
-        
+        let productViewController: TAPProductMainPageViewController = TAPProductMainPageViewController(nibName: "TAPProductMainPageViewController", bundle: nil)
+        productViewController.setData(id: item.id!, title: (self.feedsApiModels?.feedModels[index.row].sellerName)!)
+        self.present(productViewController, animated: true) {
+            
+        }
     }
 }

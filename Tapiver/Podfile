@@ -13,4 +13,5 @@ target 'Tapiver' do
     pod 'SDWebImage', '~> 4.0'
     pod 'IQKeyboardManagerSwift'
     pod 'AMPopTip'
+    pod 'DropDown'
 end

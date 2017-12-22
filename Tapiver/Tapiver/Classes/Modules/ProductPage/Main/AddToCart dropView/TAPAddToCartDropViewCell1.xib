@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" restorationIdentifier="TAPAddToCartDropViewCell1" id="iN0-l3-epB" customClass="TAPAddToCartDropViewCell1" customModule="Tapiver" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="48"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pUo-Cx-PHg">
+                    <rect key="frame" x="8" y="8" width="32" height="32"/>
+                    <color key="backgroundColor" red="0.70196078429999997" green="0.74509803919999995" blue="0.92549019610000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="pUo-Cx-PHg" secondAttribute="height" multiplier="1:1" id="y4x-vo-ArV"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Green" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ghw-YB-Y3g">
+                    <rect key="frame" x="48" y="14" width="46.5" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="pUo-Cx-PHg" secondAttribute="bottom" constant="8" id="AhG-aI-xAm"/>
+                <constraint firstItem="pUo-Cx-PHg" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="HaX-Qu-9m9"/>
+                <constraint firstItem="pUo-Cx-PHg" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="ct1-7V-Xw8"/>
+                <constraint firstItem="Ghw-YB-Y3g" firstAttribute="leading" secondItem="pUo-Cx-PHg" secondAttribute="trailing" constant="8" id="d7v-ax-Gpi"/>
+                <constraint firstItem="Ghw-YB-Y3g" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="sYs-3L-FUt"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="colorView" destination="pUo-Cx-PHg" id="fvE-ZV-P4f"/>
+                <outlet property="optionLabel" destination="Ghw-YB-Y3g" id="fUg-6N-ep5"/>
+            </connections>
+            <point key="canvasLocation" x="33.5" y="441"/>
+        </view>
+    </objects>
+</document>
