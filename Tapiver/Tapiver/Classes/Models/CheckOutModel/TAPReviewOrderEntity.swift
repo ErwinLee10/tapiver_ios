@@ -9,5 +9,7 @@
 import UIKit
 
 class TAPReviewOrderEntity: TAPBaseEntity {
-
+    var shippingMethod: TAPShippingModel?
+    var address: TAPAddressModel?
+    var cardList: TAPCartListModel?
 }

@@ -88,6 +88,7 @@ struct TAPConstants {
         static let isPickup                 = "isPickup"
         static let freeShipping             = "freeShipping"
         static let additionalInformation    = "additionalInformation"
+        static let shippingOptions          = "shippingOptions"
         
         
     }

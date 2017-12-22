@@ -15,7 +15,6 @@ class TAPReviewCell: UITableViewCell {
     @IBOutlet weak var btDetailClose: UIButton!
     @IBOutlet weak var lbStoreTotal: UILabel!
     @IBOutlet weak var lbCashback: UILabel!
-    @IBOutlet weak var lbStore: UILabel!
     @IBOutlet weak var lbNameStore: UILabel!
     @IBOutlet weak var lbAddStore: UILabel!
     @IBOutlet weak var lbStyle: UILabel!

@@ -8,7 +8,7 @@
 
 import UIKit
 @objc protocol TAPAddessCellDelegate: class {
-    @objc func acSelectAddAt(index: IndexPath, withObj:TAPChecOutEntity)
+    @objc func acSelectAddAt(index: IndexPath, withObj:TAPChecOutEntity, contentAdd:String)
 }
 class TAPAddessCell: UITableViewCell {
 
@@ -18,6 +18,7 @@ class TAPAddessCell: UITableViewCell {
     public weak var delegate: TAPAddessCellDelegate?
     public var index: IndexPath?
     public var obj: TAPChecOutEntity?
+    private var content: String = ""
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,14 +27,36 @@ class TAPAddessCell: UITableViewCell {
     func setData() {
         let checkOut = obj!.addObj
         self.lbContact.text = checkOut!.contact
-        self.lbContent.text = checkOut!.streetName
+        self.lbContent.text = createContetn(obj: checkOut!)
         self.btSelectAdd.isSelected = obj!.isSelected
+    }
+    private func createContetn(obj: TAPAddressModel) -> String? {
+        if let street = obj.streetName {
+            content.append("\(street)")
+        }
+        if let floor = obj.floor {
+            var str = ""
+            if let unitNumber = obj.unitNumber {
+                 str = ("-\(unitNumber)")
+            }
+            content.append("\n#\(floor)" + str)
+        }else {
+            if let unitNumber = obj.unitNumber {
+                content.append("\n-\(unitNumber)")
+            }
+        }
+        
+        if let postalCode = obj.postalCode {
+            content.append("\n\(postalCode)")
+        }
+        
+        return content
     }
     @IBAction func adSelectAdd(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
         if self.delegate != nil {
             self.obj?.isSelected = sender.isSelected
-            self.delegate?.acSelectAddAt(index: self.index!, withObj: self.obj!)
+            self.delegate?.acSelectAddAt(index: self.index!, withObj: self.obj!, contentAdd:content)
         }
     }
     override func setSelected(_ selected: Bool, animated: Bool) {

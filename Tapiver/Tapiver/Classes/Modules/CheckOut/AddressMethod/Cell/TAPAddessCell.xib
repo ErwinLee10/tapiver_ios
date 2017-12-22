@@ -21,10 +21,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7T1-y8-DhE">
-                        <rect key="frame" x="10" y="2" width="18" height="18"/>
+                        <rect key="frame" x="16" y="2" width="16" height="16"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="7T1-y8-DhE" secondAttribute="height" multiplier="1:1" id="v9z-fq-W8f"/>
-                            <constraint firstAttribute="width" constant="18" id="x9m-7K-DDI"/>
+                            <constraint firstAttribute="width" constant="16" id="x9m-7K-DDI"/>
                         </constraints>
                         <state key="normal" image="ic_dot"/>
                         <state key="selected" image="ic_dot_select"/>
@@ -33,13 +33,13 @@
                         </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r5Y-ec-DQG">
-                        <rect key="frame" x="36" y="4" width="272" height="14.5"/>
+                        <rect key="frame" x="44" y="3" width="264" height="14.5"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PoV-Z6-R9t">
-                        <rect key="frame" x="36" y="20" width="272" height="118"/>
+                        <rect key="frame" x="44" y="18" width="264" height="120"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -48,11 +48,11 @@
                 <constraints>
                     <constraint firstItem="r5Y-ec-DQG" firstAttribute="centerY" secondItem="7T1-y8-DhE" secondAttribute="centerY" id="DlD-Ea-ILt"/>
                     <constraint firstAttribute="trailing" secondItem="PoV-Z6-R9t" secondAttribute="trailing" constant="12" id="F2p-sR-VkD"/>
-                    <constraint firstItem="r5Y-ec-DQG" firstAttribute="leading" secondItem="7T1-y8-DhE" secondAttribute="trailing" constant="8" id="Ge6-PV-eQ7"/>
+                    <constraint firstItem="r5Y-ec-DQG" firstAttribute="leading" secondItem="7T1-y8-DhE" secondAttribute="trailing" constant="12" id="Ge6-PV-eQ7"/>
                     <constraint firstItem="r5Y-ec-DQG" firstAttribute="leading" secondItem="PoV-Z6-R9t" secondAttribute="leading" id="J0E-ec-N5k"/>
                     <constraint firstItem="PoV-Z6-R9t" firstAttribute="top" secondItem="7T1-y8-DhE" secondAttribute="bottom" id="PGF-c7-Wpv"/>
                     <constraint firstAttribute="trailing" secondItem="r5Y-ec-DQG" secondAttribute="trailing" constant="12" id="emv-RN-GZG"/>
-                    <constraint firstItem="7T1-y8-DhE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="ijf-Sq-44T"/>
+                    <constraint firstItem="7T1-y8-DhE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="ijf-Sq-44T"/>
                     <constraint firstAttribute="bottom" secondItem="PoV-Z6-R9t" secondAttribute="bottom" constant="10" id="kL3-SO-p0X"/>
                     <constraint firstItem="7T1-y8-DhE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="2" id="u1a-bn-b5i"/>
                 </constraints>
