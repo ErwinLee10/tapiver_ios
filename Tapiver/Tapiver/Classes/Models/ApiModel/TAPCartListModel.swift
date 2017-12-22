@@ -39,7 +39,7 @@ class TAPCartItemModel: TAPBaseEntity {
     var totalPrice: Int?
     var sellerAddress: TAPSellerAddressModel?
     var productVariations: [TAPProductVariationModel] = []
-//    var shippingOptions: []
+    var shippingOptions: [TAPShippingModel] = []
     
     override func parserResponse(dic: NSDictionary) {
         sellerId = dic.value(forKey: TAPConstants.APIParams.sellerId) as? Int
@@ -123,6 +123,7 @@ class TAPShippingModel: TAPBaseEntity {
     var isPickup: Bool = false
     var isfreeShipping: Bool = false
     var additionalInfor: TAPAdditionalInformation?
+    var isSelect: Bool = false
     
     override func parserResponse(dic: NSDictionary) {
         idShip = dic.value(forKey: TAPConstants.APIParams.id) as? String

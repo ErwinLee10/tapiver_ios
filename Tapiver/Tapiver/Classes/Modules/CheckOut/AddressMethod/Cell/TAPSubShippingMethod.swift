@@ -8,16 +8,18 @@
 
 import UIKit
 @objc protocol TAPSubShippingMethodDelegate: class {
-    @objc func selectAtIndex(index: IndexPath, obj:TAPSubShippingEntity)
+    @objc func selectAtIndex(index: IndexPath, obj:TAPShippingModel)
 }
 
 class TAPSubShippingMethod: UITableViewCell {
+    @IBOutlet weak var viewHeader: UIView!
+    @IBOutlet weak var lbHeader: UILabel!
     @IBOutlet weak var lbCashBack: UILabel!
     @IBOutlet weak var btCheckBox: UIButton!
     @IBOutlet weak var lbTitle: UILabel!
     @IBOutlet weak var lbNumber: UILabel!
     public var index: IndexPath?
-    public var obj: TAPSubShippingEntity?
+    public var obj: TAPShippingModel?
     public weak var delegate: TAPSubShippingMethodDelegate?
     
     override func awakeFromNib() {
@@ -25,15 +27,17 @@ class TAPSubShippingMethod: UITableViewCell {
         // Initialization code
     }
     public func setData() {
-        self.btCheckBox.isSelected = (self.obj?.isSelect)!
-        self.lbTitle.text = self.obj?.titleSub
-        self.lbNumber.text = self.obj?.cost
-        if self.obj!.cashBack > 0 {
-            self.lbCashBack.isHidden = false
-        }else {
-            self.lbCashBack.isHidden = true
+        self.btCheckBox.isSelected = self.obj!.isSelect
+        self.lbTitle.text = "\(obj!.provider ?? "") \(obj!.type ?? "")"
+        self.lbNumber.text = "S$ \(obj?.price ?? 0)"
+        if let cashBack = obj?.additionalInfor?.cashbackPercentage {
+            if cashBack > 0.0 {
+                self.lbCashBack.isHidden = false
+            }else {
+                self.lbCashBack.isHidden = true
+            }
+            self.lbCashBack.text  = "Cashback \(cashBack)%"
         }
-        self.lbCashBack.text  = "Cashback \(self.obj?.cashBack ?? 0)%"
     }
     
     @IBAction func acSelect(_ sender: UIButton) {

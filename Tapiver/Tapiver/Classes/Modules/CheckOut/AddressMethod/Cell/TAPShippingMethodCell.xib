@@ -29,24 +29,23 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="107 Style" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q55-x9-mYP">
-                        <rect key="frame" x="16" y="63" width="75.5" height="20.5"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="20.5" id="cgN-Ko-a6q"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Action city" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MZN-4d-Qk7">
-                        <rect key="frame" x="16" y="288" width="87.5" height="20.5"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="20.5" id="Pe0-xz-QFP"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="I3r-Vr-8HH">
+                        <rect key="frame" x="16" y="61" width="288" height="299.5"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="separatorColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="5"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                <real key="value" value="0.75"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </tableView>
                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Rq-98-KKu">
                         <rect key="frame" x="16" y="368.5" width="288" height="48"/>
                         <subviews>
@@ -87,67 +86,24 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
-                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="I3r-Vr-8HH">
-                        <rect key="frame" x="16" y="91.5" width="288" height="189"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="separatorColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                <real key="value" value="5"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                <real key="value" value="0.75"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
-                    </tableView>
-                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xmv-GZ-i7N">
-                        <rect key="frame" x="16" y="316.5" width="288" height="44"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="44" id="xAy-lM-q0d"/>
-                        </constraints>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                <real key="value" value="5"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                <real key="value" value="0.75"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
-                    </tableView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="Qyw-LU-sel" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="3he-Vy-poQ"/>
+                    <constraint firstItem="1Rq-98-KKu" firstAttribute="top" secondItem="I3r-Vr-8HH" secondAttribute="bottom" constant="8" id="9Kx-HG-F3E"/>
                     <constraint firstItem="Qyw-LU-sel" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="Jl6-KI-A22"/>
-                    <constraint firstItem="xmv-GZ-i7N" firstAttribute="top" secondItem="MZN-4d-Qk7" secondAttribute="bottom" constant="8" id="Lw5-Nj-Qz7"/>
                     <constraint firstAttribute="bottom" secondItem="1Rq-98-KKu" secondAttribute="bottom" constant="8" id="MzS-lb-Eqt"/>
-                    <constraint firstItem="q55-x9-mYP" firstAttribute="top" secondItem="Qyw-LU-sel" secondAttribute="bottom" constant="22" id="Px6-cE-98u"/>
                     <constraint firstAttribute="trailing" secondItem="I3r-Vr-8HH" secondAttribute="trailing" constant="16" id="SoB-7B-gAW"/>
-                    <constraint firstItem="q55-x9-mYP" firstAttribute="leading" secondItem="Qyw-LU-sel" secondAttribute="leading" id="UPb-9g-3qY"/>
-                    <constraint firstItem="xmv-GZ-i7N" firstAttribute="leading" secondItem="MZN-4d-Qk7" secondAttribute="leading" id="Uxh-Hu-PjF"/>
-                    <constraint firstAttribute="trailing" secondItem="xmv-GZ-i7N" secondAttribute="trailing" constant="16" id="WJ7-uW-sXR"/>
-                    <constraint firstItem="I3r-Vr-8HH" firstAttribute="leading" secondItem="q55-x9-mYP" secondAttribute="leading" id="adh-1s-eIu"/>
-                    <constraint firstItem="MZN-4d-Qk7" firstAttribute="top" secondItem="I3r-Vr-8HH" secondAttribute="bottom" constant="8" id="ay2-74-Yuz"/>
+                    <constraint firstItem="I3r-Vr-8HH" firstAttribute="top" secondItem="Qyw-LU-sel" secondAttribute="bottom" constant="20" id="XT9-Zq-rke"/>
                     <constraint firstAttribute="trailing" secondItem="1Rq-98-KKu" secondAttribute="trailing" constant="16" id="dMm-SA-gUt"/>
-                    <constraint firstItem="1Rq-98-KKu" firstAttribute="leading" secondItem="xmv-GZ-i7N" secondAttribute="leading" id="dff-II-HSl"/>
-                    <constraint firstItem="I3r-Vr-8HH" firstAttribute="top" secondItem="q55-x9-mYP" secondAttribute="bottom" constant="8" id="eLd-v9-deo"/>
-                    <constraint firstItem="1Rq-98-KKu" firstAttribute="top" secondItem="xmv-GZ-i7N" secondAttribute="bottom" constant="8" id="vgR-Nq-72E"/>
-                    <constraint firstItem="MZN-4d-Qk7" firstAttribute="leading" secondItem="I3r-Vr-8HH" secondAttribute="leading" id="xDY-g7-Vg8"/>
+                    <constraint firstItem="I3r-Vr-8HH" firstAttribute="leading" secondItem="Qyw-LU-sel" secondAttribute="leading" id="gH9-qY-1p4"/>
+                    <constraint firstItem="1Rq-98-KKu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="sfS-fh-9su"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="tableShippingMethod" destination="xmv-GZ-i7N" id="K8r-bR-dSe"/>
                 <outlet property="tableStyle" destination="I3r-Vr-8HH" id="Dol-cD-8GE"/>
             </connections>
-            <point key="canvasLocation" x="57" y="93.5"/>
+            <point key="canvasLocation" x="-314" y="61"/>
         </tableViewCell>
     </objects>
     <resources>
