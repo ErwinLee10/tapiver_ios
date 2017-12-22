@@ -129,6 +129,17 @@ extension UIView {
         }
         return superview.convert(view.frame, to: view)
     }
+    
+    func rotate(_ toValue: CGFloat, duration: CFTimeInterval = 0.2) {
+        let animation = CABasicAnimation(keyPath: "transform.rotation")
+        
+        animation.toValue = toValue
+        animation.duration = duration
+        animation.isRemovedOnCompletion = false
+        animation.fillMode = kCAFillModeForwards
+        
+        self.layer.add(animation, forKey: nil)
+    }
 
 }
 
@@ -174,7 +185,10 @@ extension String {
         return self.count
     }
     
-
+    static func stringFromTimeInterval(_ interval: Double) -> String {
+        let date = Date(timeIntervalSince1970: interval)
+        return date.stringFromDate()
+    }
 }
 
 extension NSDictionary {
@@ -198,7 +212,6 @@ extension NSNumber {
         formatter.maximumFractionDigits = maximumFractionDigits
         formatter.locale = Locale(identifier: "en_US")
         let outputString = formatter.string(from: self)
-        
         return outputString
     }
     
@@ -207,5 +220,15 @@ extension NSNumber {
             return ""
         }
         return "S\(result)"
+    }
+}
+
+extension Date {
+    
+    func stringFromDate() -> String {
+        let formater = DateFormatter()
+        formater.dateStyle = DateFormatter.Style.long
+        let result = formater.string(from: self)
+        return result
     }
 }

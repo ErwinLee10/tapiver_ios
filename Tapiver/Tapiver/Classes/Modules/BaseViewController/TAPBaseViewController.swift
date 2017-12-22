@@ -23,8 +23,8 @@ class TAPBaseViewController: UIViewController {
     }
     
     func showRightMenu() {
-        let menu = TAPMenuViewController.menuViewController { (index) in
-            
+        let menu = TAPMenuViewController.menuViewController { [weak self] (index) in
+            self?.menuItemTouchHandler(itemIndex: index)
         }
         menu.modalPresentationStyle = .popover
         menu.popoverPresentationController?.delegate = self
@@ -35,6 +35,39 @@ class TAPBaseViewController: UIViewController {
             let menuBtnFrame = headerView.menuButton.frame
             menu.popoverPresentationController?.sourceRect = CGRect(x: menuBtnFrame.width/2, y: menuBtnFrame.height, width: 1, height: 5)
             self.present(menu, animated: true, completion: nil)
+        }
+    }
+    
+    fileprivate func menuItemTouchHandler(itemIndex: Int) {
+        switch itemIndex {
+        case 0:
+            break
+        case 1:
+            let vc = TAPHistoryViewController(nibName: "TAPHistoryViewController", bundle: nil)
+            TAPMainFrame.getNavi().pushViewController(vc, animated: true)
+        case 2:
+            break
+        case 3:
+            if TAPGlobal.shared.hasLogin() {
+                // get top ViewController
+                let root = UIApplication.shared.keyWindow?.rootViewController as! UINavigationController
+                let tabBar = root.topViewController as! TAPMainTabbarViewController
+                let naviTabBar = tabBar.viewControllers![tabBar.selectedIndex] as! UINavigationController
+                let topViewController = naviTabBar.topViewController
+                
+                // present TAPAccountViewController
+                let accountViewController: TAPAccountTableViewController = TAPAccountTableViewController(nibName: "TAPAccountTableViewController", bundle: nil)
+                let navi = UINavigationController(rootViewController: accountViewController)
+                navi.navigationBar.barTintColor = UIColor.init(netHex: 0x195B79)
+                topViewController?.present(navi, animated: true, completion: {
+                    
+                })
+            }
+            else {
+                TAPMainFrame.showLoginPageMain()
+            }
+        default:
+            break
         }
     }
 }

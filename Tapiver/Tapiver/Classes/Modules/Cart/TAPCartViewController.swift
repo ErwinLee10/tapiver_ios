@@ -15,6 +15,8 @@ class TAPCartViewController: TAPBaseViewController {
     @IBOutlet weak var totalPriceLabel: UILabel!
     @IBOutlet weak var contentTableView: UITableView!
     @IBOutlet weak var couponButton: UIButton!
+    @IBOutlet weak var couponView: UIView!
+    @IBOutlet weak var couponTextField: UITextField!
     
     var cartListModel: TAPCartListModel?
     let cellIdentifier = "TAPCartTableViewCell"
@@ -23,6 +25,8 @@ class TAPCartViewController: TAPBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+//        cartListModel = TAPCartListModel()
+//        cartListModel?.cartItemsPerSeller = [TAPCartItemModel(), TAPCartItemModel(), TAPCartItemModel()]
         getData()
     }
 
@@ -31,6 +35,10 @@ class TAPCartViewController: TAPBaseViewController {
     }
     
     @IBAction func couponButtonTouched(_ sender: Any) {
+        showCouponView(true)
+    }
+    @IBAction func couponSubmitTouched(_ sender: Any) {
+        showCouponView(false)
     }
     
     private func setupView() {
@@ -79,6 +87,16 @@ class TAPCartViewController: TAPBaseViewController {
         contentTableView.reloadData()
         let total = NSNumber(value: cartListModel?.finalTotalAmount ?? 0).moneyString()
         totalPriceLabel.text = "Total: \(total)"
+        
+        if let items = cartListModel?.cartItemsPerSeller, items.count > 0  {
+            footerView.isHidden = false
+        } else {
+            footerView.isHidden = true
+        }
+    }
+    
+    private func showCouponView(_ show: Bool) {
+        couponView.isHidden = !show
     }
     
     private func updateCouponView() {
@@ -91,39 +109,41 @@ extension TAPCartViewController: UITableViewDataSource {
         guard let carItems = cartListModel?.cartItemsPerSeller, carItems.count > 0 else {
             return 0
         }
-        return carItems.count + 1
+        return carItems.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let carItems = cartListModel?.cartItemsPerSeller, carItems.count > 0 else {
             return 0
         }
-        if section == numberOfSections(in: tableView) - 1 {
-            return 1
-        } else {
-            let products = carItems[section].productVariations
-            return products.count
-        }
+//        if section == numberOfSections(in: tableView) - 1 {
+//            return 1
+//        } else {
+//            let products = carItems[section].productVariations
+//            return products.count
+//        }
+        let products = carItems[section].productVariations
+        return products.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section != numberOfSections(in: tableView) - 1 {
+//        if indexPath.section != numberOfSections(in: tableView) - 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! TAPCartTableViewCell
             if let carItems = cartListModel?.cartItemsPerSeller {
                 let products = carItems[indexPath.section].productVariations
                 cell.fillData(data: products[indexPath.row])
             }
             return cell
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: couponCellIdentifier, for: indexPath) as! TAPCartCouponTableViewCell
-            return cell
-        }
+//        } else {
+//            let cell = tableView.dequeueReusableCell(withIdentifier: couponCellIdentifier, for: indexPath) as! TAPCartCouponTableViewCell
+//            return cell
+//        }
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if section == numberOfSections(in: tableView) - 1 {
-            return nil
-        }
+//        if section == numberOfSections(in: tableView) - 1 {
+//            return nil
+//        }
         let nibs = Bundle.main.loadNibNamed("TAPCartHeaderTableViewCell", owner: self, options: nil)
         let header = nibs?.first as? TAPCartHeaderTableViewCell
         if let carItems = cartListModel?.cartItemsPerSeller {
@@ -134,9 +154,9 @@ extension TAPCartViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        if section == numberOfSections(in: tableView) - 1 {
-            return nil
-        }
+//        if section == numberOfSections(in: tableView) - 1 {
+//            return nil
+//        }
         let nibs = Bundle.main.loadNibNamed("TAPCartFooterTableViewCell", owner: self, options: nil)
         let footer = nibs?.first as? TAPCartFooterTableViewCell
         if let carItems = cartListModel?.cartItemsPerSeller {
@@ -149,33 +169,34 @@ extension TAPCartViewController: UITableViewDataSource {
 
 extension TAPCartViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section != numberOfSections(in: tableView) - 1 {
-            return 80
-        } else {
-            return 120
-        }
+//        if indexPath.section != numberOfSections(in: tableView) - 1 {
+//            return 80
+//        } else {
+//            return 120
+//        }
+        return 80
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section != numberOfSections(in: tableView) - 1 {
+//        if section != numberOfSections(in: tableView) - 1 {
             return 54
-        } else {
-            return 0
-        }
+//        } else {
+//            return 0
+//        }
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        if section != numberOfSections(in: tableView) - 1 {
+//        if section != numberOfSections(in: tableView) - 1 {
             return 44
-        } else {
-            return 0
-        }
+//        } else {
+//            return 0
+//        }
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.section == numberOfSections(in: tableView) - 1 {
-            return
-        }
+//        if indexPath.section == numberOfSections(in: tableView) - 1 {
+//            return
+//        }
         cell.backgroundColor = UIColor.clear
         let layer: CAShapeLayer  = CAShapeLayer()
         let pathRef: CGMutablePath  = CGMutablePath()
@@ -196,9 +217,9 @@ extension TAPCartViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        if section == numberOfSections(in: tableView) - 1 {
-            return
-        }
+//        if section == numberOfSections(in: tableView) - 1 {
+//            return
+//        }
         let cornerRadius: CGFloat = 10
         view.backgroundColor = UIColor.clear
         let layer: CAShapeLayer  = CAShapeLayer()
@@ -223,9 +244,9 @@ extension TAPCartViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
-        if section == numberOfSections(in: tableView) - 1 {
-            return
-        }
+//        if section == numberOfSections(in: tableView) - 1 {
+//            return
+//        }
         
         let cornerRadius: CGFloat = 10
         view.backgroundColor = UIColor.clear
