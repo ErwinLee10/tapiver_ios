@@ -110,7 +110,6 @@ struct TAPConstants {
         static let cashbackEarn             = "cashbackEarned"
         static let provid                   = "provider"
         static let freeShipping             = "freeShipping"
-        static let additionalInformation    = "additionalInformation"
         static let shippingOptions          = "shippingOptions"
 
     }
