@@ -50,24 +50,46 @@
                         <color key="textColor" red="0.88235294117647056" green="0.11764705882352941" blue="0.14509803921568626" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sER-v2-iBa">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="107 Style" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U44-16-Wfz">
+                                <rect key="frame" x="15" y="12" width="75.5" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="U44-16-Wfz" firstAttribute="leading" secondItem="sER-v2-iBa" secondAttribute="leading" constant="15" id="9r7-Zj-OGy"/>
+                            <constraint firstItem="U44-16-Wfz" firstAttribute="centerY" secondItem="sER-v2-iBa" secondAttribute="centerY" id="Cze-26-bWl"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="bottom" secondItem="sER-v2-iBa" secondAttribute="bottom" id="FYL-Bt-uP0"/>
                     <constraint firstItem="oH0-X3-vVU" firstAttribute="leading" secondItem="DKJ-GW-IFN" secondAttribute="trailing" constant="8" id="Hr9-cZ-lu4"/>
                     <constraint firstItem="P7S-jL-rlp" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="LEh-ba-DUP"/>
+                    <constraint firstAttribute="trailing" secondItem="sER-v2-iBa" secondAttribute="trailing" id="Pwp-By-IF0"/>
                     <constraint firstItem="oH0-X3-vVU" firstAttribute="centerY" secondItem="DKJ-GW-IFN" secondAttribute="centerY" id="Si1-j3-SBS"/>
                     <constraint firstItem="ii4-Hm-FPa" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="T0H-lB-j5Y"/>
                     <constraint firstItem="oH0-X3-vVU" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="TvK-hR-ZbH"/>
                     <constraint firstItem="ii4-Hm-FPa" firstAttribute="leading" secondItem="P7S-jL-rlp" secondAttribute="trailing" constant="8" id="YbW-B7-oGl"/>
+                    <constraint firstItem="sER-v2-iBa" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="aoG-nD-gOZ"/>
                     <constraint firstItem="P7S-jL-rlp" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="c8R-ii-TyE"/>
                     <constraint firstAttribute="trailing" secondItem="oH0-X3-vVU" secondAttribute="trailing" constant="8" id="lCE-LZ-H7Z"/>
+                    <constraint firstItem="sER-v2-iBa" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="na2-Iq-PRw"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="btCheckBox" destination="P7S-jL-rlp" id="RJQ-DA-tIW"/>
                 <outlet property="lbCashBack" destination="DKJ-GW-IFN" id="4i5-gq-sxo"/>
+                <outlet property="lbHeader" destination="U44-16-Wfz" id="2a2-FT-pnr"/>
                 <outlet property="lbNumber" destination="oH0-X3-vVU" id="dbN-rc-QmO"/>
                 <outlet property="lbTitle" destination="ii4-Hm-FPa" id="BfZ-j9-ahe"/>
+                <outlet property="viewHeader" destination="sER-v2-iBa" id="wVj-j7-MDv"/>
             </connections>
         </tableViewCell>
     </objects>

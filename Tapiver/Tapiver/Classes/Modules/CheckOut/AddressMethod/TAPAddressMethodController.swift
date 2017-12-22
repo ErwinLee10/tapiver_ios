@@ -12,7 +12,11 @@ import SVProgressHUD
 class TAPAddressMethodController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     private var isLoadedApi: Bool = false
+    private var isSelectSameAs: Bool = true
     var listData = NSMutableArray()
+    var listShipping = [TAPChecOutEntity]()
+    var listBilling = [TAPChecOutEntity]()
+    public var cardList: TAPCartListModel?
     
     @IBOutlet weak var headerView: TAPHeaderView!
     
@@ -23,81 +27,52 @@ class TAPAddressMethodController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         if isLoadedApi {
             initData()
         }
     }
     func initData() {
-        self.listData.removeAllObjects()
+        self.listShipping = [TAPChecOutEntity]()
+        self.listBilling = [TAPChecOutEntity]()
         callApi()
-//        for var i in 0...2 {
-//            let checkout = TAPChecOutEntity()
-//            checkout.typeCheckOutCell =  CheckOutEntytiType.address
-//            checkout.addObj = TAPAddressModel()
-//            checkout.addObj?.contact = "Jasper Teo-\(i)"
-//            checkout.addObj?.streetName = """
-//            Blk 220 Lorong 3 Anson Road-\(i)
-//            #01-03 - \(i)
-//            s456723 - \(i)
-//            84182240 - \(i)
-//            """
-//            listDataSection0.add(checkout)
-//        }
-//        listDataSection0.add(bottomButtonShipping)
-//        listDataSection0.add(headerBill)
-//        for var i in 0...1 {
-//            let checkout = TAPChecOutEntity()
-//            checkout.typeCheckOutCell =  CheckOutEntytiType.address
-//            checkout.addObj = TAPAddressModel()
-//            checkout.addObj?.contact = "Jasper Teo-\(i)"
-//            checkout.addObj?.streetName = """
-//            Blk 220 Lorong 3 Anson Road-\(i)
-//            #01-03 - \(i)
-//            s456723 - \(i)
-//            84182240 - \(i)
-//            """
-//            listDataSection0.add(checkout)
-//        }
-//        listDataSection0.add(bottomButtonBilling)
-//
-//        self.listData.add(listDataSection0)
-//
-//        let listDataSection1:NSMutableArray = NSMutableArray()
-//        let cellShippingMethod: TAPChecOutEntity = TAPChecOutEntity()
-//        cellShippingMethod.typeCheckOutCell = CheckOutEntytiType.shippingMethod
-//        listDataSection1.add(cellShippingMethod)
-//
-//        self.listData.add(listDataSection1)
     }
     func createListData(listShipping:[TAPChecOutEntity], listBilling:[TAPChecOutEntity]) {
-    
-        let listDataSection0:NSMutableArray = NSMutableArray()
+        self.listData.removeAllObjects()
+        var listDataSection0 = [TAPChecOutEntity]()
         let header: TAPChecOutEntity = TAPChecOutEntity()
         header.typeCheckOutCell = CheckOutEntytiType.headerShippingAddress
-        listDataSection0.add(header)
-        for item in listShipping {
-            item.typeCheckOutCell  = CheckOutEntytiType.address
-            listDataSection0.add(item)
+        listDataSection0.append(header)
+        for item0 in listShipping {
+            let ite = TAPChecOutEntity()
+            ite.typeCheckOutCell  = CheckOutEntytiType.addressShipping
+            ite.addObj = item0.addObj
+            ite.isSelected = item0.isSelected
+            listDataSection0.append(ite)
         }
         let bottomButtonShipping:TAPChecOutEntity = TAPChecOutEntity()
         bottomButtonShipping.typeCheckOutCell = CheckOutEntytiType.addNewAdressShipping
-        listDataSection0.add(bottomButtonShipping)
+        listDataSection0.append(bottomButtonShipping)
         
         let headerBill: TAPChecOutEntity = TAPChecOutEntity()
         header.typeCheckOutCell = CheckOutEntytiType.headerBillingAddress
-        listDataSection0.add(headerBill)
-        for item in listBilling {
-            item.typeCheckOutCell  = CheckOutEntytiType.address
-            listDataSection0.add(item)
+        listDataSection0.append(headerBill)
+        for item1 in listBilling {
+            let ite1 = TAPChecOutEntity()
+            ite1.typeCheckOutCell  = CheckOutEntytiType.addressBilling
+            ite1.addObj = item1.addObj
+            ite1.isSelected = item1.isSelected
+            listDataSection0.append(ite1)
         }
         let bottomButtonBilling:TAPChecOutEntity = TAPChecOutEntity()
         bottomButtonBilling.typeCheckOutCell = CheckOutEntytiType.addNewAdressBilling
-        listDataSection0.add(bottomButtonBilling)
+        listDataSection0.append(bottomButtonBilling)
         self.listData.add(listDataSection0)
         
         let listDataSection1:NSMutableArray = NSMutableArray()
         let cellShippingMethod: TAPChecOutEntity = TAPChecOutEntity()
         cellShippingMethod.typeCheckOutCell = CheckOutEntytiType.shippingMethod
+        cellShippingMethod.listShipping = cardList!.cartItemsPerSeller
         listDataSection1.add(cellShippingMethod)
         self.listData.add(listDataSection1)
         
@@ -118,10 +93,9 @@ class TAPAddressMethodController: UIViewController {
     func callApi() {
         var apiPath: String
         if(TAPGlobal.shared.hasLogin()) {
-            let userId: String! = TAPGlobal.shared.getLoginModel()?.userId ?? ""
-            apiPath = API_PATH(path: String.init(format: "/api/v1/u/%@%@", userId , "/address"))
+            apiPath = API_PATH(path: "/api/v1/u/\(TAPGlobal.shared.getLoginModel()?.userId ?? "")/address")
         }else {
-            return
+            apiPath = TAPConstants.APIPath.overview
         }
         let header = NSMutableDictionary()
         header.setValue("application/json", forKey: "Content-Type")
@@ -133,7 +107,18 @@ class TAPAddressMethodController: UIViewController {
                 guard let model = response as? TAPListChecOutEntity else {
                     return
                 }
-                self.createListData(listShipping: model.listCheckOut, listBilling: [])
+                self.listShipping =  model.listCheckOut
+                for item in self.listShipping {
+                    if item.isSelected == false {
+                        self.listBilling.append(item)
+                    }
+                }
+                if self.isSelectSameAs == false {
+                    self.createListData(listShipping: self.listShipping, listBilling: self.listBilling)
+                }else {
+                    self.createListData(listShipping: self.listShipping, listBilling: [])
+                }
+                
             } else {
                 TAPDialogUtils.shareInstance.showAlertMessageOneButton(title: "", message: "Server error, please contact Tapiver team for assistance", positive: "OK", positiveHandler: nil, vc: self)
             }
@@ -158,7 +143,7 @@ extension TAPAddressMethodController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
     }
-
+    
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if (cell.responds(to: #selector(getter: UIView.tintColor))) {
             let cornerRadius: CGFloat = 5
@@ -234,12 +219,16 @@ extension TAPAddressMethodController: UITableViewDataSource {
         viewF.backgroundColor = UIColor.clear
         return viewF
     }
-
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
             return UITableViewAutomaticDimension
         }else {
-            return 366
+            var count = self.cardList!.cartItemsPerSeller.count
+            for item in self.cardList!.cartItemsPerSeller {
+               count += item.shippingOptions.count
+            }
+            return CGFloat(count) * 44.0 + 125.0
         }
     }
     
@@ -261,15 +250,16 @@ extension TAPAddressMethodController: UITableViewDataSource {
                 cell.isHeaderCheckBox = true
             }
             cell.setData()
+            cell.btCheckBox.isSelected = isSelectSameAs
             reCell = cell
             break
-        case .address:
+        case .addressShipping, .addressBilling :
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "TAPAddessCell", for: indexPath) as? TAPAddessCell else {
                 return UITableViewCell()
             }
             cell.delegate = self
             cell.index = indexPath
-            cell.obj = (listSection[indexPath.row]).addObj
+            cell.obj = checkOut
             cell.setData()
             reCell = cell
             break
@@ -290,7 +280,6 @@ extension TAPAddressMethodController: UITableViewDataSource {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "TAPShippingMethodCell", for: indexPath) as? TAPShippingMethodCell else {
                 return UITableViewCell()
             }
-            cell.setData()
             reCell = cell
             break
         default:
@@ -308,24 +297,48 @@ extension TAPAddressMethodController: TAPHeaderViewDelegate {
 }
 
 extension TAPAddressMethodController: TAPShippingMethodCellDelegate {
-    func acSelectShippingMethodAt(index: IndexPath, obj: TAPSubShippingEntity) {
+    func acSelectShippingMethodAt(index: IndexPath, obj: TAPShippingModel, withCard: TAPCartItemModel) {
         
     }
 }
 extension TAPAddressMethodController: TAPAddessCellDelegate {
-    func acSelectAddAt(index: IndexPath, withObj:TAPAddressModel) {
-        
+    func acSelectAddAt(index: IndexPath, withObj:TAPChecOutEntity) {
+        self.listBilling = [TAPChecOutEntity]()
+        for item in self.listShipping {
+            let inx = self.listShipping.index(of: item)
+            if (inx == index.row - 1) {
+                item.isSelected = true
+            }else {
+                item.isSelected = false
+                self.listBilling.append(item);
+            }
+        }
+        if isSelectSameAs == false {
+            self.createListData(listShipping: self.listShipping, listBilling: self.listBilling)
+        }else {
+            self.createListData(listShipping: self.listShipping, listBilling: [])
+        }
     }
 }
 
 extension TAPAddressMethodController: TAPHeaderAddCellDelegate {
     func tapSelectSameasShipping(isSelect: Bool) {
-        print("tapSelectSameasShipping")
+        print("tapSelectSameasShipping = \(isSelect)")
+        isSelectSameAs = isSelect
+        if isSelect == false {
+            self.createListData(listShipping: self.listShipping, listBilling: self.listBilling)
+        }else {
+            self.createListData(listShipping: self.listShipping, listBilling: [])
+        }
+        self.tableView.reloadData()
     }
 }
 extension TAPAddressMethodController: TAPAddNewAddressCellDelegate {
     
     func tapAddNewAddAt(index: IndexPath, isAddShipping: Bool) {
         print("add new")
+        let addNew = TAPAddNewAddressViewController.init(nibName: "TAPAddNewAddressViewController", bundle: nil)
+        
+        self.navigationController?.pushViewController(addNew, animated: true)
     }
 }

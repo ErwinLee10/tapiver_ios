@@ -8,7 +8,7 @@
 
 import UIKit
 @objc protocol TAPAddessCellDelegate: class {
-    @objc func acSelectAddAt(index: IndexPath, withObj:TAPAddressModel)
+    @objc func acSelectAddAt(index: IndexPath, withObj:TAPChecOutEntity)
 }
 class TAPAddessCell: UITableViewCell {
 
@@ -17,19 +17,22 @@ class TAPAddessCell: UITableViewCell {
     @IBOutlet weak var lbContact: UILabel!
     public weak var delegate: TAPAddessCellDelegate?
     public var index: IndexPath?
-    public var obj: TAPAddressModel?
+    public var obj: TAPChecOutEntity?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
     }
     func setData() {
-        self.lbContact.text = self.obj?.contact
-        self.lbContent.text = self.obj?.streetName
+        let checkOut = obj!.addObj
+        self.lbContact.text = checkOut!.contact
+        self.lbContent.text = checkOut!.streetName
+        self.btSelectAdd.isSelected = obj!.isSelected
     }
     @IBAction func adSelectAdd(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
         if self.delegate != nil {
+            self.obj?.isSelected = sender.isSelected
             self.delegate?.acSelectAddAt(index: self.index!, withObj: self.obj!)
         }
     }

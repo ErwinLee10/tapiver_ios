@@ -13,19 +13,42 @@ protocol TAPHistoryHeaderViewDelegate: class {
 }
 
 class TAPHistoryHeaderView: UITableViewHeaderFooterView {
+    @IBOutlet weak var orderIdLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var statusButton: UIButton!
+    @IBOutlet weak var arrowButton: UIButton!
+    
     weak var delegate: TAPHistoryHeaderViewDelegate?
     var section: Int = 0
 
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
+        
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
         //
         // Call tapHeader when tapping on this header
         //
         addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapHeader(_:))))
+        arrowButton.rotate(.pi)
+        self.backgroundColor = UIColor.white
+        arrowButton.isUserInteractionEnabled = false
+        statusButton.isUserInteractionEnabled = false
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    func fillData(order: TAPOrderModel?) {
+        guard let orderData = order else {
+            return
+        }
+        orderIdLabel.text = "Order #" + (orderData.id ?? "")
+        timeLabel.text = String.stringFromTimeInterval(orderData.orderDate ?? 0)
+        statusButton.setTitle(orderData.orderStatus ?? "", for: .normal)
     }
     
     //
@@ -43,7 +66,7 @@ class TAPHistoryHeaderView: UITableViewHeaderFooterView {
         //
         // Animate the arrow rotation (see Extensions.swf)
         //
-//        arrowLabel.rotate(collapsed ? 0.0 : .pi / 2)
+        arrowButton.rotate(collapsed ? .pi : 0.0)
     }
 
 }

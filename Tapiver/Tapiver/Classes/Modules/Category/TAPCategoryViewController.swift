@@ -60,6 +60,7 @@ class TAPCategoryViewController: UIViewController {
     
     @IBAction func acTap(_ sender: Any) {
         let tap: TAPAddressMethodController = TAPAddressMethodController()
+        tap.hidesBottomBarWhenPushed = true;
         self.navigationController?.pushViewController(tap, animated: true)
     }
     
