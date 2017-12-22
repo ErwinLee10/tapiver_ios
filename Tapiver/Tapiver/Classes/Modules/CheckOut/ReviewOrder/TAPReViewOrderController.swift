@@ -10,6 +10,7 @@ import UIKit
 
 class TAPReViewOrderController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
+    public var reviewObj: TAPReviewOrderEntity?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,118 +33,38 @@ class TAPReViewOrderController: UIViewController {
 
 }
 extension TAPReViewOrderController: UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
-    }
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        guard let listSection0:[TAPChecOutEntity] = self.listData[section] as? [TAPChecOutEntity] else {
-//            return 0
-//        }
-//        return listSection0.count
-//    }
-//
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        var viewF = UIView()
-//        if section == 0 {
-//            viewF = UIView.init(frame: CGRect(x:0, y:0, width:self.tableView.frame.size.width, height:5))
-//        }else {
-//            viewF = UIView.init(frame: CGRect(x:0, y:0, width:self.tableView.frame.size.width, height:2))
-//        }
-//        viewF.backgroundColor = UIColor.clear
-//        return viewF
-//    }
-//
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        if indexPath.section == 0 {
-//            return UITableViewAutomaticDimension
-//        }else {
-//            return 366
-//        }
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        var reCell = UITableViewCell()
-//        guard let listSection:[TAPChecOutEntity] = self.listData[indexPath.section] as? [TAPChecOutEntity] else {
-//            return reCell
-//        }
-//        let checkOut: TAPChecOutEntity! = listSection[indexPath.row]
-//        switch checkOut.typeCheckOutCell {
-//        case .headerBillingAddress, .headerShippingAddress:
-//            guard let cell = tableView.dequeueReusableCell(withIdentifier: "TAPHeaderAddTableViewCell", for: indexPath) as? TAPHeaderAddTableViewCell else {
-//                return UITableViewCell()
-//            }
-//            cell.delegate = self
-//            if checkOut.typeCheckOutCell == .headerShippingAddress {
-//                cell.isHeaderCheckBox = false
-//            } else {
-//                cell.isHeaderCheckBox = true
-//            }
-//            cell.setData()
-//            reCell = cell
-//            break
-//        case .address:
-//            guard let cell = tableView.dequeueReusableCell(withIdentifier: "TAPAddessCell", for: indexPath) as? TAPAddessCell else {
-//                return UITableViewCell()
-//            }
-//            cell.delegate = self
-//            cell.index = indexPath
-//            cell.obj = (listSection[indexPath.row]).addObj
-//            cell.setData()
-//            reCell = cell
-//            break
-//        case .addNewAdressShipping, .addNewAdressBilling:
-//            guard let cell = tableView.dequeueReusableCell(withIdentifier: "TAPAddNewAddressCell", for: indexPath) as? TAPAddNewAddressCell else {
-//                return UITableViewCell()
-//            }
-//            cell.delegate = self
-//            cell.index = indexPath
-//            if checkOut.typeCheckOutCell == .addNewAdressShipping {
-//                cell.isAdressShipping = true
-//            }else {
-//                cell.isAdressShipping = false
-//            }
-//            reCell = cell
-//            break
-//        case .shippingMethod:
-//            guard let cell = tableView.dequeueReusableCell(withIdentifier: "TAPShippingMethodCell", for: indexPath) as? TAPShippingMethodCell else {
-//                return UITableViewCell()
-//            }
-//            cell.setData()
-//            reCell = cell
-//            break
-//        default:
-//            return reCell
-//        }
-//
-//        return reCell
-//    }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
-        
+        guard let listSection0:[TAPChecOutEntity] = self.listData[section] as? [TAPChecOutEntity] else {
+            return 0
+        }
+        return listSection0.count
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "TAPSubShippingMethod") as? TAPSubShippingMethod else {
+            return nil
+        }
+        guard let items = self.checkOut?.listShipping[section]  else {
+            return nil
+        }
+        cell.viewHeader.isHidden = false
+        cell.lbHeader.text = items.sellerName
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 44
     }
-    
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var reCell = UITableViewCell()
         
-        //        guard let cell = tableView.dequeueReusableCell(withIdentifier: "TAPSubShippingMethod", for: indexPath) as? TAPSubShippingMethod else {
-        //            return UITableViewCell()
-        //        }
-        //        cell.delegate = self
-        //        cell.index = indexPath
-        //        if tableView == self.tableStyle {
-        //            cell.obj = self.listData![indexPath.row]
-        //        }else {
-        //            let ob = TAPSubShippingEntity.init(title: "Store Pickup", cost: "Free", isSelect: false, cashBack: 5)
-        //            cell.obj = ob
-        //
-        //        }
-        //        cell.setData()
-        //        return cell
-        return UITableViewCell()
+        return reCell
     }
 }
 extension TAPReViewOrderController: UITableViewDelegate {

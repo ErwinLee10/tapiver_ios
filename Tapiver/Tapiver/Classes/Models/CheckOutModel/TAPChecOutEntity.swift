@@ -27,6 +27,7 @@ class TAPChecOutEntity: TAPBaseEntity {
         addObj = TAPAddressModel()
         addObj?.parserResponse(dic: dic)
     }
+ 
 }
 
 class TAPListChecOutEntity: TAPBaseEntity {
