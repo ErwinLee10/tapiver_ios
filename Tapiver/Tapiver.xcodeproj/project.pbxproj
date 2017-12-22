@@ -49,6 +49,7 @@
 		037B69651FEB2BFA00DCBD9D /* TAPHistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037B69641FEB2BFA00DCBD9D /* TAPHistoryModel.swift */; };
 		037B69671FEB2DA500DCBD9D /* TAPOrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037B69661FEB2DA500DCBD9D /* TAPOrderModel.swift */; };
 		037B69691FEC69C400DCBD9D /* TAPOrderItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037B69681FEC69C400DCBD9D /* TAPOrderItemModel.swift */; };
+		037E907A1FED6F7800593983 /* CarDummy.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 037E90791FED6F2E00593983 /* CarDummy.geojson */; };
 		039C57B91FE96EDF001C2BCB /* TAPHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039C57B71FE96EDF001C2BCB /* TAPHistoryViewController.swift */; };
 		039C57BA1FE96EDF001C2BCB /* TAPHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 039C57B81FE96EDF001C2BCB /* TAPHistoryViewController.xib */; };
 		039C57C01FE970F1001C2BCB /* TAPHistoryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039C57BF1FE970F1001C2BCB /* TAPHistoryHeaderView.swift */; };
@@ -210,6 +211,7 @@
 		037B69641FEB2BFA00DCBD9D /* TAPHistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPHistoryModel.swift; sourceTree = "<group>"; };
 		037B69661FEB2DA500DCBD9D /* TAPOrderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPOrderModel.swift; sourceTree = "<group>"; };
 		037B69681FEC69C400DCBD9D /* TAPOrderItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPOrderItemModel.swift; sourceTree = "<group>"; };
+		037E90791FED6F2E00593983 /* CarDummy.geojson */ = {isa = PBXFileReference; lastKnownFileType = text; path = CarDummy.geojson; sourceTree = "<group>"; };
 		039C57B71FE96EDF001C2BCB /* TAPHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPHistoryViewController.swift; sourceTree = "<group>"; };
 		039C57B81FE96EDF001C2BCB /* TAPHistoryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TAPHistoryViewController.xib; sourceTree = "<group>"; };
 		039C57BF1FE970F1001C2BCB /* TAPHistoryHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPHistoryHeaderView.swift; sourceTree = "<group>"; };
@@ -400,6 +402,7 @@
 				031555351FE711490082E709 /* Cells */,
 				031555311FE709300082E709 /* TAPCartViewController.swift */,
 				031555321FE709300082E709 /* TAPCartViewController.xib */,
+				037E90791FED6F2E00593983 /* CarDummy.geojson */,
 			);
 			path = Cart;
 			sourceTree = "<group>";
@@ -1181,6 +1184,7 @@
 				6C66BFB81FCEB3870092A006 /* TAPMainTabbarViewController.xib in Resources */,
 				6CCEEFC81FCEB6600018FDB3 /* TAPFeedViewController.xib in Resources */,
 				C5DCD4A21FE814D200F4F134 /* TAPShippingMethodCell.xib in Resources */,
+				037E907A1FED6F7800593983 /* CarDummy.geojson in Resources */,
 				6C86012B1FCD6D3E004E7CAE /* TAPSplashViewController.xib in Resources */,
 				6CCEEFBF1FCEB5C50018FDB3 /* TAPDealsViewController.xib in Resources */,
 				C5B597711FE9E35C00E678C6 /* TAPReViewOrderController.xib in Resources */,

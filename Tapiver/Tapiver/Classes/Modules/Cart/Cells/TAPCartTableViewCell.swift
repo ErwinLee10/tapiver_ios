@@ -53,8 +53,8 @@ class TAPCartTableViewCell: UITableViewCell {
             des = "\(color)\(size)"
         }
         descriptionLabel.text = des
-        
-        priceLabel.text = "\(product.finalPrice ?? 0)"
+        let price = NSNumber(value: product.finalPrice ?? 0).moneyString()
+        priceLabel.text = price
         quantityView.setSelectedValue("\(product.quantity ?? 0)")
         
     }

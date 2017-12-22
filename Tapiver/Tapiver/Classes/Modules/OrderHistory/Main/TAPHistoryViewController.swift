@@ -43,7 +43,7 @@ class TAPHistoryViewController: TAPBaseViewController {
                 SVProgressHUD.dismiss()
             }
         } else {
-            // TODO: Show login view
+            
         }
     }
     
