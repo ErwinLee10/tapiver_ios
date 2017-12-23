@@ -53,6 +53,10 @@
 		037E907E1FED859D00593983 /* TAPHistoryReportIssueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037E907C1FED859D00593983 /* TAPHistoryReportIssueViewController.swift */; };
 		037E907F1FED859D00593983 /* TAPHistoryReportIssueViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 037E907D1FED859D00593983 /* TAPHistoryReportIssueViewController.xib */; };
 		037E90811FED935800593983 /* UIAlertControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 037E90801FED935800593983 /* UIAlertControllerExtension.swift */; };
+		037E90AD1FEE08E400593983 /* UIAlertController+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = 037E90831FEE08E400593983 /* UIAlertController+Blocks.m */; };
+		037E90AE1FEE08E400593983 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 037E90841FEE08E400593983 /* LICENSE */; };
+		037E90BD1FEE08E400593983 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 037E90A01FEE08E400593983 /* README.md */; };
+		037E90C11FEE1BD700593983 /* HistoryDummy.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 037E90C01FEE1BD700593983 /* HistoryDummy.geojson */; };
 		039C57B91FE96EDF001C2BCB /* TAPHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039C57B71FE96EDF001C2BCB /* TAPHistoryViewController.swift */; };
 		039C57BA1FE96EDF001C2BCB /* TAPHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 039C57B81FE96EDF001C2BCB /* TAPHistoryViewController.xib */; };
 		039C57C01FE970F1001C2BCB /* TAPHistoryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039C57BF1FE970F1001C2BCB /* TAPHistoryHeaderView.swift */; };
@@ -218,6 +222,11 @@
 		037E907C1FED859D00593983 /* TAPHistoryReportIssueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPHistoryReportIssueViewController.swift; sourceTree = "<group>"; };
 		037E907D1FED859D00593983 /* TAPHistoryReportIssueViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TAPHistoryReportIssueViewController.xib; sourceTree = "<group>"; };
 		037E90801FED935800593983 /* UIAlertControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertControllerExtension.swift; sourceTree = "<group>"; };
+		037E90831FEE08E400593983 /* UIAlertController+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+Blocks.m"; sourceTree = "<group>"; };
+		037E90841FEE08E400593983 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		037E90A01FEE08E400593983 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		037E90A11FEE08E400593983 /* UIAlertController+Blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+Blocks.h"; sourceTree = "<group>"; };
+		037E90C01FEE1BD700593983 /* HistoryDummy.geojson */ = {isa = PBXFileReference; lastKnownFileType = text; path = HistoryDummy.geojson; sourceTree = "<group>"; };
 		039C57B71FE96EDF001C2BCB /* TAPHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPHistoryViewController.swift; sourceTree = "<group>"; };
 		039C57B81FE96EDF001C2BCB /* TAPHistoryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TAPHistoryViewController.xib; sourceTree = "<group>"; };
 		039C57BF1FE970F1001C2BCB /* TAPHistoryHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPHistoryHeaderView.swift; sourceTree = "<group>"; };
@@ -468,12 +477,24 @@
 			path = Report;
 			sourceTree = "<group>";
 		};
+		037E90821FEE08E400593983 /* UIAlertController-Blocks */ = {
+			isa = PBXGroup;
+			children = (
+				037E90A11FEE08E400593983 /* UIAlertController+Blocks.h */,
+				037E90831FEE08E400593983 /* UIAlertController+Blocks.m */,
+				037E90841FEE08E400593983 /* LICENSE */,
+				037E90A01FEE08E400593983 /* README.md */,
+			);
+			path = "UIAlertController-Blocks";
+			sourceTree = "<group>";
+		};
 		039C57B61FE96E9D001C2BCB /* OrderHistory */ = {
 			isa = PBXGroup;
 			children = (
-				037E907B1FED854A00593983 /* Report */,
 				037B69631FEB2BD200DCBD9D /* Models */,
+				037E907B1FED854A00593983 /* Report */,
 				039C57BC1FE97092001C2BCB /* Main */,
+				037E90C01FEE1BD700593983 /* HistoryDummy.geojson */,
 			);
 			path = OrderHistory;
 			sourceTree = "<group>";
@@ -651,6 +672,7 @@
 		6C5C9FE01FDE4631001EFC08 /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				037E90821FEE08E400593983 /* UIAlertController-Blocks */,
 				6C5C9FE11FDE4631001EFC08 /* iCarousel */,
 			);
 			path = ThirdParty;
@@ -1203,6 +1225,8 @@
 				C5DCD4A21FE814D200F4F134 /* TAPShippingMethodCell.xib in Resources */,
 				037E907A1FED6F7800593983 /* CarDummy.geojson in Resources */,
 				6C86012B1FCD6D3E004E7CAE /* TAPSplashViewController.xib in Resources */,
+				037E90C11FEE1BD700593983 /* HistoryDummy.geojson in Resources */,
+				037E90BD1FEE08E400593983 /* README.md in Resources */,
 				6CCEEFBF1FCEB5C50018FDB3 /* TAPDealsViewController.xib in Resources */,
 				C5B597711FE9E35C00E678C6 /* TAPReViewOrderController.xib in Resources */,
 				C5DCD49E1FE814AD00F4F134 /* TAPAddessCell.xib in Resources */,
@@ -1218,6 +1242,7 @@
 				031555261FE58AA20082E709 /* TAPStorePageInformationViewController.xib in Resources */,
 				6CCEEFBB1FCEB5B70018FDB3 /* TAPCategoryViewController.xib in Resources */,
 				C5D8E89D1FE8DF7A00E12E9F /* TAPSubShippingMethod.xib in Resources */,
+				037E90AE1FEE08E400593983 /* LICENSE in Resources */,
 				031555391FE711690082E709 /* TAPCartTableViewCell.xib in Resources */,
 				0336DB501FE815A5002D9A93 /* TAPDropdownListViewController.xib in Resources */,
 				6C8601361FCD6E69004E7CAE /* TAPIntroPageViewController.xib in Resources */,
@@ -1336,6 +1361,7 @@
 				6C66BFA41FCE69500092A006 /* TAPSignupEmailViewController.swift in Sources */,
 				0336DB4A1FE81212002D9A93 /* TAPDropdownBoxView.swift in Sources */,
 				031555381FE711690082E709 /* TAPCartTableViewCell.swift in Sources */,
+				037E90AD1FEE08E400593983 /* UIAlertController+Blocks.m in Sources */,
 				B0ECB4B81FD2B86B00E97703 /* TAPLoginModel.swift in Sources */,
 				B0B056951FC0860F001E4659 /* BCAExtention.swift in Sources */,
 				039C57B91FE96EDF001C2BCB /* TAPHistoryViewController.swift in Sources */,

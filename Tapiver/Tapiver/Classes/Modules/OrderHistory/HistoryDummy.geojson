@@ -1,0 +1,73 @@
+ [
+  {
+  "id": 315093298661,
+  "orderDate": 1509301066340,
+  "totalAmount": 72,
+  "orderStatus": "Ready for Pick up",
+  "shippingType": "Shipping",
+  "shippingProvider": "Tapiver",
+  "isPickup": false,
+  "shippingAddress": {
+  "streetName": "testing",
+  "floor": "12626",
+  "unitNumber": "5552",
+  "postalCode": "4161626",
+  "alias": "testing",
+  "contact": "611626",
+  "formattedAddress": "testing, #12626-5552",
+  "formattedFloorAndUnitAddres": "#12626-5552"
+  },
+  "billingAddress": {
+  "streetName": "testing",
+  "floor": "12626",
+  "unitNumber": "5552",
+  "postalCode": "4161626",
+  "alias": "testing",
+  "contact": "611626",
+  "formattedAddress": "testing, #12626-5552",
+  "formattedFloorAndUnitAddres": "#12626-5552"
+  },
+  "shippingCost": 3,
+  "cashback": null,
+  "sellerId": 5,
+  "sellerName": "Sup Clothing",
+  "sellerPicture": "https://s3-ap-southeast-1.amazonaws.com/tapiver/supclothing/PRODUCT/f12d56a2-976f-4c17-b2c2-8843ce8ce354.jpg",
+  "sellerTotalFollower": 8,
+  "isFollowedByThisUser": true,
+  "sellerAddress": {
+  "id": 3,
+  "streetName": "238 Haji Lane",
+  "buildingName": "Haji Lane",
+  "floor": "",
+  "unitNumber": "",
+  "postalCode": "189222",
+  "contact": "+6567633612",
+  "shortDisplayAddress": "Haji Lane",
+  "landmark": {
+  "id": 1,
+  "name": "Haji Lane",
+  "picture": "https://s3-ap-southeast-1.amazonaws.com/tapiver/tapiver/landmark/Haji+Lane.jpg"
+  },
+  "formattedAddress": "238 Haji Lane",
+  "formattedFloorAndUnitAddres": ""
+  },
+  "items": [
+            {
+            "itemId": "100",
+            "itemName": "GOOD WORTH & CO. - FUCK IT TEE (HEATHER)",
+            "colorHexCode": "#cbcbcb",
+            "colorName": "",
+            "size": "L",
+            "quantity": 1,
+            "originalPrice": 69,
+            "salePrice": null,
+            "discountPercentage": 0,
+            "finalPrice": 69,
+            "itemPictures": [
+                             "https://s3-ap-southeast-1.amazonaws.com/tapiver/supclothing/PRODUCT/e30adda9-26cd-403b-b25a-f4559a482221.jpg",
+                             "https://s3-ap-southeast-1.amazonaws.com/tapiver/supclothing/PRODUCT/c6d8a84d-f16e-4160-b54a-e62b3729273c.jpg"
+                             ]
+            }
+            ]
+  }
+  ]

@@ -55,22 +55,22 @@
                                                 </constraints>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="jLY-0d-mR8">
-                                                <rect key="frame" x="10" y="0.0" width="126.5" height="40.5"/>
+                                                <rect key="frame" x="10" y="0.0" width="99" height="40.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3BI-M0-dwL">
-                                                        <rect key="frame" x="0.0" y="0.0" width="126.5" height="13.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="99" height="13.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                         <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="32X-kp-Xzi">
-                                                        <rect key="frame" x="0.0" y="13.5" width="126.5" height="13.5"/>
+                                                        <rect key="frame" x="0.0" y="13.5" width="99" height="13.5"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gPL-1I-z7u">
-                                                        <rect key="frame" x="0.0" y="27" width="126.5" height="13.5"/>
+                                                        <rect key="frame" x="0.0" y="27" width="99" height="13.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                         <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -78,10 +78,10 @@
                                                 </subviews>
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uM3-2p-7xB">
-                                                <rect key="frame" x="136.5" y="0.0" width="50" height="40.5"/>
+                                                <rect key="frame" x="109" y="0.0" width="77.5" height="40.5"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SS78" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X4a-VM-DLb">
-                                                        <rect key="frame" x="0.0" y="13.5" width="40" height="14.5"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="SS7800" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X4a-VM-DLb">
+                                                        <rect key="frame" x="0.0" y="13.5" width="67.5" height="14.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <color key="textColor" red="0.43921568630000002" green="0.43921568630000002" blue="0.43921568630000002" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -90,7 +90,6 @@
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstItem="X4a-VM-DLb" firstAttribute="centerY" secondItem="uM3-2p-7xB" secondAttribute="centerY" id="4Ec-vP-SU6"/>
-                                                    <constraint firstAttribute="width" constant="50" id="LVm-yj-SQ3"/>
                                                     <constraint firstItem="X4a-VM-DLb" firstAttribute="leading" secondItem="uM3-2p-7xB" secondAttribute="leading" id="NT0-vP-2W1"/>
                                                     <constraint firstAttribute="trailing" secondItem="X4a-VM-DLb" secondAttribute="trailing" constant="10" id="OIl-43-LwI"/>
                                                 </constraints>

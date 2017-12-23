@@ -8,6 +8,12 @@
 
 import UIKit
 
+protocol TAPHistoryOrderInformationTableViewCellDelegate: class {
+    func historyOrderInformationCellDidTouchConfirm(cell: TAPHistoryOrderInformationTableViewCell)
+    func historyOrderInformationCellDidTouchReport(cell: TAPHistoryOrderInformationTableViewCell)
+    func historyOrderInformationCellDidTouchVisitShop(cell: TAPHistoryOrderInformationTableViewCell)
+}
+
 class TAPHistoryOrderInformationTableViewCell: UITableViewCell {
     @IBOutlet weak var fromToLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
@@ -19,6 +25,9 @@ class TAPHistoryOrderInformationTableViewCell: UITableViewCell {
     @IBOutlet weak var confirmHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var visitShopHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var reportHeightConstraint: NSLayoutConstraint!
+    
+    weak var delegate: TAPHistoryOrderInformationTableViewCellDelegate?
+    var orderModel: TAPOrderModel?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -35,26 +44,30 @@ class TAPHistoryOrderInformationTableViewCell: UITableViewCell {
     }
     
     func fillData(orderData: TAPOrderModel) {
-        addressLabel.text = orderData.sellerAddress?.formattedAddress ?? ""
-        moneyValueLabel.text = "\(orderData.cashback ?? 0)"
-        totalMoneyLabel.text = "0"
+        orderModel = orderData
+        addressLabel.text = (orderData.sellerAddress?.formattedAddress ?? "") + "\n" + (orderData.sellerAddress?.contact ?? "")
+        moneyValueLabel.text = NSNumber(value: orderData.cashback ?? 0).moneyString()
+        totalMoneyLabel.text = NSNumber(value:0).moneyString() // Todo
         
         if orderData.orderStatus != "Ready for Pick up" {
             confirmHeightConstraint.constant = 0
             reportHeightConstraint.constant = 0
         } else {
-            confirmHeightConstraint.constant = 40
-            reportHeightConstraint.constant = 40
+            confirmHeightConstraint.constant = 45
+            reportHeightConstraint.constant = 45
         }
         self.layoutIfNeeded()
     }
     
     @IBAction func confirmTouched(_ sender: Any) {
+        delegate?.historyOrderInformationCellDidTouchConfirm(cell: self)
     }
     
     @IBAction func reportTouched(_ sender: Any) {
+        delegate?.historyOrderInformationCellDidTouchReport(cell: self)
     }
     
     @IBAction func visitShopTouched(_ sender: Any) {
+        delegate?.historyOrderInformationCellDidTouchVisitShop(cell: self)
     }
 }

@@ -61,6 +61,8 @@ class TAPBaseViewController: UIViewController {
     fileprivate func showHistoryScreen() {
         let vc = TAPHistoryViewController(nibName: "TAPHistoryViewController", bundle: nil)
         TAPMainFrame.getNavi().pushViewController(vc, animated: true)
+//        let vc = TAPHistoryReportIssueViewController(nibName: "TAPHistoryReportIssueViewController", bundle: nil)
+//        TAPMainFrame.getNavi().pushViewController(vc, animated: true)
     }
     
     fileprivate func showAccountScreen() {

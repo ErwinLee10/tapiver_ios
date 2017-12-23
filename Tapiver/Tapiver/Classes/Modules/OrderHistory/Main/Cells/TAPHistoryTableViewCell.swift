@@ -48,8 +48,9 @@ class TAPHistoryTableViewCell: UITableViewCell {
         }
         descriptionLabel.text = des
         
-        priceLabel.text = "\(orderItem.finalPrice ?? 0)"
-        quantityLabel.text = "\(orderItem.quantity ?? 0)"
+        priceLabel.text = NSNumber.init(value: orderItem.finalPrice ?? 0).moneyString()
+        quantityLabel.text = "Quantity\(orderItem.quantity ?? 0)"
+        statusLabel.text = ""
     }
     
 }
