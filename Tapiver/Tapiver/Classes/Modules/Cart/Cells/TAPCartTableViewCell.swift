@@ -11,6 +11,7 @@ import SDWebImage
 
 class TAPCartTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var lbQuantity: UILabel!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var avatarImgView: UIImageView!
     @IBOutlet weak var brandLabel: UILabel!
@@ -20,6 +21,7 @@ class TAPCartTableViewCell: UITableViewCell {
     @IBOutlet weak var quantityView: TAPDropdownBoxView!
     @IBOutlet weak var removeBtn: UIButton!
     
+    public var isReviewOrder: Bool = false
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -53,10 +55,12 @@ class TAPCartTableViewCell: UITableViewCell {
             des = "\(color)\(size)"
         }
         descriptionLabel.text = des
-        
-        priceLabel.text = "\(product.finalPrice ?? 0)"
+        let price = NSNumber(value: product.finalPrice ?? 0).moneyString()
+        priceLabel.text = price
         quantityView.setSelectedValue("\(product.quantity ?? 0)")
-        
+        lbQuantity.text = "Quantity: \(data?.quantity ?? 0)"
+        lbQuantity.isHidden = !isReviewOrder
+        quantityView.isHidden = isReviewOrder
     }
     
     @IBAction func removeBtnTouched(_ sender: Any) {

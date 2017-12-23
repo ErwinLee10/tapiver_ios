@@ -64,13 +64,12 @@ class TAPLandMarkView: UIView {
             self.sView.frame = CGRect(x: -self.sView.frame.size.width, y: self.sView.frame.origin.y, width: self.sView.frame.size.width, height: self.sView.frame.size.height)
         }) { (isSuccess) in
               self.diss()
-            
-            // Show Mall page
-            // TODO: truyen data
-            let mallPage = TAPMallPageTabBarViewController()
-            TAPMainFrame.getNavi().pushViewController(mallPage, animated: true)
         }
-      
+        
+        // Show mall page
+        if isSelect {
+            self.showMallPage(at: index)
+        }
     }
     
     func diss() {
@@ -103,6 +102,16 @@ class TAPLandMarkView: UIView {
             }
             SVProgressHUD.dismiss()
         }
+    }
+    
+    private func showMallPage(at index: Int) {
+        guard let listdata = self.listData, index > 0 else {
+            return  
+        }
+        // Show Mall page
+        let landmark = listdata[index]
+        let mallPage = TAPMallPageTabBarViewController.mallPageTabBarController(landmark: landmark)
+        TAPMainFrame.getNavi().pushViewController(mallPage, animated: true)
     }
 }
 extension TAPLandMarkView: UITableViewDelegate {

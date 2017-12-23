@@ -8,7 +8,7 @@
 
 import UIKit
 @objc protocol TAPSubShippingMethodDelegate: class {
-    @objc func selectAtIndex(index: IndexPath, obj:TAPShippingModel)
+    @objc func selectAtIndex(index: IndexPath, obj:TAPShippingModel, isSelect: Bool)
 }
 
 class TAPSubShippingMethod: UITableViewCell {
@@ -29,9 +29,14 @@ class TAPSubShippingMethod: UITableViewCell {
     public func setData() {
         self.btCheckBox.isSelected = self.obj!.isSelect
         self.lbTitle.text = "\(obj!.provider ?? "") \(obj!.type ?? "")"
-        self.lbNumber.text = "S$ \(obj?.price ?? 0)"
-        if let cashBack = obj?.additionalInfor?.cashbackPercentage {
-            if cashBack > 0.0 {
+        if obj?.isfreeShipping == true {
+            self.lbNumber.text = "Free"
+        }else {
+            self.lbNumber.text = "S$ \(obj!.price ?? 0.00)"
+        }
+        self.lbCashBack.isHidden = true
+        if let cashBack = obj!.additionalInfor?.cashbackPercentage {
+            if cashBack > 0.1 {
                 self.lbCashBack.isHidden = false
             }else {
                 self.lbCashBack.isHidden = true
@@ -42,8 +47,9 @@ class TAPSubShippingMethod: UITableViewCell {
     
     @IBAction func acSelect(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
+        self.obj!.isSelect = sender.isSelected
         if self.delegate != nil {
-            self.delegate?.selectAtIndex(index: self.index!, obj: self.obj!)
+            self.delegate?.selectAtIndex(index: self.index!, obj: self.obj!, isSelect: sender.isSelected)
         }
     }
     override func setSelected(_ selected: Bool, animated: Bool) {

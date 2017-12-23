@@ -40,13 +40,21 @@ class TAPMallPageDealViewController: TAPMallPageBaseViewController {
         super.setupView()
         let header  = headerView as? TAPHeaderView
         header?.delegate = self
+        header?.setHeaderTitle(landmark?.name ?? "")
         
         contentCollectionView.register(UINib.init(nibName: "TAPMallPageDealsCell", bundle: nil), forCellWithReuseIdentifier: TAPMallPageDealViewController.cellIdentifier)
         emptyLabel.isHidden = true
     }
     
     private func getData() {
-        let params: [String: Any] = [:] // TODO: check later
+        var params: [String: Any] = [:] // TODO: check later
+        if let landmarkId = landmark?.id {
+            params[TAPConstants.APIParams.landmarkId] = landmarkId
+        }
+        
+        if TAPGlobal.shared.hasLogin() {
+            params[TAPConstants.APIParams.userId] = TAPGlobal.shared.getLoginModel()?.userId ?? ""
+        }
         
         SVProgressHUD.show()
         TAPWebservice.shareInstance.sendGETRequest(path: TAPConstants.APIPath.getProducts, params: params, responseObjectClass: TAPProductListModel()) { [weak self] (success, responseEntity) in

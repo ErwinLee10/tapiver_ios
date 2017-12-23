@@ -60,7 +60,7 @@ extension TAPShippingMethodCell: UITableViewDelegate {
             cell.backgroundColor = UIColor.clear
             let layer: CAShapeLayer  = CAShapeLayer()
             let pathRef: CGMutablePath  = CGMutablePath()
-            let bounds: CGRect  = cell.bounds.insetBy(dx: 10, dy: 0)
+            let bounds: CGRect  = cell.bounds.insetBy(dx: 0, dy: 0)
             var addLine: Bool  = false
             if (indexPath.row == 0 && indexPath.row == tableView.numberOfRows(inSection: indexPath.section)-1) {
                 pathRef.__addRoundedRect(transform: nil, rect: bounds, cornerWidth: cornerRadius, cornerHeight: cornerRadius)
@@ -145,9 +145,18 @@ extension TAPShippingMethodCell: UITableViewDataSource {
     }
 }
 extension TAPShippingMethodCell: TAPSubShippingMethodDelegate {
-    func selectAtIndex(index: IndexPath, obj: TAPShippingModel) {
+    func selectAtIndex(index: IndexPath, obj: TAPShippingModel, isSelect: Bool) {
+        let cartList = self.checkOut!.listShipping[index.section]
+        for item in cartList.shippingOptions {
+            if  item.isEqual(obj) {
+                item.isSelect = true
+            }else {
+                item.isSelect = false
+            }
+        }
+        self.tableStyle.reloadData()
         if self.delegate != nil {
-            self.delegate?.acSelectShippingMethodAt(index: index, obj: obj, withCard: self.checkOut!.listShipping[index.section])
+            self.delegate?.acSelectShippingMethodAt(index: index, obj: obj, withCard:cartList)
         }
     }
 }

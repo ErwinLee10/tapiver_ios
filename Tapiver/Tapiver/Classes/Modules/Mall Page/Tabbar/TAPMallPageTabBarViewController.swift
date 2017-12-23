@@ -9,10 +9,16 @@
 import UIKit
 
 class TAPMallPageTabBarViewController: UITabBarController {
-
+    var landmark: TAPLandmarkModel?
+    
+    static func mallPageTabBarController(landmark: TAPLandmarkModel?) -> TAPMallPageTabBarViewController {
+        let tabbar = TAPMallPageTabBarViewController()
+        tabbar.landmark = landmark
+        return tabbar
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
         configTabbar()
     }
 

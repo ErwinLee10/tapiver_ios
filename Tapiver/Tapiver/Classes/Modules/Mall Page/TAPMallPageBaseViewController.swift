@@ -10,6 +10,8 @@ import UIKit
 
 class TAPMallPageBaseViewController: TAPBaseViewController {
     @IBOutlet var mainHeaderHeight: NSLayoutConstraint!
+    
+    var landmark: TAPLandmarkModel?
     let expandHeaderHeight: CGFloat = 90.0
     let collapseHeaderHeight: CGFloat = 44.0
     let animationDuration = 0.3
@@ -17,13 +19,17 @@ class TAPMallPageBaseViewController: TAPBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        let tabbarVC = tabBarController as! TAPMallPageTabBarViewController
+        landmark = tabbarVC.landmark
     }
     
     func setupView() {
         let header  = headerView as? TAPHeaderView
         header?.expandViewAnimation(true)
         mainHeaderHeight.constant = expandHeaderHeight
+        
+        header?.setHeaderTitle(landmark?.name ?? "")
+        header?.setBackgroundImage(imageUrl: landmark?.picture ?? "")
     }
 
 }

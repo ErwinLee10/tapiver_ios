@@ -8,12 +8,15 @@
 
 import UIKit
 import SVProgressHUD
+import SDWebImage
 
 class TAPStorePageViewController: TAPBaseViewController {
 
     @IBOutlet var headerViewHeight: NSLayoutConstraint!
     @IBOutlet weak var contentCollectionView: UICollectionView!
     @IBOutlet weak var emptyLabel: UILabel!
+    @IBOutlet weak var headerBgView: UIImageView!
+    
     var productList: [TAPProductModel] = []
     var feedModel: TAPFeedModel?
     var storePageHeaderView: TAPStorePageHeaderView?
@@ -44,7 +47,12 @@ class TAPStorePageViewController: TAPBaseViewController {
     private func setupView() {
         storePageHeaderView = headerView as? TAPStorePageHeaderView
         storePageHeaderView?.delegate = self
+        if feedModel != nil {
+            storePageHeaderView?.fillData(entity: feedModel!)
+        }
 //        headerViewHeight.constant = expandHeaderHeight
+        
+        headerBgView.sd_setImage(with: URL.init(string: feedModel?.sellerCoverPicture ?? ""), placeholderImage: nil, options: SDWebImageOptions.retryFailed, completed: nil)
         
         contentCollectionView.register(UINib.init(nibName: "TAPMallPageDealsCell", bundle: nil), forCellWithReuseIdentifier: TAPMallPageDealViewController.cellIdentifier)
         emptyLabel.isHidden = true

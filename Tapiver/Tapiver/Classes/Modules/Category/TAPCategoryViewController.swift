@@ -82,11 +82,233 @@ class TAPCategoryViewController: UIViewController {
         
     }
     
-    @IBAction func acTap(_ sender: Any) {
-        let tap: TAPAddressMethodController = TAPAddressMethodController()
-        tap.hidesBottomBarWhenPushed = true;
-        self.navigationController?.pushViewController(tap, animated: true)
+//    @IBAction func acTap(_ sender: Any) {
+//        let string = """
+//{
+//  "cartItemsPerSeller": [
+//    {
+//      "sellerName": "Hung & Trang",
+//      "sellerId": 1,
+//      "sellerAddress": {
+//        "id": 1,
+//        "streetName": "29 Haji Lane",
+//        "buildingName": "Haji Lane",
+//        "floor": "",
+//        "unitNumber": "",
+//        "postalCode": "238898",
+//        "contact": "+6567633612",
+//        "shortDisplayAddress": "Haji Lane",
+//        "landmark": {
+//          "id": 1,
+//          "name": "Haji Lane",
+//          "picture": "https://s3-ap-southeast-1.amazonaws.com/tapiver/tapiver/landmark/Haji+Lane.jpg"
+//        },
+//        "formattedAddress": "29 Haji Lane",
+//        "formattedFloorAndUnitAddres": ""
+//      },
+//      "totalPrice": 65,
+//      "productVariations": [
+//        {
+//          "name": "Sleeveless Tie-Waist Dress Green",
+//          "brand": "Marc & Molly's",
+//          "originalPrice": 65,
+//          "salePrice": null,
+//          "finalPrice": 65,
+//          "quantity": 1,
+//          "availableStock": 70,
+//          "pictureUrl": "https://s3-ap-southeast-1.amazonaws.com/tapiver/hello@lucavic.com/PRODUCT/fcc23fc3-7c84-4a9a-809d-de148c1e007a.jpg",
+//          "id": 45,
+//          "size": "4",
+//          "colorHexCode": "#3fb3b6",
+//          "colorName": "",
+//          "categoryId": 227,
+//          "categoryName": "Girls",
+//          "onSale": false
+//        },
+//{
+//          "name": "Hungvt",
+//          "brand": "Marc & Molly's",
+//          "originalPrice": 65,
+//          "salePrice": null,
+//          "finalPrice": 65,
+//          "quantity": 1,
+//          "availableStock": 70,
+//          "pictureUrl": "https://s3-ap-southeast-1.amazonaws.com/tapiver/hello@lucavic.com/PRODUCT/fcc23fc3-7c84-4a9a-809d-de148c1e007a.jpg",
+//          "id": 45,
+//          "size": "4",
+//          "colorHexCode": "#3fb3b6",
+//          "colorName": "",
+//          "categoryId": 227,
+//          "categoryName": "Girls",
+//          "onSale": false
+//        },
+//{
+//          "name": "Hungvt",
+//          "brand": "Marc & Molly's",
+//          "originalPrice": 65,
+//          "salePrice": null,
+//          "finalPrice": 65,
+//          "quantity": 1,
+//          "availableStock": 70,
+//          "pictureUrl": "https://s3-ap-southeast-1.amazonaws.com/tapiver/hello@lucavic.com/PRODUCT/fcc23fc3-7c84-4a9a-809d-de148c1e007a.jpg",
+//          "id": 45,
+//          "size": "4",
+//          "colorHexCode": "#3fb3b6",
+//          "colorName": "",
+//          "categoryId": 227,
+//          "categoryName": "Girls",
+//          "onSale": false
+//        }
+//      ],
+//      "shippingOptions": [
+//        {
+//          "id": 1,
+//          "provider": "",
+//          "type": "Normal Shipping",
+//          "price": 0,
+//          "isPickup": false,
+//          "additionalInformation": {
+//            "time": "5 days",
+//            "cashbackPercentage": null,
+//            "cashbackEarned": null
+//          },
+//          "freeShipping": false
+//        },
+//        {
+//          "id": 2,
+//          "provider": "",
+//          "type": "Registered Shipping",
+//          "price": 3,
+//          "isPickup": false,
+//          "additionalInformation": {
+//            "time": "2 days",
+//            "cashbackPercentage": null,
+//            "cashbackEarned": null
+//          },
+//          "freeShipping": false
+//        },
+//        {
+//          "id": 4,
+//          "provider": "Store",
+//          "type": "Pickup",
+//          "price": 0,
+//          "isPickup": true,
+//          "additionalInformation": {
+//            "time": "1 day",
+//            "cashbackPercentage": 5,
+//            "cashbackEarned": 3.25
+//          },
+//          "freeShipping": false
+//        }
+//      ]
+//    },
+//    {
+//      "sellerName": "Luca & Vic",
+//      "sellerId": 1,
+//      "sellerAddress": {
+//        "id": 1,
+//        "streetName": "29 Haji Lane",
+//        "buildingName": "Haji Lane",
+//        "floor": "",
+//        "unitNumber": "",
+//        "postalCode": "238898",
+//        "contact": "+6567633612",
+//        "shortDisplayAddress": "Haji Lane",
+//        "landmark": {
+//          "id": 1,
+//          "name": "Haji Lane",
+//          "picture": "https://s3-ap-southeast-1.amazonaws.com/tapiver/tapiver/landmark/Haji+Lane.jpg"
+//        },
+//        "formattedAddress": "29 Haji Lane",
+//        "formattedFloorAndUnitAddres": ""
+//      },
+//      "totalPrice": 65,
+//      "productVariations": [
+//        {
+//          "name": "Sleeveless Tie-Waist Dress Green",
+//          "brand": "Marc & Molly's",
+//          "originalPrice": 65,
+//          "salePrice": null,
+//          "finalPrice": 65,
+//          "quantity": 1,
+//          "availableStock": 70,
+//          "pictureUrl": "https://s3-ap-southeast-1.amazonaws.com/tapiver/hello@lucavic.com/PRODUCT/fcc23fc3-7c84-4a9a-809d-de148c1e007a.jpg",
+//          "id": 45,
+//          "size": "4",
+//          "colorHexCode": "#3fb3b6",
+//          "colorName": "",
+//          "categoryId": 227,
+//          "categoryName": "Girls",
+//          "onSale": false
+//        }
+//      ],
+//      "shippingOptions": [
+//        {
+//          "id": 1,
+//          "provider": "",
+//          "type": "Normal Shipping",
+//          "price": 0,
+//          "isPickup": false,
+//          "additionalInformation": {
+//            "time": "5 days",
+//            "cashbackPercentage": null,
+//            "cashbackEarned": null
+//          },
+//          "freeShipping": false
+//        },
+//        {
+//          "id": 2,
+//          "provider": "",
+//          "type": "Registered Shipping",
+//          "price": 3,
+//          "isPickup": false,
+//          "additionalInformation": {
+//            "time": "2 days",
+//            "cashbackPercentage": null,
+//            "cashbackEarned": null
+//          },
+//          "freeShipping": true
+//        },
+//        {
+//          "id": 4,
+//          "provider": "Store",
+//          "type": "Pickup",
+//          "price": 0,
+//          "isPickup": true,
+//          "additionalInformation": {
+//            "time": "1 day",
+//            "cashbackPercentage": 10,
+//            "cashbackEarned": 3.25
+//          },
+//          "freeShipping": false
+//        }
+//      ]
+//    }
+//  ],
+//  "coupon": null,
+//  "finalTotalAmount": 65,
+//  "originalTotalAmount": 65
+//}
+//"""
+//        let dict = convertToDictionary(text: string)
+//        let tap: TAPAddressMethodController = TAPAddressMethodController()
+//        tap.cardList = TAPCartListModel()
+//        tap.cardList?.parserResponse(dic: dict! as NSDictionary)
+//        tap.hidesBottomBarWhenPushed = true;
+//        self.navigationController?.pushViewController(tap, animated: true)
+//    }
+    func convertToDictionary(text: String) -> [String: Any]? {
+        if let data = text.data(using: .utf8) {
+            do {
+                return try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+        return nil
     }
+    
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

@@ -87,17 +87,12 @@ struct TAPConstants {
         static let type                     = "type"
         static let price                    = "price"
         static let additionalInformation    = "additionalInformation"
-        static let time                     = "time"
-        static let cashbackPercentage       = "cashbackPercentage"
-        static let freeShippingThreshold    = "freeShippingThreshold"
-        static let isPickup                 = "isPickup"
-        static let variations               = "variations"
-        
         static let orderDate                = "orderDate"
         static let totalAmount              = "totalAmount"
         static let orderStatus              = "orderStatus"
         static let shippingType             = "shippingType"
         static let shippingProvider         = "shippingProvider"
+        static let isPickup                 = "isPickup"
         static let shippingAddress          = "shippingAddress"
         static let billingAddress           = "billingAddress"
         static let shippingCost             = "shippingCost"
@@ -107,10 +102,16 @@ struct TAPConstants {
         static let itemName                 = "itemName"
         static let discountPercentage       = "discountPercentage"
         static let itemPictures             = "itemPictures"
+        static let time                     = "time"
+        static let cashbackPercentage       = "cashbackPercentage"
+        static let freeShippingThreshold    = "freeShippingThreshold"
+        static let variations               = "variations"
         static let cashbackPercent          = "cashbackPercentage"
         static let cashbackEarn             = "cashbackEarned"
         static let provid                   = "provider"
         static let freeShipping             = "freeShipping"
+        static let shippingOptions          = "shippingOptions"
+
     }
 }
 

@@ -17,8 +17,10 @@ class TAPCartViewController: TAPBaseViewController {
     @IBOutlet weak var couponButton: UIButton!
     @IBOutlet weak var couponView: UIView!
     @IBOutlet weak var couponTextField: UITextField!
+    @IBOutlet weak var emptyLabel: UILabel!
     
     var cartListModel: TAPCartListModel?
+    var voucherName: String?
     let cellIdentifier = "TAPCartTableViewCell"
     let couponCellIdentifier = "TAPCartCouponTableViewCell"
     
@@ -30,7 +32,7 @@ class TAPCartViewController: TAPBaseViewController {
         setupView()
 //        cartListModel = TAPCartListModel()
 //        cartListModel?.cartItemsPerSeller = [TAPCartItemModel(), TAPCartItemModel(), TAPCartItemModel()]
-        getData()
+        getData(hasVoucher: false)
     }
 
     @IBAction func proceedToCheckoutTouched(_ sender: Any) {
@@ -39,13 +41,17 @@ class TAPCartViewController: TAPBaseViewController {
         self.navigationController?.pushViewController(checkout, animated: true)
     }
     
+    // MARK: Action
     @IBAction func couponButtonTouched(_ sender: Any) {
         showCouponView(true)
     }
+    
     @IBAction func couponSubmitTouched(_ sender: Any) {
         showCouponView(false)
+        getData(hasVoucher: true)
     }
     
+    // MARK: Private
     private func setupView() {
         proceedToCheckoutBtn.setBackgroundImage(UIImage.imageFromColor(UIColor(netHex: 0x1CAAB6)), for: .normal)
         contentTableView.register(UINib.init(nibName: cellIdentifier, bundle: nil), forCellReuseIdentifier: cellIdentifier)
@@ -67,62 +73,102 @@ class TAPCartViewController: TAPBaseViewController {
         let attText = NSMutableAttributedString(string: "Have a coupon?")
         attText.addAttributes([NSAttributedStringKey.underlineStyle: NSUnderlineStyle.styleSingle.rawValue], range: NSRange.init(location: 0, length: attText.length))
         couponButton.setAttributedTitle(attText, for: .normal)
+        
+        showCouponView(false)
     }
     
-    private func getData() {
+    private func getData(hasVoucher: Bool) {
+        
+//        let filePath = Bundle.main.path(forResource: "CarDummy", ofType: "geojson")
+//        if let data = NSData(contentsOfFile: filePath ?? "") as Data? {
+//            do {
+//                let json = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments)
+//                if let jsonObj = json as? NSDictionary {
+//                    self.cartListModel = TAPCartListModel()
+//                    cartListModel?.parserResponse(dic: jsonObj)
+//                    self.reloadData()
+//                    
+//                    if hasVoucher {
+//                        self.updateCoupon()
+//                    }
+//                }
+//            } catch {
+//                
+//            }
+//        }
+//        return
         
         if(TAPGlobal.shared.hasLogin()) {
             let params: [String: Any] = [:]
-            let apiPath = "/api/v1/u/\(TAPGlobal.shared.getLoginModel()?.userId ?? "")/cart"
+            var apiPath = ""
+            if hasVoucher && voucherName != nil {
+                apiPath = "/api/v1/u/\(TAPGlobal.shared.getLoginModel()?.userId ?? "")/cart/voucher/\(voucherName!)"
+            } else {
+                apiPath = "/api/v1/u/\(TAPGlobal.shared.getLoginModel()?.userId ?? "")/cart"
+            }
             
             SVProgressHUD.show()
             TAPWebservice.shareInstance.sendGETRequest(path: apiPath, params: params, responseObjectClass: TAPCartListModel()) { [weak self] (success, responseEntity) in
                 if success, let cartListModel = responseEntity as? TAPCartListModel {
                     self?.cartListModel = cartListModel
                     self?.reloadData()
-                }
-                else {
-                    TAPWebservice.shareInstance.checkHaveInternet(response: { (check) in
-                        if check {
-                            //server error
-                            guard let unwrappedSelf = self else { return }
-                            unwrappedSelf.errorGeneralView = Bundle.main.loadNibNamed("TAPGeneralErrorView", owner: unwrappedSelf, options: nil)![0] as? TAPGeneralErrorView
-                            //unwrappedSelf.errorGeneralView?.frame = unwrappedSelf.contentTableView.frame
-                            unwrappedSelf.errorGeneralView?.frame = CGRect(x: unwrappedSelf.contentTableView.frame.origin.x,
-                                                                           y: unwrappedSelf.contentTableView.frame.origin.y,
-                                                                           width: unwrappedSelf.contentTableView.frame.width,
-                                                                           height: unwrappedSelf.view.frame.height - (unwrappedSelf.headerView?.frame.height)!)
-                            unwrappedSelf.view.addSubview(unwrappedSelf.errorGeneralView!)
-                            unwrappedSelf.view.bringSubview(toFront: unwrappedSelf.errorGeneralView!)
-                        }
-                        else {
-                            guard let unwrappedSelf = self else { return }
-                            unwrappedSelf.errorInternetView = Bundle.main.loadNibNamed("TAPLostConnectErrorView", owner: unwrappedSelf, options: nil)![0] as? TAPLostConnectErrorView
-                            //unwrappedSelf.errorInternetView?.frame = unwrappedSelf.contentTableView.frame
-                            unwrappedSelf.errorInternetView?.frame = CGRect(x: unwrappedSelf.contentTableView.frame.origin.x,
-                                                                            y: unwrappedSelf.contentTableView.frame.origin.y,
-                                                                            width: unwrappedSelf.contentTableView.frame.width,
-                                                                            height: unwrappedSelf.view.frame.height - (unwrappedSelf.headerView?.frame.height)!)
-                            unwrappedSelf.view.addSubview(unwrappedSelf.errorInternetView!)
-                            unwrappedSelf.view.bringSubview(toFront: unwrappedSelf.errorInternetView!)
-                        }
-                    })
+                    
+                    if hasVoucher {
+                        self?.updateCoupon()
+                    }
+                } else {
+                    if hasVoucher {
+                        self?.showInvalidCouponAlert()
+                    }
+                    else {
+                        TAPWebservice.shareInstance.checkHaveInternet(response: { (check) in
+                            if check {
+                                //server error
+                                guard let unwrappedSelf = self else { return }
+                                unwrappedSelf.errorGeneralView = Bundle.main.loadNibNamed("TAPGeneralErrorView", owner: unwrappedSelf, options: nil)![0] as? TAPGeneralErrorView
+                                //unwrappedSelf.errorGeneralView?.frame = unwrappedSelf.contentTableView.frame
+                                unwrappedSelf.errorGeneralView?.frame = CGRect(x: unwrappedSelf.contentTableView.frame.origin.x,
+                                                                               y: unwrappedSelf.contentTableView.frame.origin.y,
+                                                                               width: unwrappedSelf.contentTableView.frame.width,
+                                                                               height: unwrappedSelf.view.frame.height - (unwrappedSelf.headerView?.frame.height)!)
+                                unwrappedSelf.view.addSubview(unwrappedSelf.errorGeneralView!)
+                                unwrappedSelf.view.bringSubview(toFront: unwrappedSelf.errorGeneralView!)
+                            }
+                            else {
+                                guard let unwrappedSelf = self else { return }
+                                unwrappedSelf.errorInternetView = Bundle.main.loadNibNamed("TAPLostConnectErrorView", owner: unwrappedSelf, options: nil)![0] as? TAPLostConnectErrorView
+                                //unwrappedSelf.errorInternetView?.frame = unwrappedSelf.contentTableView.frame
+                                unwrappedSelf.errorInternetView?.frame = CGRect(x: unwrappedSelf.contentTableView.frame.origin.x,
+                                                                                y: unwrappedSelf.contentTableView.frame.origin.y,
+                                                                                width: unwrappedSelf.contentTableView.frame.width,
+                                                                                height: unwrappedSelf.view.frame.height - (unwrappedSelf.headerView?.frame.height)!)
+                                unwrappedSelf.view.addSubview(unwrappedSelf.errorInternetView!)
+                                unwrappedSelf.view.bringSubview(toFront: unwrappedSelf.errorInternetView!)
+                            }
+                        })
+                    }
                 }
                 SVProgressHUD.dismiss()
             }
         } else {
-            // TODO: Show login view
+            
         }
     }
     
     private func reloadData() {
-        contentTableView.reloadData()
-        let total = NSNumber(value: cartListModel?.finalTotalAmount ?? 0).moneyString()
-        totalPriceLabel.text = "Total: \(total)"
         
-        if let items = cartListModel?.cartItemsPerSeller, items.count > 0  {
+        if let carItems = cartListModel?.cartItemsPerSeller, carItems.count > 0 {
+            contentTableView.isHidden = false
+            emptyLabel.isHidden = true
             footerView.isHidden = false
+            
+            contentTableView.reloadData()
+            let total = NSNumber(value: cartListModel?.finalTotalAmount ?? 0).moneyString()
+            totalPriceLabel.text = "Total: \(total)"
+            
         } else {
+            contentTableView.isHidden = true
+            emptyLabel.isHidden = false
             footerView.isHidden = true
         }
     }
@@ -131,8 +177,23 @@ class TAPCartViewController: TAPBaseViewController {
         couponView.isHidden = !show
     }
     
-    private func updateCouponView() {
-        
+    private func updateCoupon() {
+        var discountStr = "Discount:"
+        let saveMoney = NSNumber(value: cartListModel?.coupon?.totalSaving ?? 0).moneyString()
+        if let isPercent = cartListModel?.coupon?.isPercentageDiscount, isPercent == true {
+            let percent = cartListModel?.coupon?.percentage ?? 0
+            discountStr += "\(percent)% (-\(saveMoney))"
+        } else {
+            discountStr += "-\(saveMoney)"
+        }
+        couponButton.setTitleColor(UIColor.init(netHex: 0xEC2327), for: .normal)
+        couponButton.setTitle(discountStr, for: .normal)
+        couponButton.setAttributedTitle(nil, for: .normal)
+        couponButton.isUserInteractionEnabled = false
+    }
+    
+    private func showInvalidCouponAlert() {
+        TAPDialogUtils.shareInstance.showAlertMessageOneButton(title: "", message: "Invalid coupon", positive: "OK", positiveHandler: nil, vc: self)
     }
 }
 
