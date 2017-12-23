@@ -15,6 +15,9 @@ class TAPFeedViewController: TAPBaseViewController  {
     @IBOutlet private weak var tableData: UITableView!
     @IBOutlet private weak var nodataView: UIView!
     
+    var errorInternetView: TAPLostConnectErrorView?
+    var errorGeneralView: TAPGeneralErrorView?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -54,7 +57,22 @@ class TAPFeedViewController: TAPBaseViewController  {
                 }
                 self.nodataView.isHidden = data.feedModels.count > 0
             } else {
-                TAPDialogUtils.shareInstance.showAlertMessageOneButton(title: "", message: "Server error, please contact Tapiver team for assistance", positive: "OK", positiveHandler: nil, vc: self)
+                TAPWebservice.shareInstance.checkHaveInternet(response: { (check) in
+                    if check {
+                        //server error
+                        self.errorGeneralView = Bundle.main.loadNibNamed("TAPGeneralErrorView", owner: self, options: nil)![0] as? TAPGeneralErrorView
+                        self.errorGeneralView?.frame = self.nodataView.frame
+                        self.view.addSubview(self.errorGeneralView!)
+                        self.view.bringSubview(toFront: self.errorGeneralView!)
+                    }
+                    else {
+                        self.errorInternetView = Bundle.main.loadNibNamed("TAPLostConnectErrorView", owner: self, options: nil)![0] as? TAPLostConnectErrorView
+                        self.errorInternetView?.frame = self.nodataView.frame
+                        self.view.addSubview(self.errorInternetView!)
+                        self.view.bringSubview(toFront: self.errorInternetView!)
+                    }
+                })
+//                TAPDialogUtils.shareInstance.showAlertMessageOneButton(title: "", message: "Server error, please contact Tapiver team for assistance", positive: "OK", positiveHandler: nil, vc: self)
             }
             SVProgressHUD.dismiss()
         }

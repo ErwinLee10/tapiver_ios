@@ -225,6 +225,9 @@ class TAPAddNewAddressViewController: UIViewController, UITextFieldDelegate {
                 self.delegate?.addAddress(address: address)
                 self.navigationController?.popViewController(animated: true)
             }
+            else {
+                TAPDialogUtils.shareInstance.showAlertMessageOneButton(title: "", message: "Server error, please contact Tapiver team for assistance", positive: "OK", positiveHandler: nil, vc: self)
+            }
         }
     }
     

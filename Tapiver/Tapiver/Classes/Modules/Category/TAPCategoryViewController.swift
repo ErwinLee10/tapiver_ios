@@ -17,6 +17,9 @@ class TAPCategoryViewController: UIViewController {
     var listobject: TAPListCategoryMenu = TAPListCategoryMenu()
     var indexLever0: IndexPath? = nil
     
+    var errorInternetView: TAPLostConnectErrorView?
+    var errorGeneralView: TAPGeneralErrorView?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initIB()
@@ -51,7 +54,28 @@ class TAPCategoryViewController: UIViewController {
                 self.tableViewLever1.reloadData()
                 self.tableViewLever0.reloadData()
             } else {
-                TAPDialogUtils.shareInstance.showAlertMessageOneButton(title: "", message: "Server error, please contact Tapiver team for assistance", positive: "OK", positiveHandler: nil, vc: self)
+                TAPWebservice.shareInstance.checkHaveInternet(response: { (check) in
+                    if check {
+                        //server error
+                        self.errorGeneralView = Bundle.main.loadNibNamed("TAPGeneralErrorView", owner: self, options: nil)![0] as? TAPGeneralErrorView
+                        self.errorGeneralView?.frame = CGRect(x: self.tableViewLever0.frame.origin.x,
+                                                              y: self.tableViewLever0.frame.origin.y,
+                                                              width: self.tableViewLever0.frame.width + self.tableViewLever1.frame.width,
+                                                              height: self.tableViewLever0.frame.height)
+                        self.view.addSubview(self.errorGeneralView!)
+                        self.view.bringSubview(toFront: self.errorGeneralView!)
+                    }
+                    else {
+                        self.errorInternetView = Bundle.main.loadNibNamed("TAPLostConnectErrorView", owner: self, options: nil)![0] as? TAPLostConnectErrorView
+                        self.errorInternetView?.frame = CGRect(x: self.tableViewLever0.frame.origin.x,
+                                                               y: self.tableViewLever0.frame.origin.y,
+                                                               width: self.tableViewLever0.frame.width + self.tableViewLever1.frame.width,
+                                                               height: self.tableViewLever0.frame.height)
+                        self.view.addSubview(self.errorInternetView!)
+                        self.view.bringSubview(toFront: self.errorInternetView!)
+                    }
+                })
+//                TAPDialogUtils.shareInstance.showAlertMessageOneButton(title: "", message: "Server error, please contact Tapiver team for assistance", positive: "OK", positiveHandler: nil, vc: self)
             }
             SVProgressHUD.dismiss()
         }

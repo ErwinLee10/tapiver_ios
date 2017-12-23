@@ -14,6 +14,9 @@ class TAPMallPageShopViewController: TAPMallPageBaseViewController {
     @IBOutlet weak var contentTableView: UITableView!
     var feedModelList: [TAPFeedModel] = []
     
+    var errorInternetView: TAPLostConnectErrorView?
+    var errorGeneralView: TAPGeneralErrorView?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -63,7 +66,24 @@ class TAPMallPageShopViewController: TAPMallPageBaseViewController {
                 strongSelf.feedModelList = model.feedModels
                 strongSelf.reloadData()
             } else {
-                TAPDialogUtils.shareInstance.showAlertMessageOneButton(title: "", message: "Server error, please contact Tapiver team for assistance", positive: "OK", positiveHandler: nil, vc: strongSelf)
+                TAPWebservice.shareInstance.checkHaveInternet(response: { (check) in
+                    if check {
+                        //server error
+                        guard let unwrappedSelf = self else { return }
+                        unwrappedSelf.errorGeneralView = Bundle.main.loadNibNamed("TAPGeneralErrorView", owner: unwrappedSelf, options: nil)![0] as? TAPGeneralErrorView
+                        unwrappedSelf.errorGeneralView?.frame = unwrappedSelf.noDataView.frame
+                        unwrappedSelf.view.addSubview(unwrappedSelf.errorGeneralView!)
+                        unwrappedSelf.view.bringSubview(toFront: unwrappedSelf.errorGeneralView!)
+                    }
+                    else {
+                        guard let unwrappedSelf = self else { return }
+                        unwrappedSelf.errorInternetView = Bundle.main.loadNibNamed("TAPLostConnectErrorView", owner: unwrappedSelf, options: nil)![0] as? TAPLostConnectErrorView
+                        unwrappedSelf.errorInternetView?.frame = unwrappedSelf.noDataView.frame
+                        unwrappedSelf.view.addSubview(unwrappedSelf.errorInternetView!)
+                        unwrappedSelf.view.bringSubview(toFront: unwrappedSelf.errorInternetView!)
+                    }
+                })
+//                TAPDialogUtils.shareInstance.showAlertMessageOneButton(title: "", message: "Server error, please contact Tapiver team for assistance", positive: "OK", positiveHandler: nil, vc: strongSelf)
             }
             SVProgressHUD.dismiss()
         }

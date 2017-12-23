@@ -13,6 +13,9 @@ class TAPHistoryViewController: TAPBaseViewController {
     @IBOutlet weak var contentTableView: UITableView!
     var orderList: [TAPOrderModel] = []
     
+    var errorInternetView: TAPLostConnectErrorView?
+    var errorGeneralView: TAPGeneralErrorView?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -39,6 +42,25 @@ class TAPHistoryViewController: TAPBaseViewController {
                 if success, let historyModel = responseEntity as? TAPHistoryModel {
                     self?.orderList = historyModel.orderList
                     self?.reloadData()
+                }
+                else {
+                    TAPWebservice.shareInstance.checkHaveInternet(response: { (check) in
+                        if check {
+                            //server error
+                            guard let unwrappedSelf = self else { return }
+                            unwrappedSelf.errorGeneralView = Bundle.main.loadNibNamed("TAPGeneralErrorView", owner: unwrappedSelf, options: nil)![0] as? TAPGeneralErrorView
+                            unwrappedSelf.errorGeneralView?.frame = unwrappedSelf.contentTableView.frame
+                            unwrappedSelf.view.addSubview(unwrappedSelf.errorGeneralView!)
+                            unwrappedSelf.view.bringSubview(toFront: unwrappedSelf.errorGeneralView!)
+                        }
+                        else {
+                            guard let unwrappedSelf = self else { return }
+                            unwrappedSelf.errorInternetView = Bundle.main.loadNibNamed("TAPLostConnectErrorView", owner: unwrappedSelf, options: nil)![0] as? TAPLostConnectErrorView
+                            unwrappedSelf.errorInternetView?.frame = unwrappedSelf.contentTableView.frame
+                            unwrappedSelf.view.addSubview(unwrappedSelf.errorInternetView!)
+                            unwrappedSelf.view.bringSubview(toFront: unwrappedSelf.errorInternetView!)
+                        }
+                    })
                 }
                 SVProgressHUD.dismiss()
             }

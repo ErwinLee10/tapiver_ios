@@ -27,6 +27,9 @@ class TAPAccountTableViewController: UIViewController, TAPEmailChangeViewDelegat
     var profileData: TAPProfileModel!
     
     var addressViewHeight: CGFloat = 111
+    
+    var errorInternetView: TAPLostConnectErrorView?
+    var errorGeneralView: TAPGeneralErrorView?
         
     override func viewDidLoad() {
         self.profileData = TAPGlobal.shared.getProfileModel()
@@ -156,6 +159,9 @@ class TAPAccountTableViewController: UIViewController, TAPEmailChangeViewDelegat
                 if check {
                     self.navigationController?.dismiss(animated: true, completion: nil)
                 }
+                else {
+                    TAPDialogUtils.shareInstance.showAlertMessageOneButton(title: "", message: "Server error, please contact Tapiver team for assistance", positive: "OK", positiveHandler: nil, vc: self)
+                }
             }
         }
         alertController.addAction(yesAction)
@@ -188,6 +194,25 @@ class TAPAccountTableViewController: UIViewController, TAPEmailChangeViewDelegat
                 self?.setupUI()
                 self?.getAddress(profileData: profileData)
             }
+            else {
+                TAPWebservice.shareInstance.checkHaveInternet(response: { (check) in
+                    if check {
+                        //server error
+                        guard let unwrappedSelf = self else { return }
+                        unwrappedSelf.errorGeneralView = Bundle.main.loadNibNamed("TAPGeneralErrorView", owner: unwrappedSelf, options: nil)![0] as? TAPGeneralErrorView
+                        unwrappedSelf.errorGeneralView?.frame = unwrappedSelf.scrollView.frame
+                        unwrappedSelf.view.addSubview(unwrappedSelf.errorGeneralView!)
+                        unwrappedSelf.view.bringSubview(toFront: unwrappedSelf.errorGeneralView!)
+                    }
+                    else {
+                        guard let unwrappedSelf = self else { return }
+                        unwrappedSelf.errorInternetView = Bundle.main.loadNibNamed("TAPLostConnectErrorView", owner: unwrappedSelf, options: nil)![0] as? TAPLostConnectErrorView
+                        unwrappedSelf.errorInternetView?.frame = unwrappedSelf.scrollView.frame
+                        unwrappedSelf.view.addSubview(unwrappedSelf.errorInternetView!)
+                        unwrappedSelf.view.bringSubview(toFront: unwrappedSelf.errorInternetView!)
+                    }
+                })
+            }
         }
     }
     
@@ -198,6 +223,23 @@ class TAPAccountTableViewController: UIViewController, TAPEmailChangeViewDelegat
                 TAPGlobal.shared.saveProfileModel(model: profileData)
                 self.profileData = profileData
                 self.setupAddressUI()
+            }
+            else {
+                TAPWebservice.shareInstance.checkHaveInternet(response: { (check) in
+                    if check {
+                        //server error
+                        self.errorGeneralView = Bundle.main.loadNibNamed("TAPGeneralErrorView", owner: self, options: nil)![0] as? TAPGeneralErrorView
+                        self.errorGeneralView?.frame = self.scrollView.frame
+                        self.view.addSubview(self.errorGeneralView!)
+                        self.view.bringSubview(toFront: self.errorGeneralView!)
+                    }
+                    else {
+                        self.errorInternetView = Bundle.main.loadNibNamed("TAPLostConnectErrorView", owner: self, options: nil)![0] as? TAPLostConnectErrorView
+                        self.errorInternetView?.frame = self.scrollView.frame
+                        self.view.addSubview(self.errorInternetView!)
+                        self.view.bringSubview(toFront: self.errorInternetView!)
+                    }
+                })
             }
         }
     }
@@ -236,7 +278,11 @@ class TAPAccountTableViewController: UIViewController, TAPEmailChangeViewDelegat
         self.scrollView.contentSize = CGSize(width: self.scrollView.contentSize.width, height: self.scrollView.contentSize.height + addressViewHeight)
     }
     
-    func deleteAddress(id: Int) {
+    func deleteAddress(id: Int?) {
+        if id == nil {
+            TAPDialogUtils.shareInstance.showAlertMessageOneButton(title: "", message: "Server error, please contact Tapiver team for assistance", positive: "OK", positiveHandler: nil, vc: self)
+            return
+        }
         for (i,address) in (profileData.address?.listProfileAddress)!.enumerated().reversed() {
             if address.id == id {
                 profileData.address?.listProfileAddress?.remove(at: i)

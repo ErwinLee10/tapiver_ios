@@ -22,6 +22,9 @@ class TAPCartViewController: TAPBaseViewController {
     let cellIdentifier = "TAPCartTableViewCell"
     let couponCellIdentifier = "TAPCartCouponTableViewCell"
     
+    var errorInternetView: TAPLostConnectErrorView?
+    var errorGeneralView: TAPGeneralErrorView?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
@@ -77,6 +80,33 @@ class TAPCartViewController: TAPBaseViewController {
                 if success, let cartListModel = responseEntity as? TAPCartListModel {
                     self?.cartListModel = cartListModel
                     self?.reloadData()
+                }
+                else {
+                    TAPWebservice.shareInstance.checkHaveInternet(response: { (check) in
+                        if check {
+                            //server error
+                            guard let unwrappedSelf = self else { return }
+                            unwrappedSelf.errorGeneralView = Bundle.main.loadNibNamed("TAPGeneralErrorView", owner: unwrappedSelf, options: nil)![0] as? TAPGeneralErrorView
+                            //unwrappedSelf.errorGeneralView?.frame = unwrappedSelf.contentTableView.frame
+                            unwrappedSelf.errorGeneralView?.frame = CGRect(x: unwrappedSelf.contentTableView.frame.origin.x,
+                                                                           y: unwrappedSelf.contentTableView.frame.origin.y,
+                                                                           width: unwrappedSelf.contentTableView.frame.width,
+                                                                           height: unwrappedSelf.view.frame.height - (unwrappedSelf.headerView?.frame.height)!)
+                            unwrappedSelf.view.addSubview(unwrappedSelf.errorGeneralView!)
+                            unwrappedSelf.view.bringSubview(toFront: unwrappedSelf.errorGeneralView!)
+                        }
+                        else {
+                            guard let unwrappedSelf = self else { return }
+                            unwrappedSelf.errorInternetView = Bundle.main.loadNibNamed("TAPLostConnectErrorView", owner: unwrappedSelf, options: nil)![0] as? TAPLostConnectErrorView
+                            //unwrappedSelf.errorInternetView?.frame = unwrappedSelf.contentTableView.frame
+                            unwrappedSelf.errorInternetView?.frame = CGRect(x: unwrappedSelf.contentTableView.frame.origin.x,
+                                                                            y: unwrappedSelf.contentTableView.frame.origin.y,
+                                                                            width: unwrappedSelf.contentTableView.frame.width,
+                                                                            height: unwrappedSelf.view.frame.height - (unwrappedSelf.headerView?.frame.height)!)
+                            unwrappedSelf.view.addSubview(unwrappedSelf.errorInternetView!)
+                            unwrappedSelf.view.bringSubview(toFront: unwrappedSelf.errorInternetView!)
+                        }
+                    })
                 }
                 SVProgressHUD.dismiss()
             }

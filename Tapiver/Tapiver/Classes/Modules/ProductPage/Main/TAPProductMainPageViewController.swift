@@ -18,6 +18,8 @@ class TAPProductMainPageViewController: UIViewController, TapProductShippingView
     @IBOutlet weak var cartButton: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
     
+    @IBOutlet weak var scrollView: UIScrollView!
+    
     // main view
     @IBOutlet weak var imageContainView: UIView!
     @IBOutlet weak var imagePageView: iCarousel!
@@ -95,6 +97,9 @@ class TAPProductMainPageViewController: UIViewController, TapProductShippingView
     var chooseSize: String?
     var chooseQuantity: Int?
     
+    var errorInternetView: TAPLostConnectErrorView?
+    var errorGeneralView: TAPGeneralErrorView?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupPageView()
@@ -155,6 +160,29 @@ class TAPProductMainPageViewController: UIViewController, TapProductShippingView
             if check {
                 self.data = value as? TAPProductDetailModel
                 self.setupUI()
+            }
+            else {
+                TAPWebservice.shareInstance.checkHaveInternet(response: { (check) in
+                    if check {
+                        //server error
+                        self.errorGeneralView = Bundle.main.loadNibNamed("TAPGeneralErrorView", owner: self, options: nil)![0] as? TAPGeneralErrorView
+                        self.errorGeneralView?.frame = CGRect(x: self.scrollView.frame.origin.x,
+                                                              y: self.scrollView.frame.origin.y,
+                                                              width: self.scrollView.frame.width,
+                                                              height: self.scrollView.frame.height + 48) // 48 is add to cart button height
+                        self.view.addSubview(self.errorGeneralView!)
+                        self.view.bringSubview(toFront: self.errorGeneralView!)
+                    }
+                    else {
+                        self.errorInternetView = Bundle.main.loadNibNamed("TAPLostConnectErrorView", owner: self, options: nil)![0] as? TAPLostConnectErrorView
+                        self.errorInternetView?.frame = CGRect(x: self.scrollView.frame.origin.x,
+                                                               y: self.scrollView.frame.origin.y,
+                                                               width: self.scrollView.frame.width,
+                                                               height: self.scrollView.frame.height + 48) // 48 is add to cart button height
+                        self.view.addSubview(self.errorInternetView!)
+                        self.view.bringSubview(toFront: self.errorInternetView!)
+                    }
+                })
             }
         }
     }
@@ -273,7 +301,6 @@ class TAPProductMainPageViewController: UIViewController, TapProductShippingView
             followButton.layer.borderColor = UIColor.init(netHex: 0x848585).cgColor
             followButton.setTitle("FOLLOWING", for: .normal)
             followButton.setTitleColor(UIColor.init(netHex: 0x848585), for: .normal)
-            //followButton.titleLabel?.textColor = .black //UIColor.init(netHex: 0x848585)
         } else {
             followButton.layer.borderWidth = 0
             followButton.backgroundColor = UIColor.init(netHex: 0x195B79)
@@ -359,30 +386,39 @@ class TAPProductMainPageViewController: UIViewController, TapProductShippingView
         if TAPGlobal.shared.hasLogin() {
             if self.data?.isLikedByThisUser == true {
                 TAPWebservice.shareInstance.sendDELETERequest(path: "/api/v1/u/\(TAPGlobal.shared.getLoginModel()?.userId ?? "")/like/\(id ?? "")", responseHandler: { (check, response) in
-                    self.data?.likes = response as! Int
-                    
-                    if self.data?.isLikedByThisUser == true {
-                        self.data?.isLikedByThisUser = false
-                        self.updateLikeUI()
+                    if check {
+                        self.data?.likes = response as! Int
+                        
+                        if self.data?.isLikedByThisUser == true {
+                            self.data?.isLikedByThisUser = false
+                            self.updateLikeUI()
+                        }
+                        else {
+                            self.data?.isLikedByThisUser = true
+                            self.updateLikeUI()
+                        }
                     }
                     else {
-                        self.data?.isLikedByThisUser = true
-                        self.updateLikeUI()
+                        TAPDialogUtils.shareInstance.showAlertMessageOneButton(title: "", message: "Server error, please contact Tapiver team for assistance", positive: "OK", positiveHandler: nil, vc: self)
                     }
                 })
             }
             else {
                 TAPWebservice.shareInstance.sendPUTRequest(path: "/api/v1/u/\(TAPGlobal.shared.getLoginModel()?.userId ?? "")/like/\(id ?? "")", parameters: [:]) { (check, response) in
-                    
-                    self.data?.likes = response as! Int
-                    
-                    if self.data?.isLikedByThisUser == true {
-                        self.data?.isLikedByThisUser = false
-                        self.updateLikeUI()
+                    if check {
+                        self.data?.likes = response as! Int
+                        
+                        if self.data?.isLikedByThisUser == true {
+                            self.data?.isLikedByThisUser = false
+                            self.updateLikeUI()
+                        }
+                        else {
+                            self.data?.isLikedByThisUser = true
+                            self.updateLikeUI()
+                        }
                     }
                     else {
-                        self.data?.isLikedByThisUser = true
-                        self.updateLikeUI()
+                        TAPDialogUtils.shareInstance.showAlertMessageOneButton(title: "", message: "Server error, please contact Tapiver team for assistance", positive: "OK", positiveHandler: nil, vc: self)
                     }
                 }
             }
@@ -401,30 +437,39 @@ class TAPProductMainPageViewController: UIViewController, TapProductShippingView
         if TAPGlobal.shared.hasLogin() {
             if self.data?.isSellerFollowedByUser == true {
                 TAPWebservice.shareInstance.sendDELETERequest(path: "/api/v1/u/\(TAPGlobal.shared.getLoginModel()?.userId ?? "")/follow/\(data?.sellerId ?? "")", responseHandler: { (check, response) in
-                    self.data?.sellerTotalFollower = response as? Int
-                    
-                    if self.data?.isSellerFollowedByUser == true {
-                        self.data?.isSellerFollowedByUser = false
-                        self.updateFollowUI()
+                    if check {
+                        self.data?.sellerTotalFollower = response as? Int
+                        
+                        if self.data?.isSellerFollowedByUser == true {
+                            self.data?.isSellerFollowedByUser = false
+                            self.updateFollowUI()
+                        }
+                        else {
+                            self.data?.isSellerFollowedByUser = true
+                            self.updateFollowUI()
+                        }
                     }
                     else {
-                        self.data?.isSellerFollowedByUser = true
-                        self.updateFollowUI()
+                        TAPDialogUtils.shareInstance.showAlertMessageOneButton(title: "", message: "Server error, please contact Tapiver team for assistance", positive: "OK", positiveHandler: nil, vc: self)
                     }
                 })
             }
             else {
                 TAPWebservice.shareInstance.sendPOSTRequest(path: API_PATH(path: "/api/v1/u/\(TAPGlobal.shared.getLoginModel()?.userId ?? "")/follow/\(data?.sellerId ?? "")"), params: [:]) { (check, response) in
-                    
-                    self.data?.sellerTotalFollower = response
-                    
-                    if self.data?.isSellerFollowedByUser == true {
-                        self.data?.isSellerFollowedByUser = false
-                        self.updateFollowUI()
+                    if check {
+                        self.data?.sellerTotalFollower = response
+                        
+                        if self.data?.isSellerFollowedByUser == true {
+                            self.data?.isSellerFollowedByUser = false
+                            self.updateFollowUI()
+                        }
+                        else {
+                            self.data?.isSellerFollowedByUser = true
+                            self.updateFollowUI()
+                        }
                     }
                     else {
-                        self.data?.isSellerFollowedByUser = true
-                        self.updateFollowUI()
+                        TAPDialogUtils.shareInstance.showAlertMessageOneButton(title: "", message: "Server error, please contact Tapiver team for assistance", positive: "OK", positiveHandler: nil, vc: self)
                     }
                 }
             }
@@ -454,7 +499,6 @@ class TAPProductMainPageViewController: UIViewController, TapProductShippingView
             }
             self.addToCartSizePickView.isUserInteractionEnabled = true
             self.addToCartQuantityPickView.isUserInteractionEnabled = true
-            //đổi màu
         }
         if checkIfHasSize() == false {
             if addToCartSizeView.isHidden == false {
@@ -463,7 +507,6 @@ class TAPProductMainPageViewController: UIViewController, TapProductShippingView
                 addToCartView.layoutSubviews()
             }
             self.addToCartQuantityPickView.isUserInteractionEnabled = true
-            //đổi màu
         }
         
         addToCartColorNameLabel.text = data?.variations?.listVariations![0].colorName
@@ -498,8 +541,6 @@ class TAPProductMainPageViewController: UIViewController, TapProductShippingView
                     break
                 }
             }
-            
-            // đổi màu 2 cái dưới
         }
         
         //setup size drop down
@@ -597,25 +638,20 @@ class TAPProductMainPageViewController: UIViewController, TapProductShippingView
     }
     
     @objc func colorPickTap(_ sender: UITapGestureRecognizer) {
-        
-        
         dropDownColor.show()
     }
     
     @objc func sizePickTap(_ sender: UITapGestureRecognizer) {
-        
-        
         dropDownSize.show()
     }
     
     @objc func quantityPickTap(_ sender: UITapGestureRecognizer) {
-        
-        
         dropDownQuantity.show()
     }
+    
     @IBAction func addToCartViewButtonTap(_ sender: UIButton) {
         SVProgressHUD.show()
-        // /api/v1/u/{userId}/cart/productVariationId/{productVariationId}
+        
         for item in (data?.variations?.listVariations)! {
             if item.colorName == chooseColorName && item.size == chooseSize {
                 TAPWebservice.shareInstance.sendPOSTRequest(
@@ -627,7 +663,7 @@ class TAPProductMainPageViewController: UIViewController, TapProductShippingView
                                 
                             }
                             else {
-                                //show error
+                                TAPDialogUtils.shareInstance.showAlertMessageOneButton(title: "", message: "Server error, please contact Tapiver team for assistance", positive: "OK", positiveHandler: nil, vc: self)
                             }
                 })
             }

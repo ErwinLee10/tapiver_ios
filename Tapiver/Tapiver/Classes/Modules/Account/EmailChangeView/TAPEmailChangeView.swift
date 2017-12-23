@@ -51,7 +51,7 @@ class TAPEmailChangeView: UIViewController {
                 self.navigationController?.popViewController(animated: true)
             }
             else {
-                SVProgressHUD.showError(withStatus: "Failed. Please try again and if persists, contact Tapiver team.")
+                TAPDialogUtils.shareInstance.showAlertMessageOneButton(title: "", message: "Server error, please contact Tapiver team for assistance", positive: "OK", positiveHandler: nil, vc: self)
             }
         }
     }

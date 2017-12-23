@@ -45,6 +45,7 @@
                 <outlet property="outOfStockLabel" destination="zVy-DW-PKX" id="aGf-wz-pe5"/>
                 <outlet property="pageControl" destination="cdv-fn-JZg" id="RYw-PK-XZa"/>
                 <outlet property="priceLabel" destination="U6G-9y-3Hf" id="Fq7-w5-xMy"/>
+                <outlet property="scrollView" destination="diU-gh-yY7" id="wMd-c6-MN5"/>
                 <outlet property="shippingStack" destination="MdQ-B9-bef" id="M6f-sZ-Qbz"/>
                 <outlet property="shippingStackContainView" destination="zvY-oS-L6I" id="d7u-Bi-pNC"/>
                 <outlet property="shippingViewHeight" destination="VBZ-6B-cTz" id="Q04-Z7-Kbf"/>

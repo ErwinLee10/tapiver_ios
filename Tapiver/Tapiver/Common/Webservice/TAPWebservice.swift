@@ -7,10 +7,9 @@
 //
 
 import UIKit
-
-import UIKit
 import Foundation
 import AFNetworking
+import FBSDKLoginKit
 
 typealias ServerResponseHandler = (_ success:Bool, _ response:TAPBaseEntity?) -> Void;
 
@@ -97,25 +96,6 @@ class TAPWebservice: NSObject {
         let apiPath = API_PATH(path: path)
         
         sendPOSTRequest(path: apiPath, params: params as NSDictionary?, headers: header as NSDictionary, responseObjectClass: responseObjectClass, responseHandler: responseHandler)
-    }
-    
-    func logout(responseHandler: @escaping(_ success: Bool) -> Void) {
-        let header = ["Content-Type": "application/json",
-                      "Authorization": TAPGlobal.shared.getLoginModel()?.webSessionId ?? ""] as NSDictionary
-        let allKeys = header.allKeys as? [String] ?? []
-        for key in allKeys {
-            let value = header.object(forKey: key)
-            self.requestManager.requestSerializer.setValue(value as? String, forHTTPHeaderField: key)
-        }
-        let path = API_PATH(path: "/api/v1/u/\(TAPGlobal.shared.getLoginModel()?.userId ?? "0")/logout")
-        self.requestManager.delete(path, parameters: nil, success: { (task, responseObject) in
-            TAPGlobal.shared.deleteProfileModel()
-            TAPGlobal.shared.deleteLoginModel()
-            TAPGlobal.shared.saveHasLogin(isLogin: false)
-            responseHandler(true)
-        }, failure: { (task, responseObject) in
-            responseHandler(false)
-        })
     }
     
     func sendPOSTRequest (path:String!,
@@ -310,7 +290,47 @@ class TAPWebservice: NSObject {
         })
     }
     
+    func logout(responseHandler: @escaping(_ success: Bool) -> Void) {
+        let header = ["Content-Type": "application/json",
+                      "Authorization": TAPGlobal.shared.getLoginModel()?.webSessionId ?? ""] as NSDictionary
+        let allKeys = header.allKeys as? [String] ?? []
+        for key in allKeys {
+            let value = header.object(forKey: key)
+            self.requestManager.requestSerializer.setValue(value as? String, forHTTPHeaderField: key)
+        }
+        let path = API_PATH(path: "/api/v1/u/\(TAPGlobal.shared.getLoginModel()?.userId ?? "0")/logout")
+        self.requestManager.delete(path, parameters: nil, success: { (task, responseObject) in
+            TAPGlobal.shared.deleteProfileModel()
+            TAPGlobal.shared.deleteLoginModel()
+            TAPGlobal.shared.saveHasLogin(isLogin: false)
+            FBSDKLoginManager().logOut()
+            responseHandler(true)
+        }, failure: { (task, responseObject) in
+            responseHandler(false)
+        })
+    }
     
+    func checkHaveInternet(response: @escaping(_ success: Bool) -> Void) {
+        let reachability = AFNetworkReachabilityManager.shared()
+        reachability.setReachabilityStatusChange { (status) in
+            switch status {
+            case .unknown:
+                response(true)
+                break
+            case .notReachable:
+                response(false)
+                break
+            case .reachableViaWWAN:
+                response(true)
+                break
+            case .reachableViaWiFi:
+                response(true)
+                break
+            }
+            reachability.stopMonitoring()
+        }
+        reachability.startMonitoring()
+    }
    
 }
 

@@ -9,7 +9,7 @@
 import Foundation
 
 protocol TAPAddressViewDelegate {
-    func deleteAddress(id: Int)
+    func deleteAddress(id: Int?)
 }
 
 class TAPAddressView: UIView {
@@ -44,6 +44,9 @@ class TAPAddressView: UIView {
         TAPWebservice.shareInstance.sendDELETERequest(path: "/api/v1/u/\(TAPGlobal.shared.getLoginModel()?.userId ?? "")/address/\(String(id))") { (check) in
             if check {
                 self.delegate?.deleteAddress(id: self.id)
+            }
+            else {
+                self.delegate?.deleteAddress(id: nil)
             }
         }
     }

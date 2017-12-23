@@ -59,6 +59,9 @@ class TAPStorePageViewController: TAPBaseViewController {
                 self?.productList = productListModel.productList
                 self?.reloadData()
             }
+            else {
+                //hahalalamummy
+            }
             SVProgressHUD.dismiss()
         }
     }

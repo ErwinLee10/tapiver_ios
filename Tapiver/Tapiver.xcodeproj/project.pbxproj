@@ -72,12 +72,6 @@
 		6C1E68681FDA9B9A00BC1183 /* TAPFeedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C1E68661FDA9B9A00BC1183 /* TAPFeedTableViewCell.xib */; };
 		6C4DA0001FE132DF00E0774A /* TAPProductMainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4D9FFE1FE132DF00E0774A /* TAPProductMainPageViewController.swift */; };
 		6C4DA0011FE132DF00E0774A /* TAPProductMainPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C4D9FFF1FE132DF00E0774A /* TAPProductMainPageViewController.xib */; };
-		6C4DA0051FE1353100E0774A /* TAPProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4DA0031FE1353100E0774A /* TAPProductTableViewCell.swift */; };
-		6C4DA0061FE1353100E0774A /* TAPProductTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C4DA0041FE1353100E0774A /* TAPProductTableViewCell.xib */; };
-		6C4DA0091FE13A4A00E0774A /* TAPProductDescriptionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4DA0071FE13A4A00E0774A /* TAPProductDescriptionViewCell.swift */; };
-		6C4DA00A1FE13A4A00E0774A /* TAPProductDescriptionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C4DA0081FE13A4A00E0774A /* TAPProductDescriptionViewCell.xib */; };
-		6C4DA00D1FE13B8800E0774A /* TAPProductShipTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4DA00B1FE13B8800E0774A /* TAPProductShipTableViewCell.swift */; };
-		6C4DA00E1FE13B8800E0774A /* TAPProductShipTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C4DA00C1FE13B8800E0774A /* TAPProductShipTableViewCell.xib */; };
 		6C5C9FE41FDE4631001EFC08 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C5C9FE31FDE4631001EFC08 /* iCarousel.m */; };
 		6C66BFA41FCE69500092A006 /* TAPSignupEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C66BFA21FCE69500092A006 /* TAPSignupEmailViewController.swift */; };
 		6C66BFA51FCE69500092A006 /* TAPSignupEmailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6C66BFA31FCE69500092A006 /* TAPSignupEmailViewController.xib */; };
@@ -129,6 +123,10 @@
 		848054821FE91C6D0064C203 /* TAPEmailChangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848054811FE91C6D0064C203 /* TAPEmailChangeView.swift */; };
 		848054851FE925880064C203 /* TAPAboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 848054841FE925880064C203 /* TAPAboutViewController.xib */; };
 		848054871FE925930064C203 /* TAPAboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848054861FE925930064C203 /* TAPAboutViewController.swift */; };
+		8495AD3D1FEE2BE6000A6194 /* TAPGeneralErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8495AD3C1FEE2BE6000A6194 /* TAPGeneralErrorView.swift */; };
+		8495AD3F1FEE2BF4000A6194 /* TAPGeneralErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8495AD3E1FEE2BF4000A6194 /* TAPGeneralErrorView.xib */; };
+		8495AD431FEE2C2B000A6194 /* TAPLostConnectErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8495AD421FEE2C2B000A6194 /* TAPLostConnectErrorView.swift */; };
+		8495AD451FEE2C33000A6194 /* TAPLostConnectErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8495AD441FEE2C33000A6194 /* TAPLostConnectErrorView.xib */; };
 		84BB00321FEC08F1008814DD /* TAPProductColorViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84BB00311FEC08F1008814DD /* TAPProductColorViewCell.xib */; };
 		84BB00341FEC090B008814DD /* TAPProductColorViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BB00331FEC090B008814DD /* TAPProductColorViewCell.swift */; };
 		84C19EA81FECF9D0004C7367 /* TAPAddToCartDropViewCell1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84C19EA71FECF9D0004C7367 /* TAPAddToCartDropViewCell1.xib */; };
@@ -141,6 +139,8 @@
 		84E2F83B1FEB988500F27811 /* TapProductShippingView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E2F83A1FEB988500F27811 /* TapProductShippingView1.swift */; };
 		84E2F83D1FEB988E00F27811 /* TapProductShippingView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E2F83C1FEB988E00F27811 /* TapProductShippingView2.swift */; };
 		84E2F83F1FEB989500F27811 /* TapProductShippingView3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E2F83E1FEB989500F27811 /* TapProductShippingView3.swift */; };
+		84E69FFD1FEE377F003E1BB7 /* TAPLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E69FFC1FEE377F003E1BB7 /* TAPLoadingView.swift */; };
+		84E69FFF1FEE378C003E1BB7 /* TAPLoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84E69FFE1FEE378C003E1BB7 /* TAPLoadingView.xib */; };
 		B0B0567D1FC084CD001E4659 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B0567C1FC084CD001E4659 /* AppDelegate.swift */; };
 		B0B056841FC084CD001E4659 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0B056831FC084CD001E4659 /* Assets.xcassets */; };
 		B0B056871FC084CD001E4659 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0B056851FC084CD001E4659 /* LaunchScreen.storyboard */; };
@@ -249,12 +249,6 @@
 		6C1E68661FDA9B9A00BC1183 /* TAPFeedTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TAPFeedTableViewCell.xib; sourceTree = "<group>"; };
 		6C4D9FFE1FE132DF00E0774A /* TAPProductMainPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPProductMainPageViewController.swift; sourceTree = "<group>"; };
 		6C4D9FFF1FE132DF00E0774A /* TAPProductMainPageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TAPProductMainPageViewController.xib; sourceTree = "<group>"; };
-		6C4DA0031FE1353100E0774A /* TAPProductTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPProductTableViewCell.swift; sourceTree = "<group>"; };
-		6C4DA0041FE1353100E0774A /* TAPProductTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TAPProductTableViewCell.xib; sourceTree = "<group>"; };
-		6C4DA0071FE13A4A00E0774A /* TAPProductDescriptionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPProductDescriptionViewCell.swift; sourceTree = "<group>"; };
-		6C4DA0081FE13A4A00E0774A /* TAPProductDescriptionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TAPProductDescriptionViewCell.xib; sourceTree = "<group>"; };
-		6C4DA00B1FE13B8800E0774A /* TAPProductShipTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPProductShipTableViewCell.swift; sourceTree = "<group>"; };
-		6C4DA00C1FE13B8800E0774A /* TAPProductShipTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TAPProductShipTableViewCell.xib; sourceTree = "<group>"; };
 		6C5C9FE21FDE4631001EFC08 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
 		6C5C9FE31FDE4631001EFC08 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
 		6C66BFA21FCE69500092A006 /* TAPSignupEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPSignupEmailViewController.swift; sourceTree = "<group>"; };
@@ -308,6 +302,10 @@
 		848054811FE91C6D0064C203 /* TAPEmailChangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPEmailChangeView.swift; sourceTree = "<group>"; };
 		848054841FE925880064C203 /* TAPAboutViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TAPAboutViewController.xib; sourceTree = "<group>"; };
 		848054861FE925930064C203 /* TAPAboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPAboutViewController.swift; sourceTree = "<group>"; };
+		8495AD3C1FEE2BE6000A6194 /* TAPGeneralErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPGeneralErrorView.swift; sourceTree = "<group>"; };
+		8495AD3E1FEE2BF4000A6194 /* TAPGeneralErrorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TAPGeneralErrorView.xib; sourceTree = "<group>"; };
+		8495AD421FEE2C2B000A6194 /* TAPLostConnectErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPLostConnectErrorView.swift; sourceTree = "<group>"; };
+		8495AD441FEE2C33000A6194 /* TAPLostConnectErrorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TAPLostConnectErrorView.xib; sourceTree = "<group>"; };
 		84BB00311FEC08F1008814DD /* TAPProductColorViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TAPProductColorViewCell.xib; sourceTree = "<group>"; };
 		84BB00331FEC090B008814DD /* TAPProductColorViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPProductColorViewCell.swift; sourceTree = "<group>"; };
 		84C19EA71FECF9D0004C7367 /* TAPAddToCartDropViewCell1.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TAPAddToCartDropViewCell1.xib; sourceTree = "<group>"; };
@@ -320,6 +318,8 @@
 		84E2F83A1FEB988500F27811 /* TapProductShippingView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapProductShippingView1.swift; sourceTree = "<group>"; };
 		84E2F83C1FEB988E00F27811 /* TapProductShippingView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapProductShippingView2.swift; sourceTree = "<group>"; };
 		84E2F83E1FEB989500F27811 /* TapProductShippingView3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapProductShippingView3.swift; sourceTree = "<group>"; };
+		84E69FFC1FEE377F003E1BB7 /* TAPLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPLoadingView.swift; sourceTree = "<group>"; };
+		84E69FFE1FEE378C003E1BB7 /* TAPLoadingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TAPLoadingView.xib; sourceTree = "<group>"; };
 		B0B056791FC084CD001E4659 /* Tapiver.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tapiver.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0B0567C1FC084CD001E4659 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B0B056831FC084CD001E4659 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -648,12 +648,6 @@
 		6C4DA0021FE133EF00E0774A /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				6C4DA0031FE1353100E0774A /* TAPProductTableViewCell.swift */,
-				6C4DA0041FE1353100E0774A /* TAPProductTableViewCell.xib */,
-				6C4DA0071FE13A4A00E0774A /* TAPProductDescriptionViewCell.swift */,
-				6C4DA0081FE13A4A00E0774A /* TAPProductDescriptionViewCell.xib */,
-				6C4DA00B1FE13B8800E0774A /* TAPProductShipTableViewCell.swift */,
-				6C4DA00C1FE13B8800E0774A /* TAPProductShipTableViewCell.xib */,
 				84BB00331FEC090B008814DD /* TAPProductColorViewCell.swift */,
 				84BB00311FEC08F1008814DD /* TAPProductColorViewCell.xib */,
 			);
@@ -895,6 +889,17 @@
 			path = AboutView;
 			sourceTree = "<group>";
 		};
+		8495AD3B1FEE2B5B000A6194 /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				8495AD3C1FEE2BE6000A6194 /* TAPGeneralErrorView.swift */,
+				8495AD3E1FEE2BF4000A6194 /* TAPGeneralErrorView.xib */,
+				8495AD421FEE2C2B000A6194 /* TAPLostConnectErrorView.swift */,
+				8495AD441FEE2C33000A6194 /* TAPLostConnectErrorView.xib */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
 		84C19EA41FECF90A004C7367 /* AddToCart dropView */ = {
 			isa = PBXGroup;
 			children = (
@@ -924,6 +929,15 @@
 			children = (
 			);
 			path = "Store Pickup details";
+			sourceTree = "<group>";
+		};
+		84E69FFB1FEE375A003E1BB7 /* LoadingView */ = {
+			isa = PBXGroup;
+			children = (
+				84E69FFC1FEE377F003E1BB7 /* TAPLoadingView.swift */,
+				84E69FFE1FEE378C003E1BB7 /* TAPLoadingView.xib */,
+			);
+			path = LoadingView;
 			sourceTree = "<group>";
 		};
 		B0B056701FC084CD001E4659 = {
@@ -1012,6 +1026,8 @@
 		B0B056971FC0861C001E4659 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				84E69FFB1FEE375A003E1BB7 /* LoadingView */,
+				8495AD3B1FEE2B5B000A6194 /* Error */,
 				039C57B61FE96E9D001C2BCB /* OrderHistory */,
 				C5DCD48B1FE812FF00F4F134 /* CheckOut */,
 				031555301FE708FA0082E709 /* Cart */,
@@ -1222,21 +1238,21 @@
 				6C86013B1FCD70E5004E7CAE /* splash02@2x.png in Resources */,
 				848054801FE91C630064C203 /* TAPEmailChangeView.xib in Resources */,
 				039C57BA1FE96EDF001C2BCB /* TAPHistoryViewController.xib in Resources */,
+				8495AD3F1FEE2BF4000A6194 /* TAPGeneralErrorView.xib in Resources */,
 				C5DCD4951FE813B000F4F134 /* TAPAddressMethodController.xib in Resources */,
 				6C66BFAA1FCE6FA10092A006 /* TAPSignupPasswordViewController.xib in Resources */,
+				8495AD451FEE2C33000A6194 /* TAPLostConnectErrorView.xib in Resources */,
 				037B695E1FEAB86D00DCBD9D /* TAPHistoryHeaderView.xib in Resources */,
 				6C8601251FCD6CD0004E7CAE /* splash@2x.png in Resources */,
-				6C4DA0061FE1353100E0774A /* TAPProductTableViewCell.xib in Resources */,
 				C5460A781FE3AE210028B446 /* TAPLandMarkView.xib in Resources */,
-				6C4DA00E1FE13B8800E0774A /* TAPProductShipTableViewCell.xib in Resources */,
 				C5B694BC1FE3869200751857 /* TAPCategoryLever2Cell.xib in Resources */,
 				B0B056871FC084CD001E4659 /* LaunchScreen.storyboard in Resources */,
 				031555211FE2F6720082E709 /* TAPMenuTableViewCell.xib in Resources */,
-				6C4DA00A1FE13A4A00E0774A /* TAPProductDescriptionViewCell.xib in Resources */,
 				031555451FE718410082E709 /* TAPCartFooterTableViewCell.xib in Resources */,
 				C5C953181FE2195D008D2B6F /* TAPCategoryLever0Cell.xib in Resources */,
 				039C57C41FE97212001C2BCB /* TAPHistoryTableViewCell.xib in Resources */,
 				0315552F1FE591F60082E709 /* TAPStorePageInfoLocationCell.xib in Resources */,
+				84E69FFF1FEE378C003E1BB7 /* TAPLoadingView.xib in Resources */,
 				84562CB31FE7BD5800DAB39D /* TAPAccountTableViewController.xib in Resources */,
 				84E2F8351FEB986800F27811 /* TapProductShippingView1.xib in Resources */,
 				031555341FE709300082E709 /* TAPCartViewController.xib in Resources */,
@@ -1376,10 +1392,8 @@
 				0315553C1FE7118A0082E709 /* TAPCartCouponTableViewCell.swift in Sources */,
 				C5460A761FE3AE060028B446 /* TAPLandMarkView.swift in Sources */,
 				C5EBDB901FEBFE0B006BAD34 /* TAPSubShipingEn.swift in Sources */,
-				6C4DA00D1FE13B8800E0774A /* TAPProductShipTableViewCell.swift in Sources */,
 				037B69651FEB2BFA00DCBD9D /* TAPHistoryModel.swift in Sources */,
 				C5B597701FE9E35C00E678C6 /* TAPReViewOrderController.swift in Sources */,
-				6C4DA0051FE1353100E0774A /* TAPProductTableViewCell.swift in Sources */,
 				C5460A7B1FE3C8BA0028B446 /* TAPLandMark.swift in Sources */,
 				6C66BFA41FCE69500092A006 /* TAPSignupEmailViewController.swift in Sources */,
 				0336DB4A1FE81212002D9A93 /* TAPDropdownBoxView.swift in Sources */,
@@ -1398,6 +1412,7 @@
 				84C19EAE1FECF9E9004C7367 /* TAPAddToCartDropViewCell2.swift in Sources */,
 				6C8F83031FD6ACD300BC6F99 /* TAPHelpers.swift in Sources */,
 				B0B056961FC0860F001E4659 /* StringCommon.swift in Sources */,
+				8495AD431FEE2C2B000A6194 /* TAPLostConnectErrorView.swift in Sources */,
 				B0ECB4BD1FD2D6CD00E97703 /* TAPUtils.swift in Sources */,
 				6C5C9FE41FDE4631001EFC08 /* iCarousel.m in Sources */,
 				03AE84091FDEE583006D6986 /* TAPMallPageTabBarViewController.swift in Sources */,
@@ -1407,6 +1422,7 @@
 				6C86011B1FCD6902004E7CAE /* TAPBaseEntity.swift in Sources */,
 				033458301FE1941900BFC66E /* TAPMainPageHeaderView.swift in Sources */,
 				031555251FE58AA20082E709 /* TAPStorePageInformationViewController.swift in Sources */,
+				84E69FFD1FEE377F003E1BB7 /* TAPLoadingView.swift in Sources */,
 				6C8601351FCD6E69004E7CAE /* TAPIntroPageViewController.swift in Sources */,
 				C5C953171FE2195D008D2B6F /* TAPCategoryLever0Cell.swift in Sources */,
 				C5D8E8951FE8B58400E12E9F /* TAPChecOutEntity.swift in Sources */,
@@ -1451,9 +1467,9 @@
 				6CCEEFC71FCEB6600018FDB3 /* TAPFeedViewController.swift in Sources */,
 				033458281FE15BF200BFC66E /* TAPMallPageBaseViewController.swift in Sources */,
 				6C8D08F71FD7D48000B208DA /* TAPFeedModel.swift in Sources */,
-				6C4DA0091FE13A4A00E0774A /* TAPProductDescriptionViewCell.swift in Sources */,
 				039C57C31FE97212001C2BCB /* TAPHistoryTableViewCell.swift in Sources */,
 				C5C9531F1FE21F9C008D2B6F /* TAPCategoryMenuEntity.swift in Sources */,
+				8495AD3D1FEE2BE6000A6194 /* TAPGeneralErrorView.swift in Sources */,
 				6C4DA0001FE132DF00E0774A /* TAPProductMainPageViewController.swift in Sources */,
 				6C8D08FB1FD7D70200B208DA /* TAPProductModel.swift in Sources */,
 				03AE84191FDEFE5F006D6986 /* TAPMallPageDealsCell.swift in Sources */,
