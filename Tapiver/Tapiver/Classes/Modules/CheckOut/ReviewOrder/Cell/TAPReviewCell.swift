@@ -153,7 +153,6 @@ extension TAPReviewCell: UITableViewDataSource {
         guard let counts = self.cartItem?.productVariations.count else {
             return 0.0
         }
-        
         return  80.0
     }
     
@@ -165,7 +164,7 @@ extension TAPReviewCell: UITableViewDataSource {
         guard let item = self.cartItem?.productVariations[indexPath.row] else {
             return UITableViewCell()
         }
-        
+        cell.isReviewOrder = true
         cell.fillData(data: item)
         return cell
     }

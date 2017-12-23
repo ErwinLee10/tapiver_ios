@@ -50,14 +50,6 @@
                         <outlet property="delegate" destination="-1" id="gLq-xC-GBH"/>
                     </connections>
                 </tableView>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yNh-zj-YtY">
-                    <rect key="frame" x="313" y="398" width="46" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="Button"/>
-                    <connections>
-                        <action selector="acTap:" destination="-1" eventType="touchUpInside" id="id5-ML-0KK"/>
-                    </connections>
-                </button>
             </subviews>
             <color key="backgroundColor" red="0.098039215686274508" green="0.35686274509803922" blue="0.47450980392156861" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>

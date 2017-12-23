@@ -35,8 +35,8 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rmw-q6-MpV">
-                        <rect key="frame" x="244" y="10" width="60" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <rect key="frame" x="240" y="10" width="64" height="21"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                         <state key="normal" title="View More">
                             <color key="titleColor" red="0.10980392160000001" green="0.66666666669999997" blue="0.71372549019999998" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
@@ -127,7 +127,7 @@
                         <constraints>
                             <constraint firstAttribute="height" constant="40" id="hvl-hX-W92"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                         <state key="normal" title="Detail">
                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
@@ -145,7 +145,6 @@
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="Kd1-Lv-HOa" secondAttribute="trailing" id="7Qr-8B-sLq"/>
                     <constraint firstAttribute="trailing" secondItem="Rmw-q6-MpV" secondAttribute="trailing" constant="16" id="7cC-Ru-LO1"/>
                     <constraint firstItem="Rmw-q6-MpV" firstAttribute="centerY" secondItem="2mI-LW-Go7" secondAttribute="centerY" id="8Mh-f3-kvH"/>
                     <constraint firstItem="lck-yR-kVy" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="A2Z-uR-9Ha"/>
@@ -155,7 +154,6 @@
                     <constraint firstItem="u5s-2K-Jbr" firstAttribute="top" secondItem="lck-yR-kVy" secondAttribute="bottom" id="S8c-ca-QPD"/>
                     <constraint firstItem="4a8-px-jTd" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="SLb-yb-Ukb"/>
                     <constraint firstItem="u5s-2K-Jbr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="bx5-c9-ZAb"/>
-                    <constraint firstItem="Kd1-Lv-HOa" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="eVd-aS-z0P"/>
                     <constraint firstItem="2mI-LW-Go7" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="gDF-iA-Voj"/>
                     <constraint firstAttribute="bottom" secondItem="u5s-2K-Jbr" secondAttribute="bottom" id="gt0-9t-spS"/>
                     <constraint firstItem="Kd1-Lv-HOa" firstAttribute="top" secondItem="4a8-px-jTd" secondAttribute="bottom" constant="8" id="nH0-ZT-ONg"/>
@@ -168,7 +166,9 @@
                     <constraint firstAttribute="trailing" secondItem="lck-yR-kVy" secondAttribute="trailing" id="uQH-Xq-Ve9"/>
                     <constraint firstAttribute="trailing" secondItem="a75-Mv-tcu" secondAttribute="trailing" id="xBC-48-hkr"/>
                     <constraint firstItem="Rmw-q6-MpV" firstAttribute="height" secondItem="2mI-LW-Go7" secondAttribute="height" id="xCk-88-mno"/>
+                    <constraint firstItem="Kd1-Lv-HOa" firstAttribute="leading" secondItem="EnD-rh-IMg" secondAttribute="leading" id="xnx-Yc-WFV"/>
                     <constraint firstAttribute="trailing" secondItem="4a8-px-jTd" secondAttribute="trailing" id="y65-JB-Lsp"/>
+                    <constraint firstItem="Kd1-Lv-HOa" firstAttribute="trailing" secondItem="4a8-px-jTd" secondAttribute="trailing" id="zcu-Nu-KFS"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

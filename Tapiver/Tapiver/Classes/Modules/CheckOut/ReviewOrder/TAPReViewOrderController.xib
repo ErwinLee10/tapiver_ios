@@ -101,7 +101,7 @@
                     <color key="backgroundColor" red="0.95294117647058818" green="0.4392156862745098" blue="0.27843137254901962" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="0.51764705882352935" green="0.52156862745098043" blue="0.52156862745098043" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.94901960784313721" green="0.94509803921568625" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="aA3-vs-62I" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="5Dv-ev-sgo"/>
                 <constraint firstItem="ErA-tC-9ek" firstAttribute="width" secondItem="8ZS-fc-Y4o" secondAttribute="width" id="6Eb-YU-AGW"/>
