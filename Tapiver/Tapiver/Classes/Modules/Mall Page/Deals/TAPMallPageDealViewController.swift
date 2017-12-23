@@ -44,13 +44,12 @@ class TAPMallPageDealViewController: TAPMallPageBaseViewController {
     }
     
     private func getData() {
-        var params: [String: Any] = [:] // TODO: check later
+        var params: [String: Any] = [:]
         if let landmarkId = landmark?.id {
             params[TAPConstants.APIParams.landmarkId] = landmarkId
         }
-        
-        if TAPGlobal.shared.hasLogin() {
-            params[TAPConstants.APIParams.userId] = TAPGlobal.shared.getLoginModel()?.userId ?? ""
+        if TAPGlobal.shared.hasLogin(), let userID = TAPGlobal.shared.getLoginModel()?.userId {
+            params[TAPConstants.APIParams.userId] = userID.numberValue?.intValue ?? 0
         }
         
         SVProgressHUD.show()

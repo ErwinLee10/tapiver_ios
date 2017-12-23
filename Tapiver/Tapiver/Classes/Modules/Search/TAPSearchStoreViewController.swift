@@ -1,17 +1,17 @@
 //
-//  TAPMallPageShopViewController.swift
+//  TAPSearchStoreViewController.swift
 //  Tapiver
 //
-//  Created by Le Duc Canh on 12/11/17.
+//  Created by Le Duc Canh on 12/24/17.
 //  Copyright © 2017 hunghoang. All rights reserved.
 //
 
 import UIKit
 import SVProgressHUD
 
-class TAPMallPageShopViewController: TAPMallPageBaseViewController {
-    @IBOutlet weak var noDataView: UIView!
+class TAPSearchStoreViewController: UIViewController {
     @IBOutlet weak var contentTableView: UITableView!
+    @IBOutlet weak var emptyView: UIView!
     var feedModelList: [TAPFeedModel] = []
     
     override func viewDidLoad() {
@@ -20,34 +20,27 @@ class TAPMallPageShopViewController: TAPMallPageBaseViewController {
         setupView()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        getData()
-    }
-    
-    override func setupView() {
-        super.setupView()
-        (headerView as? TAPHeaderView)?.delegate = self
+    private func setupView() {
         contentTableView.register(UINib.init(nibName: "TAPFeedTableViewCell", bundle: nil), forCellReuseIdentifier: "TAPFeedTableViewCell")
+        emptyView.isHidden = true
     }
     
     private func reloadData() {
         if feedModelList.count > 0 {
-            noDataView.isHidden = true
+            emptyView.isHidden = true
             contentTableView.isHidden = false
             contentTableView.reloadData()
         } else {
-            noDataView.isHidden = false
+            emptyView.isHidden = false
             contentTableView.isHidden = true
         }
     }
     
-    private func getData() {
+    func search(with keyword: String) {
+        
         let apiPath = TAPConstants.APIPath.discover
         var params: [String: Any] = [:]
-        if let landmarkId = landmark?.id {
-            params[TAPConstants.APIParams.landmarkId] = landmarkId
-        }
+        // TODO: keyword
         if TAPGlobal.shared.hasLogin(), let userID = TAPGlobal.shared.getLoginModel()?.userId {
             params[TAPConstants.APIParams.userId] = userID.numberValue?.intValue ?? 0
         }
@@ -72,7 +65,7 @@ class TAPMallPageShopViewController: TAPMallPageBaseViewController {
 
 }
 
-extension TAPMallPageShopViewController: UITableViewDataSource {
+extension TAPSearchStoreViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return feedModelList.count
@@ -92,29 +85,11 @@ extension TAPMallPageShopViewController: UITableViewDataSource {
     
 }
 
-extension TAPMallPageShopViewController: UITableViewDelegate {
+extension TAPSearchStoreViewController: UITableViewDelegate {
     
 }
 
-extension TAPMallPageShopViewController: TAPHeaderViewDelegate {
-    func headerViewDidTouchBack() {
-        
-    }
-    
-    func headerViewDidTouchSearch() {
-        
-    }
-    
-    func headerViewDidTouchCart() {
-        
-    }
-    
-    func headerViewDidTouchMenu() {
-        showRightMenu()
-    }
-}
-
-extension TAPMallPageShopViewController: TAPFeedTableViewCellDelegate {
+extension TAPSearchStoreViewController: TAPFeedTableViewCellDelegate {
     func tapShop(at row: Int) {
         let vc = TAPStorePageViewController(nibName: "TAPStorePageViewController", bundle: nil)
         vc.feedModel = feedModelList[row]
@@ -125,4 +100,3 @@ extension TAPMallPageShopViewController: TAPFeedTableViewCellDelegate {
         
     }
 }
-

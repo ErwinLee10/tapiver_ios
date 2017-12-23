@@ -1,33 +1,24 @@
 //
-//  TAPStorePageViewController.swift
+//  TAPSearchProductViewController.swift
 //  Tapiver
 //
-//  Created by Le Duc Canh on 12/14/17.
+//  Created by Le Duc Canh on 12/24/17.
 //  Copyright © 2017 hunghoang. All rights reserved.
 //
 
 import UIKit
 import SVProgressHUD
-import SDWebImage
 
-class TAPStorePageViewController: TAPBaseViewController {
-
-    @IBOutlet var headerViewHeight: NSLayoutConstraint!
+class TAPSearchProductViewController: UIViewController {
     @IBOutlet weak var contentCollectionView: UICollectionView!
-    @IBOutlet weak var emptyLabel: UILabel!
-    @IBOutlet weak var headerBgView: UIImageView!
+    @IBOutlet weak var emptyView: UIView!
     
     var productList: [TAPProductModel] = []
-    var feedModel: TAPFeedModel?
-    var storePageHeaderView: TAPStorePageHeaderView?
     
     static let cellIdentifier = "TAPMallPageDealsCell"
     let leftRightPadding = 15.0
     let cellPadding = 10.0
     let cellHeightWidhtRatio = 1.3
-    let expandHeaderHeight: CGFloat = 90.0
-    let collapseHeaderHeight: CGFloat = 44.0
-    let animationDuration = 0.3
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,32 +26,15 @@ class TAPStorePageViewController: TAPBaseViewController {
         setupView()
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        if let feedModel = self.feedModel {
-            storePageHeaderView?.fillData(entity: feedModel)
-        }
-        getData()
-    }
-    
     // MARK: Private methods
     private func setupView() {
-        storePageHeaderView = headerView as? TAPStorePageHeaderView
-        storePageHeaderView?.delegate = self
-        if feedModel != nil {
-            storePageHeaderView?.fillData(entity: feedModel!)
-        }
-//        headerViewHeight.constant = expandHeaderHeight
-        
-        headerBgView.sd_setImage(with: URL.init(string: feedModel?.sellerCoverPicture ?? ""), placeholderImage: nil, options: SDWebImageOptions.retryFailed, completed: nil)
-        
         contentCollectionView.register(UINib.init(nibName: "TAPMallPageDealsCell", bundle: nil), forCellWithReuseIdentifier: TAPMallPageDealViewController.cellIdentifier)
-        emptyLabel.isHidden = true
+        emptyView.isHidden = true
     }
     
-    private func getData() {
+    func search(with keyword: String) {
         var params: [String: Any] = [:]
-        params[TAPConstants.APIParams.sellerId] = feedModel?.sellerId
+        params[TAPConstants.APIParams.q] = keyword
         if TAPGlobal.shared.hasLogin(), let userID = TAPGlobal.shared.getLoginModel()?.userId {
             params[TAPConstants.APIParams.userId] = userID.numberValue?.intValue ?? 0
         }
@@ -76,10 +50,10 @@ class TAPStorePageViewController: TAPBaseViewController {
     }
     private func reloadData() {
         if productList.count == 0 {
-            emptyLabel.isHidden = false
+            emptyView.isHidden = false
             contentCollectionView.isHidden = true
         } else {
-            emptyLabel.isHidden = true
+            emptyView.isHidden = true
             contentCollectionView.isHidden = false
             contentCollectionView.reloadData()
         }
@@ -87,8 +61,7 @@ class TAPStorePageViewController: TAPBaseViewController {
 
 }
 
-// MARK: UICollectionViewDataSource
-extension TAPStorePageViewController: UICollectionViewDataSource {
+extension TAPSearchProductViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -105,45 +78,17 @@ extension TAPStorePageViewController: UICollectionViewDataSource {
     }
 }
 
-// MARK: UICollectionViewDelegate
-extension TAPStorePageViewController: UICollectionViewDelegate {
+extension TAPSearchProductViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //        let row = indexPath.row
+        print("didSelectItemAt \(indexPath.row)")
     }
 }
 
 // MARK: UICollectionViewDelegateFlowLayout
-extension TAPStorePageViewController: UICollectionViewDelegateFlowLayout {
+extension TAPSearchProductViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let cellWidth = (Double(SCREEN_WIDTH) - leftRightPadding * 2 - cellPadding) / 2
         let cellHeight = cellWidth * cellHeightWidhtRatio
         return CGSize(width: cellWidth, height: cellHeight)
-    }
-}
-
-// MARK: TAPHeaderViewDelegate
-extension TAPStorePageViewController: TAPStorePageHeaderViewDelegate {
-    func headerViewDidTouchBack() {
-        
-    }
-    
-    func headerViewDidTouchSearch() {
-        
-    }
-    
-    func headerViewDidTouchCart() {
-        
-    }
-    
-    func headerViewDidTouchMenu() {
-        showRightMenu()
-    }
-    
-    func headerViewDidTouchInfo() {
-        TAPStorePageInformationViewController.showStorePageInformation(data: nil)
-    }
-    
-    func headerViewDidTouchFollow() {
-        
     }
 }

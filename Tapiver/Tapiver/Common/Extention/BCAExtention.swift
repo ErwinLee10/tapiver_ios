@@ -172,6 +172,13 @@ extension UIColor {
 
 extension String {
     
+    var numberValue: NSNumber? {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+//        formatter.maximumFractionDigits = 0
+        return formatter.number(from: self)
+    }
+    
     func replace(target: String, withString: String) -> String
     {
         return self.replacingOccurrences(of: target, with: withString, options: NSString.CompareOptions.literal, range: nil)
