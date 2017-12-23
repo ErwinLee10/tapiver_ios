@@ -9,7 +9,8 @@
 import UIKit
 
 class TAPReviewOrderEntity: TAPBaseEntity {
-    var shippingMethod: TAPShippingModel?
     var address: TAPAddressModel?
     var cardList: TAPCartListModel?
+    var isViewAddLess: Bool = false
+    var isViewDetail: Bool = false
 }

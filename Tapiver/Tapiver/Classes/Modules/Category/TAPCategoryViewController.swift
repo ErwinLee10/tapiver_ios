@@ -100,6 +100,40 @@ class TAPCategoryViewController: UIViewController {
           "categoryId": 227,
           "categoryName": "Girls",
           "onSale": false
+        },
+{
+          "name": "Hungvt",
+          "brand": "Marc & Molly's",
+          "originalPrice": 65,
+          "salePrice": null,
+          "finalPrice": 65,
+          "quantity": 1,
+          "availableStock": 70,
+          "pictureUrl": "https://s3-ap-southeast-1.amazonaws.com/tapiver/hello@lucavic.com/PRODUCT/fcc23fc3-7c84-4a9a-809d-de148c1e007a.jpg",
+          "id": 45,
+          "size": "4",
+          "colorHexCode": "#3fb3b6",
+          "colorName": "",
+          "categoryId": 227,
+          "categoryName": "Girls",
+          "onSale": false
+        },
+{
+          "name": "Hungvt",
+          "brand": "Marc & Molly's",
+          "originalPrice": 65,
+          "salePrice": null,
+          "finalPrice": 65,
+          "quantity": 1,
+          "availableStock": 70,
+          "pictureUrl": "https://s3-ap-southeast-1.amazonaws.com/tapiver/hello@lucavic.com/PRODUCT/fcc23fc3-7c84-4a9a-809d-de148c1e007a.jpg",
+          "id": 45,
+          "size": "4",
+          "colorHexCode": "#3fb3b6",
+          "colorName": "",
+          "categoryId": 227,
+          "categoryName": "Girls",
+          "onSale": false
         }
       ],
       "shippingOptions": [

@@ -8,19 +8,36 @@
 
 import UIKit
 
+let HEIGHT_ADD_LESS: CGFloat = 1
+let HEIGHT_ADD_MORE: CGFloat = 80.0
+let STATIC_HEIGHT_ADD_MORE: CGFloat = 10.0 + 21.0 + 8.0 + 50.0 + 8.0 + 8.0 + 40.0 + 2.0
+
 class TAPReViewOrderController: UIViewController {
+    @IBOutlet weak var lbTotal: UILabel!
+    @IBOutlet weak var lbDisCount: UILabel!
+    
     @IBOutlet weak var tableView: UITableView!
     public var reviewObj: TAPReviewOrderEntity?
-    
+    @IBOutlet weak var headerView: TAPHeaderView!
     override func viewDidLoad() {
         super.viewDidLoad()
         initIB()
         initData()
     }
     func initIB() {
+        self.headerView.delegate = self
         self.tableView.register(UINib.init(nibName: "TAPReviewCell", bundle: nil), forCellReuseIdentifier: "TAPReviewCell")
-        self.tableView.register(UINib.init(nibName: "TAPHeaderAddTableViewCell", bundle: nil), forCellReuseIdentifier: "TAPHeaderAddTableViewCell")
-        
+        self.tableView.register(UINib.init(nibName: "TAPSubShippingMethod", bundle: nil), forCellReuseIdentifier: "TAPSubShippingMethod")
+        self.lbTotal.text = "S$ \(reviewObj?.cardList?.finalTotalAmount ?? 0)"
+        if let dis = reviewObj?.cardList?.originalTotalAmount  {
+            if let bis = reviewObj?.cardList?.finalTotalAmount {
+                if bis != dis {
+                    self.lbDisCount.isHidden = false
+                    self.lbDisCount.text = "Discount: S&\(bis - dis)"
+                }
+                
+            }
+        }
     }
     func initData() {
         
@@ -30,99 +47,86 @@ class TAPReViewOrderController: UIViewController {
         super.didReceiveMemoryWarning()
         
     }
-
+    
+}
+extension TAPReViewOrderController: TAPHeaderViewDelegate {
+    func headerViewDidTouchBack() {
+        self.navigationController?.popViewController(animated: true)
+    }
 }
 extension TAPReViewOrderController: UITableViewDataSource {
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let listSection0:[TAPChecOutEntity] = self.listData[section] as? [TAPChecOutEntity] else {
+        guard let cardItems = self.reviewObj?.cardList?.cartItemsPerSeller else {
             return 0
+            
         }
-        return listSection0.count
+        return cardItems.count
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        var height: CGFloat = STATIC_HEIGHT_ADD_MORE
+        guard let cardItems = self.reviewObj?.cardList?.cartItemsPerSeller else {
+            return height
+            
+        }
+        let item = cardItems[indexPath.row]
+        
+        if !item.isViewLess {
+            height +=  HEIGHT_ADD_LESS
+        }else {
+            height +=  HEIGHT_ADD_MORE
+        }
+        
+        if !item.isViewDetail {
+            height +=  HEIGHT_ADD_LESS
+        }else {
+            guard let cardItem = self.reviewObj?.cardList?.cartItemsPerSeller[indexPath.row] else {
+                return height
+            }
+            height += CGFloat(cardItem.productVariations.count) * 80.0
+            
+        }
+        return height
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "TAPReviewCell") as? TAPReviewCell else {
+            return UITableViewCell()
+        }
+        cell.delegate = self
+        guard let cardItems = self.reviewObj?.cardList?.cartItemsPerSeller else {
+            return UITableViewCell()
+            
+        }
+        cell.indexPath = indexPath
+        cell.cartItem = cardItems[indexPath.row]
+        cell.address = self.reviewObj?.address
+        cell.setData()
+        return cell
+    }
+}
+extension TAPReViewOrderController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "TAPSubShippingMethod") as? TAPSubShippingMethod else {
             return nil
         }
-        guard let items = self.checkOut?.listShipping[section]  else {
-            return nil
-        }
         cell.viewHeader.isHidden = false
-        cell.lbHeader.text = items.sellerName
+        cell.lbHeader.text = "Review Order"
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 44
     }
-
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var reCell = UITableViewCell()
-        
-        return reCell
-    }
-}
-extension TAPReViewOrderController: UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
     }
     
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if (cell.responds(to: #selector(getter: UIView.tintColor))) {
-            let cornerRadius: CGFloat = 5
-            cell.backgroundColor = UIColor.clear
-            let layer: CAShapeLayer  = CAShapeLayer()
-            let pathRef: CGMutablePath  = CGMutablePath()
-            let bounds: CGRect  = cell.bounds.insetBy(dx: 0, dy: 0)
-            var addLine: Bool  = false
-            if (indexPath.row == 0 && indexPath.row == tableView.numberOfRows(inSection: indexPath.section)-1) {
-                pathRef.__addRoundedRect(transform: nil, rect: bounds, cornerWidth: cornerRadius, cornerHeight: cornerRadius)
-            } else if (indexPath.row == 0) {
-                pathRef.move(to: CGPoint(x:bounds.minX,y:bounds.maxY))
-                pathRef.addArc(tangent1End: CGPoint(x:bounds.minX,y:bounds.minY), tangent2End: CGPoint(x:bounds.midX,y:bounds.minY), radius: cornerRadius)
-                
-                pathRef.addArc(tangent1End: CGPoint(x:bounds.maxX,y:bounds.minY), tangent2End: CGPoint(x:bounds.maxX,y:bounds.midY), radius: cornerRadius)
-                pathRef.addLine(to: CGPoint(x:bounds.maxX,y:bounds.maxY))
-                addLine = true;
-            } else if (indexPath.row == tableView.numberOfRows(inSection: indexPath.section)-1) {
-                
-                pathRef.move(to: CGPoint(x:bounds.minX,y:bounds.minY))
-                pathRef.addArc(tangent1End: CGPoint(x:bounds.minX,y:bounds.maxY), tangent2End: CGPoint(x:bounds.midX,y:bounds.maxY), radius: cornerRadius)
-                
-                pathRef.addArc(tangent1End: CGPoint(x:bounds.maxX,y:bounds.maxY), tangent2End: CGPoint(x:bounds.maxX,y:bounds.midY), radius: cornerRadius)
-                pathRef.addLine(to: CGPoint(x:bounds.maxX,y:bounds.minY))
-                
-            } else {
-                pathRef.addRect(bounds)
-                addLine = true
-            }
-            layer.path = pathRef
-            //CFRelease(pathRef)
-            //set the border color
-            layer.strokeColor = UIColor.clear.cgColor;
-            //set the border width
-            layer.lineWidth = 1
-            layer.fillColor = UIColor.white.cgColor
-            
-            
-            if (addLine == true) {
-                let lineLayer: CALayer = CALayer()
-                let lineHeight: CGFloat  = (1 / UIScreen.main.scale)
-                lineLayer.frame = CGRect(x:bounds.minX, y:bounds.size.height-lineHeight, width:bounds.size.width, height:lineHeight)
-                lineLayer.backgroundColor = tableView.separatorColor!.cgColor
-                layer.addSublayer(lineLayer)
-            }
-            
-            let testView: UIView = UIView(frame:bounds)
-            testView.layer.insertSublayer(layer, at: 0)
-            testView.backgroundColor = UIColor.clear
-            cell.backgroundView = testView
-        }
-        
+}
+extension TAPReViewOrderController: TAPReviewCellDelegate {
+    func tapSelectViewMore(isViewAdd: Bool, isViewDetail: Bool, isSelectViewAdd: Bool) {
+        self.tableView.reloadData()
     }
 }

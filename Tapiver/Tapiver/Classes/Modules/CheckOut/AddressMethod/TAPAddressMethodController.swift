@@ -17,8 +17,6 @@ class TAPAddressMethodController: UIViewController {
     var listData = NSMutableArray()
     var listShipping = [TAPChecOutEntity]()
     var listBilling = [TAPChecOutEntity]()
-    private var addressSelected:  TAPAddressModel?
-    private var shippingMethod: TAPShippingModel?
     public var cardList: TAPCartListModel?
     
     override func viewDidLoad() {
@@ -33,12 +31,12 @@ class TAPAddressMethodController: UIViewController {
             initData()
         }
     }
-    func initData() {
+   private func initData() {
         self.listShipping = [TAPChecOutEntity]()
         self.listBilling = [TAPChecOutEntity]()
         callApi()
     }
-    func createListData(listShipping:[TAPChecOutEntity], listBilling:[TAPChecOutEntity]) {
+   private func createListData(listShipping:[TAPChecOutEntity], listBilling:[TAPChecOutEntity]) {
         self.listData.removeAllObjects()
         var listDataSection0 = [TAPChecOutEntity]()
         let header: TAPChecOutEntity = TAPChecOutEntity()
@@ -79,7 +77,7 @@ class TAPAddressMethodController: UIViewController {
         
         self.tableView.reloadData()
     }
-    func initIb() {
+    private func initIb() {
         self.headerView.delegate = self
         self.tableView.register(UINib.init(nibName: "TAPHeaderAddTableViewCell", bundle: nil), forCellReuseIdentifier: "TAPHeaderAddTableViewCell")
         self.tableView.register(UINib.init(nibName: "TAPAddessCell", bundle: nil), forCellReuseIdentifier: "TAPAddessCell")
@@ -140,17 +138,20 @@ class TAPAddressMethodController: UIViewController {
     @IBAction func acPushOrder(_ sender: Any) {
         let review = TAPReViewOrderController.init(nibName: "TAPReViewOrderController", bundle: nil)
         review.reviewObj = TAPReviewOrderEntity()
+        review.reviewObj =  self.createReviewEntity()
         self.navigationController?.pushViewController(review, animated: true)
     }
     
-    private func createReviewEntity() -> TAPReviewOrderEntity? {
-        var obj = TAPReviewOrderEntity()
-        if self.addressSelected == nil {
-            self.addressSelected = self.listShipping.first
+    private func createReviewEntity() -> TAPReviewOrderEntity  {
+        let obj = TAPReviewOrderEntity()
+        for item in self.listShipping {
+            if item.isSelected == true {
+                obj.address = item.addObj
+                break
+            }
         }
-        if self.shippingMethod == nil {
-            self.addressSelected
-        }
+        obj.cardList = cardList;
+        return obj
     }
     
     
@@ -328,7 +329,7 @@ extension TAPAddressMethodController: TAPShippingMethodCellDelegate {
     }
 }
 extension TAPAddressMethodController: TAPAddessCellDelegate {
-    func acSelectAddAt(index: IndexPath, withObj:TAPChecOutEntity, contentAdd:String) {
+    func acSelectAddAt(index: IndexPath, withObj:TAPChecOutEntity) {
         if withObj.typeCheckOutCell == .addressShipping {
             self.listBilling = [TAPChecOutEntity]()
             for item in self.listShipping {
