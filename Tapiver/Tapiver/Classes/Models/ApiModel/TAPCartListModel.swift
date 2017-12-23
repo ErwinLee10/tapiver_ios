@@ -40,7 +40,8 @@ class TAPCartItemModel: TAPBaseEntity {
     var sellerAddress: TAPSellerAddressModel?
     var productVariations: [TAPProductVariationModel] = []
     var shippingOptions: [TAPShippingModel] = []
-    
+    var isViewLess: Bool = false
+    var isViewDetail: Bool = false
     
     override func parserResponse(dic: NSDictionary) {
         sellerId = dic.value(forKey: TAPConstants.APIParams.sellerId) as? Int
@@ -70,8 +71,8 @@ class TAPCartItemModel: TAPBaseEntity {
                 shippingOptions.append(ship)
             }
         }
-        
     }
+    
 }
 
 class TAPProductVariationModel: TAPBaseEntity {
@@ -90,6 +91,7 @@ class TAPProductVariationModel: TAPBaseEntity {
     var categoryId: Int?
     var categoryName: String?
     var onSale: Bool?
+    var numberQuantity: Int?
     
     override func parserResponse(dic: NSDictionary) {
         id = dic.value(forKey: TAPConstants.APIParams.id) as? Int
@@ -155,7 +157,7 @@ class TAPAdditionalInformation: TAPBaseEntity {
     var cashbackPercentage: Float?
     var cashbackEarned: Float?
     override func parserResponse(dic: NSDictionary) {
-       time = dic.value(forKey: TAPConstants.APIParams.time) as? String
+        time = dic.value(forKey: TAPConstants.APIParams.time) as? String
         if !(dic.value(forKey: TAPConstants.APIParams.cashbackPercent) is NSNull) {
             cashbackPercentage  = dic.value(forKey: TAPConstants.APIParams.cashbackPercent) as? Float
         }

@@ -8,7 +8,7 @@
 
 import UIKit
 @objc protocol TAPAddessCellDelegate: class {
-    @objc func acSelectAddAt(index: IndexPath, withObj:TAPChecOutEntity, contentAdd:String)
+    @objc func acSelectAddAt(index: IndexPath, withObj:TAPChecOutEntity)
 }
 class TAPAddessCell: UITableViewCell {
 
@@ -18,7 +18,6 @@ class TAPAddessCell: UITableViewCell {
     public weak var delegate: TAPAddessCellDelegate?
     public var index: IndexPath?
     public var obj: TAPChecOutEntity?
-    private var content: String = ""
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,6 +30,7 @@ class TAPAddessCell: UITableViewCell {
         self.btSelectAdd.isSelected = obj!.isSelected
     }
     private func createContetn(obj: TAPAddressModel) -> String? {
+        var content: String = ""
         if let street = obj.streetName {
             content.append("\(street)")
         }
@@ -56,7 +56,7 @@ class TAPAddessCell: UITableViewCell {
         sender.isSelected = !sender.isSelected
         if self.delegate != nil {
             self.obj?.isSelected = sender.isSelected
-            self.delegate?.acSelectAddAt(index: self.index!, withObj: self.obj!, contentAdd:content)
+            self.delegate?.acSelectAddAt(index: self.index!, withObj: self.obj!)
         }
     }
     override func setSelected(_ selected: Bool, animated: Bool) {

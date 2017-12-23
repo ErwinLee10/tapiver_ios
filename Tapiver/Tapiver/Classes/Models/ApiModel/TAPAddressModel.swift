@@ -24,6 +24,10 @@ class TAPAddressModel: TAPBaseEntity {
 
     override func parserResponse(dic: NSDictionary) {
         id = dic.value(forKey: "id") as? Int
+        if id == nil   {
+            let index = dic.value(forKey: "id") as? String
+            id = Int(index!)
+        }
         streetName = dic.value(forKey: "streetName") as? String
         buildingName = dic.value(forKey: "buildingName") as? String
         floor = dic.value(forKey: "floor") as? String
