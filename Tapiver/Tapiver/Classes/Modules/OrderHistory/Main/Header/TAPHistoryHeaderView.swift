@@ -46,9 +46,9 @@ class TAPHistoryHeaderView: UITableViewHeaderFooterView {
         guard let orderData = order else {
             return
         }
-        orderIdLabel.text = "Order #" + (orderData.id ?? "")
+        orderIdLabel.text = "Order #\(orderData.id ?? 0)"
         timeLabel.text = String.stringFromTimeInterval(orderData.orderDate ?? 0)
-        statusButton.setTitle(orderData.orderStatus ?? "", for: .normal)
+        statusButton.setTitle(orderData.displayStatus ?? "", for: .normal)
     }
     
     //

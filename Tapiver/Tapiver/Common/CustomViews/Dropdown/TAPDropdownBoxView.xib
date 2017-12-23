@@ -41,6 +41,9 @@
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="26f-lc-aEO" secondAttribute="height" multiplier="5:7" id="fVA-aU-Snn"/>
                                     </constraints>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                    <inset key="contentEdgeInsets" minX="0.0" minY="10" maxX="0.0" maxY="0.0"/>
+                                    <state key="normal" title="⌃"/>
                                     <connections>
                                         <action selector="selectBtnTouched:" destination="-1" eventType="touchUpInside" id="nWw-jM-pH9"/>
                                     </connections>

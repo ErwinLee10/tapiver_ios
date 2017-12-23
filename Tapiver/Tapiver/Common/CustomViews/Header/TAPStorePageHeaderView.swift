@@ -29,6 +29,7 @@ class TAPStorePageHeaderView: TAPBaseHeaderView {
         super.init(coder: aDecoder)
         let views = Bundle.main.loadNibNamed("TAPStorePageHeaderView", owner: self, options: nil)
         let mainView = views?[0] as! UIView
+        self.backgroundColor = UIColor.clear
         self.addSubview(mainView)
         
         mainView.makeContraintToFullWithParentView()
@@ -43,6 +44,7 @@ class TAPStorePageHeaderView: TAPBaseHeaderView {
         let imageURL = URL.init(string: entity.sellerPicture ?? "")
         avatarImageView.sd_setImage(with: imageURL, placeholderImage: nil, options: SDWebImageOptions.retryFailed, completed: nil)
         nameLabel.text = entity.sellerName
+        followersLabel.text = "\(entity.sellerTotalFollower ?? 0) Followers"
     }
 
     @IBAction func backTouched(_ sender: Any) {

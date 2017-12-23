@@ -72,7 +72,7 @@ class TAPProductVariationModel: TAPBaseEntity {
     var quantity: Int?
     var availableStock: Int?
     var pictureUrl: String?
-    var size: Int?
+    var size: String?
     var colorHexCode: String?
     var colorName: String?
     var categoryId: Int?
@@ -89,7 +89,7 @@ class TAPProductVariationModel: TAPBaseEntity {
         quantity = dic.value(forKey: TAPConstants.APIParams.quantity) as? Int
         availableStock = dic.value(forKey: TAPConstants.APIParams.availableStock) as? Int
         pictureUrl = dic.value(forKey: TAPConstants.APIParams.pictureUrl) as? String
-        size = dic.value(forKey: TAPConstants.APIParams.size) as? Int
+        size = dic.value(forKey: TAPConstants.APIParams.size) as? String
         colorHexCode = dic.value(forKey: TAPConstants.APIParams.colorHexCode) as? String
         colorName = dic.value(forKey: TAPConstants.APIParams.colorName) as? String
         categoryId = dic.value(forKey: TAPConstants.APIParams.categoryId) as? Int

@@ -29,6 +29,10 @@ class TAPBaseHeaderView: UIView {
     
     
     func handleCartTouch() {
+        guard TAPGlobal.shared.hasLogin() else {
+            TAPMainFrame.showLoginPageMain()
+            return
+        }
         let cartVC = TAPCartViewController(nibName: "TAPCartViewController", bundle: nil)
         TAPMainFrame.getNavi().pushViewController(cartVC, animated: true)
     }

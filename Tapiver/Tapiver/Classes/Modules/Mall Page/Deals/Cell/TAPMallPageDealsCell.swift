@@ -26,7 +26,7 @@ class TAPMallPageDealsCell: UICollectionViewCell {
     }
     
     func fillData(product: TAPProductModel) {
-        let imageURL = URL.init(string: product.sellerCoverPicture ?? "")
+        let imageURL = URL.init(string: product.sellerPicture ?? "")
         productImgView.sd_setImage(with: imageURL, placeholderImage: nil, options: SDWebImageOptions.retryFailed, completed: nil)
         typeLabel.text = product.brand?.uppercased()
         nameLabel.text = product.name

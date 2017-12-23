@@ -17,6 +17,7 @@
                 <outlet property="couponButton" destination="fwl-Ji-Wc9" id="YOT-eP-h25"/>
                 <outlet property="couponTextField" destination="6Vv-sF-8hu" id="nYl-vQ-RAE"/>
                 <outlet property="couponView" destination="dL4-gr-v74" id="yDX-Or-OIS"/>
+                <outlet property="emptyLabel" destination="MJl-uT-32f" id="kkc-zM-Ih1"/>
                 <outlet property="footerView" destination="Jw6-wl-Z9L" id="igM-6y-ugu"/>
                 <outlet property="headerView" destination="VJr-Lq-I95" id="gou-di-m6R"/>
                 <outlet property="proceedToCheckoutBtn" destination="J5U-Bt-OI2" id="AK7-Xe-QMk"/>
@@ -119,6 +120,12 @@
                         <outlet property="delegate" destination="-1" id="1rh-Gi-3H4"/>
                     </connections>
                 </tableView>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No item" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MJl-uT-32f">
+                    <rect key="frame" x="20" y="164" width="335" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dL4-gr-v74">
                     <rect key="frame" x="0.0" y="469.5" width="375" height="117.5"/>
                     <subviews>
@@ -201,7 +208,10 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="MJl-uT-32f" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="7y4-TM-EDp"/>
                 <constraint firstItem="dL4-gr-v74" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="BRe-g5-iEV"/>
+                <constraint firstItem="MJl-uT-32f" firstAttribute="top" secondItem="VJr-Lq-I95" secondAttribute="bottom" constant="100" id="GRv-DO-LVQ"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="MJl-uT-32f" secondAttribute="trailing" constant="20" id="KVP-1x-khy"/>
                 <constraint firstItem="IHt-wb-1l3" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="NEq-5g-JLv"/>
                 <constraint firstItem="X5f-we-Go8" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="OJ7-s6-tbc"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="dL4-gr-v74" secondAttribute="trailing" id="SHU-mW-JcD"/>

@@ -26,9 +26,34 @@ class TAPHistoryViewController: TAPBaseViewController {
         contentTableView.register(UINib.init(nibName: "TAPHistoryTableViewCell", bundle: nil), forCellReuseIdentifier: "TAPHistoryTableViewCell")
         contentTableView.register(UINib.init(nibName: "TAPHistoryOrderInformationTableViewCell", bundle: nil), forCellReuseIdentifier: "TAPHistoryOrderInformationTableViewCell")
         contentTableView.register(UINib.init(nibName: "TAPHistoryHeaderView", bundle: nil), forHeaderFooterViewReuseIdentifier: "TAPHistoryHeaderView")
+        
+        // Hide header button
+        if let header = (headerView as? TAPHeaderView) {
+            header.setHeaderTitle("Order History")
+            header.hideSearchButton(true)
+            header.hideCartButton(true)
+            header.hideMenuButton(true)
+        }
     }
     
     private func getData() {
+//        // Dummy data - start
+//        let filePath = Bundle.main.path(forResource: "HistoryDummy", ofType: "geojson")
+//        if let data = NSData(contentsOfFile: filePath ?? "") as Data? {
+//            do {
+//                let json = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments)
+//                if let jsonObj = json as? [NSDictionary] {
+//                    let historyModel = TAPHistoryModel()
+//                    historyModel.parserResponseArray(dics: jsonObj)
+//                    self.orderList = historyModel.orderList
+//                    self.reloadData()
+//                }
+//            } catch {
+//                
+//            }
+//        }
+//        return
+//        // Dummy data - end
         
         if(TAPGlobal.shared.hasLogin()) {
             let params: [String: Any] = [:]
@@ -43,7 +68,7 @@ class TAPHistoryViewController: TAPBaseViewController {
                 SVProgressHUD.dismiss()
             }
         } else {
-            // TODO: Show login view
+            
         }
     }
     
@@ -69,6 +94,7 @@ extension TAPHistoryViewController: UITableViewDataSource {
         if indexPath.row == numOfRows - 1 {
             let cell = tableView1.dequeueReusableCell(withIdentifier: "TAPHistoryOrderInformationTableViewCell", for: indexPath) as! TAPHistoryOrderInformationTableViewCell
             cell.fillData(orderData: orderModel)
+            cell.delegate = self
             return cell
         } else {
             let cell = tableView1.dequeueReusableCell(withIdentifier: "TAPHistoryTableViewCell", for: indexPath) as! TAPHistoryTableViewCell
@@ -157,5 +183,41 @@ extension TAPHistoryViewController: TAPHistoryHeaderViewDelegate {
         header.setCollapsed(collapsed)
         
         contentTableView.reloadSections(NSIndexSet(index: section) as IndexSet, with: .automatic)
+    }
+}
+
+extension TAPHistoryViewController: TAPHistoryOrderInformationTableViewCellDelegate {
+    func historyOrderInformationCellDidTouchConfirm(cell: TAPHistoryOrderInformationTableViewCell) {
+        UIAlertController.showAlert(in: self, withTitle: "", message: "Please confirm that you have received your order.", cancelButtonTitle: "Cancel", destructiveButtonTitle: "Confirm", otherButtonTitles: nil) { [weak self] (alertController, alertAction, index) in
+            if index != 0 {
+                let orderID = "\(cell.orderModel?.id ?? 0)"
+                self?.confirmOrder(orderId: orderID)
+            }
+        }
+    }
+    
+    func historyOrderInformationCellDidTouchReport(cell: TAPHistoryOrderInformationTableViewCell) {
+        let vc = TAPHistoryReportIssueViewController(nibName: "TAPHistoryReportIssueViewController", bundle: nil)
+        vc.orderId = "\(cell.orderModel?.id ?? 0)"
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func historyOrderInformationCellDidTouchVisitShop(cell: TAPHistoryOrderInformationTableViewCell) {
+        let vc = TAPStorePageViewController(nibName: "TAPStorePageViewController", bundle: nil)
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    private func confirmOrder(orderId: String) {
+        SVProgressHUD.show()
+        let apiPath = "/api/v1/u/\(TAPGlobal.shared.getLoginModel()?.userId ?? "")/orders/\(orderId)/complete"
+        
+        TAPWebservice.shareInstance.sendPOSTRequest(path: apiPath, params: [:], responseObjectClass: TAPHistoryModel()) { [weak self] (success, responseEntity) in
+            SVProgressHUD.dismiss()
+            guard let strongSelf = self else {
+                return
+            }
+            let message = success ? "We hope you like your purchase(s)" : "Failed. Please try again and if persists, contact Tapiver team."
+            UIAlertController.showAlert(in: strongSelf, withTitle: "", message: message, cancelButtonTitle: "OK", destructiveButtonTitle: nil, otherButtonTitles: nil, tap: nil)
+        }
     }
 }
