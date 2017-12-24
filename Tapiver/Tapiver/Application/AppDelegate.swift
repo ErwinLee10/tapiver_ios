@@ -21,9 +21,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
         self.window = UIWindow(frame: UIScreen.main.bounds)
-        let navi = TAPMainFrame.makeNewMainFrame()
-        self.window!.rootViewController = navi
+        self.window?.rootViewController = LaunchScreenCustom(nibName: "LaunchScreenCustom", bundle: nil)
         self.window!.makeKeyAndVisible()
+        
+        TAPWebservice.shareInstance.sendGETRequest(path: "/api/v1/ios-info", params: [:], responseObjectClass: TAPVersionModel()) { (check, value) in
+            if check {
+                let data = value as? TAPVersionModel
+                
+                guard let minimumVersionSupportedName = data?.minimumVersionSupportedName else { return }
+                guard let minimumVersionSupported = Double(minimumVersionSupportedName) else { return }
+                
+                let appVersionName = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String
+                guard let appVersion = Double(appVersionName) else { return }
+                
+                if appVersion < minimumVersionSupported {
+                    TAPGlobal.shared.dismissLoading()
+                    let updateView = Bundle.main.loadNibNamed("TAPRequestUpdateApp", owner: self, options: nil)![0] as? TAPRequestUpdateApp
+                    updateView?.frame = (UIApplication.shared.keyWindow?.frame)!
+                    UIApplication.shared.keyWindow?.addSubview(updateView!)
+                }
+                else {
+                    let navi = TAPMainFrame.makeNewMainFrame()
+                    self.window!.rootViewController = navi
+                }
+            }
+            else {
+                let navi = TAPMainFrame.makeNewMainFrame()
+                self.window!.rootViewController = navi
+            }
+        }
 
         return true
     }
