@@ -61,6 +61,7 @@ class TAPBaseViewController: UIViewController {
         case 1:
             showHistoryScreen()
         case 2:
+            showCashbackScreen()
             break
         case 3:
             showAccountScreen()
@@ -73,7 +74,10 @@ class TAPBaseViewController: UIViewController {
         let vc = TAPHistoryViewController(nibName: "TAPHistoryViewController", bundle: nil)
         TAPMainFrame.getNavi().pushViewController(vc, animated: true)
     }
-    
+    fileprivate func showCashbackScreen() {
+        let vc = TAPCashbackView(nibName: "TAPCashbackView", bundle: nil)
+        TAPMainFrame.getNavi().pushViewController(vc, animated: true)
+    }
     fileprivate func showAccountScreen() {
         // get top ViewController
         let root = UIApplication.shared.keyWindow?.rootViewController as! UINavigationController

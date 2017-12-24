@@ -26,7 +26,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RZs-s6-FAr">
-                    <rect key="frame" x="10" y="76" width="355" height="509"/>
+                    <rect key="frame" x="10" y="76" width="355" height="503"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -46,7 +46,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ciS-Yp-jeX">
-                    <rect key="frame" x="0.0" y="593" width="375" height="30"/>
+                    <rect key="frame" x="0.0" y="587" width="375" height="30"/>
                     <subviews>
                         <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Discount: -S$5.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PcO-SZ-eoG">
                             <rect key="frame" x="30" y="9.5" width="88.5" height="12"/>
@@ -79,10 +79,10 @@
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pUI-pc-f9E">
-                    <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                    <rect key="frame" x="0.0" y="617" width="375" height="50"/>
                     <color key="backgroundColor" red="0.10980392156862745" green="0.66666666666666663" blue="0.71372549019607845" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="44" id="kO7-nZ-Svf"/>
+                        <constraint firstAttribute="height" constant="50" id="kO7-nZ-Svf"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                     <state key="normal" title="PROCEED TO PAYMENT">
