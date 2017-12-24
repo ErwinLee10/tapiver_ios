@@ -9,6 +9,10 @@
 import UIKit
 import SDWebImage
 
+protocol TAPCartTableViewCellDelegate: class {
+    func cartCellDeleteItem(productVariationId: Int)
+}
+
 class TAPCartTableViewCell: UITableViewCell {
 
     @IBOutlet weak var lbQuantity: UILabel!
@@ -22,6 +26,9 @@ class TAPCartTableViewCell: UITableViewCell {
     @IBOutlet weak var removeBtn: UIButton!
     
     public var isReviewOrder: Bool = false
+    weak var delegate: TAPCartTableViewCellDelegate?
+    var productVariationModel: TAPProductVariationModel?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -38,6 +45,7 @@ class TAPCartTableViewCell: UITableViewCell {
     }
     
     func fillData(data: TAPProductVariationModel?) {
+        productVariationModel = data
         guard let product = data else {
             return
         }
@@ -64,7 +72,9 @@ class TAPCartTableViewCell: UITableViewCell {
     }
     
     @IBAction func removeBtnTouched(_ sender: Any) {
-        // TODO: later
+        if let productId = productVariationModel?.id {
+            delegate?.cartCellDeleteItem(productVariationId: productId)
+        }   
     }
     
 }

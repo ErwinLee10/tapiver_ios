@@ -80,6 +80,7 @@ class TAPHeaderView: TAPBaseHeaderView {
     
     @IBAction func searchTouched(_ sender: Any) {
         print("searchTouched")
+        handleSearchTouch()
         delegate?.headerViewDidTouchSearch()
     }
     

@@ -59,7 +59,11 @@ class TAPStorePageViewController: TAPBaseViewController {
     }
     
     private func getData() {
-        let params: [String: Any] = [:] // TODO: check later
+        var params: [String: Any] = [:]
+        params[TAPConstants.APIParams.sellerId] = feedModel?.sellerId
+        if TAPGlobal.shared.hasLogin(), let userID = TAPGlobal.shared.getLoginModel()?.userId {
+            params[TAPConstants.APIParams.userId] = userID.numberValue?.intValue ?? 0
+        }
         
         SVProgressHUD.show()
         TAPWebservice.shareInstance.sendGETRequest(path: TAPConstants.APIPath.getProducts, params: params, responseObjectClass: TAPProductListModel()) { [weak self] (success, responseEntity) in
@@ -107,7 +111,7 @@ extension TAPStorePageViewController: UICollectionViewDataSource {
 // MARK: UICollectionViewDelegate
 extension TAPStorePageViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //        let row = indexPath.row
+        openProductPage(product: productList[indexPath.row], feedModel: feedModel)
     }
 }
 

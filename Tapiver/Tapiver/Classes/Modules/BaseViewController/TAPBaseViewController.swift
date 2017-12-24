@@ -38,6 +38,17 @@ class TAPBaseViewController: UIViewController {
         }
     }
     
+    func openProductPage(product: TAPProductModel?, feedModel: TAPFeedModel?) {
+        guard let newProduct = product else {
+            return
+        }
+        let productViewController: TAPProductMainPageViewController = TAPProductMainPageViewController(nibName: "TAPProductMainPageViewController", bundle: nil)
+        productViewController.setData(id: newProduct.id ?? "", title: feedModel?.sellerName ?? "")
+        self.present(productViewController, animated: true) {
+            
+        }
+    }
+    
     fileprivate func menuItemTouchHandler(itemIndex: Int) {
         guard TAPGlobal.shared.hasLogin() else {
              TAPMainFrame.showLoginPageMain()
@@ -61,8 +72,6 @@ class TAPBaseViewController: UIViewController {
     fileprivate func showHistoryScreen() {
         let vc = TAPHistoryViewController(nibName: "TAPHistoryViewController", bundle: nil)
         TAPMainFrame.getNavi().pushViewController(vc, animated: true)
-//        let vc = TAPHistoryReportIssueViewController(nibName: "TAPHistoryReportIssueViewController", bundle: nil)
-//        TAPMainFrame.getNavi().pushViewController(vc, animated: true)
     }
     
     fileprivate func showAccountScreen() {
