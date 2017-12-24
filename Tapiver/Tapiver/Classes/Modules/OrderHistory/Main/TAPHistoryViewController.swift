@@ -127,12 +127,44 @@ extension TAPHistoryViewController: UITableViewDataSource {
         }
     }
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "TAPHistoryHeaderView") as? TAPHistoryHeaderView// ?? TAPHistoryHeaderView(reuseIdentifier: "TAPHistoryHeaderView")
+    func tableView(_ tableView1: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = tableView1.dequeueReusableHeaderFooterView(withIdentifier: "TAPHistoryHeaderView") as? TAPHistoryHeaderView// ?? TAPHistoryHeaderView(reuseIdentifier: "TAPHistoryHeaderView")
         header?.delegate = self
         header?.section = section
         header?.setCollapsed(orderList[section].isCollapsed)
         header?.fillData(order: orderList[section])
+        
+        
+        if let view = header {
+            view.layoutSubviews()
+            view.backgroundColor = UIColor.clear
+            let rect = CGRect(x: 15, y: 17, width: view.bounds.width - 30, height: view.bounds.height - 17)
+            var maskPathTop: UIBezierPath
+            if tableView(tableView1, numberOfRowsInSection: section) == 0 {
+                maskPathTop = UIBezierPath(roundedRect: rect, cornerRadius: 10.0)
+            } else {
+                maskPathTop = UIBezierPath(roundedRect: rect, byRoundingCorners: [.topLeft, .topRight], cornerRadii: CGSize(width: 10.0, height: 10.0))
+            }
+            
+            let shapeLayerTop = CAShapeLayer()
+            //        shapeLayerTop.frame = view.bounds
+            shapeLayerTop.path = maskPathTop.cgPath
+            
+            shapeLayerTop.lineWidth = 1
+            shapeLayerTop.fillColor = UIColor(white: 1, alpha: 1.0).cgColor
+            
+            shapeLayerTop.name = "shape layer"
+            if let subLayers = view.layer.sublayers {
+                for sublayer in subLayers {
+                    if sublayer.name == "shape layer" {
+                        sublayer.removeFromSuperlayer()
+                        break
+                    }
+                }
+            }
+            
+            view.layer.insertSublayer(shapeLayerTop, at: 0)
+        }
         return header
     }
 }
@@ -155,23 +187,26 @@ extension TAPHistoryViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView1: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        //Top Left Right Corners
-        view.backgroundColor = UIColor.clear
-        let rect = CGRect(x: 15, y: 17, width: view.bounds.width - 30, height: view.bounds.height - 17)
-        var maskPathTop: UIBezierPath
-        if tableView(tableView1, numberOfRowsInSection: section) == 0 {
-            maskPathTop = UIBezierPath(roundedRect: rect, cornerRadius: 10.0)
-        } else {
-            maskPathTop = UIBezierPath(roundedRect: rect, byRoundingCorners: [.topLeft, .topRight], cornerRadii: CGSize(width: 10.0, height: 10.0))
-        }
-        
-        let shapeLayerTop = CAShapeLayer()
-//        shapeLayerTop.frame = view.bounds
-        shapeLayerTop.path = maskPathTop.cgPath
-        
-        shapeLayerTop.lineWidth = 1
-        shapeLayerTop.fillColor = UIColor(white: 1, alpha: 1.0).cgColor
-        view.layer.insertSublayer(shapeLayerTop, at: 0)
+//        //Top Left Right Corners
+//        view.backgroundColor = UIColor.clear
+//        let rect = CGRect(x: 15, y: 17, width: view.bounds.width - 30, height: view.bounds.height - 17)
+//        var maskPathTop: UIBezierPath
+//        if tableView(tableView1, numberOfRowsInSection: section) == 0 {
+//            maskPathTop = UIBezierPath(roundedRect: rect, cornerRadius: 10.0)
+//        } else {
+//            maskPathTop = UIBezierPath(roundedRect: rect, byRoundingCorners: [.topLeft, .topRight], cornerRadii: CGSize(width: 10.0, height: 10.0))
+//        }
+//
+//        let shapeLayerTop = CAShapeLayer()
+////        shapeLayerTop.frame = view.bounds
+//        shapeLayerTop.path = maskPathTop.cgPath
+//
+//        shapeLayerTop.lineWidth = 1
+//        shapeLayerTop.fillColor = UIColor(white: 1, alpha: 1.0).cgColor
+//
+//        shapeLayerTop.name = "shape layer"
+//
+//        view.layer.insertSublayer(shapeLayerTop, at: 0)
     }
     
     func tableView(_ tableView1: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
