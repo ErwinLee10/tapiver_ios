@@ -46,13 +46,13 @@ class TAPMallPageShopViewController: TAPMallPageBaseViewController {
     }
     
     private func getData() {
-        
-        let params: [String: Any] = [:]
-        var apiPath: String
-        if(TAPGlobal.shared.hasLogin()) {
-            apiPath = "/api/v1/u/\(TAPGlobal.shared.getLoginModel()?.userId ?? "")/feeds"
-        } else {
-            apiPath = TAPConstants.APIPath.overview
+        let apiPath = TAPConstants.APIPath.discover
+        var params: [String: Any] = [:]
+        if let landmarkId = landmark?.id {
+            params[TAPConstants.APIParams.landmarkId] = landmarkId
+        }
+        if TAPGlobal.shared.hasLogin(), let userID = TAPGlobal.shared.getLoginModel()?.userId {
+            params[TAPConstants.APIParams.userId] = userID.numberValue?.intValue ?? 0
         }
         //SVProgressHUD.show()
         TAPGlobal.shared.showLoading()
@@ -143,8 +143,8 @@ extension TAPMallPageShopViewController: TAPFeedTableViewCellDelegate {
         TAPMainFrame.getNavi().pushViewController(vc, animated: true)
     }
     
-    func tapIteamAt(index: NSIndexPath, indexItem: NSIndexPath) {
-        
+    func tapIteamAt(index: IndexPath, item: TAPProductModel) {
+        openProductPage(product: item, feedModel: feedModelList[index.row])
     }
 }
 

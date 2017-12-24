@@ -1,22 +1,19 @@
 //
-//  TAPDealsViewController.swift
+//  TAPSearchProductViewController.swift
 //  Tapiver
 //
-//  Created by HungHN on 11/29/17.
+//  Created by Le Duc Canh on 12/24/17.
 //  Copyright © 2017 hunghoang. All rights reserved.
 //
 
 import UIKit
 //import SVProgressHUD
 
-class TAPDealsViewController: TAPBaseViewController {
+class TAPSearchProductViewController: UIViewController {
     @IBOutlet weak var contentCollectionView: UICollectionView!
-    @IBOutlet weak var emptyLabel: UILabel!
+    @IBOutlet weak var emptyView: UIView!
     
     var productList: [TAPProductModel] = []
-    
-    var errorInternetView: TAPLostConnectErrorView?
-    var errorGeneralView: TAPGeneralErrorView?
     
     static let cellIdentifier = "TAPMallPageDealsCell"
     let leftRightPadding = 15.0
@@ -28,22 +25,16 @@ class TAPDealsViewController: TAPBaseViewController {
 
         setupView()
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        getData()
-    }
-    
+
     // MARK: Private methods
     private func setupView() {
-        let mainPageHeaderView = headerView as? TAPMainPageHeaderView
-        mainPageHeaderView?.delegate = self
         contentCollectionView.register(UINib.init(nibName: "TAPMallPageDealsCell", bundle: nil), forCellWithReuseIdentifier: TAPMallPageDealViewController.cellIdentifier)
-        emptyLabel.isHidden = true
+        emptyView.isHidden = true
     }
     
-    private func getData() {
+    func search(with keyword: String) {
         var params: [String: Any] = [:]
+        params[TAPConstants.APIParams.q] = keyword
         if TAPGlobal.shared.hasLogin(), let userID = TAPGlobal.shared.getLoginModel()?.userId {
             params[TAPConstants.APIParams.userId] = userID.numberValue?.intValue ?? 0
         }
@@ -55,35 +46,16 @@ class TAPDealsViewController: TAPBaseViewController {
                 self?.productList = productListModel.productList
                 self?.reloadData()
             }
-            else {
-                TAPWebservice.shareInstance.checkHaveInternet(response: { (check) in
-                    if check {
-                        //server error
-                        guard let unwrappedSelf = self else { return }
-                        unwrappedSelf.errorGeneralView = Bundle.main.loadNibNamed("TAPGeneralErrorView", owner: unwrappedSelf, options: nil)![0] as? TAPGeneralErrorView
-                        unwrappedSelf.errorGeneralView?.frame = unwrappedSelf.contentCollectionView.frame
-                        unwrappedSelf.view.addSubview(unwrappedSelf.errorGeneralView!)
-                        unwrappedSelf.view.bringSubview(toFront: unwrappedSelf.errorGeneralView!)
-                    }
-                    else {
-                        guard let unwrappedSelf = self else { return }
-                        unwrappedSelf.errorInternetView = Bundle.main.loadNibNamed("TAPLostConnectErrorView", owner: unwrappedSelf, options: nil)![0] as? TAPLostConnectErrorView
-                        unwrappedSelf.errorInternetView?.frame = unwrappedSelf.contentCollectionView.frame
-                        unwrappedSelf.view.addSubview(unwrappedSelf.errorInternetView!)
-                        unwrappedSelf.view.bringSubview(toFront: unwrappedSelf.errorInternetView!)
-                    }
-                })
-            }
             //SVProgressHUD.dismiss()
             TAPGlobal.shared.dismissLoading()
         }
     }
     private func reloadData() {
         if productList.count == 0 {
-            emptyLabel.isHidden = false
+            emptyView.isHidden = false
             contentCollectionView.isHidden = true
         } else {
-            emptyLabel.isHidden = true
+            emptyView.isHidden = true
             contentCollectionView.isHidden = false
             contentCollectionView.reloadData()
         }
@@ -91,7 +63,7 @@ class TAPDealsViewController: TAPBaseViewController {
 
 }
 
-extension TAPDealsViewController: UICollectionViewDataSource {
+extension TAPSearchProductViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -108,36 +80,23 @@ extension TAPDealsViewController: UICollectionViewDataSource {
     }
 }
 
-extension TAPDealsViewController: UICollectionViewDelegate {
+extension TAPSearchProductViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("didSelectItemAt \(indexPath.row)")
-        openProductPage(product: productList[indexPath.row], feedModel: nil)
+        
+        let productViewController: TAPProductMainPageViewController = TAPProductMainPageViewController(nibName: "TAPProductMainPageViewController", bundle: nil)
+        productViewController.setData(id: productList[indexPath.row].id ?? "", title: "")
+        self.present(productViewController, animated: true) {
+            
+        }
     }
 }
 
 // MARK: UICollectionViewDelegateFlowLayout
-extension TAPDealsViewController: UICollectionViewDelegateFlowLayout {
+extension TAPSearchProductViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let cellWidth = (Double(SCREEN_WIDTH) - leftRightPadding * 2 - cellPadding) / 2
         let cellHeight = cellWidth * cellHeightWidhtRatio
         return CGSize(width: cellWidth, height: cellHeight)
-    }
-}
-
-extension TAPDealsViewController: TAPMainPageHeaderViewDelegate {
-    func headerViewDidTouchLeftMenu() {
-        
-    }
-    
-    func headerViewDidTouchMenu() {
-        showRightMenu()
-    }
-    
-    func headerViewDidTouchCart() {
-        
-    }
-    
-    func headerViewDidTouchSearch() {
-        
     }
 }

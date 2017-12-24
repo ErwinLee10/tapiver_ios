@@ -38,7 +38,8 @@ class TAPBaseHeaderView: UIView {
     }
     
     func handleSearchTouch() {
-        
+        let searchVC = TAPSearchViewController(nibName: "TAPSearchViewController", bundle: nil)
+        TAPMainFrame.getNavi().pushViewController(searchVC, animated: true)
     }
     
     func handleBackTouch() {

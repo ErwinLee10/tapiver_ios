@@ -74,6 +74,12 @@ extension TAPMainPageHeaderView: UITextFieldDelegate {
         return true
     }
     
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.resignFirstResponder()
+        
+        handleSearchTouch()
+    }
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
         print("textFieldDidEndEditing")
         delegate?.headerViewDidTouchSearch()

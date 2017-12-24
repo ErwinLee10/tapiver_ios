@@ -62,7 +62,6 @@ class TAPCartViewController: TAPBaseViewController {
         
         // Hide header button
         if let header = (headerView as? TAPHeaderView) {
-            header.delegate = self
             header.hideSearchButton(true)
             header.hideCartButton(true)
             header.hideMenuButton(true)
@@ -77,8 +76,52 @@ class TAPCartViewController: TAPBaseViewController {
         showCouponView(false)
     }
     
-    private func getData(hasVoucher: Bool) {
+    private func reloadData() {
         
+        if let carItems = cartListModel?.cartItemsPerSeller, carItems.count > 0 {
+            contentTableView.isHidden = false
+            emptyLabel.isHidden = true
+            footerView.isHidden = false
+            
+            contentTableView.reloadData()
+            let total = NSNumber(value: cartListModel?.finalTotalAmount ?? 0).moneyString()
+            totalPriceLabel.text = "Total: \(total)"
+            
+        } else {
+            contentTableView.isHidden = true
+            emptyLabel.isHidden = false
+            footerView.isHidden = true
+        }
+    }
+    
+    private func showCouponView(_ show: Bool) {
+        couponView.isHidden = !show
+    }
+    
+    private func updateCoupon() {
+        var discountStr = "Discount:"
+        let saveMoney = NSNumber(value: cartListModel?.coupon?.totalSaving ?? 0).moneyString()
+        if let isPercent = cartListModel?.coupon?.isPercentageDiscount, isPercent == true {
+            let percent = cartListModel?.coupon?.percentage ?? 0
+            discountStr += "\(percent)% (-\(saveMoney))"
+        } else {
+            discountStr += "-\(saveMoney)"
+        }
+        couponButton.setTitleColor(UIColor.init(netHex: 0xEC2327), for: .normal)
+        couponButton.setTitle(discountStr, for: .normal)
+        couponButton.setAttributedTitle(nil, for: .normal)
+        couponButton.isUserInteractionEnabled = false
+    }
+    
+    private func showInvalidCouponAlert() {
+        TAPDialogUtils.shareInstance.showAlertMessageOneButton(title: "", message: "Invalid coupon", positive: "OK", positiveHandler: nil, vc: self)
+    }
+}
+
+// MARK: Call API
+extension TAPCartViewController {
+    private func getData(hasVoucher: Bool) {
+        // Dummy data
 //        let filePath = Bundle.main.path(forResource: "CarDummy", ofType: "geojson")
 //        if let data = NSData(contentsOfFile: filePath ?? "") as Data? {
 //            do {
@@ -87,13 +130,13 @@ class TAPCartViewController: TAPBaseViewController {
 //                    self.cartListModel = TAPCartListModel()
 //                    cartListModel?.parserResponse(dic: jsonObj)
 //                    self.reloadData()
-//                    
+//
 //                    if hasVoucher {
 //                        self.updateCoupon()
 //                    }
 //                }
 //            } catch {
-//                
+//
 //            }
 //        }
 //        return
@@ -157,45 +200,19 @@ class TAPCartViewController: TAPBaseViewController {
         }
     }
     
-    private func reloadData() {
+    private func deleteItem(productVariationId: Int) {
+        let apiPath = "/api/v1/u/\(TAPGlobal.shared.getLoginModel()?.userId ?? "")/cart/productVariationId/\(productVariationId)"
         
-        if let carItems = cartListModel?.cartItemsPerSeller, carItems.count > 0 {
-            contentTableView.isHidden = false
-            emptyLabel.isHidden = true
-            footerView.isHidden = false
-            
-            contentTableView.reloadData()
-            let total = NSNumber(value: cartListModel?.finalTotalAmount ?? 0).moneyString()
-            totalPriceLabel.text = "Total: \(total)"
-            
-        } else {
-            contentTableView.isHidden = true
-            emptyLabel.isHidden = false
-            footerView.isHidden = true
+        //SVProgressHUD.show()
+        TAPGlobal.shared.showLoading()
+        TAPWebservice.shareInstance.sendDELETERequest(path: apiPath) { [weak self] (success) in
+            //SVProgressHUD.dismiss()
+            TAPGlobal.shared.dismissLoading()
+            guard let strongSelf = self else { return }
+            if success {
+                strongSelf.getData(hasVoucher: strongSelf.voucherName != nil && strongSelf.voucherName!.isEmpty == false)
+            }
         }
-    }
-    
-    private func showCouponView(_ show: Bool) {
-        couponView.isHidden = !show
-    }
-    
-    private func updateCoupon() {
-        var discountStr = "Discount:"
-        let saveMoney = NSNumber(value: cartListModel?.coupon?.totalSaving ?? 0).moneyString()
-        if let isPercent = cartListModel?.coupon?.isPercentageDiscount, isPercent == true {
-            let percent = cartListModel?.coupon?.percentage ?? 0
-            discountStr += "\(percent)% (-\(saveMoney))"
-        } else {
-            discountStr += "-\(saveMoney)"
-        }
-        couponButton.setTitleColor(UIColor.init(netHex: 0xEC2327), for: .normal)
-        couponButton.setTitle(discountStr, for: .normal)
-        couponButton.setAttributedTitle(nil, for: .normal)
-        couponButton.isUserInteractionEnabled = false
-    }
-    
-    private func showInvalidCouponAlert() {
-        TAPDialogUtils.shareInstance.showAlertMessageOneButton(title: "", message: "Invalid coupon", positive: "OK", positiveHandler: nil, vc: self)
     }
 }
 
@@ -224,6 +241,7 @@ extension TAPCartViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 //        if indexPath.section != numberOfSections(in: tableView) - 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! TAPCartTableViewCell
+            cell.delegate = self
             if let carItems = cartListModel?.cartItemsPerSeller {
                 let products = carItems[indexPath.section].productVariations
                 cell.fillData(data: products[indexPath.row])
@@ -366,6 +384,8 @@ extension TAPCartViewController: UITableViewDelegate {
     }
 }
 
-extension TAPCartViewController: TAPHeaderViewDelegate {
-    
+extension TAPCartViewController: TAPCartTableViewCellDelegate {
+    func cartCellDeleteItem(productVariationId: Int) {
+        deleteItem(productVariationId: productVariationId)
+    }
 }
