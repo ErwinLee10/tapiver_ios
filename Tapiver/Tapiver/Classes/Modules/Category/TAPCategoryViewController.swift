@@ -8,10 +8,10 @@
 
 import UIKit
 import SVProgressHUD
-class TAPCategoryViewController: UIViewController {
+class TAPCategoryViewController: TAPBaseViewController {
     @IBOutlet weak var tableViewLever0: UITableView!
     @IBOutlet weak var tableViewLever1: UITableView!
-    @IBOutlet weak var viewHeader: TAPMainPageHeaderView!
+//    @IBOutlet weak var viewHeader: TAPMainPageHeaderView!
     public var landMarkId: String?
     public var sellerId: String?
     var listobject: TAPListCategoryMenu = TAPListCategoryMenu()
@@ -28,6 +28,7 @@ class TAPCategoryViewController: UIViewController {
     func initIB() {
         self.tableViewLever0 .register(UINib.init(nibName:"TAPCategoryLever0Cell", bundle: nil), forCellReuseIdentifier: "TAPCategoryLever0Cell")
         self.tableViewLever1 .register(UINib.init(nibName:"TAPCategoryLever1Cell", bundle: nil), forCellReuseIdentifier: "TAPCategoryLever1Cell")
+        (self.headerView as? TAPMainPageHeaderView)?.delegate = self
     }
     func initData() {
         let header = NSMutableDictionary()
@@ -438,4 +439,22 @@ extension TAPCategoryViewController: TAPCategoryLever1CellDelegate {
         print("OBJ >>>> \(object.name!)")
     }
     
+}
+
+extension TAPCategoryViewController: TAPMainPageHeaderViewDelegate {
+    func headerViewDidTouchLeftMenu() {
+        
+    }
+    
+    func headerViewDidTouchMenu() {
+        showRightMenu()
+    }
+    
+    func headerViewDidTouchCart() {
+        
+    }
+    
+    func headerViewDidTouchSearch() {
+        
+    }
 }

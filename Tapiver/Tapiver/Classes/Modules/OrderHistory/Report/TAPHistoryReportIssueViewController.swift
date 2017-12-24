@@ -67,9 +67,14 @@ class TAPHistoryReportIssueViewController: TAPBaseViewController {
         
         SVProgressHUD.show()
         TAPWebservice.shareInstance.sendPOSTRequest(path: apiPath, params: params, responseObjectClass: TAPBaseEntity()) { [weak self] (success, responseEntity) in
-            
             SVProgressHUD.dismiss()
-            self?.showSubmitResultMessage(isSuccess: success)
+            if success {
+                self?.showSubmitResultMessage(isSuccess: success)
+            }
+            else {
+                guard let weakSelf = self else { return }
+                TAPDialogUtils.shareInstance.showAlertMessageOneButton(title: "", message: "Server error, please contact Tapiver team for assistance", positive: "OK", positiveHandler: nil, vc: weakSelf)
+            }
         }
     }
     
