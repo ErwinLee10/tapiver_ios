@@ -88,6 +88,9 @@
                     <state key="normal" title="PROCEED TO PAYMENT">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="pushToPayment:" destination="-1" eventType="touchUpInside" id="mNI-dN-pH6"/>
+                    </connections>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8ZS-fc-Y4o">
                     <rect key="frame" x="0.0" y="64" width="125" height="4"/>
