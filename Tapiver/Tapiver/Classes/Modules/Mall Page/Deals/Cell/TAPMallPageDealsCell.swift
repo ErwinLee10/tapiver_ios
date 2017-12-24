@@ -8,7 +8,6 @@
 
 import UIKit
 import SDWebImage
-import SVProgressHUD
 
 class TAPMallPageDealsCell: UICollectionViewCell {
     @IBOutlet weak var containerView: UIView!
@@ -70,9 +69,9 @@ class TAPMallPageDealsCell: UICollectionViewCell {
     
     private func addLikeProduct() {
         let apiPath = "/api/v1/u/\(TAPGlobal.shared.getLoginModel()?.userId ?? "")/like\(productModel?.id ?? "")"
-        SVProgressHUD.show()
+        TAPGlobal.shared.showLoading()
         TAPWebservice.shareInstance.sendPUTRequest(path: apiPath, parameters: [:]) { [weak self] (isSuccess) in
-            SVProgressHUD.dismiss()
+            TAPGlobal.shared.dismissLoading()
             if isSuccess {
                 self?.updateLikes(isAdd: true)
             }
@@ -81,9 +80,9 @@ class TAPMallPageDealsCell: UICollectionViewCell {
     
     private func removeLikeProduct() {
         let apiPath = "/api/v1/u/\(TAPGlobal.shared.getLoginModel()?.userId ?? "")/like/\(productModel?.id ?? "")"
-        SVProgressHUD.show()
+        TAPGlobal.shared.showLoading()
         TAPWebservice.shareInstance.sendDELETERequest(path: apiPath) { [weak self] (isSuccess, responseData) in
-            SVProgressHUD.dismiss()
+            TAPGlobal.shared.dismissLoading()
             
             if isSuccess {
                 self?.updateLikes(isAdd: false)
