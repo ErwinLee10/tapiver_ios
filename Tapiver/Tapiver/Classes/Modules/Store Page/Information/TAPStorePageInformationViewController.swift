@@ -20,8 +20,9 @@ class TAPStorePageInformationViewController: UIViewController {
         setupView()
     }
     
-    static func showStorePageInformation(data: Any?) {
+    static func showStorePageInformation(data: TAPFeedModel?) {
         let vc = TAPStorePageInformationViewController(nibName: "TAPStorePageInformationViewController", bundle: nil)
+        vc.feedModel = data
         vc.showView()
     }
 
@@ -75,7 +76,7 @@ extension TAPStorePageInformationViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "TAPStorePageInfoDescriptionCell", for: indexPath) as! TAPStorePageInfoDescriptionCell
-            cell.setContent(description: "") // TODO: description
+            cell.setContent(description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam mauris nulla, consequat ut porta ultricies, ormare set amet velit.") // TODO: description
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "TAPStorePageInfoLocationCell", for: indexPath) as! TAPStorePageInfoLocationCell

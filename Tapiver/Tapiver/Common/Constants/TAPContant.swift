@@ -112,6 +112,7 @@ struct TAPConstants {
         static let provid                   = "provider"
         static let freeShipping             = "freeShipping"
         static let shippingOptions          = "shippingOptions"
+        static let current_total_like_of_the_product = "current_total_like_of_the_product"
 
     }
 }

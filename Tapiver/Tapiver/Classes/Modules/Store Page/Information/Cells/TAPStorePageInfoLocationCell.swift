@@ -29,13 +29,13 @@ class TAPStorePageInfoLocationCell: UITableViewCell {
             weekenTimeLabel.text = ""
             return
         }
-        indexLabel.text = "\(index)"
+        indexLabel.text = "\(index + 1)"
         var addressStr = "\(address?.buildingName ?? "")"
         if let floorAndUnit = add.formattedFloorAndUnitAddres, floorAndUnit.isEmpty == false {
             addressStr += " \(floorAndUnit)"
         }
         if let street = add.streetName, street.isEmpty == false {
-            addressStr += "\\n\(street)"
+            addressStr += "\n\(street)"
         }
         addressLabel.text = addressStr
         normalTimeLabel.text = "" // TODO: later
