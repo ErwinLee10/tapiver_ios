@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import SVProgressHUD
+//import SVProgressHUD
 
 class TAPAddressMethodController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
@@ -99,7 +99,8 @@ class TAPAddressMethodController: UIViewController {
         let header = NSMutableDictionary()
         header.setValue("application/json", forKey: "Content-Type")
         header.setValue(TAPGlobal.shared.getLoginModel()?.webSessionId ?? "", forKey: "Authorization")
-        SVProgressHUD.show()
+        //SVProgressHUD.show()
+        TAPGlobal.shared.showLoading()
         TAPWebservice.shareInstance.sendGETRequest(path: apiPath, params: nil, headers: header, responseObjectClass: TAPListChecOutEntity()) { (success, response) in
             if success {
                 self.isLoadedApi = true
@@ -130,7 +131,8 @@ class TAPAddressMethodController: UIViewController {
             } else {
                 TAPDialogUtils.shareInstance.showAlertMessageOneButton(title: "", message: "Server error, please contact Tapiver team for assistance", positive: "OK", positiveHandler: nil, vc: self)
             }
-            SVProgressHUD.dismiss()
+            //SVProgressHUD.dismiss()
+            TAPGlobal.shared.dismissLoading()
         }
         
     }

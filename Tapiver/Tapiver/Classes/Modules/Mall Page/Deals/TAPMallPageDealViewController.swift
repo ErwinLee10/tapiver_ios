@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import SVProgressHUD
+//import SVProgressHUD
 
 class TAPMallPageDealViewController: TAPMallPageBaseViewController {
     @IBOutlet weak var contentCollectionView: UICollectionView!
@@ -56,7 +56,8 @@ class TAPMallPageDealViewController: TAPMallPageBaseViewController {
             params[TAPConstants.APIParams.userId] = TAPGlobal.shared.getLoginModel()?.userId ?? ""
         }
         
-        SVProgressHUD.show()
+        //SVProgressHUD.show()
+        TAPGlobal.shared.showLoading()
         TAPWebservice.shareInstance.sendGETRequest(path: TAPConstants.APIPath.getProducts, params: params, responseObjectClass: TAPProductListModel()) { [weak self] (success, responseEntity) in
             if success, let productListModel = responseEntity as? TAPProductListModel {
                 self?.productList = productListModel.productList
@@ -81,7 +82,8 @@ class TAPMallPageDealViewController: TAPMallPageBaseViewController {
                     }
                 })
             }
-            SVProgressHUD.dismiss()
+            //SVProgressHUD.dismiss()
+            TAPGlobal.shared.dismissLoading()
         }
     }
     private func reloadData() {

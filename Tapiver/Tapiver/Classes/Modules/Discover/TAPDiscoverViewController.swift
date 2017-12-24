@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SVProgressHUD
 
 class TAPDiscoverViewController: TAPBaseViewController {
     @IBOutlet weak var tableView: UITableView!
@@ -41,7 +40,8 @@ class TAPDiscoverViewController: TAPBaseViewController {
         } else {
             apiPath = API_PATH(path: String.init(format: "/api/v1/s/overview", TAPGlobal.shared.getLoginModel()?.userId ?? ""))
         }
-        SVProgressHUD.show()
+        //SVProgressHUD.show()
+        TAPGlobal.shared.showLoading()
         TAPWebservice.shareInstance.sendGETRequest(path: apiPath, params: params, headers: header, responseObjectClass: TAPFeedApiModel()) { (success, response) in
             if success {
                 guard let model = response as? TAPFeedApiModel else {
@@ -67,7 +67,8 @@ class TAPDiscoverViewController: TAPBaseViewController {
                 })
 //                TAPDialogUtils.shareInstance.showAlertMessageOneButton(title: "", message: "Server error, please contact Tapiver team for assistance", positive: "OK", positiveHandler: nil, vc: self)
             }
-            SVProgressHUD.dismiss()
+            //SVProgressHUD.dismiss()
+            TAPGlobal.shared.dismissLoading()
         }
     }
     func tapIteamAt(index: NSIndexPath, indexItem: NSIndexPath) {

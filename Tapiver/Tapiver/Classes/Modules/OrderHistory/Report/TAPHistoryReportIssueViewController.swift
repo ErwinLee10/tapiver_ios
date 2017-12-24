@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import SVProgressHUD
+//import SVProgressHUD
 
 class TAPHistoryReportIssueViewController: TAPBaseViewController {
     @IBOutlet weak var issueArrowButton: UIButton!
@@ -65,9 +65,11 @@ class TAPHistoryReportIssueViewController: TAPBaseViewController {
         let stdOrderId = orderId ?? ""
         let apiPath = "/api/v1/u/\(TAPGlobal.shared.getLoginModel()?.userId ?? "")/orders/\(stdOrderId)/report"
         
-        SVProgressHUD.show()
+        //SVProgressHUD.show()
+        TAPGlobal.shared.showLoading()
         TAPWebservice.shareInstance.sendPOSTRequest(path: apiPath, params: params, responseObjectClass: TAPBaseEntity()) { [weak self] (success, responseEntity) in
-            SVProgressHUD.dismiss()
+            //SVProgressHUD.dismiss()
+            TAPGlobal.shared.dismissLoading()
             if success {
                 self?.showSubmitResultMessage(isSuccess: success)
             }

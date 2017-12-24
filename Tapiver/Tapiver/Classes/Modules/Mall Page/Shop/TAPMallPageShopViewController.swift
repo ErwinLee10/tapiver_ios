@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import SVProgressHUD
+//import SVProgressHUD
 
 class TAPMallPageShopViewController: TAPMallPageBaseViewController {
     @IBOutlet weak var noDataView: UIView!
@@ -54,11 +54,13 @@ class TAPMallPageShopViewController: TAPMallPageBaseViewController {
         } else {
             apiPath = TAPConstants.APIPath.overview
         }
-        SVProgressHUD.show()
+        //SVProgressHUD.show()
+        TAPGlobal.shared.showLoading()
         
         TAPWebservice.shareInstance.sendGETRequest(path: apiPath, params: params, responseObjectClass: TAPFeedApiModel()) { [weak self] (success, response) in
             guard let strongSelf = self else {
-                SVProgressHUD.dismiss()
+                //SVProgressHUD.dismiss()
+                TAPGlobal.shared.dismissLoading()
                 return
             }
             
@@ -85,7 +87,8 @@ class TAPMallPageShopViewController: TAPMallPageBaseViewController {
                 })
 //                TAPDialogUtils.shareInstance.showAlertMessageOneButton(title: "", message: "Server error, please contact Tapiver team for assistance", positive: "OK", positiveHandler: nil, vc: strongSelf)
             }
-            SVProgressHUD.dismiss()
+            //SVProgressHUD.dismiss()
+            TAPGlobal.shared.dismissLoading()
         }
     }
 

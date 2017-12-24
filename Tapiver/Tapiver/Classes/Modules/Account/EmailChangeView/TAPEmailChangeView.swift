@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import SVProgressHUD
+//import SVProgressHUD
 
 protocol TAPEmailChangeViewDelegate {
     func updateEmail(email: String)
@@ -41,7 +41,8 @@ class TAPEmailChangeView: UIViewController {
     }
     @IBAction func updateEmailButtonTap(_ sender: UIButton) {
         if isEmail() == false {
-            SVProgressHUD.showError(withStatus: "Email is not valid")
+            //SVProgressHUD.showError(withStatus: "Email is not valid")
+            TAPDialogUtils.shareInstance.showAlertMessageOneButton(title: "Email is not valid", message: "", positive: "OK", positiveHandler: nil, vc: self)
             return
         }
         

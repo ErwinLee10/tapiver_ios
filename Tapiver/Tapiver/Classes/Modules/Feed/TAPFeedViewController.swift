@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import SVProgressHUD
+//import SVProgressHUD
 
 class TAPFeedViewController: TAPBaseViewController  {
 
@@ -43,7 +43,8 @@ class TAPFeedViewController: TAPBaseViewController  {
             //params.setValue((0), forKey: "landmarkId")
             //params.setValue((0), forKey: "userId")
         }
-        SVProgressHUD.show()
+        //SVProgressHUD.show()
+        TAPGlobal.shared.showLoading()
         TAPWebservice.shareInstance.sendGETRequest(path: apiPath, params: params, headers: header, responseObjectClass: TAPFeedApiModel()) { (success, response) in
             if success {
                 guard let model = response as? TAPFeedApiModel else {
@@ -74,7 +75,8 @@ class TAPFeedViewController: TAPBaseViewController  {
                 })
 //                TAPDialogUtils.shareInstance.showAlertMessageOneButton(title: "", message: "Server error, please contact Tapiver team for assistance", positive: "OK", positiveHandler: nil, vc: self)
             }
-            SVProgressHUD.dismiss()
+            //SVProgressHUD.dismiss()
+            TAPGlobal.shared.dismissLoading()
         }
     }
 }

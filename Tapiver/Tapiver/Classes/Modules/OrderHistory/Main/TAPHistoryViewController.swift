@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import SVProgressHUD
+//import SVProgressHUD
 
 class TAPHistoryViewController: TAPBaseViewController {
     @IBOutlet weak var contentTableView: UITableView!
@@ -62,7 +62,8 @@ class TAPHistoryViewController: TAPBaseViewController {
             let params: [String: Any] = [:]
             let apiPath = "/api/v1/u/\(TAPGlobal.shared.getLoginModel()?.userId ?? "")/orders"
             
-            SVProgressHUD.show()
+            //SVProgressHUD.show()
+            TAPGlobal.shared.showLoading()
             TAPWebservice.shareInstance.sendGETRequest(path: apiPath, params: params, responseObjectClass: TAPHistoryModel()) { [weak self] (success, responseEntity) in
                 if success, let historyModel = responseEntity as? TAPHistoryModel {
                     self?.orderList = historyModel.orderList
@@ -87,7 +88,8 @@ class TAPHistoryViewController: TAPBaseViewController {
                         }
                     })
                 }
-                SVProgressHUD.dismiss()
+                //SVProgressHUD.dismiss()
+                TAPGlobal.shared.dismissLoading()
             }
         } else {
             
@@ -230,11 +232,13 @@ extension TAPHistoryViewController: TAPHistoryOrderInformationTableViewCellDeleg
     }
     
     private func confirmOrder(orderId: String) {
-        SVProgressHUD.show()
+        //SVProgressHUD.show()
+        TAPGlobal.shared.showLoading()
         let apiPath = "/api/v1/u/\(TAPGlobal.shared.getLoginModel()?.userId ?? "")/orders/\(orderId)/complete"
         
         TAPWebservice.shareInstance.sendPOSTRequest(path: apiPath, params: [:], responseObjectClass: TAPHistoryModel()) { [weak self] (success, responseEntity) in
-            SVProgressHUD.dismiss()
+            //SVProgressHUD.dismiss()
+            TAPGlobal.shared.dismissLoading()
             guard let strongSelf = self else {
                 return
             }

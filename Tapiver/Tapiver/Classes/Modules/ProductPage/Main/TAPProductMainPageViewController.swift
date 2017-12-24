@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import SDWebImage
 import DropDown
-import SVProgressHUD
+//import SVProgressHUD
 
 class TAPProductMainPageViewController: UIViewController, TapProductShippingView2Delegate {
 
@@ -18,9 +18,9 @@ class TAPProductMainPageViewController: UIViewController, TapProductShippingView
     @IBOutlet weak var cartButton: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
     
+    // main view
     @IBOutlet weak var scrollView: UIScrollView!
     
-    // main view
     @IBOutlet weak var imageContainView: UIView!
     @IBOutlet weak var imagePageView: iCarousel!
     @IBOutlet weak var pageControl: UIPageControl!
@@ -156,6 +156,7 @@ class TAPProductMainPageViewController: UIViewController, TapProductShippingView
     }
     
     func getData() {
+        TAPGlobal.shared.showLoading()
         TAPWebservice.shareInstance.sendGETRequest(path: "/api/v1/products/\(id ?? "0")/details", params: [TAPConstants.APIParams.userId: TAPGlobal.shared.getLoginModel()?.userId ?? ""],responseObjectClass: TAPProductDetailModel()) { (check, value) in
             if check {
                 self.data = value as? TAPProductDetailModel
@@ -184,6 +185,7 @@ class TAPProductMainPageViewController: UIViewController, TapProductShippingView
                     }
                 })
             }
+            TAPGlobal.shared.dismissLoading()
         }
     }
     
@@ -650,7 +652,8 @@ class TAPProductMainPageViewController: UIViewController, TapProductShippingView
     }
     
     @IBAction func addToCartViewButtonTap(_ sender: UIButton) {
-        SVProgressHUD.show()
+        //SVProgressHUD.show()
+        TAPGlobal.shared.showLoading()
         
         for item in (data?.variations?.listVariations)! {
             if item.colorName == chooseColorName && item.size == chooseSize {
@@ -658,7 +661,8 @@ class TAPProductMainPageViewController: UIViewController, TapProductShippingView
                         path: API_PATH(path: "/api/v1/u/\(TAPGlobal.shared.getLoginModel()?.userId ?? "0")/cart/productVariationId/\(item.id ?? 0)"),
                         params: ["quantity": chooseQuantity!],
                         responseHandler: { (check) in
-                            SVProgressHUD.dismiss()
+                            //SVProgressHUD.dismiss()
+                            TAPGlobal.shared.dismissLoading()
                             if check {
                                 
                             }

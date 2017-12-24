@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import SVProgressHUD
+//import SVProgressHUD
 import FBSDKLoginKit
 
 class TAPSignupEmailViewController: UIViewController {
@@ -123,7 +123,8 @@ extension TAPSignupEmailViewController {
         header.setValue("application/json", forKey: "Content-Type")
         let params = NSMutableDictionary()
         params.setValue(token, forKey: "token")
-        SVProgressHUD.show()
+        //SVProgressHUD.show()
+        TAPGlobal.shared.showLoading()
         TAPWebservice.shareInstance.sendPOSTRequest(path: API_PATH(path: "/api/v1/auth/u/continue-with-facebook"), params: params, headers: header, responseObjectClass: TAPLoginModel()) { (success, response) in
             if success {
                 guard let model = response as? TAPLoginModel else {
@@ -135,7 +136,8 @@ extension TAPSignupEmailViewController {
             } else {
                 TAPMainFrame.showSignupEmailPage(email: email, firstName: firstName, lastName: lastName)
             }
-            SVProgressHUD.dismiss()
+            //SVProgressHUD.dismiss()
+            TAPGlobal.shared.dismissLoading()
         }
     }
 }

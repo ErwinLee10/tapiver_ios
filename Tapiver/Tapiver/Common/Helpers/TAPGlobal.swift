@@ -12,6 +12,7 @@ class TAPGlobal: NSObject {
     static let shared = TAPGlobal()
     
     let userDefault = UserDefaults.standard
+    let loadingView = Bundle.main.loadNibNamed("TAPLoadingView", owner: self, options: nil)![0] as? TAPLoadingView
     
     func saveLoginModel(model: TAPLoginModel) {
         let encodedData = NSKeyedArchiver.archivedData(withRootObject: model)
@@ -51,5 +52,14 @@ class TAPGlobal: NSObject {
     
     func deleteLoginModel() {
         self.userDefault.removeObject(forKey: "KEY_USER_LOGIN_DATA")
+    }
+    
+    func showLoading() {
+        loadingView?.frame = (UIApplication.shared.keyWindow?.frame)!
+        UIApplication.shared.keyWindow?.addSubview(loadingView!)
+    }
+    
+    func dismissLoading() {
+        loadingView?.removeFromSuperview()
     }
 }

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import SVProgressHUD
+//import SVProgressHUD
 
 @objc protocol TAPLandMarkViewDelegate: class{
     func landMarkSelectAt(index :Int, isSelect:Bool)
@@ -89,7 +89,8 @@ class TAPLandMarkView: UIView {
         } else {
             apiPath = API_PATH(path: String.init(format: "/api/v1/s/overview", TAPGlobal.shared.getLoginModel()?.userId ?? ""))
         }
-        SVProgressHUD.show()
+        //SVProgressHUD.show()
+        TAPGlobal.shared.showLoading()
         TAPWebservice.shareInstance.sendGETRequest(path: apiPath, params: params, headers: header, responseObjectClass: TAPListLandMark()) { (success, response) in
             if success {
                 guard let model = response as? TAPListLandMark else {
@@ -100,7 +101,8 @@ class TAPLandMarkView: UIView {
             } else {
                 
             }
-            SVProgressHUD.dismiss()
+            //SVProgressHUD.dismiss()
+            TAPGlobal.shared.dismissLoading()
         }
     }
     

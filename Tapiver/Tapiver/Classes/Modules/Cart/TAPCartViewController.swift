@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import SVProgressHUD
+//import SVProgressHUD
 
 class TAPCartViewController: TAPBaseViewController {
     @IBOutlet weak var footerView: UIView!
@@ -107,7 +107,8 @@ class TAPCartViewController: TAPBaseViewController {
                 apiPath = "/api/v1/u/\(TAPGlobal.shared.getLoginModel()?.userId ?? "")/cart"
             }
             
-            SVProgressHUD.show()
+            //SVProgressHUD.show()
+            TAPGlobal.shared.showLoading()
             TAPWebservice.shareInstance.sendGETRequest(path: apiPath, params: params, responseObjectClass: TAPCartListModel()) { [weak self] (success, responseEntity) in
                 if success, let cartListModel = responseEntity as? TAPCartListModel {
                     self?.cartListModel = cartListModel
@@ -148,7 +149,8 @@ class TAPCartViewController: TAPBaseViewController {
                         })
                     }
                 }
-                SVProgressHUD.dismiss()
+                //SVProgressHUD.dismiss()
+                TAPGlobal.shared.dismissLoading()
             }
         } else {
             

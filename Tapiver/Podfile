@@ -7,11 +7,12 @@ target 'Tapiver' do
     
     # Pods for Tapiver
     pod 'AFNetworking', '~> 3.0'
-    pod 'SVProgressHUD'
+    #pod 'SVProgressHUD'
     pod 'FBSDKCoreKit'
     pod 'FBSDKLoginKit'
     pod 'SDWebImage', '~> 4.0'
     pod 'IQKeyboardManagerSwift'
     pod 'AMPopTip'
     pod 'DropDown'
+    pod 'FLAnimatedImage'
 end

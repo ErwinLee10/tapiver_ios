@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import SVProgressHUD
+//import SVProgressHUD
 class TAPCategoryViewController: TAPBaseViewController {
     @IBOutlet weak var tableViewLever0: UITableView!
     @IBOutlet weak var tableViewLever1: UITableView!
@@ -45,7 +45,8 @@ class TAPCategoryViewController: TAPBaseViewController {
         } else {
             apiPath = API_PATH(path: String.init(format: "/api/v1/s/overview", TAPGlobal.shared.getLoginModel()?.userId ?? ""))
         }
-        SVProgressHUD.show()
+        //SVProgressHUD.show()
+        TAPGlobal.shared.showLoading()
         TAPWebservice.shareInstance.sendGETRequest(path: apiPath, params: params as NSDictionary, headers: header, responseObjectClass: TAPListCategoryMenu()) { (success, response) in
             if success {
                 guard let model = response as? TAPListCategoryMenu else {
@@ -78,7 +79,8 @@ class TAPCategoryViewController: TAPBaseViewController {
                 })
 //                TAPDialogUtils.shareInstance.showAlertMessageOneButton(title: "", message: "Server error, please contact Tapiver team for assistance", positive: "OK", positiveHandler: nil, vc: self)
             }
-            SVProgressHUD.dismiss()
+            //SVProgressHUD.dismiss()
+            TAPGlobal.shared.dismissLoading()
         }
         
     }

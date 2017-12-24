@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import SVProgressHUD
+//import SVProgressHUD
 
 class TAPForgotPasswordViewController: UIViewController {
 
@@ -43,10 +43,12 @@ class TAPForgotPasswordViewController: UIViewController {
         }
         
         let apiPath = API_PATH(path: "/api/v1/auth/forgot-password/") + email
-        SVProgressHUD.show()
+        //SVProgressHUD.show()
+        TAPGlobal.shared.showLoading()
         TAPWebservice.shareInstance.sendPOSTRequest(path: apiPath, params: NSDictionary(), headers: header, responseObjectClass: TAPLoginModel()) { (success, response) in
             if success {
                 guard let model = response as? TAPLoginModel else {
+                    TAPGlobal.shared.dismissLoading()
                     return
                 }
                 TAPGlobal.shared.saveLoginModel(model: model)
@@ -55,7 +57,8 @@ class TAPForgotPasswordViewController: UIViewController {
             } else {
                 TAPDialogUtils.shareInstance.showAlertMessageOneButton(title: "", message: "Server error, please contact Tapiver team for assistance", positive: "OK", positiveHandler: nil, vc: self)
             }
-            SVProgressHUD.dismiss()
+            //SVProgressHUD.dismiss()
+            TAPGlobal.shared.dismissLoading()
         }
     }
     

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import SVProgressHUD
+//import SVProgressHUD
 import SDWebImage
 
 class TAPStorePageViewController: TAPBaseViewController {
@@ -61,7 +61,8 @@ class TAPStorePageViewController: TAPBaseViewController {
     private func getData() {
         let params: [String: Any] = [:] // TODO: check later
         
-        SVProgressHUD.show()
+        //SVProgressHUD.show()
+        TAPGlobal.shared.showLoading()
         TAPWebservice.shareInstance.sendGETRequest(path: TAPConstants.APIPath.getProducts, params: params, responseObjectClass: TAPProductListModel()) { [weak self] (success, responseEntity) in
             if success, let productListModel = responseEntity as? TAPProductListModel {
                 self?.productList = productListModel.productList
@@ -70,7 +71,8 @@ class TAPStorePageViewController: TAPBaseViewController {
             else {
                 //hahalalamummy
             }
-            SVProgressHUD.dismiss()
+            //SVProgressHUD.dismiss()
+            TAPGlobal.shared.dismissLoading()
         }
     }
     private func reloadData() {

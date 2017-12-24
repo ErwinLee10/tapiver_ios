@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import SVProgressHUD
+//import SVProgressHUD
 import FBSDKLoginKit
 import SafariServices
 
@@ -83,7 +83,8 @@ class TAPSignupPasswordViewController: UIViewController {
         
         params.setValue(password, forKey: "password")
         
-        SVProgressHUD.show()
+        //SVProgressHUD.show()
+        TAPGlobal.shared.showLoading()
         TAPWebservice.shareInstance.sendPOSTRequest(path: API_PATH(path: "/api/v1/auth/u/register-password"), params: params, headers: header, responseObjectClass: TAPLoginModel()) { (success, response) in
             if success {
                 guard let model = response as? TAPLoginModel else {
@@ -95,7 +96,8 @@ class TAPSignupPasswordViewController: UIViewController {
             } else {
                 TAPDialogUtils.shareInstance.showAlertMessageOneButton(title: "", message: "Sign up failed", positive: "OK", positiveHandler: nil, vc: self)
             }
-            SVProgressHUD.dismiss()
+            //SVProgressHUD.dismiss()
+            TAPGlobal.shared.dismissLoading()
         }
     }
     
@@ -161,7 +163,8 @@ extension TAPSignupPasswordViewController {
         header.setValue("application/json", forKey: "Content-Type")
         let params = NSMutableDictionary()
         params.setValue(token, forKey: "token")
-        SVProgressHUD.show()
+        //SVProgressHUD.show()
+        TAPGlobal.shared.showLoading()
         TAPWebservice.shareInstance.sendPOSTRequest(path: API_PATH(path: "/api/v1/auth/u/continue-with-facebook"), params: params, headers: header, responseObjectClass: TAPLoginModel()) { (success, response) in
             if success {
                 guard let model = response as? TAPLoginModel else {
@@ -173,7 +176,8 @@ extension TAPSignupPasswordViewController {
             } else {
                 TAPMainFrame.showSignupEmailPage(email: email, firstName: firstName, lastName: lastName)
             }
-            SVProgressHUD.dismiss()
+            //SVProgressHUD.dismiss()
+            TAPGlobal.shared.dismissLoading()
         }
     }
 }

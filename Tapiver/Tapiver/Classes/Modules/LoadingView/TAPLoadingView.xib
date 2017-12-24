@@ -17,11 +17,11 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1hD-2y-Cs4">
-                    <rect key="frame" x="137.5" y="283.5" width="100" height="100"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1hD-2y-Cs4" customClass="FLAnimatedImageView">
+                    <rect key="frame" x="98.5" y="283.5" width="178" height="100"/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="1hD-2y-Cs4" secondAttribute="height" multiplier="1:1" id="CzH-S3-PXu"/>
-                        <constraint firstAttribute="width" constant="100" id="yWA-CR-TUI"/>
+                        <constraint firstAttribute="height" constant="100" id="2AM-GT-FU6"/>
+                        <constraint firstAttribute="width" secondItem="1hD-2y-Cs4" secondAttribute="height" multiplier="700:394" id="CzH-S3-PXu"/>
                     </constraints>
                 </imageView>
             </subviews>
@@ -32,7 +32,7 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
-                <outlet property="imageView" destination="1hD-2y-Cs4" id="d3H-7X-T3b"/>
+                <outlet property="gifView" destination="1hD-2y-Cs4" id="MMJ-82-sBo"/>
             </connections>
             <point key="canvasLocation" x="35.5" y="131.5"/>
         </view>

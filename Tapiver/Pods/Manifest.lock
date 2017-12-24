@@ -26,11 +26,11 @@ PODS:
     - Bolts (~> 1.7)
   - FBSDKLoginKit (4.29.0):
     - FBSDKCoreKit
+  - FLAnimatedImage (1.0.12)
   - IQKeyboardManagerSwift (5.0.6)
   - SDWebImage (4.2.2):
     - SDWebImage/Core (= 4.2.2)
   - SDWebImage/Core (4.2.2)
-  - SVProgressHUD (2.2.2)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.0)
@@ -38,9 +38,9 @@ DEPENDENCIES:
   - DropDown
   - FBSDKCoreKit
   - FBSDKLoginKit
+  - FLAnimatedImage
   - IQKeyboardManagerSwift
   - SDWebImage (~> 4.0)
-  - SVProgressHUD
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
@@ -49,10 +49,10 @@ SPEC CHECKSUMS:
   DropDown: 75562633a203f57a917021b4edb96c76f293b0ec
   FBSDKCoreKit: 6f139173dc63a1deaff4430a55f2fe5bb222d2af
   FBSDKLoginKit: 56a057ca6822535ea0faa25f57a7c41edb697fd4
+  FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
   IQKeyboardManagerSwift: 02bfbb0dff71c66d0ab77d80d25dfce0c3717735
   SDWebImage: 89a9d32cd520bbb46eb14e541d5109b3564af198
-  SVProgressHUD: 59b2d3dabacbd051576d21d32293ca7228dc18b0
 
-PODFILE CHECKSUM: de4797196780f6bdcc37ba7b60b324134d6ad9f8
+PODFILE CHECKSUM: 650535af85e3d23144f4b3e647179f0532f1c494
 
 COCOAPODS: 1.3.1
