@@ -50,7 +50,7 @@
                     <color key="backgroundColor" red="0.95294117647058818" green="0.4392156862745098" blue="0.27843137254901962" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AgG-lQ-kIY">
-                    <rect key="frame" x="0.0" y="68" width="375" height="555"/>
+                    <rect key="frame" x="0.0" y="68" width="375" height="549"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XbB-P0-LYD">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -240,10 +240,10 @@
                     </constraints>
                 </scrollView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6ee-Y2-0ub">
-                    <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                    <rect key="frame" x="0.0" y="617" width="375" height="50"/>
                     <color key="backgroundColor" red="0.10980392156862745" green="0.66666666666666663" blue="0.71372549019607845" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="44" id="ecU-ON-fHl"/>
+                        <constraint firstAttribute="height" constant="50" id="ecU-ON-fHl"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                     <state key="normal" title="PLACE ORDER">

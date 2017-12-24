@@ -167,6 +167,13 @@
 		C5460A761FE3AE060028B446 /* TAPLandMarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5460A751FE3AE060028B446 /* TAPLandMarkView.swift */; };
 		C5460A781FE3AE210028B446 /* TAPLandMarkView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5460A771FE3AE210028B446 /* TAPLandMarkView.xib */; };
 		C5460A7B1FE3C8BA0028B446 /* TAPLandMark.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5460A7A1FE3C8BA0028B446 /* TAPLandMark.swift */; };
+		C5A7BF451FEF6886005BA9DE /* TAPCashbackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A7BF431FEF6885005BA9DE /* TAPCashbackView.swift */; };
+		C5A7BF461FEF6886005BA9DE /* TAPCashbackView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5A7BF441FEF6886005BA9DE /* TAPCashbackView.xib */; };
+		C5A7BF4A1FEF7967005BA9DE /* TAPCashbackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A7BF481FEF7967005BA9DE /* TAPCashbackCell.swift */; };
+		C5A7BF4B1FEF7967005BA9DE /* TAPCashbackCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5A7BF491FEF7967005BA9DE /* TAPCashbackCell.xib */; };
+		C5A7BF4E1FEF7FC5005BA9DE /* TAPCashbackEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A7BF4D1FEF7FC5005BA9DE /* TAPCashbackEntity.swift */; };
+		C5A7BF501FEFAD96005BA9DE /* TAPRedeemRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A7BF4F1FEFAD96005BA9DE /* TAPRedeemRequest.swift */; };
+		C5A7BF521FEFADAA005BA9DE /* TAPRedeemRequest.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5A7BF511FEFADAA005BA9DE /* TAPRedeemRequest.xib */; };
 		C5AD35131FEEBCCC002AAADA /* TAPPayMentMethodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5AD35111FEEBCCC002AAADA /* TAPPayMentMethodView.swift */; };
 		C5AD35141FEEBCCC002AAADA /* TAPPayMentMethodView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5AD35121FEEBCCC002AAADA /* TAPPayMentMethodView.xib */; };
 		C5B597701FE9E35C00E678C6 /* TAPReViewOrderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B5976E1FE9E35C00E678C6 /* TAPReViewOrderController.swift */; };
@@ -366,6 +373,13 @@
 		C5460A751FE3AE060028B446 /* TAPLandMarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPLandMarkView.swift; sourceTree = "<group>"; };
 		C5460A771FE3AE210028B446 /* TAPLandMarkView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TAPLandMarkView.xib; sourceTree = "<group>"; };
 		C5460A7A1FE3C8BA0028B446 /* TAPLandMark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPLandMark.swift; sourceTree = "<group>"; };
+		C5A7BF431FEF6885005BA9DE /* TAPCashbackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPCashbackView.swift; sourceTree = "<group>"; };
+		C5A7BF441FEF6886005BA9DE /* TAPCashbackView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TAPCashbackView.xib; sourceTree = "<group>"; };
+		C5A7BF481FEF7967005BA9DE /* TAPCashbackCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPCashbackCell.swift; sourceTree = "<group>"; };
+		C5A7BF491FEF7967005BA9DE /* TAPCashbackCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TAPCashbackCell.xib; sourceTree = "<group>"; };
+		C5A7BF4D1FEF7FC5005BA9DE /* TAPCashbackEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPCashbackEntity.swift; sourceTree = "<group>"; };
+		C5A7BF4F1FEFAD96005BA9DE /* TAPRedeemRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPRedeemRequest.swift; sourceTree = "<group>"; };
+		C5A7BF511FEFADAA005BA9DE /* TAPRedeemRequest.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TAPRedeemRequest.xib; sourceTree = "<group>"; };
 		C5AD35111FEEBCCC002AAADA /* TAPPayMentMethodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPPayMentMethodView.swift; sourceTree = "<group>"; };
 		C5AD35121FEEBCCC002AAADA /* TAPPayMentMethodView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TAPPayMentMethodView.xib; sourceTree = "<group>"; };
 		C5B5976E1FE9E35C00E678C6 /* TAPReViewOrderController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPReViewOrderController.swift; sourceTree = "<group>"; };
@@ -790,6 +804,7 @@
 		6C8601131FCD6902004E7CAE /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C5A7BF4C1FEF7FAC005BA9DE /* CashbackModel */,
 				C5D8E8901FE8B51D00E12E9F /* CheckOutModel */,
 				C5460A791FE3C8770028B446 /* LandMarkModel */,
 				C5C9531D1FE21F4D008D2B6F /* CategoryModel */,
@@ -1099,6 +1114,7 @@
 		B0B056971FC0861C001E4659 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				C5A7BF421FEF6813005BA9DE /* CashBack */,
 				84E69FFB1FEE375A003E1BB7 /* LoadingView */,
 				8495AD3B1FEE2B5B000A6194 /* Error */,
 				03AE84041FDEE3ED006D6986 /* BaseViewController */,
@@ -1168,6 +1184,35 @@
 				C5460A7A1FE3C8BA0028B446 /* TAPLandMark.swift */,
 			);
 			path = LandMarkModel;
+			sourceTree = "<group>";
+		};
+		C5A7BF421FEF6813005BA9DE /* CashBack */ = {
+			isa = PBXGroup;
+			children = (
+				C5A7BF471FEF794F005BA9DE /* CachbackCell */,
+				C5A7BF431FEF6885005BA9DE /* TAPCashbackView.swift */,
+				C5A7BF441FEF6886005BA9DE /* TAPCashbackView.xib */,
+				C5A7BF4F1FEFAD96005BA9DE /* TAPRedeemRequest.swift */,
+				C5A7BF511FEFADAA005BA9DE /* TAPRedeemRequest.xib */,
+			);
+			path = CashBack;
+			sourceTree = "<group>";
+		};
+		C5A7BF471FEF794F005BA9DE /* CachbackCell */ = {
+			isa = PBXGroup;
+			children = (
+				C5A7BF481FEF7967005BA9DE /* TAPCashbackCell.swift */,
+				C5A7BF491FEF7967005BA9DE /* TAPCashbackCell.xib */,
+			);
+			path = CachbackCell;
+			sourceTree = "<group>";
+		};
+		C5A7BF4C1FEF7FAC005BA9DE /* CashbackModel */ = {
+			isa = PBXGroup;
+			children = (
+				C5A7BF4D1FEF7FC5005BA9DE /* TAPCashbackEntity.swift */,
+			);
+			path = CashbackModel;
 			sourceTree = "<group>";
 		};
 		C5AD35101FEEBCA8002AAADA /* PaymentMethod */ = {
@@ -1322,6 +1367,7 @@
 			files = (
 				6C86013B1FCD70E5004E7CAE /* splash02@2x.png in Resources */,
 				848054801FE91C630064C203 /* TAPEmailChangeView.xib in Resources */,
+				C5A7BF461FEF6886005BA9DE /* TAPCashbackView.xib in Resources */,
 				039C57BA1FE96EDF001C2BCB /* TAPHistoryViewController.xib in Resources */,
 				8495AD3F1FEE2BF4000A6194 /* TAPGeneralErrorView.xib in Resources */,
 				C5DCD4951FE813B000F4F134 /* TAPAddressMethodController.xib in Resources */,
@@ -1342,6 +1388,7 @@
 				84E2F8351FEB986800F27811 /* TapProductShippingView1.xib in Resources */,
 				031555341FE709300082E709 /* TAPCartViewController.xib in Resources */,
 				0315552B1FE591810082E709 /* TAPStorePageInfoDescriptionCell.xib in Resources */,
+				C5A7BF4B1FEF7967005BA9DE /* TAPCashbackCell.xib in Resources */,
 				6C66BFB21FCEAE160092A006 /* TAPForgotPasswordViewController.xib in Resources */,
 				6C66BFB81FCEB3870092A006 /* TAPMainTabbarViewController.xib in Resources */,
 				84E2F8391FEB987D00F27811 /* TapProductShippingView3.xib in Resources */,
@@ -1352,6 +1399,7 @@
 				6C86012B1FCD6D3E004E7CAE /* TAPSplashViewController.xib in Resources */,
 				037E90C11FEE1BD700593983 /* HistoryDummy.geojson in Resources */,
 				037E90BD1FEE08E400593983 /* README.md in Resources */,
+				C5A7BF521FEFADAA005BA9DE /* TAPRedeemRequest.xib in Resources */,
 				037E90CA1FEEB36400593983 /* TAPSearchViewController.xib in Resources */,
 				6CCEEFBF1FCEB5C50018FDB3 /* TAPDealsViewController.xib in Resources */,
 				84BB00321FEC08F1008814DD /* TAPProductColorViewCell.xib in Resources */,
@@ -1488,6 +1536,7 @@
 				C5EBDB901FEBFE0B006BAD34 /* TAPSubShipingEn.swift in Sources */,
 				037B69651FEB2BFA00DCBD9D /* TAPHistoryModel.swift in Sources */,
 				037E907E1FED859D00593983 /* TAPHistoryReportIssueViewController.swift in Sources */,
+				C5A7BF451FEF6886005BA9DE /* TAPCashbackView.swift in Sources */,
 				C5B597701FE9E35C00E678C6 /* TAPReViewOrderController.swift in Sources */,
 				C5460A7B1FE3C8BA0028B446 /* TAPLandMark.swift in Sources */,
 				6C66BFA41FCE69500092A006 /* TAPSignupEmailViewController.swift in Sources */,
@@ -1498,6 +1547,7 @@
 				B0B056951FC0860F001E4659 /* BCAExtention.swift in Sources */,
 				039C57B91FE96EDF001C2BCB /* TAPHistoryViewController.swift in Sources */,
 				B0ECB4BF1FD2D77600E97703 /* TAPDialogUtils.swift in Sources */,
+				C5A7BF4A1FEF7967005BA9DE /* TAPCashbackCell.swift in Sources */,
 				031555121FE2D5C00082E709 /* TAPStorePageHeaderView.swift in Sources */,
 				84E2F83D1FEB988E00F27811 /* TapProductShippingView2.swift in Sources */,
 				C5B597751FE9E39D00E678C6 /* TAPReviewCell.swift in Sources */,
@@ -1526,12 +1576,14 @@
 				C5D8E8951FE8B58400E12E9F /* TAPChecOutEntity.swift in Sources */,
 				03AE84061FDEE416006D6986 /* TAPBaseViewController.swift in Sources */,
 				03D831BD1FEEC3B400D449DC /* TAPSearchStoreViewController.swift in Sources */,
+				C5A7BF501FEFAD96005BA9DE /* TAPRedeemRequest.swift in Sources */,
 				8420B5781FE8C3EC00FCC383 /* TAPAddNewAddressViewController.swift in Sources */,
 				84E2F83B1FEB988500F27811 /* TapProductShippingView1.swift in Sources */,
 				6C8601301FCD6D70004E7CAE /* TAPIntroAppViewController.swift in Sources */,
 				84562CB21FE7BD5800DAB39D /* TAPAccountTableViewController.swift in Sources */,
 				0336DB4F1FE815A5002D9A93 /* TAPDropdownListViewController.swift in Sources */,
 				B0B0567D1FC084CD001E4659 /* AppDelegate.swift in Sources */,
+				C5A7BF4E1FEF7FC5005BA9DE /* TAPCashbackEntity.swift in Sources */,
 				C5DCD4941FE813B000F4F134 /* TAPAddressMethodController.swift in Sources */,
 				6C86013F1FCD732B004E7CAE /* TAPMainFrame.swift in Sources */,
 				848054821FE91C6D0064C203 /* TAPEmailChangeView.swift in Sources */,

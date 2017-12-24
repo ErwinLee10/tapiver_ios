@@ -99,6 +99,7 @@ class TAPAddressMethodController: UIViewController {
         let header = NSMutableDictionary()
         header.setValue("application/json", forKey: "Content-Type")
         header.setValue(TAPGlobal.shared.getLoginModel()?.webSessionId ?? "", forKey: "Authorization")
+        print("webSessionId \(TAPGlobal.shared.getLoginModel()?.webSessionId ?? "")")
         SVProgressHUD.show()
         TAPWebservice.shareInstance.sendGETRequest(path: apiPath, params: nil, headers: header, responseObjectClass: TAPListChecOutEntity()) { (success, response) in
             if success {

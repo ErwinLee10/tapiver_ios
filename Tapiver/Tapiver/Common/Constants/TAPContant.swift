@@ -112,7 +112,17 @@ struct TAPConstants {
         static let provid                   = "provider"
         static let freeShipping             = "freeShipping"
         static let shippingOptions          = "shippingOptions"
-
+        static let earning                  = "earning"
+        static let redeemable               = "redeemable"
+        static let redeemed                 = "redeemed"
+        static let pending                  = "pending"
+        static let processing               = "processing"
+        static let cashbacks                = "cashbacks"
+        static let cashbackAmount           = "cashbackAmount"
+        static let orderId                  = "orderId"
+        static let status                   = "status"
+        
+        
     }
 }
 
