@@ -96,7 +96,11 @@ extension TAPSearchStoreViewController: TAPFeedTableViewCellDelegate {
         TAPMainFrame.getNavi().pushViewController(vc, animated: true)
     }
     
-    func tapIteamAt(index: NSIndexPath, indexItem: NSIndexPath) {
-        
+    func tapIteamAt(index: IndexPath, item: TAPProductModel) {
+        let productViewController: TAPProductMainPageViewController = TAPProductMainPageViewController(nibName: "TAPProductMainPageViewController", bundle: nil)
+        productViewController.setData(id: item.id ?? "", title: feedModelList[index.row].sellerName ?? "")
+        self.present(productViewController, animated: true) {
+            
+        }
     }
 }

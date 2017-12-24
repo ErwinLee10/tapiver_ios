@@ -87,6 +87,7 @@ extension TAPDealsViewController: UICollectionViewDataSource {
 extension TAPDealsViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("didSelectItemAt \(indexPath.row)")
+        openProductPage(product: productList[indexPath.row], feedModel: nil)
     }
 }
 

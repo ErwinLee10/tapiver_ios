@@ -59,7 +59,6 @@ class TAPCartViewController: TAPBaseViewController {
         
         // Hide header button
         if let header = (headerView as? TAPHeaderView) {
-            header.delegate = self
             header.hideSearchButton(true)
             header.hideCartButton(true)
             header.hideMenuButton(true)
@@ -72,57 +71,6 @@ class TAPCartViewController: TAPBaseViewController {
         couponButton.setAttributedTitle(attText, for: .normal)
         
         showCouponView(false)
-    }
-    
-    private func getData(hasVoucher: Bool) {
-        
-//        let filePath = Bundle.main.path(forResource: "CarDummy", ofType: "geojson")
-//        if let data = NSData(contentsOfFile: filePath ?? "") as Data? {
-//            do {
-//                let json = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments)
-//                if let jsonObj = json as? NSDictionary {
-//                    self.cartListModel = TAPCartListModel()
-//                    cartListModel?.parserResponse(dic: jsonObj)
-//                    self.reloadData()
-//                    
-//                    if hasVoucher {
-//                        self.updateCoupon()
-//                    }
-//                }
-//            } catch {
-//                
-//            }
-//        }
-//        return
-        
-        if(TAPGlobal.shared.hasLogin()) {
-            let params: [String: Any] = [:]
-            var apiPath = ""
-            if hasVoucher && voucherName != nil {
-                apiPath = "/api/v1/u/\(TAPGlobal.shared.getLoginModel()?.userId ?? "")/cart/voucher/\(voucherName!)"
-            } else {
-                apiPath = "/api/v1/u/\(TAPGlobal.shared.getLoginModel()?.userId ?? "")/cart"
-            }
-            
-            SVProgressHUD.show()
-            TAPWebservice.shareInstance.sendGETRequest(path: apiPath, params: params, responseObjectClass: TAPCartListModel()) { [weak self] (success, responseEntity) in
-                if success, let cartListModel = responseEntity as? TAPCartListModel {
-                    self?.cartListModel = cartListModel
-                    self?.reloadData()
-                    
-                    if hasVoucher {
-                        self?.updateCoupon()
-                    }
-                } else {
-                    if hasVoucher {
-                        self?.showInvalidCouponAlert()
-                    }
-                }
-                SVProgressHUD.dismiss()
-            }
-        } else {
-            
-        }
     }
     
     private func reloadData() {
@@ -167,6 +115,73 @@ class TAPCartViewController: TAPBaseViewController {
     }
 }
 
+// MARK: Call API
+extension TAPCartViewController {
+    private func getData(hasVoucher: Bool) {
+        // Dummy data
+//        let filePath = Bundle.main.path(forResource: "CarDummy", ofType: "geojson")
+//        if let data = NSData(contentsOfFile: filePath ?? "") as Data? {
+//            do {
+//                let json = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.allowFragments)
+//                if let jsonObj = json as? NSDictionary {
+//                    self.cartListModel = TAPCartListModel()
+//                    cartListModel?.parserResponse(dic: jsonObj)
+//                    self.reloadData()
+//
+//                    if hasVoucher {
+//                        self.updateCoupon()
+//                    }
+//                }
+//            } catch {
+//
+//            }
+//        }
+//        return
+        
+        if(TAPGlobal.shared.hasLogin()) {
+            let params: [String: Any] = [:]
+            var apiPath = ""
+            if hasVoucher && voucherName != nil {
+                apiPath = "/api/v1/u/\(TAPGlobal.shared.getLoginModel()?.userId ?? "")/cart/voucher/\(voucherName!)"
+            } else {
+                apiPath = "/api/v1/u/\(TAPGlobal.shared.getLoginModel()?.userId ?? "")/cart"
+            }
+            
+            SVProgressHUD.show()
+            TAPWebservice.shareInstance.sendGETRequest(path: apiPath, params: params, responseObjectClass: TAPCartListModel()) { [weak self] (success, responseEntity) in
+                if success, let cartListModel = responseEntity as? TAPCartListModel {
+                    self?.cartListModel = cartListModel
+                    self?.reloadData()
+                    
+                    if hasVoucher {
+                        self?.updateCoupon()
+                    }
+                } else {
+                    if hasVoucher {
+                        self?.showInvalidCouponAlert()
+                    }
+                }
+                SVProgressHUD.dismiss()
+            }
+        } else {
+            
+        }
+    }
+    
+    private func deleteItem(productVariationId: Int) {
+        let apiPath = "/api/v1/u/\(TAPGlobal.shared.getLoginModel()?.userId ?? "")/cart/productVariationId/\(productVariationId)"
+        
+        SVProgressHUD.show()
+        TAPWebservice.shareInstance.sendDELETERequest(path: apiPath) { [weak self] (success) in
+            SVProgressHUD.dismiss()
+            guard let strongSelf = self else { return }
+            if success {
+                strongSelf.getData(hasVoucher: strongSelf.voucherName != nil && strongSelf.voucherName!.isEmpty == false)
+            }
+        }
+    }
+}
+
 extension TAPCartViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         guard let carItems = cartListModel?.cartItemsPerSeller, carItems.count > 0 else {
@@ -192,6 +207,7 @@ extension TAPCartViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 //        if indexPath.section != numberOfSections(in: tableView) - 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! TAPCartTableViewCell
+            cell.delegate = self
             if let carItems = cartListModel?.cartItemsPerSeller {
                 let products = carItems[indexPath.section].productVariations
                 cell.fillData(data: products[indexPath.row])
@@ -334,6 +350,8 @@ extension TAPCartViewController: UITableViewDelegate {
     }
 }
 
-extension TAPCartViewController: TAPHeaderViewDelegate {
-    
+extension TAPCartViewController: TAPCartTableViewCellDelegate {
+    func cartCellDeleteItem(productVariationId: Int) {
+        deleteItem(productVariationId: productVariationId)
+    }
 }

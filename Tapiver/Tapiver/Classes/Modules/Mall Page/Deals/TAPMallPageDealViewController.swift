@@ -113,7 +113,8 @@ extension TAPMallPageDealViewController: UICollectionViewDataSource {
 // MARK: UICollectionViewDelegate
 extension TAPMallPageDealViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        let row = indexPath.row
+        let row = indexPath.row
+        openProductPage(product: productList[row], feedModel: nil)
     }
 }
 

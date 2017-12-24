@@ -121,8 +121,8 @@ extension TAPMallPageShopViewController: TAPFeedTableViewCellDelegate {
         TAPMainFrame.getNavi().pushViewController(vc, animated: true)
     }
     
-    func tapIteamAt(index: NSIndexPath, indexItem: NSIndexPath) {
-        
+    func tapIteamAt(index: IndexPath, item: TAPProductModel) {
+        openProductPage(product: item, feedModel: feedModelList[index.row])
     }
 }
 

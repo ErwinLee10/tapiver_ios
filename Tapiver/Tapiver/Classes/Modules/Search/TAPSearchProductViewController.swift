@@ -81,6 +81,12 @@ extension TAPSearchProductViewController: UICollectionViewDataSource {
 extension TAPSearchProductViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("didSelectItemAt \(indexPath.row)")
+        
+        let productViewController: TAPProductMainPageViewController = TAPProductMainPageViewController(nibName: "TAPProductMainPageViewController", bundle: nil)
+        productViewController.setData(id: productList[indexPath.row].id ?? "", title: "")
+        self.present(productViewController, animated: true) {
+            
+        }
     }
 }
 

@@ -108,7 +108,7 @@ extension TAPStorePageViewController: UICollectionViewDataSource {
 // MARK: UICollectionViewDelegate
 extension TAPStorePageViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //        let row = indexPath.row
+        openProductPage(product: productList[indexPath.row], feedModel: feedModel)
     }
 }
 
