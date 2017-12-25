@@ -38,9 +38,9 @@ class TAPSearchStoreViewController: UIViewController {
     
     func search(with keyword: String) {
         
-        let apiPath = TAPConstants.APIPath.discover
+        let apiPath = TAPConstants.APIPath.overview
         var params: [String: Any] = [:]
-        // TODO: keyword
+        params[TAPConstants.APIParams.q] = keyword
         if TAPGlobal.shared.hasLogin(), let userID = TAPGlobal.shared.getLoginModel()?.userId {
             params[TAPConstants.APIParams.userId] = userID.numberValue?.intValue ?? 0
         }

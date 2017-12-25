@@ -31,12 +31,17 @@ class TAPSearchViewController: TAPBaseViewController {
     @IBAction func productBtnTouched(_ sender: Any) {
         setTabSelected(isProduct: true)
         switchChildVC(isProduct: true)
-    
+        if let searchKey = searchTextField.text, searchKey.isEmpty == false {
+            productVC?.search(with: searchKey)
+        }
     }
     
     @IBAction func storeBtnTouched(_ sender: Any) {
         setTabSelected(isProduct: false)
         switchChildVC(isProduct: false)
+        if let searchKey = searchTextField.text, searchKey.isEmpty == false {
+            storeVC?.search(with: searchKey)
+        }
     }
     
     private func setupView() {
@@ -63,7 +68,7 @@ class TAPSearchViewController: TAPBaseViewController {
             return
         }
         isProductDisplaying = isProduct
-        searchTextField.text = ""
+        //searchTextField.text = ""
         
         if isProduct {
             if let vc = storeVC {
