@@ -32,11 +32,17 @@ class TAPAddressView: UIView {
         // Insert code here
     }
     
-    func setData(name: String, contactNumber: String, street: String, floor: String, unit: String, postal: String) {
+    func setData(name: String, contactNumber: String, street: String, floor: String?, unit: String?, postal: String) {
         nameLabel.text = name
         contactLabel.text = contactNumber
         streetLabel.text = street
-        floor_unitLabel.text = "#" + floor + "-" + unit
+        if floor == nil || unit == nil || floor == "" || unit == "" {
+            stackLabelView.removeArrangedSubview(floor_unitLabel)
+            floor_unitLabel.isHidden = true
+        }
+        else {
+            floor_unitLabel.text = "#" + floor! + "-" + unit!
+        }
         postalLabel.text = postal
         nameLabel.font = UIFont.boldSystemFont(ofSize: 14.0)
     }

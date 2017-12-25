@@ -482,9 +482,7 @@ class TAPProductMainPageViewController: UIViewController, TapProductShippingView
     }
     
     @IBAction func backButtonTap(_ sender: UIButton) {
-        self.dismiss(animated: true) {
-            
-        }
+        TAPMainFrame.getNavi().popViewController(animated: true)
     }
     
     @IBAction func cartButtonTap(_ sender: UIButton) {

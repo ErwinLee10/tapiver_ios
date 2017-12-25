@@ -13,12 +13,15 @@ class TAPAboutViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.tintColor = UIColor.white
-        let backButton = UIBarButtonItem()
-        backButton.title = ""
-        self.navigationController!.navigationBar.topItem!.backBarButtonItem = backButton
-        self.title = "About"
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+//        self.navigationController?.navigationBar.tintColor = UIColor.white
+//        let backButton = UIBarButtonItem()
+//        backButton.title = ""
+//        self.navigationController!.navigationBar.topItem!.backBarButtonItem = backButton
+//        self.title = "About"
+//        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         self.version.text = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
+    }
+    @IBAction func backButtonTap(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
     }
 }

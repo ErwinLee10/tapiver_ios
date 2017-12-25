@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,8 +22,48 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IBi-sN-gIg">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="72"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q32-Nm-01N">
+                            <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J1L-oy-phf">
+                                    <rect key="frame" x="8" y="8" width="28" height="28"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="J1L-oy-phf" secondAttribute="height" multiplier="1:1" id="Zid-93-QWd"/>
+                                    </constraints>
+                                    <state key="normal" image="ic_back"/>
+                                    <connections>
+                                        <action selector="backButtonTap:" destination="-1" eventType="touchUpInside" id="iqW-nW-dTe"/>
+                                    </connections>
+                                </button>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="svc-VH-dST">
+                                    <rect key="frame" x="164" y="12" width="47" height="21"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="J1L-oy-phf" firstAttribute="top" secondItem="Q32-Nm-01N" secondAttribute="top" constant="8" id="7yq-YO-4Dn"/>
+                                <constraint firstAttribute="height" constant="44" id="A4I-nO-9DT"/>
+                                <constraint firstItem="svc-VH-dST" firstAttribute="centerX" secondItem="Q32-Nm-01N" secondAttribute="centerX" id="Y2d-UW-4pK"/>
+                                <constraint firstItem="svc-VH-dST" firstAttribute="centerY" secondItem="Q32-Nm-01N" secondAttribute="centerY" id="Z9c-A5-r92"/>
+                                <constraint firstAttribute="bottom" secondItem="J1L-oy-phf" secondAttribute="bottom" constant="8" id="s2K-96-BX7"/>
+                                <constraint firstItem="J1L-oy-phf" firstAttribute="leading" secondItem="Q32-Nm-01N" secondAttribute="leading" constant="8" id="v31-ng-P7V"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" red="0.098039215690000001" green="0.35686274509999999" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="Q32-Nm-01N" secondAttribute="trailing" id="9Qd-Br-7Vy"/>
+                        <constraint firstItem="Q32-Nm-01N" firstAttribute="leading" secondItem="IBi-sN-gIg" secondAttribute="leading" id="FEB-o7-4rp"/>
+                        <constraint firstAttribute="bottom" secondItem="Q32-Nm-01N" secondAttribute="bottom" id="x9u-zP-xr7"/>
+                    </constraints>
+                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HqU-ck-M40">
-                    <rect key="frame" x="16" y="80" width="343" height="87"/>
+                    <rect key="frame" x="16" y="88" width="343" height="87"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change Email Address:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bo6-m0-YqV">
                             <rect key="frame" x="8" y="8" width="176.5" height="21"/>
@@ -71,16 +112,22 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="Q32-Nm-01N" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="8" id="BeT-TT-es0"/>
+                <constraint firstItem="HqU-ck-M40" firstAttribute="top" secondItem="IBi-sN-gIg" secondAttribute="bottom" constant="16" id="MZn-tC-M2j"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="HqU-ck-M40" secondAttribute="trailing" constant="16" id="Qjh-ZR-s74"/>
+                <constraint firstItem="IBi-sN-gIg" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="SfE-OE-mPD"/>
+                <constraint firstItem="IBi-sN-gIg" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="buu-xZ-Rq7"/>
+                <constraint firstItem="IBi-sN-gIg" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="cP4-hU-8er"/>
                 <constraint firstItem="wkU-D8-uCv" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="jep-Il-PMt"/>
-                <constraint firstItem="HqU-ck-M40" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="16" id="lIE-YF-wZL"/>
                 <constraint firstItem="HqU-ck-M40" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="o6g-fc-RX7"/>
                 <constraint firstItem="wkU-D8-uCv" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="rJG-Lz-Brw"/>
                 <constraint firstItem="wkU-D8-uCv" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="s97-Os-jwT"/>
             </constraints>
-            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="66.5" y="161.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="ic_back" width="32" height="32"/>
+    </resources>
 </document>

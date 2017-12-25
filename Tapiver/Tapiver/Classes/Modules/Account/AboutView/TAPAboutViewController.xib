@@ -23,6 +23,46 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ORd-pJ-GDc">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="72"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jfd-IT-s4a">
+                            <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GTv-l4-5wr">
+                                    <rect key="frame" x="8" y="8" width="28" height="28"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="GTv-l4-5wr" secondAttribute="height" multiplier="1:1" id="q2y-N5-mcu"/>
+                                    </constraints>
+                                    <state key="normal" image="ic_back"/>
+                                    <connections>
+                                        <action selector="backButtonTap:" destination="-1" eventType="touchUpInside" id="rqG-n8-YkU"/>
+                                    </connections>
+                                </button>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nq0-Tf-dBJ">
+                                    <rect key="frame" x="164" y="12" width="47" height="21"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="nq0-Tf-dBJ" firstAttribute="centerY" secondItem="Jfd-IT-s4a" secondAttribute="centerY" id="2RB-5B-Kpp"/>
+                                <constraint firstItem="GTv-l4-5wr" firstAttribute="leading" secondItem="Jfd-IT-s4a" secondAttribute="leading" constant="8" id="ZMa-3c-GxN"/>
+                                <constraint firstAttribute="height" constant="44" id="h7w-Ef-g7e"/>
+                                <constraint firstAttribute="bottom" secondItem="GTv-l4-5wr" secondAttribute="bottom" constant="8" id="jUm-6K-9gH"/>
+                                <constraint firstItem="GTv-l4-5wr" firstAttribute="top" secondItem="Jfd-IT-s4a" secondAttribute="top" constant="8" id="mbz-Q0-IYt"/>
+                                <constraint firstItem="nq0-Tf-dBJ" firstAttribute="centerX" secondItem="Jfd-IT-s4a" secondAttribute="centerX" id="plv-aJ-KLJ"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" red="0.098039215690000001" green="0.35686274509999999" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="Jfd-IT-s4a" secondAttribute="bottom" id="eMK-Uv-N69"/>
+                        <constraint firstAttribute="trailing" secondItem="Jfd-IT-s4a" secondAttribute="trailing" id="fMV-Ip-7fp"/>
+                        <constraint firstItem="Jfd-IT-s4a" firstAttribute="leading" secondItem="ORd-pJ-GDc" secondAttribute="leading" id="rz6-NP-XoA"/>
+                    </constraints>
+                </view>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tapiver-logo-1" translatesAutoresizingMaskIntoConstraints="NO" id="uhp-rq-6HE">
                     <rect key="frame" x="93.5" y="240" width="187.5" height="187.5"/>
                     <constraints>
@@ -56,19 +96,23 @@
                 <constraint firstItem="uhp-rq-6HE" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="4Je-Jn-LHX"/>
                 <constraint firstItem="Ba9-2Y-FlF" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="BHC-yl-Gkr"/>
                 <constraint firstItem="pQG-7N-nBd" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="FcH-oz-JLP"/>
+                <constraint firstItem="ORd-pJ-GDc" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="JG1-7f-eKG"/>
+                <constraint firstItem="Jfd-IT-s4a" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="8" id="OiX-F0-Gek"/>
                 <constraint firstItem="uhp-rq-6HE" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="RDp-Kr-rN8"/>
                 <constraint firstItem="uhp-rq-6HE" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.5" id="Zgp-bp-j5Z"/>
+                <constraint firstItem="ORd-pJ-GDc" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="dI6-Fo-gpW"/>
                 <constraint firstItem="x7N-dR-svb" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="ekd-dc-2Xh"/>
                 <constraint firstItem="uhp-rq-6HE" firstAttribute="top" secondItem="Ba9-2Y-FlF" secondAttribute="bottom" constant="32" id="f86-dZ-2Mp"/>
                 <constraint firstItem="Ba9-2Y-FlF" firstAttribute="top" secondItem="pQG-7N-nBd" secondAttribute="bottom" constant="8" id="fax-Ju-3kD"/>
                 <constraint firstItem="x7N-dR-svb" firstAttribute="top" secondItem="uhp-rq-6HE" secondAttribute="bottom" constant="32" id="m1X-Z4-bLK"/>
+                <constraint firstItem="ORd-pJ-GDc" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="wUs-bb-vvT"/>
             </constraints>
-            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="33.5" y="53.5"/>
         </view>
     </objects>
     <resources>
+        <image name="ic_back" width="32" height="32"/>
         <image name="tapiver-logo-1" width="32" height="31"/>
     </resources>
 </document>

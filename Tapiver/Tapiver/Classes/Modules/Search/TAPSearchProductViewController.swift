@@ -86,9 +86,7 @@ extension TAPSearchProductViewController: UICollectionViewDelegate {
         
         let productViewController: TAPProductMainPageViewController = TAPProductMainPageViewController(nibName: "TAPProductMainPageViewController", bundle: nil)
         productViewController.setData(id: productList[indexPath.row].id ?? "", title: "")
-        self.present(productViewController, animated: true) {
-            
-        }
+        TAPMainFrame.getNavi().pushViewController(productViewController, animated: true)
     }
 }
 

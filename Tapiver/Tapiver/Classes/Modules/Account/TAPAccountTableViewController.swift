@@ -42,12 +42,12 @@ class TAPAccountTableViewController: UIViewController, TAPEmailChangeViewDelegat
         }
         super.viewDidLoad()
         
-        edgesForExtendedLayout = []
-        self.title = "Account"
-        self.navigationController?.navigationBar.tintColor = UIColor.white
-        let backButton = UIBarButtonItem(image: #imageLiteral(resourceName: "ic_back"), style: .plain, target: self, action: #selector(self.backButtonAction(sender:)))
-        self.navigationItem.leftBarButtonItem = backButton
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+//        edgesForExtendedLayout = []
+//        self.title = "Account"
+//        self.navigationController?.navigationBar.tintColor = UIColor.white
+//        let backButton = UIBarButtonItem(image: #imageLiteral(resourceName: "ic_back"), style: .plain, target: self, action: #selector(self.backButtonAction(sender:)))
+//        self.navigationItem.leftBarButtonItem = backButton
+//        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         
         nameTextField.font = UIFont.boldSystemFont(ofSize: 17.0)
         
@@ -55,9 +55,10 @@ class TAPAccountTableViewController: UIViewController, TAPEmailChangeViewDelegat
         
     }
     
-    @objc func backButtonAction(sender: UIBarButtonItem) {
-        self.navigationController?.dismiss(animated: true, completion: nil)
+    @IBAction func backButtonTap(_ sender: UIButton) {
+        TAPMainFrame.getNavi().popViewController(animated: true)
     }
+    
     
     func setupUI() {
         nameTextField.text = String(profileData.firstName! + " " + profileData.lastName!)
@@ -93,13 +94,12 @@ class TAPAccountTableViewController: UIViewController, TAPEmailChangeViewDelegat
                 y += addressViewHeight
             }
             
-            y -= addressViewHeight
+            //y -= addressViewHeight
             self.viewContainAddress.frame = CGRect(x: self.viewContainAddress.frame.origin.x, y: self.viewContainAddress.frame.origin.y, width: self.viewContainAddress.frame.width, height: y)
             
-            y -= 50
-            self.scrollView.layoutIfNeeded()
-            self.scrollView.layoutSubviews()
-            self.scrollView.contentSize = CGSize(width: self.scrollView.contentSize.width, height: 16+100+16+50+y+16+100+16+200+16 + (self.navigationController?.navigationBar.frame.height)! + 106)
+//            self.scrollView.layoutIfNeeded()
+//            self.scrollView.layoutSubviews()
+            self.scrollView.contentSize = CGSize(width: self.scrollView.contentSize.width, height: 16+100+16+y+16+100+16+200+16 + 44)
             //16+100+16+50+y+16+100+16+200+16+44
         }
     }

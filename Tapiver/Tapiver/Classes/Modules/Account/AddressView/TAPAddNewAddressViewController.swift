@@ -43,10 +43,10 @@ class TAPAddNewAddressViewController: UIViewController, UITextFieldDelegate {
         
         IQKeyboardManager.sharedManager().enable = true
         
-        let backButton = UIBarButtonItem()
-        backButton.title = ""
-        self.navigationController!.navigationBar.topItem!.backBarButtonItem = backButton
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+//        let backButton = UIBarButtonItem()
+//        backButton.title = ""
+//        self.navigationController!.navigationBar.topItem!.backBarButtonItem = backButton
+//        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         
         self.nameTextField.returnKeyType = .next
         self.contactNumberTextField.returnKeyType = .next
@@ -205,14 +205,10 @@ class TAPAddNewAddressViewController: UIViewController, UITextFieldDelegate {
         params.setValue(postalCodeTextField.text ?? "", forKey: TAPConstants.APIParams.postalCode)
         params.setValue(nameTextField.text ?? "", forKey: TAPConstants.APIParams.alias)
         params.setValue(contactNumberTextField.text ?? "", forKey: TAPConstants.APIParams.contact)
-//        TAPWebservice.shareInstance.sendPOSTRequest(path: API_PATH(path: "/api/v1/u/\(TAPGlobal.shared.getLoginModel()?.userId ?? "")/address"), params: params, headers: header, responseObjectClass: TAPProfileAddressModel()) { (success, response) in
-//            if response != nil {
-//                // create TAPProfileAddressModel
-//                self.delegate?.addAddress(address: response as! TAPProfileAddressModel)
-//                self.navigationController?.popViewController(animated: true)
-//            }
-//        }
+        
+        TAPGlobal.shared.showLoading()
         TAPWebservice.shareInstance.sendPOSTRequest(path: API_PATH(path: "/api/v1/u/\(TAPGlobal.shared.getLoginModel()?.userId ?? "")/address"), params: params) { (check, value) in
+            TAPGlobal.shared.dismissLoading()
             if check {
                 let address = TAPProfileAddressModel()
                 address.streetName = self.streetTextField.text ?? ""
@@ -231,6 +227,9 @@ class TAPAddNewAddressViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    @IBAction func backButtonTap(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+    }
     /*
     // MARK: - Navigation
 

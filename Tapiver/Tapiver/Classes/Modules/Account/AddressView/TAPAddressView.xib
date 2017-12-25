@@ -18,7 +18,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="LLP-d5-UzR">
-                    <rect key="frame" x="16" y="8" width="74" height="88.5"/>
+                    <rect key="frame" x="16" y="11.5" width="74" height="88.5"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rgh-du-TAz">
                             <rect key="frame" x="0.0" y="0.0" width="45" height="20.5"/>
@@ -53,7 +53,7 @@
                     </subviews>
                 </stackView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f34-lW-sON">
-                    <rect key="frame" x="309" y="34" width="50" height="50"/>
+                    <rect key="frame" x="309" y="30.5" width="50" height="50"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="3xR-6w-SRe"/>
                         <constraint firstAttribute="width" secondItem="f34-lW-sON" secondAttribute="height" multiplier="1:1" id="GB1-5g-DB8"/>
@@ -66,10 +66,10 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="f34-lW-sON" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="5VZ-a1-N7K"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="f34-lW-sON" secondAttribute="trailing" constant="16" id="ZCq-rk-B6p"/>
-                <constraint firstItem="LLP-d5-UzR" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="8" id="aL8-1j-fSF"/>
+                <constraint firstItem="LLP-d5-UzR" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="mjg-gb-kum"/>
                 <constraint firstItem="LLP-d5-UzR" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="oys-lY-9zr"/>
-                <constraint firstItem="f34-lW-sON" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="34" id="ykx-22-v1V"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>

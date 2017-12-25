@@ -24,13 +24,13 @@ class TAPEmailChangeView: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         emailTextField.text = email
-        edgesForExtendedLayout = []
-        self.navigationController?.navigationBar.tintColor = UIColor.white
-        
-        let backButton = UIBarButtonItem()
-        backButton.title = ""
-        self.navigationController!.navigationBar.topItem!.backBarButtonItem = backButton
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+//        edgesForExtendedLayout = []
+//        self.navigationController?.navigationBar.tintColor = UIColor.white
+//
+//        let backButton = UIBarButtonItem()
+//        backButton.title = ""
+//        self.navigationController!.navigationBar.topItem!.backBarButtonItem = backButton
+//        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
     }
     
     public func isEmail() -> Bool {
@@ -55,5 +55,8 @@ class TAPEmailChangeView: UIViewController {
                 TAPDialogUtils.shareInstance.showAlertMessageOneButton(title: "", message: "Server error, please contact Tapiver team for assistance", positive: "OK", positiveHandler: nil, vc: self)
             }
         }
+    }
+    @IBAction func backButtonTap(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
     }
 }

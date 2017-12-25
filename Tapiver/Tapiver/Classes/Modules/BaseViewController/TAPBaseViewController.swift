@@ -44,9 +44,7 @@ class TAPBaseViewController: UIViewController {
         }
         let productViewController: TAPProductMainPageViewController = TAPProductMainPageViewController(nibName: "TAPProductMainPageViewController", bundle: nil)
         productViewController.setData(id: newProduct.id ?? "", title: feedModel?.sellerName ?? "")
-        self.present(productViewController, animated: true) {
-            
-        }
+        TAPMainFrame.getNavi().pushViewController(productViewController, animated: true)
     }
     
     fileprivate func menuItemTouchHandler(itemIndex: Int) {
@@ -87,11 +85,12 @@ class TAPBaseViewController: UIViewController {
         
         // present TAPAccountViewController
         let accountViewController: TAPAccountTableViewController = TAPAccountTableViewController(nibName: "TAPAccountTableViewController", bundle: nil)
-        let navi = UINavigationController(rootViewController: accountViewController)
-        navi.navigationBar.barTintColor = UIColor.init(netHex: 0x195B79)
-        topViewController?.present(navi, animated: true, completion: {
-            
-        })
+//        let navi = UINavigationController(rootViewController: accountViewController)
+//        navi.navigationBar.barTintColor = UIColor.init(netHex: 0x195B79)
+//        topViewController?.present(navi, animated: true, completion: {
+//
+//        })
+        TAPMainFrame.getNavi().pushViewController(accountViewController, animated: true)
     }
 }
 
