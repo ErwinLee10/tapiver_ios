@@ -33,7 +33,8 @@ class TAPMenuViewController: UIViewController {
     }
     
     private func makeData() {
-        contentDic = [("menu_notif-icon","Notifications"),
+        contentDic = [
+                    //("menu_notif-icon","Notifications"),
                     ("menu_orders-icon","Orders"),
                     ("menu_cashback-icon","Cashback"),
                     ("menu_user-icon","Account"),
@@ -44,7 +45,8 @@ class TAPMenuViewController: UIViewController {
 
 extension TAPMenuViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        //return 5
+        return 4
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

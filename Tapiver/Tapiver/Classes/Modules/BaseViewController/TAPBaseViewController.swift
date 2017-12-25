@@ -54,15 +54,20 @@ class TAPBaseViewController: UIViewController {
         }
         
         switch itemIndex {
+//        case 0:
+//            break
         case 0:
+            showHistoryScreen()
             break
         case 1:
-            showHistoryScreen()
-        case 2:
             showCashbackScreen()
             break
-        case 3:
+        case 2:
             showAccountScreen()
+            break
+        case 3:
+            //show feedback
+            break
         default:
             break
         }
