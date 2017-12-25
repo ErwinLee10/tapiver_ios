@@ -43,11 +43,11 @@ class TAPRedeemRequest: UIView,UITextFieldDelegate {
     }
     private func createDrop() {
         drop.anchorView = dropView
-        drop.dataSource = ["• DBS","• POSB","• UOB","• OCBC","• Citibank ","• Maybank","• HSBC"]
+        drop.dataSource = ["DBS","POSB","UOB","OCBC","Citibank ","Maybank","HSBC"]
         drop.cellNib = UINib(nibName: "TAPAddToCartDropViewCell1", bundle: nil)
         drop.customCellConfiguration = { (index: Index, item: String, cell: DropDownCell) -> Void in
             guard let cell = cell as? TAPAddToCartDropViewCell1 else { return }
-            cell.detailTextLabel?.text = item
+            cell.detailTextLabel?.text =  "• \(item)"
             cell.colorView.isHidden = true
         }
         drop.selectionAction = { [unowned self] (index: Int, item: String) in
