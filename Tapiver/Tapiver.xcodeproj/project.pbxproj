@@ -133,6 +133,8 @@
 		84562CB21FE7BD5800DAB39D /* TAPAccountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84562CB01FE7BD5800DAB39D /* TAPAccountTableViewController.swift */; };
 		84562CB31FE7BD5800DAB39D /* TAPAccountTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84562CB11FE7BD5800DAB39D /* TAPAccountTableViewController.xib */; };
 		84562CB51FE7C85300DAB39D /* TAPProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84562CB41FE7C85300DAB39D /* TAPProfileModel.swift */; };
+		847E13921FF0F6DA00522E57 /* TAPCategoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847E13901FF0F6DA00522E57 /* TAPCategoryDetailViewController.swift */; };
+		847E13931FF0F6DA00522E57 /* TAPCategoryDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 847E13911FF0F6DA00522E57 /* TAPCategoryDetailViewController.xib */; };
 		848054801FE91C630064C203 /* TAPEmailChangeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8480547F1FE91C630064C203 /* TAPEmailChangeView.xib */; };
 		848054821FE91C6D0064C203 /* TAPEmailChangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848054811FE91C6D0064C203 /* TAPEmailChangeView.swift */; };
 		848054851FE925880064C203 /* TAPAboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 848054841FE925880064C203 /* TAPAboutViewController.xib */; };
@@ -342,6 +344,8 @@
 		84562CB01FE7BD5800DAB39D /* TAPAccountTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPAccountTableViewController.swift; sourceTree = "<group>"; };
 		84562CB11FE7BD5800DAB39D /* TAPAccountTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TAPAccountTableViewController.xib; sourceTree = "<group>"; };
 		84562CB41FE7C85300DAB39D /* TAPProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPProfileModel.swift; sourceTree = "<group>"; };
+		847E13901FF0F6DA00522E57 /* TAPCategoryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPCategoryDetailViewController.swift; sourceTree = "<group>"; };
+		847E13911FF0F6DA00522E57 /* TAPCategoryDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TAPCategoryDetailViewController.xib; sourceTree = "<group>"; };
 		8480547F1FE91C630064C203 /* TAPEmailChangeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TAPEmailChangeView.xib; sourceTree = "<group>"; };
 		848054811FE91C6D0064C203 /* TAPEmailChangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPEmailChangeView.swift; sourceTree = "<group>"; };
 		848054841FE925880064C203 /* TAPAboutViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TAPAboutViewController.xib; sourceTree = "<group>"; };
@@ -940,6 +944,7 @@
 		6CCEEFB71FCEB5940018FDB3 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				847E138F1FF0F65400522E57 /* CategoryDetail */,
 				C5C953141FE21936008D2B6F /* CategoryCell */,
 				6CCEEFB81FCEB5B70018FDB3 /* TAPCategoryViewController.swift */,
 				6CCEEFB91FCEB5B70018FDB3 /* TAPCategoryViewController.xib */,
@@ -968,6 +973,15 @@
 				8420B5771FE8C3EC00FCC383 /* TAPAddNewAddressViewController.xib */,
 			);
 			path = AddressView;
+			sourceTree = "<group>";
+		};
+		847E138F1FF0F65400522E57 /* CategoryDetail */ = {
+			isa = PBXGroup;
+			children = (
+				847E13901FF0F6DA00522E57 /* TAPCategoryDetailViewController.swift */,
+				847E13911FF0F6DA00522E57 /* TAPCategoryDetailViewController.xib */,
+			);
+			path = CategoryDetail;
 			sourceTree = "<group>";
 		};
 		8480547E1FE91C390064C203 /* EmailChangeView */ = {
@@ -1473,6 +1487,7 @@
 				6C4DA0011FE132DF00E0774A /* TAPProductMainPageViewController.xib in Resources */,
 				0336DB4C1FE8121F002D9A93 /* TAPDropdownBoxView.xib in Resources */,
 				031555141FE2D5D10082E709 /* TAPStorePageHeaderView.xib in Resources */,
+				847E13931FF0F6DA00522E57 /* TAPCategoryDetailViewController.xib in Resources */,
 				C5AD35141FEEBCCC002AAADA /* TAPPayMentMethodView.xib in Resources */,
 				C5A7BF5C1FEFE861005BA9DE /* TAPCashbackCell.xib in Resources */,
 				03AE84031FDEE3B7006D6986 /* TAPMallPageDealViewController.xib in Resources */,
@@ -1578,6 +1593,7 @@
 				B0ECB4B81FD2B86B00E97703 /* TAPLoginModel.swift in Sources */,
 				B0B056951FC0860F001E4659 /* BCAExtention.swift in Sources */,
 				039C57B91FE96EDF001C2BCB /* TAPHistoryViewController.swift in Sources */,
+				847E13921FF0F6DA00522E57 /* TAPCategoryDetailViewController.swift in Sources */,
 				B0ECB4BF1FD2D77600E97703 /* TAPDialogUtils.swift in Sources */,
 				031555121FE2D5C00082E709 /* TAPStorePageHeaderView.swift in Sources */,
 				84E2F83D1FEB988E00F27811 /* TapProductShippingView2.swift in Sources */,

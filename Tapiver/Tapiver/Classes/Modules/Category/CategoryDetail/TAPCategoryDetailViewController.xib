@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TAPCategoryDetailViewController" customModule="Tapiver" customModuleProvider="target">
+            <connections>
+                <outlet property="contentCollectionView" destination="gUa-bx-M6R" id="S5M-1w-GRV"/>
+                <outlet property="titleLabel" destination="HHl-cB-lMB" id="CDT-1E-WjL"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yFa-Wt-64s">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="72"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IGX-gN-Gni">
+                            <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Chl-4K-haP">
+                                    <rect key="frame" x="8" y="8" width="28" height="28"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="Chl-4K-haP" secondAttribute="height" multiplier="1:1" id="qqK-AI-kug"/>
+                                    </constraints>
+                                    <state key="normal" image="ic_back"/>
+                                    <connections>
+                                        <action selector="backButtonTap:" destination="-1" eventType="touchUpInside" id="wOm-HS-26C"/>
+                                    </connections>
+                                </button>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HHl-cB-lMB">
+                                    <rect key="frame" x="166.5" y="11.5" width="42" height="21"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="HHl-cB-lMB" firstAttribute="centerX" secondItem="IGX-gN-Gni" secondAttribute="centerX" id="2sS-l9-3cP"/>
+                                <constraint firstItem="HHl-cB-lMB" firstAttribute="centerY" secondItem="IGX-gN-Gni" secondAttribute="centerY" id="7yZ-Ik-zsG"/>
+                                <constraint firstAttribute="height" constant="44" id="MjI-RM-L56"/>
+                                <constraint firstItem="Chl-4K-haP" firstAttribute="top" secondItem="IGX-gN-Gni" secondAttribute="top" constant="8" id="UwG-P7-wzm"/>
+                                <constraint firstAttribute="bottom" secondItem="Chl-4K-haP" secondAttribute="bottom" constant="8" id="dpS-3L-ddU"/>
+                                <constraint firstItem="Chl-4K-haP" firstAttribute="leading" secondItem="IGX-gN-Gni" secondAttribute="leading" constant="8" id="gCk-3D-lcl"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" red="0.098039215686274508" green="0.35686274509803922" blue="0.47450980392156861" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="IGX-gN-Gni" firstAttribute="leading" secondItem="yFa-Wt-64s" secondAttribute="leading" id="6CK-e6-OR6"/>
+                        <constraint firstAttribute="bottom" secondItem="IGX-gN-Gni" secondAttribute="bottom" id="dj5-Ex-Wrh"/>
+                        <constraint firstAttribute="trailing" secondItem="IGX-gN-Gni" secondAttribute="trailing" id="mfz-RY-fdR"/>
+                    </constraints>
+                </view>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="gUa-bx-M6R">
+                    <rect key="frame" x="0.0" y="72" width="375" height="595"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Tuf-Xi-qRk">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="15" minY="20" maxX="15" maxY="20"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="yFa-Wt-64s" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="ONC-zL-42o"/>
+                <constraint firstItem="gUa-bx-M6R" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Shk-5c-GvM"/>
+                <constraint firstItem="yFa-Wt-64s" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="a8n-pa-qGu"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="yFa-Wt-64s" secondAttribute="trailing" id="ghC-Bx-j6m"/>
+                <constraint firstItem="IGX-gN-Gni" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="8" id="jca-Ud-ToW"/>
+                <constraint firstItem="gUa-bx-M6R" firstAttribute="top" secondItem="yFa-Wt-64s" secondAttribute="bottom" id="jv3-QY-nYr"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="gUa-bx-M6R" secondAttribute="bottom" id="pqK-Cp-iUQ"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="gUa-bx-M6R" secondAttribute="trailing" id="s8J-ka-rDs"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="34.5" y="131.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="ic_back" width="32" height="32"/>
+    </resources>
+</document>

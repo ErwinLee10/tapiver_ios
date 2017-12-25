@@ -440,6 +440,9 @@ extension TAPCategoryViewController: TAPCategoryLever1CellDelegate {
     func objectWhenTap(object: TAPCategoryMenuEntity) {
         print("OBJ >>>> \(object)")
         // lấy object.idMenu
+        let vc = TAPCategoryDetailViewController(nibName: "TAPCategoryDetailViewController", bundle: nil)
+        vc.setData(categoryId: object.idMenu!, categoryName: object.name!)
+        TAPMainFrame.getNavi().pushViewController(vc, animated: true)
     }
     
 }

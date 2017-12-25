@@ -68,6 +68,7 @@ extension TAPCategoryLever1Cell: UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         delegate?.tapMenu1At(index1: indexLever1!, subIndex1: indexPath)
         delegate?.objectWhenTap(object: listData[indexPath.row])
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
 }
