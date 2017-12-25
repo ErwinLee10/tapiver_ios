@@ -25,6 +25,7 @@ class TAPPayMentMethodView: UIViewController {
     @IBOutlet weak var btPlaceOrder: UIButton!
     @IBOutlet var listBtCard: [UIControl]!
     private var cardType: CardType = .credit
+    public var reviewObj: TAPReviewOrderEntity?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,22 +71,69 @@ class TAPPayMentMethodView: UIViewController {
         tripCardParams.cvc = tfCsv.text
         tripCardParams.expMonth = expMonth
         tripCardParams.expYear = expYear
-        // 2
+        tripCardParams.name = "Credit"
+        
+    }
+    private func getStripeToken(expDate: String, csv: String) {
+        if expDate.isEmpty == true {
+            return
+        }
+        let tripCardParams = STPCardParams()
+        let expireDate = expDate.components(separatedBy: "/")
+        if expireDate.count < 2 {
+            return
+        }
+        let expMonth = UInt(Int(expireDate[1])!)
+        let expYear = UInt(Int(expireDate[0])!)
+        if expireDate.count == 3 {
+            let expDay = UInt(Int(expireDate[2])!)
+            if expDay > 31  {
+                return
+            }
+        }
+        if expMonth > 12  {
+            return
+        }
+        tripCardParams.number = tfCardNumber.text
+        tripCardParams.cvc = tfCsv.text
+        tripCardParams.expMonth = expMonth
+        tripCardParams.expYear = expYear
+        tripCardParams.name = "Credit"
+        
         if (STPCardValidator.validationState(forCard: tripCardParams) == .valid) {
-            // 3
-            STPAPIClient.shared().createToken(withCard: tripCardParams, completion: { (token, error) in
-                // 4
+            TAPGlobal.shared.showLoading()
+            STPAPIClient.shared().createToken(withCard: tripCardParams, completion: { [weak self] (token, error) in
                 if error != nil {
+                    print("token = \(error?.localizedDescription ?? "")")
                     return
                 }else {
-                    
+                    print("token = \(token?.tokenId ?? "")")
+                    self?.callApi(tokenStripe: token?.tokenId ?? "")
                 }
-                
+                TAPGlobal.shared.dismissLoading()
             })
+        }else {
+            print("error card")
         }
+        
     }
-    
-    
+    private func callApi(tokenStripe: String) {
+        let params = ["":""]
+        TAPGlobal.shared.showLoading()
+        TAPWebservice.shareInstance.sendPOSTRequest(path: API_PATH(path: "/api/v1/u/\(TAPGlobal.shared.getLoginModel()?.userId ?? "")/checkout"), params: params as NSDictionary) { [weak self] (isSucess, value) in
+            if isSucess {
+                
+            }else {
+                TAPDialogUtils.shareInstance.showAlertMessageOneButton(title: "", message: "Server error, please contact Tapiver team for assistance", positive: "OK", positiveHandler: nil, vc: self!)
+            }
+            TAPGlobal.shared.dismissLoading()
+        }
+        
+    }
+    private func createParams() -> NSDictionary {
+        
+        return NSDictionary()
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -106,7 +154,7 @@ extension TAPPayMentMethodView: UITextFieldDelegate {
             if (result.length() >= 11) {
                 return false
             }
-            if result.length() == 5 || result.length() == 8 || result.length() == 11 {
+            if (result.length() == 5 || result.length() == 8 || result.length() == 11) && string != ""{
                 textField.text?.append("/")
             }
         }

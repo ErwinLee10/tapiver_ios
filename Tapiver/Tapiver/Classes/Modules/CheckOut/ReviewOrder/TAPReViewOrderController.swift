@@ -45,6 +45,7 @@ class TAPReViewOrderController: UIViewController {
     
     @IBAction func pushToPayment(_ sender: Any) {
         let pay = TAPPayMentMethodView.init(nibName: "TAPPayMentMethodView", bundle: nil)
+        pay.reviewObj = self.reviewObj
         self.navigationController?.pushViewController(pay, animated: true)
     }
     override func didReceiveMemoryWarning() {
