@@ -15,4 +15,5 @@ target 'Tapiver' do
     pod 'AMPopTip'
     pod 'DropDown'
     pod 'FLAnimatedImage'
+    pod 'Stripe'
 end
