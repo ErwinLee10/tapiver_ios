@@ -75,9 +75,15 @@ class TAPStorePageViewController: TAPBaseViewController {
                 self?.productList = productListModel.productList
                 self?.reloadData()
                 TAPGlobal.shared.dismissLoading()
+                if self?.feedModel?.sellerCoverPicture == nil {
+                    self?.feedModel?.sellerCoverPicture = self?.productList[0].sellerCoverPicture
+                    self?.headerBgView.sd_setImage(with: URL.init(string: self?.feedModel?.sellerCoverPicture ?? ""), placeholderImage: nil, options: SDWebImageOptions.retryFailed, completed: nil)
+                }
+                if self?.feedModel?.sellerAddress == nil {
+                    self?.feedModel?.sellerAddress = self?.productList[0].sellerAddress
+                }
             }
             else {
-                //hahalalamummy
                 TAPWebservice.shareInstance.checkHaveInternet(response: { (check) in
                     if check {
                         //server error
@@ -166,6 +172,9 @@ extension TAPStorePageViewController: TAPStorePageHeaderViewDelegate {
     }
     
     func headerViewDidTouchInfo() {
+        if feedModel?.sellerAddress == nil {
+            return
+        }
         TAPStorePageInformationViewController.showStorePageInformation(data: feedModel)
     }
     

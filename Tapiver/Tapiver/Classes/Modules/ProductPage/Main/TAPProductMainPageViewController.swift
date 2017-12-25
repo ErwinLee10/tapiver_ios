@@ -444,7 +444,16 @@ class TAPProductMainPageViewController: UIViewController, TapProductShippingView
     }
     
     @IBAction func goToCompanyButtonTap(_ sender: UIButton) {
-        
+        let vc = TAPStorePageViewController(nibName: "TAPStorePageViewController", bundle: nil)
+        let feedModel = TAPFeedModel.init()
+        feedModel.sellerPicture = data?.sellerPicture
+        feedModel.sellerName = data?.sellerName
+        feedModel.sellerTotalFollower = data?.sellerTotalFollower
+        //feedModel.sellerCoverPicture = data.sellerc
+        feedModel.sellerId = Int(data?.sellerId ?? "0")
+        feedModel.sellerAddress = data?.sellerAddress
+        vc.feedModel = feedModel
+        TAPMainFrame.getNavi().pushViewController(vc, animated: true)
     }
     
     

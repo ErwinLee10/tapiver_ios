@@ -77,19 +77,9 @@ class TAPBaseViewController: UIViewController {
         TAPMainFrame.getNavi().pushViewController(vc, animated: true)
     }
     fileprivate func showAccountScreen() {
-        // get top ViewController
-        let root = UIApplication.shared.keyWindow?.rootViewController as! UINavigationController
-        let tabBar = root.topViewController as! TAPMainTabbarViewController
-        let naviTabBar = tabBar.viewControllers![tabBar.selectedIndex] as! UINavigationController
-        let topViewController = naviTabBar.topViewController
         
         // present TAPAccountViewController
         let accountViewController: TAPAccountTableViewController = TAPAccountTableViewController(nibName: "TAPAccountTableViewController", bundle: nil)
-//        let navi = UINavigationController(rootViewController: accountViewController)
-//        navi.navigationBar.barTintColor = UIColor.init(netHex: 0x195B79)
-//        topViewController?.present(navi, animated: true, completion: {
-//
-//        })
         TAPMainFrame.getNavi().pushViewController(accountViewController, animated: true)
     }
 }
