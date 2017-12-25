@@ -54,6 +54,18 @@ class TAPGlobal: NSObject {
         self.userDefault.removeObject(forKey: "KEY_USER_LOGIN_DATA")
     }
     
+    func getCartBadgeNumber() -> String {
+        guard let data = self.userDefault.data(forKey: "KEY_CART_BADGE_NUMBER") else {
+            return ""
+        }
+        return NSKeyedUnarchiver.unarchiveObject(with: data) as! String
+    }
+    
+    func saveCartBadgeNumber(number: String) {
+        let encodedData = NSKeyedArchiver.archivedData(withRootObject: number)
+        self.userDefault.set(encodedData, forKey: "KEY_CART_BADGE_NUMBER")
+    }
+    
     func showLoading() {
         loadingView?.frame = (UIApplication.shared.keyWindow?.frame)!
         UIApplication.shared.keyWindow?.addSubview(loadingView!)

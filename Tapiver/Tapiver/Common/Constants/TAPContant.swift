@@ -123,5 +123,10 @@ struct TAPConstants {
         static let orderId                  = "orderId"
         static let status                   = "status"
     }
+    
+    // MARK: NotificationCenter -
+    struct NotificationName {
+        static let ChangeCartNumber         = "ChangeCartNumber"
+    }
 }
 

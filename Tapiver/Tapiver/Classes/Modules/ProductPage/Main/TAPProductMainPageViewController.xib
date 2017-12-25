@@ -27,7 +27,7 @@
                 <outlet property="addToCartViewHeight" destination="ars-VC-oJO" id="ZVE-Gy-Fmc"/>
                 <outlet property="beforeDiscountedPriceLabel" destination="4ay-Te-Sdb" id="JcB-Cm-HtZ"/>
                 <outlet property="brandLabel" destination="7rN-BZ-PA9" id="w3d-Py-Xk4"/>
-                <outlet property="cartButton" destination="rf5-cM-gAR" id="EWm-ef-Trq"/>
+                <outlet property="cartButton" destination="rf5-cM-gAR" id="itf-w0-E7F"/>
                 <outlet property="colorTableView" destination="jPZ-zY-NnX" id="C2R-78-DwK"/>
                 <outlet property="colorTableViewHeight" destination="HHu-5P-K39" id="EZi-f3-p5j"/>
                 <outlet property="companyFollowerLabel" destination="5gL-DI-gn6" id="xDO-EV-Kaa"/>
@@ -90,7 +90,7 @@
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rf5-cM-gAR">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rf5-cM-gAR" customClass="MIBadgeButton" customModule="Tapiver" customModuleProvider="target">
                             <rect key="frame" x="339" y="8" width="28" height="28"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="rf5-cM-gAR" secondAttribute="height" multiplier="1:1" id="pGY-xe-F0u"/>

@@ -13,7 +13,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TAPMainPageHeaderView" customModule="Tapiver" customModuleProvider="target">
             <connections>
-                <outlet property="cartButton" destination="doZ-aS-B9W" id="IBh-I6-Ukq"/>
+                <outlet property="cartButton" destination="doZ-aS-B9W" id="Joy-tW-7uj"/>
                 <outlet property="menuButton" destination="9Wg-Kr-hLT" id="2qb-Ht-cWo"/>
                 <outlet property="searchTextField" destination="Aub-51-jso" id="j8C-vv-aLh"/>
             </connections>
@@ -90,7 +90,7 @@
                                         <action selector="rightMenuTouched:" destination="-1" eventType="touchUpInside" id="e9l-zK-iQo"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="doZ-aS-B9W">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="doZ-aS-B9W" customClass="MIBadgeButton" customModule="Tapiver" customModuleProvider="target">
                                     <rect key="frame" x="303" y="8" width="28" height="28"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="doZ-aS-B9W" secondAttribute="height" multiplier="1:1" id="p3I-op-ySa"/>

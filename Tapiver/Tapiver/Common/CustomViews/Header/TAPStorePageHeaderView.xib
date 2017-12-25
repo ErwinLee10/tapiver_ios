@@ -56,7 +56,7 @@
                                 <action selector="searchTouched:" destination="-1" eventType="touchUpInside" id="9WL-xU-QaE"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QsR-oc-bzs">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QsR-oc-bzs" customClass="MIBadgeButton" customModule="Tapiver" customModuleProvider="target">
                             <rect key="frame" x="308" y="0.0" width="30" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="30" id="fKh-CT-GSc"/>

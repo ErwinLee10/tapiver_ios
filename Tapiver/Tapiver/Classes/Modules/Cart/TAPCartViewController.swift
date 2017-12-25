@@ -212,6 +212,9 @@ extension TAPCartViewController {
             if success {
                 strongSelf.getData(hasVoucher: strongSelf.voucherName != nil && strongSelf.voucherName!.isEmpty == false)
             }
+            else {
+                TAPDialogUtils.shareInstance.showAlertMessageOneButton(title: "", message: "Server error, please contact Tapiver team for assistance", positive: "OK", positiveHandler: nil, vc: strongSelf)
+            }
         }
     }
 }

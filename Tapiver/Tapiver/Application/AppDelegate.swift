@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
         self.window = UIWindow(frame: UIScreen.main.bounds)
-        self.window?.rootViewController = LaunchScreenCustom(nibName: "LaunchScreenCustom", bundle: nil)
+        self.window?.rootViewController = TAPSplashViewController(nibName: "TAPSplashViewController", bundle: nil)
         self.window!.makeKeyAndVisible()
         
         TAPWebservice.shareInstance.sendGETRequest(path: "/api/v1/ios-info", params: [:], responseObjectClass: TAPVersionModel()) { (check, value) in

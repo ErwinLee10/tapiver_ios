@@ -15,7 +15,7 @@ import DropDown
 class TAPProductMainPageViewController: UIViewController, TapProductShippingView2Delegate {
 
     // top bar
-    @IBOutlet weak var cartButton: UIButton!
+    @IBOutlet weak var cartButton: MIBadgeButton!
     @IBOutlet weak var titleLabel: UILabel!
     
     // main view
@@ -102,6 +102,10 @@ class TAPProductMainPageViewController: UIViewController, TapProductShippingView
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        cartButton.badgeString = TAPGlobal.shared.getCartBadgeNumber()
+        NotificationCenter.default.addObserver(self, selector: #selector(self.changeCartNumber(_:)), name: NSNotification.Name(rawValue: TAPConstants.NotificationName.ChangeCartNumber), object: nil)
+        
         setupPageView()
         
         self.titleLabel.text = titleText
@@ -140,6 +144,15 @@ class TAPProductMainPageViewController: UIViewController, TapProductShippingView
         dropDownColor.dismissMode = .onTap
         dropDownSize.dismissMode = .onTap
         dropDownQuantity.dismissMode = .onTap
+    }
+    
+    @objc func changeCartNumber(_ notification: NSNotification) {
+        if let dic = notification.object as? NSDictionary {
+            if let result = dic["number"] as? String {
+                cartButton.badgeString = result
+                TAPGlobal.shared.saveCartBadgeNumber(number: result)
+            }
+        }
     }
     
     func setupPageView() {
@@ -662,6 +675,15 @@ class TAPProductMainPageViewController: UIViewController, TapProductShippingView
                             //SVProgressHUD.dismiss()
                             TAPGlobal.shared.dismissLoading()
                             if check {
+                                if var number = Int(TAPGlobal.shared.getCartBadgeNumber()) {
+                                    number += self.chooseQuantity!
+                                    let numberString = String(number)
+                                    NotificationCenter.default.post(name:Notification.Name(rawValue:TAPConstants.NotificationName.ChangeCartNumber), object: ["number": numberString])
+                                }
+                                else {
+                                    let numberString = String(self.chooseQuantity ?? 0)
+                                    NotificationCenter.default.post(name:Notification.Name(rawValue:TAPConstants.NotificationName.ChangeCartNumber), object: ["number": numberString])
+                                }
                                 
                             }
                             else {

@@ -62,7 +62,7 @@
                                         <action selector="searchTouched:" destination="-1" eventType="touchUpInside" id="9Qf-Pi-Pin"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NtE-5w-6ca">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NtE-5w-6ca" customClass="MIBadgeButton" customModule="Tapiver" customModuleProvider="target">
                                     <rect key="frame" x="310" y="0.0" width="30" height="44"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="30" id="14R-GZ-lDW"/>

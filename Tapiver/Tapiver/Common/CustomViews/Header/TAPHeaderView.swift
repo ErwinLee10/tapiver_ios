@@ -35,6 +35,17 @@ class TAPHeaderView: TAPBaseHeaderView {
     override func awakeFromNib() {
         super.awakeFromNib()
         setupView()
+        cartButton.badgeString = TAPGlobal.shared.getCartBadgeNumber()
+        NotificationCenter.default.addObserver(self, selector: #selector(self.changeCartNumber(_:)), name: NSNotification.Name(rawValue: TAPConstants.NotificationName.ChangeCartNumber), object: nil)
+    }
+    
+    @objc func changeCartNumber(_ notification: NSNotification) {
+        if let dic = notification.object as? NSDictionary {
+            if let result = dic["number"] as? String {
+                cartButton.badgeString = result
+                TAPGlobal.shared.saveCartBadgeNumber(number: result)
+            }
+        }
     }
     
     // MARK: Public methods

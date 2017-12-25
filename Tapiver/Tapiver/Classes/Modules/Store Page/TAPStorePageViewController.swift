@@ -21,6 +21,9 @@ class TAPStorePageViewController: TAPBaseViewController {
     var feedModel: TAPFeedModel?
     var storePageHeaderView: TAPStorePageHeaderView?
     
+    var errorInternetView: TAPLostConnectErrorView?
+    var errorGeneralView: TAPGeneralErrorView?
+    
     static let cellIdentifier = "TAPMallPageDealsCell"
     let leftRightPadding = 15.0
     let cellPadding = 10.0
@@ -71,12 +74,30 @@ class TAPStorePageViewController: TAPBaseViewController {
             if success, let productListModel = responseEntity as? TAPProductListModel {
                 self?.productList = productListModel.productList
                 self?.reloadData()
+                TAPGlobal.shared.dismissLoading()
             }
             else {
                 //hahalalamummy
+                TAPWebservice.shareInstance.checkHaveInternet(response: { (check) in
+                    if check {
+                        //server error
+                        guard let unwrappedSelf = self else { return }
+                        unwrappedSelf.errorGeneralView = Bundle.main.loadNibNamed("TAPGeneralErrorView", owner: unwrappedSelf, options: nil)![0] as? TAPGeneralErrorView
+                        unwrappedSelf.errorGeneralView?.frame = unwrappedSelf.contentCollectionView.frame
+                        unwrappedSelf.view.addSubview(unwrappedSelf.errorGeneralView!)
+                        unwrappedSelf.view.bringSubview(toFront: unwrappedSelf.errorGeneralView!)
+                    }
+                    else {
+                        guard let unwrappedSelf = self else { return }
+                        unwrappedSelf.errorInternetView = Bundle.main.loadNibNamed("TAPLostConnectErrorView", owner: unwrappedSelf, options: nil)![0] as? TAPLostConnectErrorView
+                        unwrappedSelf.errorInternetView?.frame = unwrappedSelf.contentCollectionView.frame
+                        unwrappedSelf.view.addSubview(unwrappedSelf.errorInternetView!)
+                        unwrappedSelf.view.bringSubview(toFront: unwrappedSelf.errorInternetView!)
+                    }
+                    TAPGlobal.shared.dismissLoading()
+                })
             }
-            //SVProgressHUD.dismiss()
-            TAPGlobal.shared.dismissLoading()
+            
         }
     }
     private func reloadData() {

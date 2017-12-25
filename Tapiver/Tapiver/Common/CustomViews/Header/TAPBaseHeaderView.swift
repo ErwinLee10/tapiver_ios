@@ -23,7 +23,7 @@ extension TAPBaseHeaderViewDelegate {
 }
 
 class TAPBaseHeaderView: UIView {
-    @IBOutlet weak var cartButton: UIButton!
+    @IBOutlet weak var cartButton: MIBadgeButton!
     @IBOutlet weak var menuButton: UIButton!
     @IBOutlet weak var backButton: UIButton?
     
