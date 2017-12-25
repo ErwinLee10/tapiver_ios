@@ -45,6 +45,7 @@ class TAPReviewCell: UITableViewCell {
     }
     public func setData() {
         self.lbNameStore.text = cartItem?.sellerName
+        self.lbJuntion.text = cartItem?.sellerAddress?.streetName
         self.lbAddStore.text = self.createContetn(obj: address!)
         let paser = self.paserObj()
         self.lbNameAdd.text = paser.address
