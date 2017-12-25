@@ -43,7 +43,7 @@ class TAPCartViewController: TAPBaseViewController {
     
     // MARK: Action
     @IBAction func couponButtonTouched(_ sender: Any) {
-        showCouponView(true)
+        showCouponView(couponView.isHidden)
     }
     
     @IBAction func couponSubmitTouched(_ sender: Any) {

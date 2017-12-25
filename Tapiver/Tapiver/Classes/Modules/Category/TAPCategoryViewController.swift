@@ -438,7 +438,8 @@ extension TAPCategoryViewController: TAPCategoryLever1CellDelegate {
     }
     
     func objectWhenTap(object: TAPCategoryMenuEntity) {
-        print("OBJ >>>> \(object.name!)")
+        print("OBJ >>>> \(object)")
+        // lấy object.idMenu
     }
     
 }

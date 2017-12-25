@@ -586,7 +586,7 @@ class TAPProductMainPageViewController: UIViewController, TapProductShippingView
         }
         dropDownSize.cellNib = UINib(nibName: "TAPAddToCartDropViewCell2", bundle: nil)
         dropDownSize.customCellConfiguration = { (index: Index, item: String, cell: DropDownCell) -> Void in
-            guard let cell = cell as? TAPAddToCartDropViewCell2 else { return }
+            //guard let cell = cell as? TAPAddToCartDropViewCell2 else { return }
             
         }
         dropDownSize.selectionAction = { [unowned self] (index: Int, item: String) in
@@ -599,7 +599,7 @@ class TAPProductMainPageViewController: UIViewController, TapProductShippingView
         dropDownQuantity.dataSource = ["1", "2", "3", "4", "5"]
         dropDownQuantity.cellNib = UINib(nibName: "TAPAddToCartDropViewCell2", bundle: nil)
         dropDownQuantity.customCellConfiguration = { (index: Index, item: String, cell: DropDownCell) -> Void in
-            guard let cell = cell as? TAPAddToCartDropViewCell2 else { return }
+            //guard let cell = cell as? TAPAddToCartDropViewCell2 else { return }
             
         }
         dropDownQuantity.selectionAction = { [unowned self] (index: Int, item: String) in
