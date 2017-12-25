@@ -15,7 +15,7 @@ class TAPProductDetailModel: TAPBaseEntity {
     var sellerId: String?
     var sellerPicture: String?
     var sellerTotalFollower: Int?
-    var sellerAddress: TAPSellerAddressModel?
+    var sellerAddress: TAPAddressModel?
     var openingHours: [String]?
     var likes: Int = 0
     var isLikedByThisUser: Bool = false
@@ -38,7 +38,7 @@ class TAPProductDetailModel: TAPBaseEntity {
         sellerPicture = dic.value(forKey: TAPConstants.APIParams.sellerPicture) as? String
         sellerTotalFollower = dic.value(forKey: TAPConstants.APIParams.sellerTotalFollower) as? Int
         if let sellerAddressDic = dic.value(forKey: TAPConstants.APIParams.sellerAddress) as? NSDictionary {
-            sellerAddress = TAPSellerAddressModel()
+            sellerAddress = TAPAddressModel()
             sellerAddress?.parserResponse(dic: sellerAddressDic)
         }
         var openingHoursArray: [String] = []

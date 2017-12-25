@@ -37,7 +37,7 @@ class TAPCartItemModel: TAPBaseEntity {
     var sellerId: Int?
     var sellerName: String?
     var totalPrice: Int?
-    var sellerAddress: TAPSellerAddressModel?
+    var sellerAddress: TAPAddressModel?
     var productVariations: [TAPProductVariationModel] = []
     var shippingOptions: [TAPShippingModel] = []
     var isViewLess: Bool = false
@@ -49,7 +49,7 @@ class TAPCartItemModel: TAPBaseEntity {
         totalPrice = dic.value(forKey: TAPConstants.APIParams.totalPrice) as? Int
         
         if let addressDic = dic.value(forKey: TAPConstants.APIParams.sellerAddress) as? NSDictionary {
-            sellerAddress = TAPSellerAddressModel()
+            sellerAddress = TAPAddressModel()
             sellerAddress?.parserResponse(dic: addressDic)
         }
         

@@ -20,7 +20,7 @@ class TAPProductModel: TAPBaseEntity {
     var sellerCoverPicture: String?
     var sellerTotalFollower: Int?
     var variationsOverview: TAPVariationsOverviewModel?
-    var sellerAddress: TAPSellerAddressModel?
+    var sellerAddress: TAPAddressModel?
     
     override func parserResponse(dic: NSDictionary) {
         id = dic.value(forKey: TAPConstants.APIParams.id) as? String
@@ -40,7 +40,7 @@ class TAPProductModel: TAPBaseEntity {
         sellerTotalFollower = dic.value(forKey: TAPConstants.APIParams.sellerTotalFollower) as? Int
         
         if let sellerAddressDic = dic.value(forKey: TAPConstants.APIParams.sellerAddress) as? NSDictionary {
-            sellerAddress = TAPSellerAddressModel()
+            sellerAddress = TAPAddressModel()
             sellerAddress?.parserResponse(dic: sellerAddressDic)
         }
     }

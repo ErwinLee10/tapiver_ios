@@ -15,7 +15,7 @@ class TAPHistoryReportIssueViewController: TAPBaseViewController {
     @IBOutlet weak var shopAddressLabel: UILabel!
     
     var orderId: String!
-    var sellerAddress: TAPSellerAddressModel?
+    var sellerAddress: TAPAddressModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
