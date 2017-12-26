@@ -29,7 +29,7 @@ class TAPBaseViewController: UIViewController {
         menu.modalPresentationStyle = .popover
         menu.popoverPresentationController?.delegate = self
         
-        menu.preferredContentSize = CGSize(width: 200, height: 250)
+        menu.preferredContentSize = CGSize(width: 200, height: 200)
         if let headerView = self.headerView {
             menu.popoverPresentationController?.sourceView = headerView.menuButton
             let menuBtnFrame = headerView.menuButton.frame

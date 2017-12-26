@@ -97,9 +97,9 @@ class TAPAccountTableViewController: UIViewController, TAPEmailChangeViewDelegat
             //y -= addressViewHeight
             self.viewContainAddress.frame = CGRect(x: self.viewContainAddress.frame.origin.x, y: self.viewContainAddress.frame.origin.y, width: self.viewContainAddress.frame.width, height: y)
             
-//            self.scrollView.layoutIfNeeded()
-//            self.scrollView.layoutSubviews()
-            self.scrollView.contentSize = CGSize(width: self.scrollView.contentSize.width, height: 16+100+16+y+16+100+16+200+16 + 44)
+            self.scrollView.layoutIfNeeded()
+            self.scrollView.layoutSubviews()
+//            self.scrollView.contentSize = CGSize(width: self.scrollView.contentSize.width, height: 16+100+16+y+16+100+16+200+16 + 44)
             //16+100+16+50+y+16+100+16+200+16+44
         }
     }
@@ -275,7 +275,7 @@ class TAPAccountTableViewController: UIViewController, TAPEmailChangeViewDelegat
         
         self.scrollView.layoutIfNeeded()
         self.scrollView.layoutSubviews()
-        self.scrollView.contentSize = CGSize(width: self.scrollView.contentSize.width, height: self.scrollView.contentSize.height + addressViewHeight)
+//        self.scrollView.contentSize = CGSize(width: self.scrollView.contentSize.width, height: self.scrollView.contentSize.height + addressViewHeight)
     }
     
     func deleteAddress(id: Int?) {
@@ -288,7 +288,7 @@ class TAPAccountTableViewController: UIViewController, TAPEmailChangeViewDelegat
                 profileData.address?.listProfileAddress?.remove(at: i)
                 self.addressStackView.arrangedSubviews[i+1].isHidden = true
                 self.addressStackView.removeArrangedSubview(self.addressStackView.arrangedSubviews[i+1])
-                self.scrollView.contentSize = CGSize(width: self.scrollView.contentSize.width, height: self.scrollView.contentSize.height - addressViewHeight)
+//                self.scrollView.contentSize = CGSize(width: self.scrollView.contentSize.width, height: self.scrollView.contentSize.height - addressViewHeight)
                 break
             }
         }
