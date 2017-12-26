@@ -340,9 +340,9 @@ class TAPProductMainPageViewController: UIViewController, TapProductShippingView
                 titleStackContainViewHeight.constant = titleStackContainViewHeight.constant + 20
                 titleStackContainView.layoutIfNeeded()
             }
-            let salePrice = Double((data?.variations?.listVariations![currentIdex].salePrice)!)
-            let originalPrice = Double((data?.variations?.listVariations![currentIdex].originalPrice)!)
-            let percent: Double = Double((salePrice / originalPrice) * 100)
+            let salePrice = (data?.variations?.listVariations![currentIdex].salePrice)!
+            let originalPrice = (data?.variations?.listVariations![currentIdex].originalPrice)!
+            let percent: Double = (salePrice / originalPrice) * 100
             let roundPercent: Int = Int(round(percent))
             discountedPercentageLabel.text = "-\(100-roundPercent)%"
             let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: "S$\(data?.variations?.listVariations![currentIdex].originalPrice ?? 0)")

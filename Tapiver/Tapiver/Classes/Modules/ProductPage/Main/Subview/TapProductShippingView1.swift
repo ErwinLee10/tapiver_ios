@@ -17,7 +17,7 @@ class TapProductShippingView1: UIView {
         // Insert code here
     }
     
-    func setData(name: String, day: String, price: Int) {
+    func setData(name: String, day: String, price: Double) {
         nameLabel.text = name
         dayLabel.text = day
         priceLabel.text = "S$ \(price)"

@@ -11,8 +11,8 @@ import UIKit
 class TAPCartListModel: TAPBaseEntity {
     var cartItemsPerSeller: [TAPCartItemModel] = []
     var coupon: TAPCouponModel?
-    var finalTotalAmount: Int?
-    var originalTotalAmount:Int?
+    var finalTotalAmount: Double?
+    var originalTotalAmount:Double?
     
     override func parserResponse(dic: NSDictionary) {
         if let cartItemsPerSellerDic = dic.value(forKey: TAPConstants.APIParams.cartItemsPerSeller) as? [NSDictionary], cartItemsPerSellerDic.count > 0 {
@@ -28,15 +28,15 @@ class TAPCartListModel: TAPBaseEntity {
             coupon?.parserResponse(dic: couponDic)
         }
         
-        finalTotalAmount = dic.value(forKey: TAPConstants.APIParams.finalTotalAmount) as? Int
-        originalTotalAmount = dic.value(forKey: TAPConstants.APIParams.originalTotalAmount) as? Int
+        finalTotalAmount = dic.value(forKey: TAPConstants.APIParams.finalTotalAmount) as? Double
+        originalTotalAmount = dic.value(forKey: TAPConstants.APIParams.originalTotalAmount) as? Double
     }
 }
 
 class TAPCartItemModel: TAPBaseEntity {
     var sellerId: Int?
     var sellerName: String?
-    var totalPrice: Int?
+    var totalPrice: Double?
     var sellerAddress: TAPAddressModel?
     var productVariations: [TAPProductVariationModel] = []
     var shippingOptions: [TAPShippingModel] = []
@@ -46,7 +46,7 @@ class TAPCartItemModel: TAPBaseEntity {
     override func parserResponse(dic: NSDictionary) {
         sellerId = dic.value(forKey: TAPConstants.APIParams.sellerId) as? Int
         sellerName = dic.value(forKey: TAPConstants.APIParams.sellerName) as? String
-        totalPrice = dic.value(forKey: TAPConstants.APIParams.totalPrice) as? Int
+        totalPrice = dic.value(forKey: TAPConstants.APIParams.totalPrice) as? Double
         
         if let addressDic = dic.value(forKey: TAPConstants.APIParams.sellerAddress) as? NSDictionary {
             sellerAddress = TAPAddressModel()
@@ -79,9 +79,9 @@ class TAPProductVariationModel: TAPBaseEntity {
     var id: Int?
     var name: String?
     var brand: String?
-    var originalPrice: Int?
-    var salePrice: Int?
-    var finalPrice: Int?
+    var originalPrice: Double?
+    var salePrice: Double?
+    var finalPrice: Double?
     var quantity: Int?
     var availableStock: Int?
     var pictureUrl: String?
@@ -97,9 +97,9 @@ class TAPProductVariationModel: TAPBaseEntity {
         id = dic.value(forKey: TAPConstants.APIParams.id) as? Int
         name = dic.value(forKey: TAPConstants.APIParams.name) as? String
         brand = dic.value(forKey: TAPConstants.APIParams.brand) as? String
-        originalPrice = dic.value(forKey: TAPConstants.APIParams.originalPrice) as? Int
-        salePrice = dic.value(forKey: TAPConstants.APIParams.salePrice) as? Int
-        finalPrice = dic.value(forKey: TAPConstants.APIParams.finalPrice) as? Int
+        originalPrice = dic.value(forKey: TAPConstants.APIParams.originalPrice) as? Double
+        salePrice = dic.value(forKey: TAPConstants.APIParams.salePrice) as? Double
+        finalPrice = dic.value(forKey: TAPConstants.APIParams.finalPrice) as? Double
         quantity = dic.value(forKey: TAPConstants.APIParams.quantity) as? Int
         availableStock = dic.value(forKey: TAPConstants.APIParams.availableStock) as? Int
         pictureUrl = dic.value(forKey: TAPConstants.APIParams.pictureUrl) as? String
@@ -114,7 +114,7 @@ class TAPProductVariationModel: TAPBaseEntity {
 
 class TAPCouponModel: TAPBaseEntity {
     var name: String?
-    var totalSaving: Int?
+    var totalSaving: Double?
     var percentage: Int?
     var isPercentageDiscount: Bool?
     var message: String?
@@ -122,7 +122,7 @@ class TAPCouponModel: TAPBaseEntity {
     
     override func parserResponse(dic: NSDictionary) {
         name = dic.value(forKey: TAPConstants.APIParams.name) as? String
-        totalSaving = dic.value(forKey: TAPConstants.APIParams.totalSaving) as? Int
+        totalSaving = dic.value(forKey: TAPConstants.APIParams.totalSaving) as? Double
         percentage = dic.value(forKey: TAPConstants.APIParams.percentage) as? Int
         isPercentageDiscount = dic.value(forKey: TAPConstants.APIParams.isPercentageDiscount) as? Bool
         message = dic.value(forKey: TAPConstants.APIParams.message) as? String
@@ -133,7 +133,7 @@ class TAPShippingModel: TAPBaseEntity {
     var idShip: Int?
     var provider: String?
     var type: String?
-    var price: Float?
+    var price: Double?
     var isPickup: Bool = false
     var isfreeShipping: Bool = false
     var additionalInfor: TAPAdditionalInformation?
@@ -144,7 +144,7 @@ class TAPShippingModel: TAPBaseEntity {
         provider = dic.value(forKey: TAPConstants.APIParams.provid) as? String
         type = dic.value(forKey: TAPConstants.APIParams.type) as? String
         if !(dic.value(forKey: TAPConstants.APIParams.price) is NSNull) {
-            price = dic.value(forKey: TAPConstants.APIParams.price) as? Float 
+            price = dic.value(forKey: TAPConstants.APIParams.price) as? Double
         }
         isPickup = dic.value(forKey: TAPConstants.APIParams.isPickup) as! Bool
         isfreeShipping  = dic.value(forKey: TAPConstants.APIParams.freeShipping) as! Bool
@@ -155,14 +155,14 @@ class TAPShippingModel: TAPBaseEntity {
 class TAPAdditionalInformation: TAPBaseEntity {
     var time: String?
     var cashbackPercentage: Float?
-    var cashbackEarned: Float?
+    var cashbackEarned: Double?
     override func parserResponse(dic: NSDictionary) {
         time = dic.value(forKey: TAPConstants.APIParams.time) as? String
         if !(dic.value(forKey: TAPConstants.APIParams.cashbackPercent) is NSNull) {
             cashbackPercentage  = dic.value(forKey: TAPConstants.APIParams.cashbackPercent) as? Float
         }
         if !(dic.value(forKey: TAPConstants.APIParams.cashbackEarn) is NSNull) {
-            cashbackEarned  = dic.value(forKey: TAPConstants.APIParams.cashbackEarn) as? Float
+            cashbackEarned  = dic.value(forKey: TAPConstants.APIParams.cashbackEarn) as? Double
         }
     }
 }

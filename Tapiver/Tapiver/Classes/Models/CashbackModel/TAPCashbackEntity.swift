@@ -13,7 +13,7 @@ class TAPCashbackEntity: TAPBaseEntity {
     var idCashback: Int?
     var orderDate: Double?
     var cashbackPercentage: Int?
-    var cashbackAmount: Float?
+    var cashbackAmount: Double?
     var status: String?
     var orderId: Int?
     
@@ -21,24 +21,24 @@ class TAPCashbackEntity: TAPBaseEntity {
         idCashback = dic.value(forKey: TAPConstants.APIParams.id) as? Int
         orderDate = dic.value(forKey: TAPConstants.APIParams.orderDate) as? Double
         cashbackPercentage = dic.value(forKey: TAPConstants.APIParams.cashbackPercentage) as? Int
-        cashbackAmount = dic.value(forKey: TAPConstants.APIParams.cashbackAmount) as? Float
+        cashbackAmount = dic.value(forKey: TAPConstants.APIParams.cashbackAmount) as? Double
         status = dic.value(forKey: TAPConstants.APIParams.status) as? String
         orderId = dic.value(forKey: TAPConstants.APIParams.orderId) as? Int
     }
 }
 
 class TAPListCashback: TAPBaseEntity {
-    var earning: Float?
-    var redeemable: Int?
-    var redeemed: Float?
-    var pending: Float?
+    var earning: Double?
+    var redeemable: Double?
+    var redeemed: Double?
+    var pending: Double?
     var processing: Int?
     var cashBacks: [TAPCashbackEntity] = []
     override func parserResponse(dic: NSDictionary) {
-        earning = dic.value(forKey: TAPConstants.APIParams.earning) as? Float
-        redeemable = dic.value(forKey: TAPConstants.APIParams.redeemable) as? Int
-        redeemed = dic.value(forKey: TAPConstants.APIParams.redeemed) as? Float
-        pending = dic.value(forKey: TAPConstants.APIParams.pending) as? Float
+        earning = dic.value(forKey: TAPConstants.APIParams.earning) as? Double
+        redeemable = dic.value(forKey: TAPConstants.APIParams.redeemable) as? Double
+        redeemed = dic.value(forKey: TAPConstants.APIParams.redeemed) as? Double
+        pending = dic.value(forKey: TAPConstants.APIParams.pending) as? Double
         processing = dic.value(forKey: TAPConstants.APIParams.processing) as? Int
         
         guard let list = dic.value(forKey: TAPConstants.APIParams.cashbacks) as? [Dictionary<String, Any>] else  {

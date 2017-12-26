@@ -80,7 +80,7 @@ class TAPListShippingCostModel: TAPBaseEntity {
 class TAPShippingCostModel: TAPBaseEntity {
     var provider: String?
     var type: String?
-    var price: Int?
+    var price: Double?
     var isPickup: Bool?
     var time: String?
     var cashbackPercentage: Int?
@@ -89,7 +89,7 @@ class TAPShippingCostModel: TAPBaseEntity {
     override func parserResponse(dic: NSDictionary) {
         provider = dic.value(forKey: TAPConstants.APIParams.provider) as? String
         type = dic.value(forKey: TAPConstants.APIParams.type) as? String
-        price = dic.value(forKey: TAPConstants.APIParams.price) as? Int ?? 0
+        price = dic.value(forKey: TAPConstants.APIParams.price) as? Double ?? 0
         isPickup = dic.value(forKey: TAPConstants.APIParams.isPickup) as? Bool ?? false
         if let additionalInformation = dic.value(forKey: TAPConstants.APIParams.additionalInformation) as? NSDictionary {
             time = additionalInformation.value(forKey: TAPConstants.APIParams.time) as? String ?? ""

@@ -22,7 +22,7 @@ class TAPCartFooterTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setTotalPrice(_ price: Int) {
+    func setTotalPrice(_ price: Double) {
         let priceStr = NSNumber(value: price).moneyString()
         totalPriceLabel.text = priceStr
     }

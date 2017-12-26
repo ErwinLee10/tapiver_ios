@@ -53,8 +53,8 @@ class TAPVariationsOverviewModel: TAPBaseEntity {
     var colorName: String?
     var pictures: [String]? = []
     var labels: [String]? = []
-    var originalPrice: Int?
-    var salePrice: Int?
+    var originalPrice: Double?
+    var salePrice: Double?
     var stock: Int?
     
     override func parserResponse(dic: NSDictionary) {
@@ -64,8 +64,8 @@ class TAPVariationsOverviewModel: TAPBaseEntity {
         colorName = dic.value(forKey: "colorName") as? String
         pictures = dic.value(forKey: "pictures") as? [String]
         labels = dic.value(forKey: "labels") as? [String]
-        originalPrice = dic.value(forKey: "originalPrice") as? Int
-        salePrice = dic.value(forKey: "salePrice") as? Int
+        originalPrice = dic.value(forKey: "originalPrice") as? Double
+        salePrice = dic.value(forKey: "salePrice") as? Double
         stock = dic.value(forKey: "stock") as? Int
     }
     

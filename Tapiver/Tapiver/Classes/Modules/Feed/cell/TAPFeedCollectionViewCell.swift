@@ -66,18 +66,18 @@ class TAPFeedCollectionViewCell: UICollectionViewCell {
         let price = model.variationsOverview?.originalPrice ?? 0
         guard let salePrice = model.variationsOverview?.salePrice else {
             persentSaleLbl.isHidden = true
-            newPriceLbl.text = "$" + String.init(price)
+            newPriceLbl.text = "S$" + String.init(price)
             priceLbl.text = ""
             return
         }
-        let percentSale: Int = 100 - salePrice * 100 / price
+        let percentSale: Int = Int(100 - salePrice * 100 / price)
         persentSaleLbl.text = String.init(percentSale) + "%"
-        newPriceLbl.text = "$" + String.init(salePrice)
-        priceLbl.text = "$" + String.init(price)
+        newPriceLbl.text = "S$" + String.init(salePrice)
+        priceLbl.text = "S$" + String.init(price)
         let attributes : [NSAttributedStringKey : Any] = [ NSAttributedStringKey.font : UIFont.systemFont(ofSize: 11.0),
                                             NSAttributedStringKey.foregroundColor : UIColor.init(netHex: 0x848585),
                                             NSAttributedStringKey.strikethroughStyle : NSUnderlineStyle.styleSingle.rawValue]
-        let attStringSaySomething = NSAttributedString(string: "$" + String.init(price), attributes: attributes)
+        let attStringSaySomething = NSAttributedString(string: "S$" + String.init(price), attributes: attributes)
         priceLbl.attributedText = attStringSaySomething
     }
 }

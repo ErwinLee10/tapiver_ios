@@ -15,10 +15,10 @@ class TAPOrderItemModel: TAPBaseEntity {
     var colorName: String?
     var size: String?
     var quantity: Int?
-    var originalPrice: Int?
-    var salePrice: Int?
+    var originalPrice: Double?
+    var salePrice: Double?
     var discountPercentage: Int?
-    var finalPrice: Int?
+    var finalPrice: Double?
     var itemPictures: [String] = []
     
     override func parserResponse(dic: NSDictionary) {
@@ -28,10 +28,10 @@ class TAPOrderItemModel: TAPBaseEntity {
         colorName = dic.value(forKey: TAPConstants.APIParams.colorName) as? String
         size = dic.value(forKey: TAPConstants.APIParams.size) as? String
         quantity = dic.value(forKey: TAPConstants.APIParams.quantity) as? Int
-        originalPrice = dic.value(forKey: TAPConstants.APIParams.originalPrice) as? Int
-        salePrice = dic.value(forKey: TAPConstants.APIParams.salePrice) as? Int
+        originalPrice = dic.value(forKey: TAPConstants.APIParams.originalPrice) as? Double
+        salePrice = dic.value(forKey: TAPConstants.APIParams.salePrice) as? Double
         discountPercentage = dic.value(forKey: TAPConstants.APIParams.discountPercentage) as? Int
-        finalPrice = dic.value(forKey: TAPConstants.APIParams.finalPrice) as? Int
+        finalPrice = dic.value(forKey: TAPConstants.APIParams.finalPrice) as? Double
         itemPictures = dic.value(forKey: TAPConstants.APIParams.itemPictures) as? [String] ?? []
     }
     

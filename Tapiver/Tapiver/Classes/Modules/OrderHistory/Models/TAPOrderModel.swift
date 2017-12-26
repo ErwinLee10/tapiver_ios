@@ -12,7 +12,7 @@ class TAPOrderModel: TAPBaseEntity {
     var isCollapsed: Bool = true
     var id: Int64?
     var orderDate: Double?
-    var totalAmount: Int?
+    var totalAmount: Double?
     var orderStatus: String?
     var displayStatus: String?
     var shippingType: String?
@@ -31,7 +31,7 @@ class TAPOrderModel: TAPBaseEntity {
     override func parserResponse(dic: NSDictionary) {
         id = dic.value(forKey: TAPConstants.APIParams.id) as? Int64
         orderDate = dic.value(forKey: TAPConstants.APIParams.orderDate) as? Double
-        totalAmount = dic.value(forKey: TAPConstants.APIParams.totalAmount) as? Int
+        totalAmount = dic.value(forKey: TAPConstants.APIParams.totalAmount) as? Double
         orderStatus = dic.value(forKey: TAPConstants.APIParams.orderStatus) as? String
         displayStatus = self.covertOrderStatusToDisplayStatus()
         shippingType = dic.value(forKey: TAPConstants.APIParams.shippingType) as? String

@@ -127,7 +127,7 @@ class TAPCashbackView: UIViewController {
                 self.btReddem.backgroundColor = UIColor.init(netHex: 0x848585)
                 self.btReddem.isEnabled = false
             }
-            self.lbCostRedeem.text = "$\(count)"
+            self.lbCostRedeem.text = "S$\(count)"
         }
         
         self.tableview.reloadData()
