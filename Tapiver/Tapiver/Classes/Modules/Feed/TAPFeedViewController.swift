@@ -144,7 +144,22 @@ extension TAPFeedViewController: TAPFeedTableViewCellDelegate {
         TAPMainFrame.getNavi().pushViewController(vc, animated: true)
     }
     
-    func tapIteamAt(index: NSIndexPath, indexItem: NSIndexPath) {
-        
+    func tapIteamAt(index: IndexPath, item: TAPProductModel) {
+        let productViewController: TAPProductMainPageViewController = TAPProductMainPageViewController(nibName: "TAPProductMainPageViewController", bundle: nil)
+        productViewController.setData(id: item.id!, title: (self.feedsApiModels?.feedModels[index.row].sellerName)!)
+        TAPMainFrame.getNavi().pushViewController(productViewController, animated: true)
+    }
+    
+    func followShop(at row: Int) {
+        TAPWebservice.shareInstance.sendDELETERequest(path: "/api/v1/u/\(TAPGlobal.shared.getLoginModel()?.userId ?? "")/follow/\(self.feedsApiModels?.feedModels[row].sellerId ?? 0)", responseHandler: { (check, response) in
+            if check {
+                self.feedsApiModels?.feedModels.remove(at: row)
+                
+                self.tableData.reloadData()
+            }
+            else {
+                TAPDialogUtils.shareInstance.showAlertMessageOneButton(title: "", message: "Server error, please contact Tapiver team for assistance", positive: "OK", positiveHandler: nil, vc: self)
+            }
+        })
     }
 }

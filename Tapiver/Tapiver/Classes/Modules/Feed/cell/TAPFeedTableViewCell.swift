@@ -12,7 +12,7 @@ import SDWebImage
 @objc protocol TAPFeedTableViewCellDelegate {
     @objc optional func tapIteamAt (index: IndexPath , item: TAPProductModel)
     @objc optional func tapShop(at row: Int)
-    
+    @objc optional func followShop(at row: Int)
 }
 enum MainPageViewType: Int {
     case MainPageViewTypeFeed
@@ -53,6 +53,12 @@ class TAPFeedTableViewCell: UITableViewCell {
         if let row = self.row {
             delegate?.tapShop?(at: row)
         }
+    }
+    @IBAction func followButtonTap(_ sender: UIButton) {
+        if let row = self.row {
+            delegate?.followShop?(at: row)
+        }
+        
     }
 }
 

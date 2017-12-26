@@ -146,5 +146,48 @@ extension TAPMallPageShopViewController: TAPFeedTableViewCellDelegate {
     func tapIteamAt(index: IndexPath, item: TAPProductModel) {
         openProductPage(product: item, feedModel: feedModelList[index.row])
     }
+    
+    func followShop(at row: Int) {
+        if self.feedModelList[row].isFollowedByThisUser == true {
+            TAPWebservice.shareInstance.sendDELETERequest(path: "/api/v1/u/\(TAPGlobal.shared.getLoginModel()?.userId ?? "")/follow/\(self.feedModelList[row].sellerId ?? 0)", responseHandler: { (check, response) in
+                if check {
+                    self.feedModelList[row].sellerTotalFollower = response as? Int
+                    
+                    if self.feedModelList[row].isFollowedByThisUser == true {
+                        self.feedModelList[row].isFollowedByThisUser = false
+                    }
+                    else {
+                        self.feedModelList[row].isFollowedByThisUser = true
+                    }
+                    
+                    let indexPath = IndexPath(item: row, section: 0)
+                    self.contentTableView.reloadRows(at: [indexPath], with: .none)
+                }
+                else {
+                    TAPDialogUtils.shareInstance.showAlertMessageOneButton(title: "", message: "Server error, please contact Tapiver team for assistance", positive: "OK", positiveHandler: nil, vc: self)
+                }
+            })
+        }
+        else {
+            TAPWebservice.shareInstance.sendPOSTRequest(path: API_PATH(path: "/api/v1/u/\(TAPGlobal.shared.getLoginModel()?.userId ?? "")/follow/\(self.feedModelList[row].sellerId ?? 0)"), params: [:]) { (check, response) in
+                if check {
+                    self.feedModelList[row].sellerTotalFollower = response
+                    
+                    if self.feedModelList[row].isFollowedByThisUser == true {
+                        self.feedModelList[row].isFollowedByThisUser = false
+                    }
+                    else {
+                        self.feedModelList[row].isFollowedByThisUser = true
+                    }
+                    
+                    let indexPath = IndexPath(item: row, section: 0)
+                    self.contentTableView.reloadRows(at: [indexPath], with: .none)
+                }
+                else {
+                    TAPDialogUtils.shareInstance.showAlertMessageOneButton(title: "", message: "Server error, please contact Tapiver team for assistance", positive: "OK", positiveHandler: nil, vc: self)
+                }
+            }
+        }
+    }
 }
 

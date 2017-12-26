@@ -120,12 +120,64 @@ extension TAPDiscoverViewController: TAPMainPageHeaderViewDelegate {
 
 extension TAPDiscoverViewController: TAPFeedTableViewCellDelegate {
     func tapShop(at row: Int) {
-        
+        let vc = TAPStorePageViewController(nibName: "TAPStorePageViewController", bundle: nil)
+//        let feedModel = TAPFeedModel.init()
+//        feedModel.sellerPicture = data?.sellerPicture
+//        feedModel.sellerName = data?.sellerName
+//        feedModel.sellerTotalFollower = data?.sellerTotalFollower
+//        //feedModel.sellerCoverPicture = data.sellerc
+//        feedModel.sellerId = Int(data?.sellerId ?? "0")
+//        feedModel.sellerAddress = data?.sellerAddress
+        vc.feedModel = self.feedsApiModels?.feedModels[row]
+        TAPMainFrame.getNavi().pushViewController(vc, animated: true)
     }
     
     func tapIteamAt(index: IndexPath, item: TAPProductModel) {
         let productViewController: TAPProductMainPageViewController = TAPProductMainPageViewController(nibName: "TAPProductMainPageViewController", bundle: nil)
         productViewController.setData(id: item.id!, title: (self.feedsApiModels?.feedModels[index.row].sellerName)!)
         TAPMainFrame.getNavi().pushViewController(productViewController, animated: true)
+    }
+    
+    func followShop(at row: Int) {
+        if self.feedsApiModels?.feedModels[row].isFollowedByThisUser == true {
+            TAPWebservice.shareInstance.sendDELETERequest(path: "/api/v1/u/\(TAPGlobal.shared.getLoginModel()?.userId ?? "")/follow/\(self.feedsApiModels?.feedModels[row].sellerId ?? 0)", responseHandler: { (check, response) in
+                if check {
+                    self.feedsApiModels?.feedModels[row].sellerTotalFollower = response as? Int
+                    
+                    if self.feedsApiModels?.feedModels[row].isFollowedByThisUser == true {
+                        self.feedsApiModels?.feedModels[row].isFollowedByThisUser = false
+                    }
+                    else {
+                        self.feedsApiModels?.feedModels[row].isFollowedByThisUser = true
+                    }
+                    
+                    let indexPath = IndexPath(item: row, section: 0)
+                    self.tableView.reloadRows(at: [indexPath], with: .none)
+                }
+                else {
+                    TAPDialogUtils.shareInstance.showAlertMessageOneButton(title: "", message: "Server error, please contact Tapiver team for assistance", positive: "OK", positiveHandler: nil, vc: self)
+                }
+            })
+        }
+        else {
+            TAPWebservice.shareInstance.sendPOSTRequest(path: API_PATH(path: "/api/v1/u/\(TAPGlobal.shared.getLoginModel()?.userId ?? "")/follow/\(self.feedsApiModels?.feedModels[row].sellerId ?? 0)"), params: [:]) { (check, response) in
+                if check {
+                    self.feedsApiModels?.feedModels[row].sellerTotalFollower = response
+                    
+                    if self.feedsApiModels?.feedModels[row].isFollowedByThisUser == true {
+                        self.feedsApiModels?.feedModels[row].isFollowedByThisUser = false
+                    }
+                    else {
+                        self.feedsApiModels?.feedModels[row].isFollowedByThisUser = true
+                    }
+                    
+                    let indexPath = IndexPath(item: row, section: 0)
+                    self.tableView.reloadRows(at: [indexPath], with: .none)
+                }
+                else {
+                    TAPDialogUtils.shareInstance.showAlertMessageOneButton(title: "", message: "Server error, please contact Tapiver team for assistance", positive: "OK", positiveHandler: nil, vc: self)
+                }
+            }
+        }
     }
 }

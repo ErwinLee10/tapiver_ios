@@ -86,6 +86,9 @@
                                                 <real key="value" value="1"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="followButtonTap:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="jDu-Od-UPy"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

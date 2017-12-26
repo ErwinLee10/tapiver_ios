@@ -508,6 +508,12 @@ class TAPProductMainPageViewController: UIViewController, TapProductShippingView
     }
     
     @IBAction func cartButtonTap(_ sender: UIButton) {
+        guard TAPGlobal.shared.hasLogin() else {
+            TAPMainFrame.showLoginPageMain()
+            return
+        }
+        let cartVC = TAPCartViewController(nibName: "TAPCartViewController", bundle: nil)
+        TAPMainFrame.getNavi().pushViewController(cartVC, animated: true)
     }
     
     @IBAction func addToCartButtonTap(_ sender: UIButton) {

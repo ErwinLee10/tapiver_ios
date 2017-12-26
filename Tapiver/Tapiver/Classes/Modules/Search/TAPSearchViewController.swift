@@ -20,8 +20,13 @@ class TAPSearchViewController: TAPBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setupView()
+        searchTextField.tintColor = .white
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        searchTextField.becomeFirstResponder()
     }
 
     @IBAction func backBtnTouched(_ sender: Any) {
