@@ -119,7 +119,7 @@ class TAPPayMentMethodView: UIViewController {
         }
 
         TAPGlobal.shared.showLoading()
-        TAPWebservice.shareInstance.sendPOSTRequest(path: apiPath, params: params as? [String : Any], responseObjectClass: TAPBaseEntity()) { [weak self] (success, responseEntity) in
+        TAPWebservice.shareInstance.sendPOSTRequest(path: apiPath, params: params, responseObjectClass: TAPBaseEntity()) { [weak self] (success, responseEntity) in
             //SVProgressHUD.dismiss()
             TAPGlobal.shared.dismissLoading()
             if success {
@@ -131,22 +131,24 @@ class TAPPayMentMethodView: UIViewController {
             }
         }
     }
-    private func createParams(token: String) -> NSDictionary {
+    private func createParams(token: String) -> Dictionary<String, Any> {
         let total = reviewObj?.cardList?.originalTotalAmount ?? 0
         let addShipping = reviewObj?.address?.id ?? 0
+        
+        let totalAmountIncludeShipping = String(Double(total) + getIdParams().disCount)
+        let dict = getIdParams().orderPerSellers
+        
         let subParam: [String : Any] = ["stripeToken" : token ,
                                         "totalAmountWithoutShipping": total,
                                         "shippingAddressId" : addShipping,
                                         "billingAddressId"  : reviewObj?.addressBilling?.id ?? addShipping,
-                                        "couponName"        : reviewObj?.cardList?.coupon?.name ?? ""
+                                        "couponName"        : reviewObj?.cardList?.coupon?.name ?? "",
+                                        "totalAmountIncludeShipping": totalAmountIncludeShipping,
+                                        "orderPerSellers": dict
         ]
-        let params = NSMutableDictionary.init(dictionary: subParam)
-        let totalAmountIncludeShipping = String(Double(total) + getIdParams().disCount)
-        let dict = getIdParams().orderPerSellers
-        params.setObject(totalAmountIncludeShipping, forKey: "totalAmountIncludeShipping" as NSCopying)
-        params.setObject(dict, forKey: "orderPerSellers" as NSCopying)
-        print("params = \(params)")
-        return params
+        
+        print("params = \(subParam)")
+        return subParam
     }
     private func getIdParams() -> ( disCount: Double, orderPerSellers:[Dictionary<String, Any>] ){
         if let list =  self.reviewObj?.cardList?.cartItemsPerSeller {
