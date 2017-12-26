@@ -150,6 +150,14 @@ class TAPAddressMethodController: UIViewController {
                 break
             }
         }
+        if !isSelectSameAs {
+            for item in self.listBilling {
+                if item.isSelected == true {
+                    obj.addressBilling = item.addObj
+                }
+            }
+            
+        }
         obj.cardList = cardList;
         return obj
     }
@@ -319,7 +327,7 @@ extension TAPAddressMethodController: UITableViewDataSource {
 
 extension TAPAddressMethodController: TAPHeaderViewDelegate {
     func headerViewDidTouchBack() {
-        self.navigationController?.popViewController(animated: true)
+//        self.navigationController?.popViewController(animated: true)
     }
 }
 

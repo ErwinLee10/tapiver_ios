@@ -10,7 +10,7 @@ import UIKit
 
 let HEIGHT_ADD_LESS: CGFloat = 1
 let HEIGHT_ADD_MORE: CGFloat = 80.0
-let STATIC_HEIGHT_ADD_MORE: CGFloat = 10.0 + 21.0 + 8.0 + 50.0 + 8.0 + 8.0 + 40.0 + 2.0
+let STATIC_HEIGHT_ADD_MORE: CGFloat = 147.0//10.0 + 21.0 + 8.0 + 50.0 + 8.0 + 8.0 + 40.0 + 2.0
 
 class TAPReViewOrderController: UIViewController {
     @IBOutlet weak var lbTotal: UILabel!
@@ -56,7 +56,7 @@ class TAPReViewOrderController: UIViewController {
 }
 extension TAPReViewOrderController: TAPHeaderViewDelegate {
     func headerViewDidTouchBack() {
-        self.navigationController?.popViewController(animated: true)
+//        self.navigationController?.popViewController(animated: true)
     }
 }
 extension TAPReViewOrderController: UITableViewDataSource {
