@@ -52,26 +52,7 @@ class TAPPayMentMethodView: UIViewController {
         
     }
     @IBAction func acPlaceOrder(_ sender: Any) {
-        if tfExpDate.text?.isEmpty == true {
-            return
-        }
-        let tripCardParams = STPCardParams()
-        let expireDate = self.tfExpDate.text?.components(separatedBy: "/")
-        if expireDate!.count < 2 {
-            return
-        }
-        if expireDate!.count < 3 {
-            return
-        }
-        let expMonth = UInt(Int(expireDate![1])!)
-        let expYear = UInt(Int(expireDate![0])!)
-        let expDay = UInt(Int(expireDate![2])!)
-        
-        tripCardParams.number = tfCardNumber.text
-        tripCardParams.cvc = tfCsv.text
-        tripCardParams.expMonth = expMonth
-        tripCardParams.expYear = expYear
-        tripCardParams.name = "Credit"
+        getStripeToken(expDate: self.tfExpDate.text!, csv: self.tfCsv.text!)
         
     }
     private func getStripeToken(expDate: String, csv: String) {
@@ -98,7 +79,7 @@ class TAPPayMentMethodView: UIViewController {
         tripCardParams.cvc = tfCsv.text
         tripCardParams.expMonth = expMonth
         tripCardParams.expYear = expYear
-        tripCardParams.name = "Credit"
+        tripCardParams.name = cardName()
         
         if (STPCardValidator.validationState(forCard: tripCardParams) == .valid) {
             TAPGlobal.shared.showLoading()
@@ -117,24 +98,96 @@ class TAPPayMentMethodView: UIViewController {
         }
         
     }
+    private func cardName() -> String {
+        switch self.cardType {
+        case .credit:
+            return "Credit/Debit"
+        case .paypal:
+            return "Paypal"
+        case .pickup:
+            return "Pickup"
+        }
+    }
     private func callApi(tokenStripe: String) {
-        let params = ["":""]
+        let params = createParams(token:tokenStripe)
         TAPGlobal.shared.showLoading()
-        TAPWebservice.shareInstance.sendPOSTRequest(path: API_PATH(path: "/api/v1/u/\(TAPGlobal.shared.getLoginModel()?.userId ?? "")/checkout"), params: params as NSDictionary) { [weak self] (isSucess, value) in
-            if isSucess {
-                
-            }else {
-                TAPDialogUtils.shareInstance.showAlertMessageOneButton(title: "", message: "Server error, please contact Tapiver team for assistance", positive: "OK", positiveHandler: nil, vc: self!)
-            }
+        var apiPath = ""
+        if(TAPGlobal.shared.hasLogin()) {
+            apiPath = "/api/v1/u/\(TAPGlobal.shared.getLoginModel()?.userId ?? "")/checkout"
+        }else {
+            apiPath = TAPConstants.APIPath.overview
+        }
+
+        TAPGlobal.shared.showLoading()
+        TAPWebservice.shareInstance.sendPOSTRequest(path: apiPath, params: params as? [String : Any], responseObjectClass: TAPBaseEntity()) { [weak self] (success, responseEntity) in
+            //SVProgressHUD.dismiss()
             TAPGlobal.shared.dismissLoading()
+            if success {
+    
+            }
+            else {
+                guard let weakSelf = self else { return }
+                TAPDialogUtils.shareInstance.showAlertMessageOneButton(title: "", message: "Server error, please contact Tapiver team for assistance", positive: "OK", positiveHandler: nil, vc: weakSelf)
+            }
+        }
+    }
+    private func createParams(token: String) -> NSDictionary {
+        let total = reviewObj?.cardList?.originalTotalAmount ?? 0
+        let addShipping = reviewObj?.address?.id ?? 0
+        let subParam: [String : Any] = ["stripeToken" : token ,
+                                        "totalAmountWithoutShipping": total,
+                                        "shippingAddressId" : addShipping,
+                                        "billingAddressId"  : reviewObj?.addressBilling?.id ?? addShipping,
+                                        "couponName"        : reviewObj?.cardList?.coupon?.name ?? ""
+        ]
+        let params = NSMutableDictionary.init(dictionary: subParam)
+        let totalAmountIncludeShipping = String(Double(total) + getIdParams().disCount)
+        let dict = getIdParams().orderPerSellers
+        params.setObject(totalAmountIncludeShipping, forKey: "totalAmountIncludeShipping" as NSCopying)
+        params.setObject(dict, forKey: "orderPerSellers" as NSCopying)
+        print("params = \(params)")
+        return params
+    }
+    private func getIdParams() -> ( disCount: Double, orderPerSellers:[Dictionary<String, Any>] ){
+        if let list =  self.reviewObj?.cardList?.cartItemsPerSeller {
+            var listKeyPerSeller = [Dictionary<String, Any>]()
+            var disCount: Double = 0.0
+            for item in list {
+                var shipping = TAPShippingModel()
+                for itemAdd in item.shippingOptions {
+                    if itemAdd.isSelect == true {
+                        shipping = itemAdd
+                        if itemAdd.isPickup == true {
+                            disCount += -(Double((itemAdd.additionalInfor?.cashbackPercentage)! / 100) * Double(item.totalPrice!))
+                        }else {
+                            disCount += Double(itemAdd.price!)
+                        }
+                    }
+                }
+                let dict: [String : Any] = ["sellerId" : String(item.sellerId ?? 0),
+                                            "shippingId" : String(shipping.idShip ?? 0),
+                                            "subAmount": String(item.totalPrice ?? 0)
+                ]
+                listKeyPerSeller.append(dict)
+            }
+            return (disCount, listKeyPerSeller)
         }
         
+        return (0.0, [])
     }
-    private func createParams() -> NSDictionary {
-        
-        return NSDictionary()
-    }
-    
+    //    {
+    //    "stripeToken" : "tok_1A7EhKGaV3oLL0KEZZoFzi2V",
+    //    "totalAmountWithoutShipping" : 60,
+    //    "totalAmountIncludeShipping": 62,
+    //    "couponName" : "discount5",
+    //    "shippingAddressId" : 1,
+    //    "billingAddressId" : 1,
+    //    "orderPerSellers": [{
+    //    "sellerId" : 1,
+    //    "shippingId": 1,
+    //    "subAmount": 60
+    //    }]
+    //    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -143,7 +196,7 @@ class TAPPayMentMethodView: UIViewController {
 
 extension TAPPayMentMethodView: TAPHeaderViewDelegate {
     func headerViewDidTouchBack() {
-        self.navigationController?.popViewController(animated: true)
+//        self.navigationController?.popViewController(animated: true)
     }
 }
 

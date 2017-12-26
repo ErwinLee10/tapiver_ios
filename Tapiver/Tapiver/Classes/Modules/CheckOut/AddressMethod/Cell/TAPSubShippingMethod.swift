@@ -20,6 +20,7 @@ class TAPSubShippingMethod: UITableViewCell {
     @IBOutlet weak var lbNumber: UILabel!
     public var index: IndexPath?
     public var obj: TAPShippingModel?
+    public var totalCost: Double?
     public weak var delegate: TAPSubShippingMethodDelegate?
     
     override func awakeFromNib() {
@@ -32,7 +33,7 @@ class TAPSubShippingMethod: UITableViewCell {
         if obj?.isfreeShipping == true {
             self.lbNumber.text = "Free"
         }else {
-            self.lbNumber.text = "S$ \(obj!.price ?? 0.00)"
+            self.lbNumber.text = "S$ " + String.init(format: "%.2f", (obj!.price ?? 0.00))
         }
         self.lbCashBack.isHidden = true
         if let cashBack = obj!.additionalInfor?.cashbackPercentage {
@@ -42,6 +43,8 @@ class TAPSubShippingMethod: UITableViewCell {
                 self.lbCashBack.isHidden = true
             }
             self.lbCashBack.text  = "Cashback \(cashBack)%"
+            let discount = String.init(format: "%.2f", Double(cashBack/100) * totalCost!)
+            self.lbNumber.text = "S$ " + discount
         }
     }
     

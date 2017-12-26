@@ -137,9 +137,11 @@ extension TAPShippingMethodCell: UITableViewDataSource {
         guard let items = self.checkOut?.listShipping[indexPath.section]  else {
             return UITableViewCell()
         }
+        let ite = items.shippingOptions[indexPath.row]
         cell.delegate = self
         cell.index = indexPath
-        cell.obj = items.shippingOptions[indexPath.row]
+        cell.obj = ite
+        cell.totalCost = Double(items.totalPrice!)
         cell.setData()
         return cell
     }

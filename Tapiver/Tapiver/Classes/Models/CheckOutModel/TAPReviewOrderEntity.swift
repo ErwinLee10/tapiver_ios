@@ -10,6 +10,7 @@ import UIKit
 
 class TAPReviewOrderEntity: TAPBaseEntity {
     var address: TAPAddressModel?
+    var addressBilling: TAPAddressModel?
     var cardList: TAPCartListModel?
     var isViewAddLess: Bool = false
     var isViewDetail: Bool = false
