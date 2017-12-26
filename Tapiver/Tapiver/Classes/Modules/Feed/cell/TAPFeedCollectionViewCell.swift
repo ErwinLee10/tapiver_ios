@@ -9,6 +9,9 @@
 import UIKit
 import SDWebImage
 
+protocol TAPFeedCollectionViewCellDelegate {
+    func selectCell(indexPath: IndexPath)
+}
 
 class TAPFeedCollectionViewCell: UICollectionViewCell {
     
@@ -29,6 +32,9 @@ class TAPFeedCollectionViewCell: UICollectionViewCell {
     
     private var currentIdex: Int = 0
     private var items: [String]  = []
+    
+    var delegate: TAPFeedCollectionViewCellDelegate?
+    var indexPath: IndexPath?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -125,6 +131,10 @@ extension TAPFeedCollectionViewCell: iCarouselDataSource, iCarouselDelegate {
             return value;
         }
         return value
+    }
+    
+    func carousel(_ carousel: iCarousel, didSelectItemAt index: Int) {
+        delegate?.selectCell(indexPath: indexPath!)
     }
     
 }

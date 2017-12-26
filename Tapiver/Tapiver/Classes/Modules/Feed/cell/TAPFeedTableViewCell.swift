@@ -74,6 +74,9 @@ extension TAPFeedTableViewCell: UICollectionViewDataSource {
         }
         cell.fillDataToView(model: items[indexPath.item])
         cell.hiddenViewAll(isHidden: indexPath.item != items.count - 1)
+        cell.delegate = self
+        cell.indexPath = indexPath
+        
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -96,6 +99,13 @@ extension TAPFeedTableViewCell: UICollectionViewDelegateFlowLayout {
     }
 }
 
-extension TAPFeedTableViewCell: UICollectionViewDelegate {
+extension TAPFeedTableViewCell: TAPFeedCollectionViewCellDelegate {
+    func selectCell(indexPath: IndexPath) {
+        if delegate != nil {
+            let item = items[indexPath.row]
+            delegate?.tapIteamAt!(index: indexPath, item: item)
+        }
+    }
+    
     
 }

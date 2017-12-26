@@ -84,8 +84,16 @@ class TAPFeedViewController: TAPBaseViewController  {
         apiPath = "/api/v1/u/\(TAPGlobal.shared.getLoginModel()?.userId ?? "")/cart"
         TAPWebservice.shareInstance.sendGETRequest(path: apiPath, params: [:], responseObjectClass: TAPCartListModel()) { (success, responseEntity) in
             if success, let cartListModel = responseEntity as? TAPCartListModel {
-                let number = String(cartListModel.cartItemsPerSeller.count)
-                 NotificationCenter.default.post(name:Notification.Name(rawValue:TAPConstants.NotificationName.ChangeCartNumber), object: ["number": number])
+                var number = 0
+                for item in cartListModel.cartItemsPerSeller {
+                    for product in item.productVariations {
+                        if (product.quantity != nil) {
+                            number += product.quantity!
+                        }
+                    }
+                }
+                
+                 NotificationCenter.default.post(name:Notification.Name(rawValue:TAPConstants.NotificationName.ChangeCartNumber), object: ["number": String(number)])
             } else {
                 
             }

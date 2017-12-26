@@ -12,7 +12,7 @@ import SDWebImage
 import DropDown
 //import SVProgressHUD
 
-class TAPProductMainPageViewController: UIViewController, TapProductShippingView2Delegate {
+class TAPProductMainPageViewController: UIViewController {
 
     // top bar
     @IBOutlet weak var cartButton: MIBadgeButton!
@@ -617,50 +617,6 @@ class TAPProductMainPageViewController: UIViewController, TapProductShippingView
         addToCartView.isHidden = false
     }
     
-    func showStorePickUp() {
-        storePickUpView.isHidden = false
-        if data?.sellerAddress?.floor == nil || data?.sellerAddress?.floor == "" || data?.sellerAddress?.unitNumber == nil || data?.sellerAddress?.unitNumber == "" {
-            storePickUpLocationLabel.text = "\(data?.sellerAddress?.buildingName ?? "")\n\(data?.sellerAddress?.streetName ?? "")"
-        }
-        else {
-            storePickUpLocationLabel.text = "\(data?.sellerAddress?.buildingName ?? "") #\(data?.sellerAddress?.floor ?? "")-\(data?.sellerAddress?.unitNumber ?? "")\n\(data?.sellerAddress?.streetName ?? "")"
-        }
-        
-        var openString = ""
-        for i in 0..<(data?.openingHours?.count)! {
-            if i != 0 {
-                openString += "\n"
-            }
-            switch i {
-            case 0:
-                openString += "Monday: \(data?.openingHours![i] ?? "")"
-                break
-            case 1:
-                openString += "Tuesday: \(data?.openingHours![i] ?? "")"
-                break
-            case 2:
-                openString += "Wednesday: \(data?.openingHours![i] ?? "")"
-                break
-            case 3:
-                openString += "Thursday: \(data?.openingHours![i] ?? "")"
-                break
-            case 4:
-                openString += "Friday: \(data?.openingHours![i] ?? "")"
-                break
-            case 5:
-                openString += "Saturday: \(data?.openingHours![i] ?? "")"
-                break
-            case 6:
-                openString += "Sunday: \(data?.openingHours![i] ?? "")"
-                break
-            default:
-                break
-            }
-        }
-        
-        storePickUpOpenTimeLabel.text = openString
-    }
-    
     @IBAction func storePickUpButtonTap(_ sender: UIButton) {
         storePickUpView.isHidden = true
     }
@@ -769,6 +725,52 @@ class TAPProductMainPageViewController: UIViewController, TapProductShippingView
         var n = Double(num)
         n = Double( floor(n/100000)/10 )
         return "\(n.description)m"
+    }
+}
+
+extension TAPProductMainPageViewController: TapProductShippingView2Delegate {
+    func showStorePickUp() {
+        storePickUpView.isHidden = false
+        if data?.sellerAddress?.floor == nil || data?.sellerAddress?.floor == "" || data?.sellerAddress?.unitNumber == nil || data?.sellerAddress?.unitNumber == "" {
+            storePickUpLocationLabel.text = "\(data?.sellerAddress?.buildingName ?? "")\n\(data?.sellerAddress?.streetName ?? "")"
+        }
+        else {
+            storePickUpLocationLabel.text = "\(data?.sellerAddress?.buildingName ?? "") #\(data?.sellerAddress?.floor ?? "")-\(data?.sellerAddress?.unitNumber ?? "")\n\(data?.sellerAddress?.streetName ?? "")"
+        }
+        
+        var openString = ""
+        for i in 0..<(data?.openingHours?.count)! {
+            if i != 0 {
+                openString += "\n"
+            }
+            switch i {
+            case 0:
+                openString += "Monday: \(data?.openingHours![i] ?? "")"
+                break
+            case 1:
+                openString += "Tuesday: \(data?.openingHours![i] ?? "")"
+                break
+            case 2:
+                openString += "Wednesday: \(data?.openingHours![i] ?? "")"
+                break
+            case 3:
+                openString += "Thursday: \(data?.openingHours![i] ?? "")"
+                break
+            case 4:
+                openString += "Friday: \(data?.openingHours![i] ?? "")"
+                break
+            case 5:
+                openString += "Saturday: \(data?.openingHours![i] ?? "")"
+                break
+            case 6:
+                openString += "Sunday: \(data?.openingHours![i] ?? "")"
+                break
+            default:
+                break
+            }
+        }
+        
+        storePickUpOpenTimeLabel.text = openString
     }
 }
 

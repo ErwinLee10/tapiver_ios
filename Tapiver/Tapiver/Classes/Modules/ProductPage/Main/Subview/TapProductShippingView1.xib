@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -43,6 +44,7 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Kwu-4U-GcI" secondAttribute="bottom" id="aNx-gv-NMy"/>
                 <constraint firstItem="Kwu-4U-GcI" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="e4M-I0-kb8"/>
                 <constraint firstItem="Kwu-4U-GcI" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="8" id="g7V-Og-uJ3"/>
+                <constraint firstItem="Kwu-4U-GcI" firstAttribute="width" relation="lessThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="0.5" id="hSd-U8-5Ua"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="KCE-vX-Utl" secondAttribute="bottom" id="m9u-kd-ftC"/>
                 <constraint firstItem="KCE-vX-Utl" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="zA9-UL-E5U"/>
             </constraints>
