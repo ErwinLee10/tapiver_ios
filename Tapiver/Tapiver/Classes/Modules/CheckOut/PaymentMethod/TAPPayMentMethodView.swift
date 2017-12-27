@@ -84,14 +84,16 @@ class TAPPayMentMethodView: UIViewController {
         if (STPCardValidator.validationState(forCard: tripCardParams) == .valid) {
             TAPGlobal.shared.showLoading()
             STPAPIClient.shared().createToken(withCard: tripCardParams, completion: { [weak self] (token, error) in
+                TAPGlobal.shared.dismissLoading()
                 if error != nil {
-                    print("token = \(error?.localizedDescription ?? "")")
+                    print("tokenError = \(error?.localizedDescription ?? "")")
+                    TAPDialogUtils.shareInstance.showAlertMessageOneButton(title: "", message: "\(error?.localizedDescription ?? "")", positive: "OK", positiveHandler: nil, vc: self!)
                     return
                 }else {
                     print("token = \(token?.tokenId ?? "")")
                     self?.callApi(tokenStripe: token?.tokenId ?? "")
                 }
-                TAPGlobal.shared.dismissLoading()
+                
             })
         }else {
             print("error card")
@@ -117,13 +119,14 @@ class TAPPayMentMethodView: UIViewController {
         }else {
             apiPath = TAPConstants.APIPath.overview
         }
-
+        let header = ["Content-Type": "application/json",
+                      "Authorization": TAPGlobal.shared.getLoginModel()?.webSessionId ?? ""
+        ]
         TAPGlobal.shared.showLoading()
-        TAPWebservice.shareInstance.sendPOSTRequest(path: apiPath, params: params, responseObjectClass: TAPBaseEntity()) { [weak self] (success, responseEntity) in
-            //SVProgressHUD.dismiss()
+        TAPWebservice.shareInstance.sendPOSTRequest(path: API_PATH(path: apiPath), params: params as NSDictionary, headers: header as NSDictionary, responseObjectClass: TAPBaseEntity()) {[weak self] (success, obj) in
             TAPGlobal.shared.dismissLoading()
             if success {
-    
+                
             }
             else {
                 guard let weakSelf = self else { return }
@@ -142,7 +145,7 @@ class TAPPayMentMethodView: UIViewController {
                                         "totalAmountWithoutShipping": total,
                                         "shippingAddressId" : addShipping,
                                         "billingAddressId"  : reviewObj?.addressBilling?.id ?? addShipping,
-                                        "couponName"        : reviewObj?.cardList?.coupon?.name ?? "",
+                                        "couponName"        : reviewObj?.cardList?.coupon?.name ?? " ",
                                         "totalAmountIncludeShipping": totalAmountIncludeShipping,
                                         "orderPerSellers": dict
         ]
@@ -150,9 +153,9 @@ class TAPPayMentMethodView: UIViewController {
         print("params = \(subParam)")
         return subParam
     }
-    private func getIdParams() -> ( disCount: Double, orderPerSellers:[Dictionary<String, Any>] ){
+    private func getIdParams() -> ( disCount: Double, orderPerSellers:[NSDictionary] ){
         if let list =  self.reviewObj?.cardList?.cartItemsPerSeller {
-            var listKeyPerSeller = [Dictionary<String, Any>]()
+            var listKeyPerSeller = [NSDictionary]()
             var disCount: Double = 0.0
             for item in list {
                 var shipping = TAPShippingModel()
@@ -166,16 +169,35 @@ class TAPPayMentMethodView: UIViewController {
                         }
                     }
                 }
-                let dict: [String : Any] = ["sellerId" : String(item.sellerId ?? 0),
-                                            "shippingId" : String(shipping.idShip ?? 0),
-                                            "subAmount": String(item.totalPrice ?? 0)
-                ]
-                listKeyPerSeller.append(dict)
+                let dict: [String : Any] = ["sellerId" : item.sellerId ?? 0,
+                                            "shippingId" : shipping.idShip ?? 0,
+                                            "subAmount": item.totalPrice ?? 0]
+                
+                let nDict = dict as NSDictionary
+                listKeyPerSeller.append(nDict)
             }
             return (disCount, listKeyPerSeller)
         }
         
         return (0.0, [])
+    }
+    private func jsonStringParam(param: [Dictionary<String, Any>]) -> String {
+        do {
+            
+            //Convert to Data
+            let jsonData = try JSONSerialization.data(withJSONObject: param, options: JSONSerialization.WritingOptions.prettyPrinted)
+            
+            //Do this for print data only otherwise skip
+            if let JSONString = String(data: jsonData, encoding: String.Encoding.utf8) {
+                print(JSONString)
+                return JSONString
+            }else {
+                return ""
+            }
+            
+        } catch {
+            return ""
+        }
     }
     //    {
     //    "stripeToken" : "tok_1A7EhKGaV3oLL0KEZZoFzi2V",
