@@ -9,6 +9,7 @@
 import UIKit
 import FBSDKCoreKit
 import Stripe
+import IQKeyboardManagerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -53,6 +54,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 self.window!.rootViewController = navi
             }
         }
+		
+		IQKeyboardManager.sharedManager().enable = true
 
         return true
     }

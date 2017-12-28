@@ -34,7 +34,7 @@ class TAPPayMentMethodView: UIViewController {
     }
     private func initIB() {
         self.headerView.delegate = self
-        IQKeyboardManager.sharedManager().enable = true
+        //IQKeyboardManager.sharedManager().enable = true
     }
     
     private func createCardType() {

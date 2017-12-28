@@ -38,7 +38,6 @@ class TAPRedeemRequest: UIView,UITextFieldDelegate {
     }
     
     private func initIB() {
-        IQKeyboardManager.sharedManager().enable = true
         drop.dismissMode = .onTap
     }
     private func createDrop() {

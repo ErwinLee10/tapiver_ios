@@ -41,7 +41,7 @@ class TAPAddNewAddressViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        IQKeyboardManager.sharedManager().enable = true
+        //IQKeyboardManager.sharedManager().enable = true
         
 //        let backButton = UIBarButtonItem()
 //        backButton.title = ""
