@@ -38,14 +38,8 @@ class TAPCategoryViewController: TAPBaseViewController {
                                  TAPConstants.APIParams.hasProducts: "1",
                                  TAPConstants.APIParams.sellerId: sellerId ?? ""
         ]
-        var apiPath: String
-        
-        if(TAPGlobal.shared.hasLogin()) {
-            apiPath = API_PATH(path: String.init(format: "/api/v1/categories", TAPGlobal.shared.getLoginModel()?.userId ?? ""))
-        } else {
-            apiPath = API_PATH(path: String.init(format: "/api/v1/s/overview", TAPGlobal.shared.getLoginModel()?.userId ?? ""))
-        }
-        //SVProgressHUD.show()
+        let apiPath = API_PATH(path: String.init(format: "/api/v1/categories"))
+
         TAPGlobal.shared.showLoading()
         TAPWebservice.shareInstance.sendGETRequest(path: apiPath, params: params as NSDictionary, headers: header, responseObjectClass: TAPListCategoryMenu()) { (success, response) in
             if success {
