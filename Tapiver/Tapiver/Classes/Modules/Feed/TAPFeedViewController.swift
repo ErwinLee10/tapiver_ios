@@ -28,21 +28,18 @@ class TAPFeedViewController: TAPBaseViewController  {
     }
     
     private func getData() {
+		if TAPGlobal.shared.hasLogin() == false {
+			self.nodataView.isHidden = false
+			return
+		}
+		
+		
         let header = NSMutableDictionary()
         header.setValue("application/json", forKey: "Content-Type")
         header.setValue(TAPGlobal.shared.getLoginModel()?.webSessionId ?? "", forKey: "Authorization")
         let params = NSMutableDictionary()
-        var apiPath: String
-        if(TAPGlobal.shared.hasLogin()) {
-            apiPath = API_PATH(path: String.init(format: "/api/v1/u/%@/feeds", TAPGlobal.shared.getLoginModel()?.userId ?? ""))
+		var apiPath = API_PATH(path: String.init(format: "/api/v1/u/%@/feeds", TAPGlobal.shared.getLoginModel()?.userId ?? ""))
             //params.setValue((0), forKey: "page")
-        } else {
-            apiPath = API_PATH(path: String.init(format: "/api/v1/s/overview", TAPGlobal.shared.getLoginModel()?.userId ?? ""))
-            //params.setValue((0), forKey: "page")
-            //params.setValue((0), forKey: "q")
-            //params.setValue((0), forKey: "landmarkId")
-            //params.setValue((0), forKey: "userId")
-        }
         //SVProgressHUD.show()
         TAPGlobal.shared.showLoading()
         TAPWebservice.shareInstance.sendGETRequest(path: apiPath, params: params, headers: header, responseObjectClass: TAPFeedApiModel()) { (success, response) in
@@ -80,24 +77,25 @@ class TAPFeedViewController: TAPBaseViewController  {
         }
         
         // get cart number
-        // hahalalamummy
-        apiPath = "/api/v1/u/\(TAPGlobal.shared.getLoginModel()?.userId ?? "")/cart"
-        TAPWebservice.shareInstance.sendGETRequest(path: apiPath, params: [:], responseObjectClass: TAPCartListModel()) { (success, responseEntity) in
-            if success, let cartListModel = responseEntity as? TAPCartListModel {
-                var number = 0
-                for item in cartListModel.cartItemsPerSeller {
-                    for product in item.productVariations {
-                        if (product.quantity != nil) {
-                            number += product.quantity!
-                        }
-                    }
-                }
-                
-                 NotificationCenter.default.post(name:Notification.Name(rawValue:TAPConstants.NotificationName.ChangeCartNumber), object: ["number": String(number)])
-            } else {
-                
-            }
-        }
+		if ((TAPGlobal.shared.getLoginModel()?.userId) != nil) {
+			apiPath = "/api/v1/u/\(TAPGlobal.shared.getLoginModel()?.userId ?? "")/cart"
+			TAPWebservice.shareInstance.sendGETRequest(path: apiPath, params: [:], responseObjectClass: TAPCartListModel()) { (success, responseEntity) in
+				if success, let cartListModel = responseEntity as? TAPCartListModel {
+					var number = 0
+					for item in cartListModel.cartItemsPerSeller {
+						for product in item.productVariations {
+							if (product.quantity != nil) {
+								number += product.quantity!
+							}
+						}
+					}
+					
+					NotificationCenter.default.post(name:Notification.Name(rawValue:TAPConstants.NotificationName.ChangeCartNumber), object: ["number": String(number)])
+				} else {
+					
+				}
+			}
+		}
     }
 }
 

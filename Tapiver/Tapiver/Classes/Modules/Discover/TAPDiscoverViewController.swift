@@ -139,6 +139,12 @@ extension TAPDiscoverViewController: TAPFeedTableViewCellDelegate {
     }
     
     func followShop(at row: Int) {
+		if TAPGlobal.shared.hasLogin() == false {
+			TAPMainFrame.showLoginPageMain()
+			return
+		}
+		
+		
         if self.feedsApiModels?.feedModels[row].isFollowedByThisUser == true {
             TAPWebservice.shareInstance.sendDELETERequest(path: "/api/v1/u/\(TAPGlobal.shared.getLoginModel()?.userId ?? "")/follow/\(self.feedsApiModels?.feedModels[row].sellerId ?? 0)", responseHandler: { (check, response) in
                 if check {

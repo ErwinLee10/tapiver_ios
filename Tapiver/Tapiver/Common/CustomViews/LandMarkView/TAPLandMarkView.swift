@@ -83,12 +83,7 @@ class TAPLandMarkView: UIView {
         header.setValue("application/json", forKey: "Content-Type")
         header.setValue(TAPGlobal.shared.getLoginModel()?.webSessionId ?? "", forKey: "Authorization")
         let params = NSMutableDictionary()
-        var apiPath: String
-        if(TAPGlobal.shared.hasLogin()) {
-            apiPath = API_PATH(path: String.init(format: "/api/v1/landmark", TAPGlobal.shared.getLoginModel()?.userId ?? ""))
-        } else {
-            apiPath = API_PATH(path: String.init(format: "/api/v1/s/overview", TAPGlobal.shared.getLoginModel()?.userId ?? ""))
-        }
+        let apiPath = API_PATH(path: "/api/v1/landmark")
         //SVProgressHUD.show()
         TAPGlobal.shared.showLoading()
         TAPWebservice.shareInstance.sendGETRequest(path: apiPath, params: params, headers: header, responseObjectClass: TAPListLandMark()) { (success, response) in

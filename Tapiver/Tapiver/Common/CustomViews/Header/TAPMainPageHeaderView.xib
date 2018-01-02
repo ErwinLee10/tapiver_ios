@@ -81,9 +81,9 @@
                                     </userDefinedRuntimeAttributes>
                                 </view>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Wg-Kr-hLT">
-                                    <rect key="frame" x="339" y="8" width="28" height="28"/>
+                                    <rect key="frame" x="339" y="8" width="36" height="28"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" secondItem="9Wg-Kr-hLT" secondAttribute="height" multiplier="1:1" id="M1p-pi-0za"/>
+                                        <constraint firstAttribute="width" secondItem="9Wg-Kr-hLT" secondAttribute="height" multiplier="36:28" id="M1p-pi-0za"/>
                                     </constraints>
                                     <state key="normal" image="icon_menu"/>
                                     <connections>
@@ -104,7 +104,7 @@
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstItem="eac-96-RfZ" firstAttribute="leading" secondItem="VVF-3D-0bU" secondAttribute="trailing" constant="10" id="BEc-Q4-ZgN"/>
-                                <constraint firstAttribute="trailing" secondItem="9Wg-Kr-hLT" secondAttribute="trailing" constant="8" id="EKM-19-31d"/>
+                                <constraint firstAttribute="trailing" secondItem="9Wg-Kr-hLT" secondAttribute="trailing" id="EKM-19-31d"/>
                                 <constraint firstItem="VVF-3D-0bU" firstAttribute="leading" secondItem="D4i-K0-Ewb" secondAttribute="leading" constant="8" id="FMH-NC-Okb"/>
                                 <constraint firstItem="doZ-aS-B9W" firstAttribute="leading" secondItem="eac-96-RfZ" secondAttribute="trailing" constant="10" id="Ghe-BQ-ccp"/>
                                 <constraint firstAttribute="bottom" secondItem="VVF-3D-0bU" secondAttribute="bottom" constant="8" id="Hvc-2t-BqF"/>
@@ -137,6 +137,7 @@
                 <constraint firstItem="OT4-ox-uZA" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="LeP-h9-ODg"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="35.5" y="158.5"/>
         </view>
     </objects>
     <resources>

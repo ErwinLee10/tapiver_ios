@@ -48,7 +48,7 @@ class TAPBaseViewController: UIViewController {
     }
     
     fileprivate func menuItemTouchHandler(itemIndex: Int) {
-        guard TAPGlobal.shared.hasLogin() else {
+        guard TAPGlobal.shared.hasLogin() == true else {
              TAPMainFrame.showLoginPageMain()
             return
         }

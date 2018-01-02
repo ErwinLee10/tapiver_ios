@@ -46,6 +46,7 @@ class TAPDealsViewController: TAPBaseViewController {
         var params: [String: Any] = [:]
         if TAPGlobal.shared.hasLogin(), let userID = TAPGlobal.shared.getLoginModel()?.userId {
             params[TAPConstants.APIParams.userId] = userID.numberValue?.intValue ?? 0
+			params[TAPConstants.APIParams.hasDeal] = true
         }
         
         //SVProgressHUD.show()

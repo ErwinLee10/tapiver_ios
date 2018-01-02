@@ -458,6 +458,12 @@ class TAPProductMainPageViewController: UIViewController {
     
     
     @IBAction func followCompanyButtonTap(_ sender: UIButton) {
+		if TAPGlobal.shared.hasLogin() == false {
+			TAPMainFrame.showLoginPageMain()
+			return
+		}
+		
+		
         if TAPGlobal.shared.hasLogin() {
             if self.data?.isSellerFollowedByUser == true {
                 TAPWebservice.shareInstance.sendDELETERequest(path: "/api/v1/u/\(TAPGlobal.shared.getLoginModel()?.userId ?? "")/follow/\(data?.sellerId ?? "")", responseHandler: { (check, response) in

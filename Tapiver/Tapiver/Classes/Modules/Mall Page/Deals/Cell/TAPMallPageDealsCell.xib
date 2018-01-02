@@ -24,7 +24,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HFX-jd-HeY">
                         <rect key="frame" x="0.0" y="0.0" width="172" height="232"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wmb-u6-fRo">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wmb-u6-fRo">
                                 <rect key="frame" x="0.0" y="0.0" width="172" height="163.5"/>
                                 <color key="backgroundColor" red="0.9056667685508728" green="0.90980356931686401" blue="0.91382306814193726" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
