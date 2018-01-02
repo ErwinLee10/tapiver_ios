@@ -523,6 +523,11 @@ class TAPProductMainPageViewController: UIViewController {
     }
     
     @IBAction func addToCartButtonTap(_ sender: UIButton) {
+		if TAPGlobal.shared.hasLogin() == false {
+			TAPMainFrame.showLoginPageMain()
+			return
+		}
+
         
         //setup UI
         if listColor.count == 1 {
