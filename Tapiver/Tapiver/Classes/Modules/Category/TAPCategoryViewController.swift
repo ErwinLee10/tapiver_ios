@@ -40,6 +40,7 @@ class TAPCategoryViewController: TAPBaseViewController {
         ]
         let apiPath = API_PATH(path: "/api/v1/categories")
         //SVProgressHUD.show()
+
         TAPGlobal.shared.showLoading()
         TAPWebservice.shareInstance.sendGETRequest(path: apiPath, params: params as NSDictionary, headers: header, responseObjectClass: TAPListCategoryMenu()) { (success, response) in
             if success {
