@@ -157,7 +157,7 @@ class TAPAccountTableViewController: UIViewController, TAPEmailChangeViewDelegat
         let yesAction = UIAlertAction(title: "Yes", style: .default) { action in
             TAPWebservice.shareInstance.logout { (check) in
                 if check {
-                    self.navigationController?.dismiss(animated: true, completion: nil)
+                    TAPMainFrame.getNavi().popViewController(animated: true)
                 }
                 else {
                     TAPDialogUtils.shareInstance.showAlertMessageOneButton(title: "", message: "Server error, please contact Tapiver team for assistance", positive: "OK", positiveHandler: nil, vc: self)
