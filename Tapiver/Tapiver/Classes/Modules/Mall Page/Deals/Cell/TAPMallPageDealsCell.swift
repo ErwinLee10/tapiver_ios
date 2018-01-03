@@ -29,12 +29,19 @@ class TAPMallPageDealsCell: UICollectionViewCell {
     
     func fillData(product: TAPProductModel) {
         productModel = product
-		let imageURL = URL.init(string: product.variationsOverview?.pictures![0] ?? "")
+		var index = 0
+		
+		for i in 0..<(product.variationsOverview?.listVariations?.count)! {
+			if product.variationsOverview?.listVariations![i].salePrice != nil {
+				index = i
+			}
+		}
+		let imageURL = URL.init(string: product.variationsOverview?.listVariations![index].pictures![0] ?? "")
         productImgView.sd_setImage(with: imageURL, placeholderImage: nil, options: SDWebImageOptions.retryFailed, completed: nil)
         typeLabel.text = product.brand?.uppercased()
         nameLabel.text = product.name
         
-        let variations = product.variationsOverview
+		let variations = product.variationsOverview?.listVariations![0]
         if let originPrice = variations?.originalPrice, originPrice > 0 {
             let stdOriginPrice = NSNumber(value: originPrice).moneyString()
             let priceAttStr = NSMutableAttributedString(string: stdOriginPrice)

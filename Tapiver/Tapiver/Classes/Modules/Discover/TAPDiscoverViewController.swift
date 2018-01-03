@@ -91,7 +91,7 @@ extension TAPDiscoverViewController: UITableViewDataSource {
         guard let data = self.feedsApiModels else {
             return 0
         }
-        return data.feedModels.count
+		return data.feedModels.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
