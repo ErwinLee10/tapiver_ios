@@ -130,6 +130,8 @@
 		841DAC221FEB4FE200F1515D /* TAPProductDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841DAC211FEB4FE200F1515D /* TAPProductDetailModel.swift */; };
 		8420B5781FE8C3EC00FCC383 /* TAPAddNewAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8420B5761FE8C3EC00FCC383 /* TAPAddNewAddressViewController.swift */; };
 		8420B5791FE8C3EC00FCC383 /* TAPAddNewAddressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8420B5771FE8C3EC00FCC383 /* TAPAddNewAddressViewController.xib */; };
+		84344D101FFC71160033F520 /* TAPFeedColorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84344D0E1FFC71160033F520 /* TAPFeedColorCollectionViewCell.swift */; };
+		84344D111FFC71160033F520 /* TAPFeedColorCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84344D0F1FFC71160033F520 /* TAPFeedColorCollectionViewCell.xib */; };
 		84562CB21FE7BD5800DAB39D /* TAPAccountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84562CB01FE7BD5800DAB39D /* TAPAccountTableViewController.swift */; };
 		84562CB31FE7BD5800DAB39D /* TAPAccountTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84562CB11FE7BD5800DAB39D /* TAPAccountTableViewController.xib */; };
 		84562CB51FE7C85300DAB39D /* TAPProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84562CB41FE7C85300DAB39D /* TAPProfileModel.swift */; };
@@ -341,6 +343,8 @@
 		841DAC211FEB4FE200F1515D /* TAPProductDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPProductDetailModel.swift; sourceTree = "<group>"; };
 		8420B5761FE8C3EC00FCC383 /* TAPAddNewAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPAddNewAddressViewController.swift; sourceTree = "<group>"; };
 		8420B5771FE8C3EC00FCC383 /* TAPAddNewAddressViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TAPAddNewAddressViewController.xib; sourceTree = "<group>"; };
+		84344D0E1FFC71160033F520 /* TAPFeedColorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPFeedColorCollectionViewCell.swift; sourceTree = "<group>"; };
+		84344D0F1FFC71160033F520 /* TAPFeedColorCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TAPFeedColorCollectionViewCell.xib; sourceTree = "<group>"; };
 		84562CB01FE7BD5800DAB39D /* TAPAccountTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPAccountTableViewController.swift; sourceTree = "<group>"; };
 		84562CB11FE7BD5800DAB39D /* TAPAccountTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TAPAccountTableViewController.xib; sourceTree = "<group>"; };
 		84562CB41FE7C85300DAB39D /* TAPProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TAPProfileModel.swift; sourceTree = "<group>"; };
@@ -715,6 +719,7 @@
 		6C1070A41FD9297B001887BB /* cell */ = {
 			isa = PBXGroup;
 			children = (
+				84344D0D1FFC70E20033F520 /* Color cell */,
 				6C1070A51FD92A99001887BB /* TAPFeedCollectionViewCell.swift */,
 				6C1070A61FD92A99001887BB /* TAPFeedCollectionViewCell.xib */,
 				6C1E68651FDA9B9A00BC1183 /* TAPFeedTableViewCell.swift */,
@@ -973,6 +978,15 @@
 				8420B5771FE8C3EC00FCC383 /* TAPAddNewAddressViewController.xib */,
 			);
 			path = AddressView;
+			sourceTree = "<group>";
+		};
+		84344D0D1FFC70E20033F520 /* Color cell */ = {
+			isa = PBXGroup;
+			children = (
+				84344D0E1FFC71160033F520 /* TAPFeedColorCollectionViewCell.swift */,
+				84344D0F1FFC71160033F520 /* TAPFeedColorCollectionViewCell.xib */,
+			);
+			path = "Color cell";
 			sourceTree = "<group>";
 		};
 		847E138F1FF0F65400522E57 /* CategoryDetail */ = {
@@ -1461,6 +1475,7 @@
 				03D831BA1FEEC3A400D449DC /* TAPSearchProductViewController.xib in Resources */,
 				033458321FE1943400BFC66E /* TAPMainPageHeaderView.xib in Resources */,
 				84E2F8371FEB987300F27811 /* TapProductShippingView2.xib in Resources */,
+				84344D111FFC71160033F520 /* TAPFeedColorCollectionViewCell.xib in Resources */,
 				031555261FE58AA20082E709 /* TAPStorePageInformationViewController.xib in Resources */,
 				6CCEEFBB1FCEB5B70018FDB3 /* TAPCategoryViewController.xib in Resources */,
 				C5D8E89D1FE8DF7A00E12E9F /* TAPSubShippingMethod.xib in Resources */,
@@ -1584,6 +1599,7 @@
 				0315553C1FE7118A0082E709 /* TAPCartCouponTableViewCell.swift in Sources */,
 				C5460A761FE3AE060028B446 /* TAPLandMarkView.swift in Sources */,
 				C5EBDB901FEBFE0B006BAD34 /* TAPSubShipingEn.swift in Sources */,
+				84344D101FFC71160033F520 /* TAPFeedColorCollectionViewCell.swift in Sources */,
 				037B69651FEB2BFA00DCBD9D /* TAPHistoryModel.swift in Sources */,
 				037E907E1FED859D00593983 /* TAPHistoryReportIssueViewController.swift in Sources */,
 				C5B597701FE9E35C00E678C6 /* TAPReViewOrderController.swift in Sources */,
