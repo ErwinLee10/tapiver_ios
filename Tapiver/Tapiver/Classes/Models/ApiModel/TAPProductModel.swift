@@ -19,7 +19,7 @@ class TAPProductModel: TAPBaseEntity {
     var sellerPicture: String?
     var sellerCoverPicture: String?
     var sellerTotalFollower: Int?
-    var variationsOverview: TAPVariationsOverviewModel?
+    var variationsOverview: TAPListVariationsModel?
     var sellerAddress: TAPAddressModel?
     
     override func parserResponse(dic: NSDictionary) {
@@ -29,8 +29,8 @@ class TAPProductModel: TAPBaseEntity {
         brand = dic.value(forKey: TAPConstants.APIParams.brand) as? String
         isLikedByThisUser = dic.value(forKey: TAPConstants.APIParams.isLikedByThisUser) as? Bool ?? false
         if let dataVariationsOverview = dic.value(forKey: TAPConstants.APIParams.variationsOverview) as? [NSDictionary] {
-            variationsOverview = TAPVariationsOverviewModel()
-            variationsOverview?.parserResponseArray(dics: dataVariationsOverview)
+			variationsOverview = TAPListVariationsModel()
+			variationsOverview?.parserResponseArray(dics: dataVariationsOverview)
         }
         
         sellerName = dic.value(forKey: TAPConstants.APIParams.sellerName) as? String
@@ -69,9 +69,9 @@ class TAPVariationsOverviewModel: TAPBaseEntity {
         stock = dic.value(forKey: "stock") as? Int
     }
     
-    override func parserResponseArray(dics: [NSDictionary]) {
-        parserResponse(dic: dics[0])
-    }
+//    override func parserResponseArray(dics: [NSDictionary]) {
+//        parserResponse(dic: dics[0])
+//    }
 }
 
 /*

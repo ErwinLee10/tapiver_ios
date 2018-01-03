@@ -33,12 +33,14 @@ class TAPDiscoverViewController: TAPBaseViewController {
         header.setValue(TAPGlobal.shared.getLoginModel()?.webSessionId ?? "", forKey: "Authorization")
         let params = NSMutableDictionary()
         var apiPath: String
-        params.setValue(landMarkId ?? "" , forKey: "landMarkId")
+        //params.setValue(landMarkId ?? "" , forKey: "landMarkId")
         params.setValue(self.feedsApiModels?.feedModels.count , forKey: "page")
+		
         if(TAPGlobal.shared.hasLogin()) {
-            apiPath = API_PATH(path: String.init(format: "/api/v1/discover", TAPGlobal.shared.getLoginModel()?.userId ?? ""))
+            apiPath = API_PATH(path: "/api/v1/discover")
+			params.setValue(TAPGlobal.shared.getLoginModel()?.userId ?? "", forKey: "userId")
         } else {
-            apiPath = API_PATH(path: String.init(format: "/api/v1/s/overview", TAPGlobal.shared.getLoginModel()?.userId ?? ""))
+            apiPath = API_PATH(path: "/api/v1/s/overview")
         }
         //SVProgressHUD.show()
         TAPGlobal.shared.showLoading()
