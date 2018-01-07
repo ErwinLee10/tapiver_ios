@@ -108,7 +108,7 @@ class TAPWebservice: NSObject {
             let value = headers?.object(forKey: key)
             self.requestManager.requestSerializer.setValue(value as? String, forHTTPHeaderField: key)
         }
-        
+		print("====================\nRequest: path: \(path) \n params: \n \(String(describing: params))")
         self.requestManager!.post(path, parameters:params , progress: nil, success: {(task, responseObject) -> Void in
             
             print("responseObject ->> \(String(describing: responseObject))")

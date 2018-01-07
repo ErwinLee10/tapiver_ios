@@ -134,24 +134,36 @@ class TAPPayMentMethodView: UIViewController {
             }
         }
     }
-    private func createParams(token: String) -> Dictionary<String, Any> {
+	private func createParams(token: String) -> NSDictionary {
         let total = reviewObj?.cardList?.originalTotalAmount ?? 0
         let addShipping = reviewObj?.address?.id ?? 0
         
-        let totalAmountIncludeShipping = String(Double(total) + getIdParams().disCount)
+        let totalAmountIncludeShipping = Double(total) + getIdParams().disCount
         let dict = getIdParams().orderPerSellers
         
-        let subParam: [String : Any] = ["stripeToken" : token ,
-                                        "totalAmountWithoutShipping": total,
-                                        "shippingAddressId" : addShipping,
-                                        "billingAddressId"  : reviewObj?.addressBilling?.id ?? addShipping,
-                                        "couponName"        : reviewObj?.cardList?.coupon?.name ?? " ",
-                                        "totalAmountIncludeShipping": totalAmountIncludeShipping,
-                                        "orderPerSellers": dict
-        ]
+//        let subParam = ["stripeToken" : token ,
+//                                        "totalAmountWithoutShipping": total,
+//                                        "shippingAddressId" : addShipping,
+//                                        "billingAddressId"  : reviewObj?.addressBilling?.id ?? addShipping,
+//										"couponName"        : reviewObj?.cardList?.coupon?.name!,
+//                                        "totalAmountIncludeShipping": totalAmountIncludeShipping,
+//                                        "orderPerSellers": dict
+//			] as [String : Any]
+		let param = NSMutableDictionary()
+		param["stripeToken"] = token
+		param["totalAmountWithoutShipping"] = total
+		param["shippingAddressId"] = addShipping
+		param["billingAddressId"] = reviewObj?.addressBilling?.id ?? addShipping
+		if reviewObj?.cardList?.coupon?.name != nil {
+			param["couponName"] = reviewObj?.cardList?.coupon?.name
+		}
+		
+		param["totalAmountIncludeShipping"] = totalAmountIncludeShipping
+		param["orderPerSellers"] = dict
         
-        print("params = \(subParam)")
-        return subParam
+//        print("subparams = \(subParam)")
+		print("param = \(param)")
+		return param as NSDictionary
     }
     private func getIdParams() -> ( disCount: Double, orderPerSellers:[NSDictionary] ){
         if let list =  self.reviewObj?.cardList?.cartItemsPerSeller {
