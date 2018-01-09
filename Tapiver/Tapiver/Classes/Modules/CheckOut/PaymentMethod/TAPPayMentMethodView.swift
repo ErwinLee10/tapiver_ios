@@ -19,66 +19,53 @@ enum CardType: Int {
 class TAPPayMentMethodView: UIViewController {
     @IBOutlet weak var headerView: TAPHeaderView!
     @IBOutlet weak var sView: UIView!
-    @IBOutlet weak var tfCardNumber: UITextField!
-    @IBOutlet weak var tfCsv: UITextField!
-    @IBOutlet weak var tfExpDate: UITextField!
     @IBOutlet weak var btPlaceOrder: UIButton!
-    @IBOutlet var listBtCard: [UIControl]!
+	@IBOutlet weak var cardContainView: UIView!
+	let cardField = STPPaymentCardTextField()
     private var cardType: CardType = .credit
     public var reviewObj: TAPReviewOrderEntity?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initIB()
-        
     }
+	
+	override func viewDidLayoutSubviews() {
+		super.viewDidLayoutSubviews()
+		cardField.frame = CGRect(x: 0, y: 0, width: cardContainView.frame.width, height: cardContainView.frame.height)
+	}
+	
     private func initIB() {
         self.headerView.delegate = self
-        //IQKeyboardManager.sharedManager().enable = true
+		cardField.delegate = self
+		cardContainView.addSubview(cardField)
     }
     
-    private func createCardType() {
-        for item in listBtCard {
-            item.addTarget(self, action: Selector(("actionCardType:")), for: .touchUpInside)
-            let index = self.listBtCard?.index(of: item)
-            if index == self.cardType.rawValue {
-                item.isEnabled = true
-            }else {
-                item.isEnabled = false
-            }
-        }
-    }
+//    private func createCardType() {
+//        for item in listBtCard {
+//            item.addTarget(self, action: Selector(("actionCardType:")), for: .touchUpInside)
+//            let index = self.listBtCard?.index(of: item)
+//            if index == self.cardType.rawValue {
+//                item.isEnabled = true
+//            }else {
+//                item.isEnabled = false
+//            }
+//        }
+//    }
     func actionCardType(sender:UIButton) {
         
     }
     @IBAction func acPlaceOrder(_ sender: Any) {
-        getStripeToken(expDate: self.tfExpDate.text!, csv: self.tfCsv.text!)
+        getStripeToken()
         
     }
-    private func getStripeToken(expDate: String, csv: String) {
-        if expDate.isEmpty == true {
-            return
-        }
+    private func getStripeToken() {
+
         let tripCardParams = STPCardParams()
-        let expireDate = expDate.components(separatedBy: "/")
-        if expireDate.count < 2 {
-            return
-        }
-        let expMonth = UInt(Int(expireDate[1])!)
-        let expYear = UInt(Int(expireDate[0])!)
-        if expireDate.count == 3 {
-            let expDay = UInt(Int(expireDate[2])!)
-            if expDay > 31  {
-                return
-            }
-        }
-        if expMonth > 12  {
-            return
-        }
-        tripCardParams.number = tfCardNumber.text
-        tripCardParams.cvc = tfCsv.text
-        tripCardParams.expMonth = expMonth
-        tripCardParams.expYear = expYear
+        tripCardParams.number = cardField.cardNumber
+        tripCardParams.cvc = cardField.cvc
+        tripCardParams.expMonth = cardField.expirationMonth
+        tripCardParams.expYear = cardField.expirationYear
         tripCardParams.name = cardName()
         
         if (STPCardValidator.validationState(forCard: tripCardParams) == .valid) {
@@ -236,18 +223,18 @@ extension TAPPayMentMethodView: TAPHeaderViewDelegate {
     }
 }
 
-extension TAPPayMentMethodView: UITextFieldDelegate {
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if textField.isEqual(self.tfExpDate) {
-            let result = (textField.text as NSString?)?.replacingCharacters(in: range, with: string) ?? string
-            if (result.length() >= 11) {
-                return false
-            }
-            if (result.length() == 5 || result.length() == 8 || result.length() == 11) && string != ""{
-                textField.text?.append("/")
-            }
-        }
-        
-        return true
-    }
+extension TAPPayMentMethodView: STPPaymentCardTextFieldDelegate {
+//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+//        if textField.isEqual(self.tfExpDate) {
+//            let result = (textField.text as NSString?)?.replacingCharacters(in: range, with: string) ?? string
+//            if (result.length() >= 11) {
+//                return false
+//            }
+//            if (result.length() == 5 || result.length() == 8 || result.length() == 11) && string != ""{
+//                textField.text?.append("/")
+//            }
+//        }
+//
+//        return true
+//    }
 }

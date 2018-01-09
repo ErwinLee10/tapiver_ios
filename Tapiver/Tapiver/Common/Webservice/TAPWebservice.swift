@@ -81,6 +81,8 @@ class TAPWebservice: NSObject {
             responseHandler(true, responseObjectClass);
             
         }, failure: { (task, responseOBJ) -> Void in
+			
+			print("errorObject ->> \(String(describing: responseOBJ))")
             responseHandler(false, nil);
         })
     }
@@ -285,7 +287,7 @@ class TAPWebservice: NSObject {
             
         }, failure: { (task, responseOBJ) -> Void in
             
-            print(task?.error ?? "error  null")
+            print("errorObject ->> \(String(describing: responseOBJ))")
             responseHandler(false, nil);
         })
     }
@@ -306,6 +308,8 @@ class TAPWebservice: NSObject {
             FBSDKLoginManager().logOut()
             responseHandler(true)
         }, failure: { (task, responseObject) in
+			
+			print("errorObject ->> \(String(describing: responseObject))")
             responseHandler(false)
         })
     }
