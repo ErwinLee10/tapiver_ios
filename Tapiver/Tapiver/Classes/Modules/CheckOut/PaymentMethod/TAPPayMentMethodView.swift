@@ -107,20 +107,24 @@ class TAPPayMentMethodView: UIViewController {
         }else {
             apiPath = TAPConstants.APIPath.overview
         }
-        let header = ["Content-Type": "application/json",
-                      "Authorization": TAPGlobal.shared.getLoginModel()?.webSessionId ?? ""
-        ]
+		
         TAPGlobal.shared.showLoading()
-        TAPWebservice.shareInstance.sendPOSTRequest(path: API_PATH(path: apiPath), params: params as NSDictionary, headers: header as NSDictionary, responseObjectClass: TAPBaseEntity()) {[weak self] (success, obj) in
-            TAPGlobal.shared.dismissLoading()
-            if success {
-                
-            }
-            else {
-                guard let weakSelf = self else { return }
-                TAPDialogUtils.shareInstance.showAlertMessageOneButton(title: "", message: "Server error, please contact Tapiver team for assistance", positive: "OK", positiveHandler: nil, vc: weakSelf)
-            }
-        }
+		TAPWebservice.shareInstance.sendPOSTRequest(path: API_PATH(path: apiPath), params: params) { (check) in
+			TAPGlobal.shared.dismissLoading()
+			if check == false {
+				TAPDialogUtils.shareInstance.showAlertMessageOneButton(title: "", message: "Server error, please contact Tapiver team for assistance", positive: "OK", positiveHandler: nil, vc: self)
+			}
+		}
+//        TAPWebservice.shareInstance.sendPOSTRequest(path: API_PATH(path: apiPath), params: params as NSDictionary, headers: header as NSDictionary, responseObjectClass: TAPBaseEntity()) {[weak self] (success, obj) in
+//            TAPGlobal.shared.dismissLoading()
+//            if success {
+//
+//            }
+//            else {
+//                guard let weakSelf = self else { return }
+//                TAPDialogUtils.shareInstance.showAlertMessageOneButton(title: "", message: "Server error, please contact Tapiver team for assistance", positive: "OK", positiveHandler: nil, vc: weakSelf)
+//            }
+//        }
     }
 	private func createParams(token: String) -> NSDictionary {
         let total = reviewObj?.cardList?.originalTotalAmount ?? 0
