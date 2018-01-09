@@ -22,7 +22,7 @@ class TAPPayMentMethodView: UIViewController {
     @IBOutlet weak var btPlaceOrder: UIButton!
 	@IBOutlet weak var cardContainView: UIView!
 	let cardField = STPPaymentCardTextField()
-    private var cardType: CardType = .credit
+//    private var cardType: CardType = .credit
     public var reviewObj: TAPReviewOrderEntity?
     
     override func viewDidLoad() {
@@ -61,22 +61,23 @@ class TAPPayMentMethodView: UIViewController {
     }
     private func getStripeToken() {
 
-        let tripCardParams = STPCardParams()
-        tripCardParams.number = cardField.cardNumber
-        tripCardParams.cvc = cardField.cvc
-        tripCardParams.expMonth = cardField.expirationMonth
-        tripCardParams.expYear = cardField.expirationYear
-        tripCardParams.name = cardName()
-        
-        if (STPCardValidator.validationState(forCard: tripCardParams) == .valid) {
+//        let tripCardParams = STPCardParams()
+//        tripCardParams.number = cardField.cardNumber
+//        tripCardParams.cvc = cardField.cvc
+//        tripCardParams.expMonth = cardField.expirationMonth
+//        tripCardParams.expYear = cardField.expirationYear
+		
+		print(STPAPIClient.shared().publishableKey)
+		print(cardField.cardParams)
+        if (STPCardValidator.validationState(forCard: cardField.cardParams) == .valid) {
             TAPGlobal.shared.showLoading()
-            STPAPIClient.shared().createToken(withCard: tripCardParams, completion: { [weak self] (token, error) in
+            STPAPIClient.shared().createToken(withCard: cardField.cardParams, completion: { [weak self] (token, error) in
                 TAPGlobal.shared.dismissLoading()
                 if error != nil {
                     print("tokenError = \(error?.localizedDescription ?? "")")
                     TAPDialogUtils.shareInstance.showAlertMessageOneButton(title: "", message: "\(error?.localizedDescription ?? "")", positive: "OK", positiveHandler: nil, vc: self!)
                     return
-                }else {
+                } else {
                     print("token = \(token?.tokenId ?? "")")
                     self?.callApi(tokenStripe: token?.tokenId ?? "")
                 }
@@ -87,16 +88,16 @@ class TAPPayMentMethodView: UIViewController {
         }
         
     }
-    private func cardName() -> String {
-        switch self.cardType {
-        case .credit:
-            return "Credit/Debit"
-        case .paypal:
-            return "Paypal"
-        case .pickup:
-            return "Pickup"
-        }
-    }
+//    private func cardName() -> String {
+//        switch self.cardType {
+//        case .credit:
+//            return "Credit/Debit"
+//        case .paypal:
+//            return "Paypal"
+//        case .pickup:
+//            return "Pickup"
+//        }
+//    }
     private func callApi(tokenStripe: String) {
         let params = createParams(token:tokenStripe)
         TAPGlobal.shared.showLoading()

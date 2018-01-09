@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'D9C77BB1D683CABF2A902EFC9455828E'
-               BlueprintName = 'SDWebImage'
+               BlueprintIdentifier = '65E59441E7D23E5FEC9492B0B8A45DB3'
+               BlueprintName = 'Stripe-Stripe'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'SDWebImage.framework'>
+               BuildableName = 'Stripe.bundle'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

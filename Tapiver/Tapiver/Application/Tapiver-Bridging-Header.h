@@ -6,6 +6,7 @@
 #define Tapiver_Bridging_Header_h
 
 #import <AFNetworking/AFNetworking.h>
+#import <Stripe/Stripe.h>
 //#import <SVProgressHUD/SVProgressHUD.h>
 #import "iCarousel.h"
 #import "UIAlertController+Blocks.h"

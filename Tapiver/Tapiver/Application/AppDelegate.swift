@@ -98,7 +98,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     private func setPublishableKey() {
-        Stripe.setDefaultPublishableKey(STRIPE_PUBLISHABLE_KEY)
+        Stripe.setDefaultPublishableKey("pk_test_FyiJZPqThsueboEipcNQ3OEX")
+//		STPPaymentConfiguration.shared().publishableKey = "pk_test_FyiJZPqThsueboEipcNQ3OEX"
+		print(STPPaymentConfiguration.shared().publishableKey)
     }
 }
 
