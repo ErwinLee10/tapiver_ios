@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TAPFeedViewController" customModule="Tapiver" customModuleProvider="target">
             <connections>
+                <outlet property="headerTopConstraint" destination="m6h-b7-l2x" id="m5L-qO-l0T"/>
                 <outlet property="headerView" destination="GdG-Dk-Eo1" id="FYq-VN-JJL"/>
                 <outlet property="nodataView" destination="KCl-LZ-LDH" id="bIG-cM-eBM"/>
                 <outlet property="tableData" destination="xEP-6W-pca" id="76z-xE-siX"/>
@@ -86,8 +87,8 @@
                 <constraint firstItem="xEP-6W-pca" firstAttribute="top" secondItem="GdG-Dk-Eo1" secondAttribute="bottom" id="54D-qy-USa"/>
                 <constraint firstItem="GdG-Dk-Eo1" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="6Ky-cm-f35"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="xEP-6W-pca" secondAttribute="trailing" id="K9h-Oh-37R"/>
-                <constraint firstItem="GdG-Dk-Eo1" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Ps6-SC-CCr"/>
                 <constraint firstItem="KCl-LZ-LDH" firstAttribute="top" secondItem="GdG-Dk-Eo1" secondAttribute="bottom" id="S1v-vi-jxf"/>
+                <constraint firstItem="GdG-Dk-Eo1" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="W3w-gV-cEg"/>
                 <constraint firstItem="KCl-LZ-LDH" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Yi1-8Q-wzQ"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="KCl-LZ-LDH" secondAttribute="bottom" id="aKH-FB-6bf"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="KCl-LZ-LDH" secondAttribute="trailing" id="c6G-IF-0qi"/>

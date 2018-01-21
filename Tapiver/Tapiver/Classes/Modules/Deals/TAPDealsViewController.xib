@@ -14,6 +14,7 @@
             <connections>
                 <outlet property="contentCollectionView" destination="f5N-Ro-5C8" id="1bq-tS-UDQ"/>
                 <outlet property="emptyLabel" destination="6Sj-ht-bSb" id="Wek-XU-AUv"/>
+                <outlet property="headerTopConstraint" destination="Pa0-MQ-si0" id="1R2-Gu-gqk"/>
                 <outlet property="headerView" destination="Wlj-gd-rKN" id="3JB-hD-t69"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>

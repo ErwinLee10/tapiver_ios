@@ -26,7 +26,16 @@ class TAPBaseHeaderView: UIView {
     @IBOutlet weak var cartButton: MIBadgeButton!
     @IBOutlet weak var menuButton: UIButton!
     @IBOutlet weak var backButton: UIButton?
+    @IBOutlet var headerTop: NSLayoutConstraint!
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        if #available(iOS 11.0, *) {
+            
+        } else {
+            headerTop.constant = 20.0
+        }
+    }
     
     func handleCartTouch() {
         guard TAPGlobal.shared.hasLogin() else {

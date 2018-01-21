@@ -15,6 +15,7 @@
                 <outlet property="backButton" destination="R9c-2G-NZt" id="Prt-uh-m1l"/>
                 <outlet property="bgImageView" destination="eKl-Ek-xzy" id="TO6-dM-OB8"/>
                 <outlet property="cartButton" destination="NtE-5w-6ca" id="DyW-hT-Fuk"/>
+                <outlet property="headerTop" destination="oVM-wf-t3a" id="NEB-2u-YjR"/>
                 <outlet property="menuButton" destination="Dmo-lp-RNj" id="zAi-8x-3K9"/>
                 <outlet property="searchButton" destination="kbO-jL-g0S" id="PzZ-VX-j2g"/>
                 <outlet property="titleLabel" destination="BXu-PR-AU1" id="geN-Y6-vXd"/>

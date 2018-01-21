@@ -13,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TAPMallPageShopViewController" customModule="Tapiver" customModuleProvider="target">
             <connections>
                 <outlet property="contentTableView" destination="rSp-9I-D5H" id="L0r-4u-kza"/>
+                <outlet property="headerTopConstraint" destination="SHb-tK-zpq" id="dlT-lz-1CJ"/>
                 <outlet property="headerView" destination="yQ7-3X-Boq" id="sTS-07-0TN"/>
                 <outlet property="mainHeaderHeight" destination="uJG-ay-Cai" id="SOh-dt-HkY"/>
                 <outlet property="noDataView" destination="N3z-Em-c59" id="eG0-iG-0o1"/>

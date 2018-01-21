@@ -10,11 +10,18 @@ import UIKit
 
 class TAPBaseViewController: UIViewController {
     @IBOutlet weak var headerView: TAPBaseHeaderView?
+    @IBOutlet var headerTopConstraint: NSLayoutConstraint?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.view.backgroundColor = UIColor.init(netHex: 0xF5F8F7)
+        
+        if #available(iOS 11.0, *) {
+            
+        } else {
+            headerTopConstraint?.constant = 20.0
+        }
     }
 
     override func didReceiveMemoryWarning() {

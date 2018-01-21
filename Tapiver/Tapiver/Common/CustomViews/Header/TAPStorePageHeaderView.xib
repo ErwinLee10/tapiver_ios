@@ -20,6 +20,7 @@
                 <outlet property="followButton" destination="fNx-7k-dtT" id="jHg-1v-ybG"/>
                 <outlet property="followContainer" destination="DYV-Cc-ACv" id="hda-oe-mfC"/>
                 <outlet property="followersLabel" destination="ImM-j1-o8s" id="TdI-GP-gQH"/>
+                <outlet property="headerTop" destination="gyJ-jl-hkd" id="vRS-vE-y7n"/>
                 <outlet property="menuButton" destination="md3-mN-ru2" id="mew-6i-9Uj"/>
                 <outlet property="nameLabel" destination="Ypm-eC-nTM" id="Gzg-ET-8m7"/>
             </connections>

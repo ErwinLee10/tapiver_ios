@@ -14,6 +14,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TAPMainPageHeaderView" customModule="Tapiver" customModuleProvider="target">
             <connections>
                 <outlet property="cartButton" destination="doZ-aS-B9W" id="Joy-tW-7uj"/>
+                <outlet property="headerTop" destination="27D-1h-DiV" id="Xqh-Dj-wVJ"/>
                 <outlet property="menuButton" destination="9Wg-Kr-hLT" id="2qb-Ht-cWo"/>
                 <outlet property="searchTextField" destination="Aub-51-jso" id="j8C-vv-aLh"/>
             </connections>
@@ -109,7 +110,6 @@
                                 <constraint firstItem="doZ-aS-B9W" firstAttribute="leading" secondItem="eac-96-RfZ" secondAttribute="trailing" constant="10" id="Ghe-BQ-ccp"/>
                                 <constraint firstAttribute="bottom" secondItem="VVF-3D-0bU" secondAttribute="bottom" constant="8" id="Hvc-2t-BqF"/>
                                 <constraint firstAttribute="bottom" secondItem="eac-96-RfZ" secondAttribute="bottom" constant="8" id="Ktf-n1-061"/>
-                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="LKR-se-RHr"/>
                                 <constraint firstItem="doZ-aS-B9W" firstAttribute="top" secondItem="D4i-K0-Ewb" secondAttribute="top" constant="8" id="aoi-xH-74p"/>
                                 <constraint firstItem="eac-96-RfZ" firstAttribute="top" secondItem="D4i-K0-Ewb" secondAttribute="top" constant="8" id="f6Z-nP-TFc"/>
                                 <constraint firstItem="9Wg-Kr-hLT" firstAttribute="leading" secondItem="doZ-aS-B9W" secondAttribute="trailing" constant="8" id="o7U-ag-ULI"/>
