@@ -75,12 +75,16 @@ class TAPMallPageDealsCell: UICollectionViewCell {
     }
     
     private func addLikeProduct() {
-        let apiPath = "/api/v1/u/\(TAPGlobal.shared.getLoginModel()?.userId ?? "")/like\(productModel?.id ?? "")"
+        let apiPath = "/api/v1/u/\(TAPGlobal.shared.getLoginModel()?.userId ?? "")/like/\(productModel?.id ?? "")"
         TAPGlobal.shared.showLoading()
         TAPWebservice.shareInstance.sendPUTRequest(path: apiPath, parameters: [:]) { [weak self] (isSuccess) in
             TAPGlobal.shared.dismissLoading()
             if isSuccess {
                 self?.updateLikes(isAdd: true)
+            } else {
+                if let rootVC = (UIApplication.shared.delegate as! AppDelegate).window?.rootViewController {
+                    TAPDialogUtils.shareInstance.showAlertMessageOneButton(title: "", message: "Server error, please contact Tapiver team for assistance", positive: "OK", positiveHandler: nil, vc: rootVC)
+                }
             }
         }
     }
@@ -93,6 +97,10 @@ class TAPMallPageDealsCell: UICollectionViewCell {
             
             if isSuccess {
                 self?.updateLikes(isAdd: false)
+            } else {
+                if let rootVC = (UIApplication.shared.delegate as! AppDelegate).window?.rootViewController {
+                    TAPDialogUtils.shareInstance.showAlertMessageOneButton(title: "", message: "Server error, please contact Tapiver team for assistance", positive: "OK", positiveHandler: nil, vc: rootVC)
+                }
             }
         }
     }
@@ -108,7 +116,7 @@ class TAPMallPageDealsCell: UICollectionViewCell {
             if let likes = productModel?.likes, likes > 0 {
                 productModel?.likes = likes - 1
             }
-            likeButton.isSelected = true
+            likeButton.isSelected = false
             numOfLikesLabel.text = "\(productModel?.likes ?? 0)"
         }
     }
