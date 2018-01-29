@@ -113,7 +113,9 @@ class TAPPayMentMethodView: UIViewController {
 			TAPGlobal.shared.dismissLoading()
 			if check == false {
 				TAPDialogUtils.shareInstance.showAlertMessageOneButton(title: "", message: "Server error, please contact Tapiver team for assistance", positive: "OK", positiveHandler: nil, vc: self)
-			}
+            }else {
+                print("sssssssssss")
+            }
 		}
 //        TAPWebservice.shareInstance.sendPOSTRequest(path: API_PATH(path: apiPath), params: params as NSDictionary, headers: header as NSDictionary, responseObjectClass: TAPBaseEntity()) {[weak self] (success, obj) in
 //            TAPGlobal.shared.dismissLoading()
