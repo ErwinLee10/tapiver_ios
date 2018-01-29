@@ -30,8 +30,8 @@
                     </view>
                     <blurEffect style="light"/>
                 </visualEffectView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TTv-Yo-eDa">
-                    <rect key="frame" x="0.0" y="0.0" width="275" height="667"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TTv-Yo-eDa" customClass="UIControl">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <subviews>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="oNs-iI-o4N">
                             <rect key="frame" x="0.0" y="88" width="275" height="579"/>
@@ -61,9 +61,13 @@
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="oNs-iI-o4N" secondAttribute="bottom" id="5Ot-HN-J1v"/>
                         <constraint firstItem="oNs-iI-o4N" firstAttribute="top" secondItem="TTv-Yo-eDa" secondAttribute="top" constant="88" id="8P0-L4-ueZ"/>
-                        <constraint firstAttribute="trailing" secondItem="oNs-iI-o4N" secondAttribute="trailing" id="Cfj-l3-psJ"/>
+                        <constraint firstAttribute="trailing" secondItem="oNs-iI-o4N" secondAttribute="trailing" constant="100" id="Cfj-l3-psJ"/>
                         <constraint firstItem="oNs-iI-o4N" firstAttribute="leading" secondItem="TTv-Yo-eDa" secondAttribute="leading" id="wYL-W0-akr"/>
                     </constraints>
+                    <connections>
+                        <action selector="tapView:" destination="-1" eventType="touchUpInside" id="0bB-hn-yaQ"/>
+                        <action selector="tapView:" destination="-1" eventType="touchDragInside" id="6JF-2Q-fEQ"/>
+                    </connections>
                 </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -73,7 +77,7 @@
                 <constraint firstItem="TTv-Yo-eDa" firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottom" id="VDc-AY-rEO"/>
                 <constraint firstItem="nUl-J7-J1w" firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottom" id="e9A-x0-fna"/>
                 <constraint firstItem="nUl-J7-J1w" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="hFt-zj-Dz1"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="TTv-Yo-eDa" secondAttribute="trailing" constant="100" id="j8U-w1-wKR"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="TTv-Yo-eDa" secondAttribute="trailing" id="j8U-w1-wKR"/>
                 <constraint firstItem="nUl-J7-J1w" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="saM-3X-jBG"/>
                 <constraint firstItem="TTv-Yo-eDa" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="yPn-AO-I45"/>
             </constraints>
