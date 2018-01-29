@@ -31,12 +31,12 @@ class TAPAddressMethodController: UIViewController {
             initData()
         }
     }
-   private func initData() {
+    private func initData() {
         self.listShipping = [TAPChecOutEntity]()
         self.listBilling = [TAPChecOutEntity]()
         callApi()
     }
-   private func createListData(listShipping:[TAPChecOutEntity], listBilling:[TAPChecOutEntity]) {
+    private func createListData(listShipping:[TAPChecOutEntity], listBilling:[TAPChecOutEntity]) {
         self.listData.removeAllObjects()
         var listDataSection0 = [TAPChecOutEntity]()
         let header: TAPChecOutEntity = TAPChecOutEntity()
@@ -68,13 +68,15 @@ class TAPAddressMethodController: UIViewController {
         listDataSection0.append(bottomButtonBilling)
         self.listData.add(listDataSection0)
         
-        let listDataSection1:NSMutableArray = NSMutableArray()
         let cellShippingMethod: TAPChecOutEntity = TAPChecOutEntity()
         cellShippingMethod.typeCheckOutCell = CheckOutEntytiType.shippingMethod
         cellShippingMethod.listShipping = cardList!.cartItemsPerSeller
-        listDataSection1.add(cellShippingMethod)
-        self.listData.add(listDataSection1)
-        
+        if (cellShippingMethod.listShipping.count > 0){
+            let listDataSection1:NSMutableArray = NSMutableArray()
+            listDataSection1.add(cellShippingMethod)
+            self.listData.add(listDataSection1)
+        }
+    
         self.tableView.reloadData()
     }
     private func initIb() {
@@ -232,10 +234,10 @@ extension TAPAddressMethodController: UITableViewDataSource {
         return self.listData.count
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let listSection0:[TAPChecOutEntity] = self.listData[section] as? [TAPChecOutEntity] else {
+        guard let listSection:[TAPChecOutEntity] = self.listData[section] as? [TAPChecOutEntity] else {
             return 0
         }
-        return listSection0.count
+        return listSection.count
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -327,7 +329,7 @@ extension TAPAddressMethodController: UITableViewDataSource {
 
 extension TAPAddressMethodController: TAPHeaderViewDelegate {
     func headerViewDidTouchBack() {
-//        self.navigationController?.popViewController(animated: true)
+        //        self.navigationController?.popViewController(animated: true)
     }
 }
 
