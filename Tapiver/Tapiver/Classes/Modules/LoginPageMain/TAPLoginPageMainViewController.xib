@@ -66,13 +66,13 @@
                             <textInputTraits key="textInputTraits" spellCheckingType="no" secureTextEntry="YES"/>
                         </textField>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LsO-Xx-BSa">
-                            <rect key="frame" x="180" y="100" width="95" height="20"/>
+                            <rect key="frame" x="174" y="100" width="101" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="20" id="npj-RH-rHN"/>
                             </constraints>
                             <state key="normal">
                                 <attributedString key="attributedTitle">
-                                    <fragment content="Forgot password">
+                                    <fragment content="Forgot password?">
                                         <attributes>
                                             <color key="NSColor" red="0.94901960784313721" green="0.94509803921568625" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <font key="NSFont" size="12" name=".AppleSystemUIFont"/>
@@ -203,9 +203,9 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pzQ-X9-LMr">
-                    <rect key="frame" x="131" y="568.5" width="113" height="28"/>
+                    <rect key="frame" x="129.5" y="568.5" width="116" height="28"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                    <state key="normal" title="Register later skip.">
+                    <state key="normal" title="Register later, skip.">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>

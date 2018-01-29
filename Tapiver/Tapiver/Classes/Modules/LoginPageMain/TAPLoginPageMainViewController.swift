@@ -73,9 +73,12 @@ class TAPLoginPageMainViewController: UIViewController {
                 guard let model = response as? TAPLoginModel else {
                     return
                 }
+                
                 TAPGlobal.shared.saveLoginModel(model: model)
                 TAPGlobal.shared.saveHasLogin(isLogin: true)
                 TAPMainFrame.showMainTabbarPage()
+                
+                TAPDialogUtils.shareInstance.showAlertMessageOneButton(title: "", message: "Login successful", positive: "OK", positiveHandler: nil, vc: self)
             } else {
                  TAPDialogUtils.shareInstance.showAlertMessageOneButton(title: "", message: "Login Failed", positive: "OK", positiveHandler: nil, vc: self)
             }
