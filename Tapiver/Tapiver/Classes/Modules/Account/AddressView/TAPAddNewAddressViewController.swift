@@ -78,9 +78,15 @@ class TAPAddNewAddressViewController: UIViewController, UITextFieldDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyBoardDidPress(notification:)), name: NSNotification.Name.UITextFieldTextDidChange, object: nil)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        IQKeyboardManager.sharedManager().enable = true
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         NotificationCenter.default.removeObserver(self)
+        IQKeyboardManager.sharedManager().enable = false
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool
