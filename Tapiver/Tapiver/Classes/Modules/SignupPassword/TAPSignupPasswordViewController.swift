@@ -76,7 +76,7 @@ class TAPSignupPasswordViewController: UIViewController {
             return
         }
         
-        if password.count < 8 {
+        if password.count < 8 || validatePassword(password) == false {
             TAPDialogUtils.shareInstance.showAlertMessageOneButton(title: "", message: "Password must be of minimum 8 characters length and contain at least 1 number and 1 alphabet", positive: "OK", positiveHandler: nil, vc: self)
             return
         }
@@ -109,6 +109,14 @@ class TAPSignupPasswordViewController: UIViewController {
     @IBAction func actionLoginc(_ sender: UIButton) {
         
          TAPMainFrame.showLoginPageMain()
+    }
+    
+    private func validatePassword(_ text: String) -> Bool {
+        
+        let containsLetter = (text as NSString).rangeOfCharacter(from: CharacterSet.letters).location != NSNotFound
+        let containsNumberic = (text as NSString).rangeOfCharacter(from: CharacterSet.decimalDigits).location != NSNotFound
+        
+        return containsLetter && containsNumberic
     }
     
 }
