@@ -41,12 +41,14 @@ class TAPLoginPageMainViewController: UIViewController {
         let header = NSMutableDictionary()
         header.setValue("application/json", forKey: "Content-Type")
         let params = NSMutableDictionary()
-        guard let email = emailTF.text else {
+        guard let emailOrg = emailTF.text else {
             return
         }
         guard let password = passwordTF.text else {
             return
         }
+        
+        let email = emailOrg.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         
         if email.isEmpty || password.isEmpty {
             TAPDialogUtils.shareInstance.showAlertMessageOneButton(title: "", message: "Please input all fields", positive: "OK", positiveHandler: nil, vc: self)
