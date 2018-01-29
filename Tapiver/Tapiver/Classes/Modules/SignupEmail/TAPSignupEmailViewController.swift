@@ -39,6 +39,16 @@ class TAPSignupEmailViewController: UIViewController {
         self.emailTF.text = email
         self.firstNameTF.text = firstName
         self.lastNameTF.text = lastName
+        
+        let leftSwipe = UISwipeGestureRecognizer.init(target: self, action: #selector(leftSwipeHandler(gesture:)))
+        leftSwipe.direction = .right
+        self.view.addGestureRecognizer(leftSwipe)
+        self.view.isUserInteractionEnabled = true
+    }
+    
+    @objc func leftSwipeHandler(gesture: UISwipeGestureRecognizer) {
+        print("leftSwipeHandler")
+        self.navigationController?.popViewController(animated: true)
     }
 
     @IBAction func actionSignupNext(_ sender: UIButton) {

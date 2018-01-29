@@ -50,7 +50,8 @@ class TAPMainFrame: NSObject {
     
     static func showSignupEmailPage() -> Void {
         let vc = TAPSignupEmailViewController(nibName: "TAPSignupEmailViewController", bundle: nil)
-        navigationView?.viewControllers = [vc]
+        navigationView?.pushViewController(vc, animated: true)
+//        navigationView?.viewControllers = [vc]
         
     }
     
@@ -59,7 +60,8 @@ class TAPMainFrame: NSObject {
         vc.email = email
         vc.firstName = firstName
         vc.lastName = lastName
-        navigationView?.viewControllers = [vc]
+        navigationView?.pushViewController(vc, animated: true)
+//        navigationView?.viewControllers = [vc]
         
     }
     
@@ -68,7 +70,8 @@ class TAPMainFrame: NSObject {
         vc.email = email
         vc.firstName = firstName
         vc.lastName = lastName
-        navigationView?.viewControllers = [vc]
+        navigationView?.pushViewController(vc, animated: true)
+//        navigationView?.viewControllers = [vc]
         
     }
     

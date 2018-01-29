@@ -35,6 +35,16 @@ class TAPSignupPasswordViewController: UIViewController {
         mask.frame = frame
         mask.path = path.cgPath
         triangularView.layer.mask = mask
+        
+        let leftSwipe = UISwipeGestureRecognizer.init(target: self, action: #selector(leftSwipeHandler(gesture:)))
+        leftSwipe.direction = .right
+        self.view.addGestureRecognizer(leftSwipe)
+        self.view.isUserInteractionEnabled = true
+    }
+    
+    @objc func leftSwipeHandler(gesture: UISwipeGestureRecognizer) {
+        print("leftSwipeHandler")
+        self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func actionTerms(_ sender: UIButton) {

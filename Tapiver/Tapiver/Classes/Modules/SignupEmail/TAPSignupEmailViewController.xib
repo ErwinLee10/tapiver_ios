@@ -33,7 +33,7 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_signup.png" translatesAutoresizingMaskIntoConstraints="NO" id="uAu-l3-nR5">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                 </imageView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q7V-cy-e0z">
+                <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q7V-cy-e0z">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <color key="backgroundColor" red="0.0" green="0.21176470589999999" blue="0.3921568627" alpha="0.95999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
