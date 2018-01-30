@@ -13,6 +13,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TAPAddressMethodController" customModule="Tapiver" customModuleProvider="target">
             <connections>
+                <outlet property="headerTopConstraint" destination="YsI-QK-TUg" id="zXk-7r-SA1"/>
                 <outlet property="headerView" destination="vkV-pS-sUm" id="fBu-6z-VGO"/>
                 <outlet property="tableView" destination="2vr-gf-lR7" id="iAF-5F-IBr"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -25,9 +26,20 @@
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vkV-pS-sUm" customClass="TAPHeaderView" customModule="Tapiver" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lwc-12-eMh">
+                            <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="44" id="0aM-QZ-q1O"/>
+                            </constraints>
+                        </view>
+                    </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="64" id="49u-Pr-zDa"/>
+                        <constraint firstAttribute="bottom" secondItem="lwc-12-eMh" secondAttribute="bottom" id="A6S-hu-24y"/>
+                        <constraint firstAttribute="trailing" secondItem="lwc-12-eMh" secondAttribute="trailing" id="Bhf-NJ-8p4"/>
+                        <constraint firstItem="lwc-12-eMh" firstAttribute="leading" secondItem="vkV-pS-sUm" secondAttribute="leading" id="aD5-2h-E4k"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NOi-nw-M5i">
@@ -68,6 +80,7 @@
                 <constraint firstItem="vkV-pS-sUm" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Irk-Ju-E6T"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="2vr-gf-lR7" secondAttribute="trailing" constant="20" id="LBC-IO-mYV"/>
                 <constraint firstItem="vkV-pS-sUm" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="N8d-WM-fYa"/>
+                <constraint firstItem="lwc-12-eMh" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="YsI-QK-TUg"/>
                 <constraint firstItem="2vr-gf-lR7" firstAttribute="top" secondItem="NOi-nw-M5i" secondAttribute="bottom" constant="8" id="cIH-PB-bbh"/>
                 <constraint firstItem="NOi-nw-M5i" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="1:3" id="hGx-dJ-0Tm"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="vkV-pS-sUm" secondAttribute="trailing" id="mHo-2s-E0w"/>

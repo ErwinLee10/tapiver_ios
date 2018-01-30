@@ -105,18 +105,21 @@ class TAPFeedCollectionViewCell: UICollectionViewCell {
 		let price = model.variationsOverview?.listVariations?[currentPicking].originalPrice ?? 0
         guard let salePrice = model.variationsOverview?.listVariations?[currentPicking].salePrice else {
             persentSaleLbl.isHidden = true
-            newPriceLbl.text = "S$" + String.init(price)
+//            newPriceLbl.text = "S$" + String.init(price)
+            newPriceLbl.text = NSNumber(value: price).moneyString()
             priceLbl.text = ""
             return
         }
         let percentSale: Int = Int(100 - salePrice * 100 / price)
         persentSaleLbl.text = String.init(percentSale) + "%"
-        newPriceLbl.text = "S$" + String.init(salePrice)
-        priceLbl.text = "S$" + String.init(price)
+//        newPriceLbl.text = "S$" + String.init(salePrice)
+        newPriceLbl.text = NSNumber(value: salePrice).moneyString()
+//        priceLbl.text = "S$" + String.init(price)
+        priceLbl.text = NSNumber(value: price).moneyString()
         let attributes : [NSAttributedStringKey : Any] = [ NSAttributedStringKey.font : UIFont.systemFont(ofSize: 11.0),
                                             NSAttributedStringKey.foregroundColor : UIColor.init(netHex: 0x848585),
                                             NSAttributedStringKey.strikethroughStyle : NSUnderlineStyle.styleSingle.rawValue]
-        let attStringSaySomething = NSAttributedString(string: "S$" + String.init(price), attributes: attributes)
+        let attStringSaySomething = NSAttributedString(string: NSNumber(value: price).moneyString(), attributes: attributes)
         priceLbl.attributedText = attStringSaySomething
     }
 	
@@ -133,18 +136,18 @@ class TAPFeedCollectionViewCell: UICollectionViewCell {
 		let price = model!.variationsOverview?.listVariations?[currentPicking].originalPrice ?? 0
 		guard let salePrice = model!.variationsOverview?.listVariations?[currentPicking].salePrice else {
 			persentSaleLbl.isHidden = true
-			newPriceLbl.text = "S$" + String.init(price)
+			newPriceLbl.text = NSNumber(value: price).moneyString()
 			priceLbl.text = ""
 			return
 		}
 		let percentSale: Int = Int(100 - salePrice * 100 / price)
 		persentSaleLbl.text = String.init(percentSale) + "%"
-		newPriceLbl.text = "S$" + String.init(salePrice)
-		priceLbl.text = "S$" + String.init(price)
+		newPriceLbl.text = NSNumber(value: salePrice).moneyString()
+		priceLbl.text = NSNumber(value: price).moneyString()
 		let attributes : [NSAttributedStringKey : Any] = [ NSAttributedStringKey.font : UIFont.systemFont(ofSize: 11.0),
 														   NSAttributedStringKey.foregroundColor : UIColor.init(netHex: 0x848585),
 														   NSAttributedStringKey.strikethroughStyle : NSUnderlineStyle.styleSingle.rawValue]
-		let attStringSaySomething = NSAttributedString(string: "S$" + String.init(price), attributes: attributes)
+		let attStringSaySomething = NSAttributedString(string: NSNumber(value: price).moneyString(), attributes: attributes)
 		priceLbl.attributedText = attStringSaySomething
 	}
 	

@@ -9,9 +9,9 @@
 import UIKit
 //import SVProgressHUD
 
-class TAPAddressMethodController: UIViewController {
+class TAPAddressMethodController: TAPBaseViewController {
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var headerView: TAPHeaderView!
+//    @IBOutlet weak var headerView: TAPHeaderView!
     private var isLoadedApi: Bool = false
     private var isSelectSameAs: Bool = true
     var listData = NSMutableArray()
@@ -80,7 +80,7 @@ class TAPAddressMethodController: UIViewController {
         self.tableView.reloadData()
     }
     private func initIb() {
-        self.headerView.delegate = self
+        (self.headerView as? TAPHeaderView)?.delegate = self
         self.tableView.register(UINib.init(nibName: "TAPHeaderAddTableViewCell", bundle: nil), forCellReuseIdentifier: "TAPHeaderAddTableViewCell")
         self.tableView.register(UINib.init(nibName: "TAPAddessCell", bundle: nil), forCellReuseIdentifier: "TAPAddessCell")
         self.tableView.register(UINib.init(nibName: "TAPShippingMethodCell", bundle: nil), forCellReuseIdentifier: "TAPShippingMethodCell")

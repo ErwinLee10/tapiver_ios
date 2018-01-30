@@ -66,17 +66,17 @@
                                                 <rect key="frame" x="0.0" y="33" width="123.5" height="35.5"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Phc-G6-bIn">
-                                                        <rect key="frame" x="0.0" y="6.5" width="123.5" height="17"/>
+                                                        <rect key="frame" x="0.0" y="7" width="123.5" height="16"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2MF-p3-kY1">
-                                                                <rect key="frame" x="0.0" y="5" width="26.5" height="12"/>
+                                                                <rect key="frame" x="0.0" y="4" width="26.5" height="12"/>
                                                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="10"/>
                                                                 <color key="textColor" red="0.630126953125" green="0.64008246527777779" blue="0.637451171875" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YAY-uY-3Gi">
-                                                                <rect key="frame" x="29.5" y="0.5" width="94" height="17"/>
-                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                                                <rect key="frame" x="29.5" y="0.5" width="94" height="16"/>
+                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                                                                 <color key="textColor" red="0.93725490196078431" green="0.32941176470588235" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                                 <userDefinedRuntimeAttributes>

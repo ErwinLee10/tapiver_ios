@@ -12,7 +12,7 @@ import SDWebImage
 import DropDown
 //import SVProgressHUD
 
-class TAPProductMainPageViewController: UIViewController {
+class TAPProductMainPageViewController: TAPBaseViewController {
 
     // top bar
     @IBOutlet weak var cartButton: MIBadgeButton!
@@ -345,10 +345,11 @@ class TAPProductMainPageViewController: UIViewController {
             let percent: Double = (salePrice / originalPrice) * 100
             let roundPercent: Int = Int(round(percent))
             discountedPercentageLabel.text = "-\(100-roundPercent)%"
-            let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: "S$\(data?.variations?.listVariations![currentIdex].originalPrice ?? 0)")
+            
+            let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: NSNumber(value: data?.variations?.listVariations![currentIdex].originalPrice ?? 0).moneyString())
             attributeString.addAttribute(NSAttributedStringKey.strikethroughStyle, value: 2, range: NSMakeRange(0, attributeString.length))
             beforeDiscountedPriceLabel.attributedText = attributeString
-            priceLabel.text = "S$\(data?.variations?.listVariations![currentIdex].salePrice ?? 0)"
+            priceLabel.text = NSNumber(value:data?.variations?.listVariations![currentIdex].salePrice ?? 0).moneyString()
         }
         else {
             if titleStackDiscountView.isHidden == false {
@@ -356,7 +357,7 @@ class TAPProductMainPageViewController: UIViewController {
                 titleStackContainViewHeight.constant = titleStackContainViewHeight.constant - 20
                 titleStackContainView.layoutIfNeeded()
             }
-            priceLabel.text = "S$\(data?.variations?.listVariations![currentIdex].originalPrice ?? 0)"
+            priceLabel.text = NSNumber(value:data?.variations?.listVariations![currentIdex].originalPrice ?? 0).moneyString()
         }
         if data?.variations?.listVariations![currentIdex].stock != nil && (data?.variations?.listVariations![currentIdex].stock)! > 0 {
             if titleStackOutOfStockView.isHidden == false {

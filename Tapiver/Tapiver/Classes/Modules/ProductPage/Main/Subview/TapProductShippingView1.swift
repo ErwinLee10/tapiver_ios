@@ -20,6 +20,6 @@ class TapProductShippingView1: UIView {
     func setData(name: String, day: String, price: Double) {
         nameLabel.text = name
         dayLabel.text = day
-        priceLabel.text = "S$ \(price)"
+        priceLabel.text = NSNumber(value: price).moneyString()
     }
 }
