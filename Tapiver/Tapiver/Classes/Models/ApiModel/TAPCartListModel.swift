@@ -13,6 +13,13 @@ class TAPCartListModel: TAPBaseEntity {
     var coupon: TAPCouponModel?
     var finalTotalAmount: Double?
     var originalTotalAmount:Double?
+    var calTotalAmount: Double {
+        var total: Double = 0
+        for item in cartItemsPerSeller {
+            total += item.calTotalPrice
+        }
+        return total
+    }
     
     override func parserResponse(dic: NSDictionary) {
         if let cartItemsPerSellerDic = dic.value(forKey: TAPConstants.APIParams.cartItemsPerSeller) as? [NSDictionary], cartItemsPerSellerDic.count > 0 {
@@ -42,6 +49,13 @@ class TAPCartItemModel: TAPBaseEntity {
     var shippingOptions: [TAPShippingModel] = []
     var isViewLess: Bool = false
     var isViewDetail: Bool = false
+    var calTotalPrice: Double {
+        var price: Double = 0
+        for product in productVariations {
+            price += (product.finalPrice ?? 0) * Double(product.quantity ?? 0)
+        }
+        return price
+    }
     
     override func parserResponse(dic: NSDictionary) {
         sellerId = dic.value(forKey: TAPConstants.APIParams.sellerId) as? Int

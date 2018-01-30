@@ -84,7 +84,7 @@ class TAPCartViewController: TAPBaseViewController {
             footerView.isHidden = false
             
             contentTableView.reloadData()
-            let total = NSNumber(value: cartListModel?.finalTotalAmount ?? 0).moneyString()
+            let total = NSNumber(value: cartListModel?.calTotalAmount ?? 0).moneyString()
             totalPriceLabel.text = "Total: \(total)"
             
         } else {
@@ -276,8 +276,8 @@ extension TAPCartViewController: UITableViewDataSource {
         let nibs = Bundle.main.loadNibNamed("TAPCartFooterTableViewCell", owner: self, options: nil)
         let footer = nibs?.first as? TAPCartFooterTableViewCell
         if let carItems = cartListModel?.cartItemsPerSeller {
-            let price = carItems[section].totalPrice
-            footer?.setTotalPrice(price ?? 0)
+            let price = carItems[section].calTotalPrice
+            footer?.setTotalPrice(price)
         }
         return footer
     }
@@ -390,5 +390,9 @@ extension TAPCartViewController: UITableViewDelegate {
 extension TAPCartViewController: TAPCartTableViewCellDelegate {
     func cartCellDeleteItem(productVariationId: Int) {
         deleteItem(productVariationId: productVariationId)
+    }
+    
+    func cartCellChangeQuantity() {
+        reloadData()
     }
 }

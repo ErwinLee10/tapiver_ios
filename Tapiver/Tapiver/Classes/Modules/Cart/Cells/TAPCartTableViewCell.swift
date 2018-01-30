@@ -11,6 +11,7 @@ import SDWebImage
 
 protocol TAPCartTableViewCellDelegate: class {
     func cartCellDeleteItem(productVariationId: Int)
+    func cartCellChangeQuantity()
 }
 
 class TAPCartTableViewCell: UITableViewCell {
@@ -36,6 +37,7 @@ class TAPCartTableViewCell: UITableViewCell {
         containerView.layer.masksToBounds = true
         
         quantityView.valueList = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
+        quantityView.delegate = self
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -77,4 +79,14 @@ class TAPCartTableViewCell: UITableViewCell {
         }   
     }
     
+}
+
+extension TAPCartTableViewCell: TAPDropdownBoxViewDelegate {
+    func dropdownBox(_ dropdownBox: TAPDropdownBoxView, selectedValue: String?) {
+        if let value = selectedValue, let intValue = Int(value) {
+            productVariationModel?.quantity = intValue
+            delegate?.cartCellChangeQuantity()
+        }
+        
+    }
 }

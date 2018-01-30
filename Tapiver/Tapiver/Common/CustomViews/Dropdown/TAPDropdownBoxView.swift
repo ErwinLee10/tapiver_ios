@@ -34,7 +34,8 @@ class TAPDropdownBoxView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         containerView.layer.masksToBounds = true
-        selectButton.rotate(.pi)
+//        selectButton.rotate(.pi)
+        selectButton.transform = CGAffineTransform.init(rotationAngle: .pi)
     }
     
     func setSelectedValue(_ value: String) {
