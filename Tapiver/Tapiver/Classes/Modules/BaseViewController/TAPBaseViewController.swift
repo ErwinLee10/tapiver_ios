@@ -74,6 +74,7 @@ class TAPBaseViewController: UIViewController {
             break
         case 3:
             //show feedback
+            showFeedback()
             break
         default:
             break
@@ -93,6 +94,11 @@ class TAPBaseViewController: UIViewController {
         // present TAPAccountViewController
         let accountViewController: TAPAccountTableViewController = TAPAccountTableViewController(nibName: "TAPAccountTableViewController", bundle: nil)
         TAPMainFrame.getNavi().pushViewController(accountViewController, animated: true)
+    }
+    
+    fileprivate func showFeedback() {
+        let vc = TAPHistoryReportIssueViewController(nibName: "TAPHistoryReportIssueViewController", bundle: nil)
+        TAPMainFrame.getNavi().pushViewController(vc, animated: true)
     }
 }
 
