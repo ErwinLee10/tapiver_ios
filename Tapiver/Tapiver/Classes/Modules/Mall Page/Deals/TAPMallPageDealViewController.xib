@@ -14,7 +14,7 @@
             <connections>
                 <outlet property="contentCollectionView" destination="XBs-a1-NbN" id="PnH-u7-HCc"/>
                 <outlet property="emptyLabel" destination="XRX-Tc-pnr" id="sdw-Ei-Vq5"/>
-                <outlet property="headerTopConstraint" destination="FMa-HN-XYa" id="RSt-07-oWC"/>
+                <outlet property="headerTopConstraint" destination="cjz-Ql-d4a" id="eym-ti-gDE"/>
                 <outlet property="headerView" destination="6Pb-q0-5ZV" id="VU4-qS-wuS"/>
                 <outlet property="mainHeaderHeight" destination="gr9-SW-Liu" id="6om-kB-gDq"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -71,10 +71,10 @@
                 <constraint firstItem="6Pb-q0-5ZV" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="7GR-u6-O6n"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="XBs-a1-NbN" secondAttribute="trailing" id="A88-nu-ghW"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="6Pb-q0-5ZV" secondAttribute="trailing" id="BEN-Gp-mkK"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="top" secondItem="kRi-2T-C3t" secondAttribute="top" id="FMa-HN-XYa"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="XBs-a1-NbN" secondAttribute="bottom" id="SgE-Mj-1il"/>
                 <constraint firstItem="6Pb-q0-5ZV" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="ZaX-T2-5OS"/>
                 <constraint firstItem="XRX-Tc-pnr" firstAttribute="top" secondItem="6Pb-q0-5ZV" secondAttribute="bottom" constant="100" id="c0e-WQ-bcw"/>
+                <constraint firstItem="kRi-2T-C3t" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="cjz-Ql-d4a"/>
                 <constraint firstItem="XRX-Tc-pnr" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="qYM-RD-AVH"/>
                 <constraint firstItem="XBs-a1-NbN" firstAttribute="top" secondItem="6Pb-q0-5ZV" secondAttribute="bottom" id="sEo-w5-Oy9"/>
             </constraints>

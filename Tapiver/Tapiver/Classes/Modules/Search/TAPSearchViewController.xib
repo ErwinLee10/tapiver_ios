@@ -13,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TAPSearchViewController" customModule="Tapiver" customModuleProvider="target">
             <connections>
                 <outlet property="contentContainer" destination="khg-4Q-Uay" id="9Z8-cf-e86"/>
+                <outlet property="headerTopConstraint" destination="exv-vE-p1f" id="i8k-pl-Lhv"/>
                 <outlet property="productTabButton" destination="PTO-A7-mbN" id="jsu-7r-OXL"/>
                 <outlet property="searchTextField" destination="N0O-Uo-AIY" id="QzX-aR-Vuw"/>
                 <outlet property="storeTabButton" destination="ZWO-1c-aZq" id="z6U-Nk-mrY"/>

@@ -19,6 +19,7 @@
                 <outlet property="couponView" destination="dL4-gr-v74" id="yDX-Or-OIS"/>
                 <outlet property="emptyLabel" destination="MJl-uT-32f" id="kkc-zM-Ih1"/>
                 <outlet property="footerView" destination="Jw6-wl-Z9L" id="igM-6y-ugu"/>
+                <outlet property="headerTopConstraint" destination="NEq-5g-JLv" id="Hji-QA-chy"/>
                 <outlet property="headerView" destination="VJr-Lq-I95" id="gou-di-m6R"/>
                 <outlet property="proceedToCheckoutBtn" destination="J5U-Bt-OI2" id="AK7-Xe-QMk"/>
                 <outlet property="totalPriceLabel" destination="dCE-38-cwW" id="pTh-wv-H6c"/>
