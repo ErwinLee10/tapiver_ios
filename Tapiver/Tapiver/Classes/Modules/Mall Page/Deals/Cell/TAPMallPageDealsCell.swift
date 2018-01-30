@@ -18,6 +18,9 @@ class TAPMallPageDealsCell: UICollectionViewCell {
     @IBOutlet weak var realPriceLabel: UILabel!
     @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var numOfLikesLabel: UILabel!
+    @IBOutlet weak var collectionview: UICollectionView!
+    @IBOutlet weak var viewColor: UIView!
+    @IBOutlet weak var widthCollection: NSLayoutConstraint!
     
     var productModel: TAPProductModel?
     
@@ -29,19 +32,20 @@ class TAPMallPageDealsCell: UICollectionViewCell {
     
     func fillData(product: TAPProductModel) {
         productModel = product
-		var index = 0
-		
-		for i in 0..<(product.variationsOverview?.listVariations?.count)! {
-			if product.variationsOverview?.listVariations![i].salePrice != nil {
-				index = i
-			}
-		}
-		let imageURL = URL.init(string: product.variationsOverview?.listVariations![index].pictures![0] ?? "")
+        setListColor(count: product.variationsOverview!.listColor.count)
+        var index = 0
+        
+        for i in 0..<(product.variationsOverview?.listVariations?.count)! {
+            if product.variationsOverview?.listVariations![i].salePrice != nil {
+                index = i
+            }
+        }
+        let imageURL = URL.init(string: product.variationsOverview?.listVariations![index].pictures![0] ?? "")
         productImgView.sd_setImage(with: imageURL, placeholderImage: nil, options: SDWebImageOptions.retryFailed, completed: nil)
         typeLabel.text = product.brand?.uppercased()
         nameLabel.text = product.name
         
-		let variations = product.variationsOverview?.listVariations![0]
+        let variations = product.variationsOverview?.listVariations![0]
         if let originPrice = variations?.originalPrice, originPrice > 0 {
             let stdOriginPrice = NSNumber(value: originPrice).moneyString()
             let priceAttStr = NSMutableAttributedString(string: stdOriginPrice)
@@ -57,7 +61,21 @@ class TAPMallPageDealsCell: UICollectionViewCell {
         
         likeButton.isSelected = product.isLikedByThisUser
     }
-
+    private func setListColor(count: Int) {
+        if count > 1 && count <= 4 {
+            viewColor.isHidden = false
+            let cellWidth = 16
+            let spaceBetweenCell = 6
+            widthCollection.constant = CGFloat(count * cellWidth + (count + 1) * spaceBetweenCell)
+        }else {
+            viewColor.isHidden = true
+            widthCollection.constant = 0;
+        }
+        collectionview.reloadData()
+    }
+    func setColor(idxColor: Int){
+        
+    }
     @IBAction func likeBtnTouched(_ sender: Any) {
         if TAPGlobal.shared.hasLogin() {
             if likeButton.isSelected {
@@ -72,6 +90,9 @@ class TAPMallPageDealsCell: UICollectionViewCell {
     
     private func setupView() {
         containerView.layer.masksToBounds = true
+        collectionview.register(UINib(nibName: "TAPFeedColorCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "TAPFeedColorCollectionViewCell")
+        collectionview.delegate = self
+        collectionview.dataSource = self
     }
     
     private func addLikeProduct() {
@@ -121,3 +142,30 @@ class TAPMallPageDealsCell: UICollectionViewCell {
         }
     }
 }
+extension TAPMallPageDealsCell: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let imageURL = URL.init(string: productModel?.variationsOverview?.listVariations![indexPath.item].pictures![0] ?? "")
+        productImgView.sd_setImage(with: imageURL, placeholderImage: nil, options: SDWebImageOptions.retryFailed, completed: nil)
+    }
+}
+
+extension TAPMallPageDealsCell: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        let count = productModel?.variationsOverview?.listColor.count
+        if count! < 2 {
+            return 0;
+        }
+        return count!
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TAPFeedColorCollectionViewCell", for: indexPath) as! TAPFeedColorCollectionViewCell
+        cell.colorView.layer.cornerRadius = cell.colorView.frame.size.width / 2
+        cell.setData(hexColor: (productModel?.variationsOverview?.listColor[indexPath.row])!)
+        cell.backgroundColor = .clear
+        return cell
+    }
+    
+}
+

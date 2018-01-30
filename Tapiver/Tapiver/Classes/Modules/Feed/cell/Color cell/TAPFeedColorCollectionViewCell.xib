@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,9 +20,14 @@
                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cmL-FT-6Fx">
-                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cmL-FT-6Fx">
+                        <rect key="frame" x="17" y="17" width="16" height="16"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="16" id="9pA-ZC-fVG"/>
+                            <constraint firstAttribute="width" constant="16" id="PsE-f1-6Gi"/>
+                            <constraint firstAttribute="width" secondItem="cmL-FT-6Fx" secondAttribute="height" multiplier="1:1" id="scb-mE-QRZ"/>
+                        </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -32,10 +38,8 @@
                 </subviews>
             </view>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="cmL-FT-6Fx" secondAttribute="trailing" id="EjO-Ch-Gs0"/>
-                <constraint firstItem="cmL-FT-6Fx" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="qZG-7y-7iv"/>
-                <constraint firstItem="cmL-FT-6Fx" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="slM-bT-YTh"/>
-                <constraint firstAttribute="bottom" secondItem="cmL-FT-6Fx" secondAttribute="bottom" id="zgC-SF-Ukc"/>
+                <constraint firstItem="cmL-FT-6Fx" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="BEB-0Z-Ijx"/>
+                <constraint firstItem="cmL-FT-6Fx" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="tK0-u0-ogT"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <connections>

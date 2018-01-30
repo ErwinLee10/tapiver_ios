@@ -41,17 +41,6 @@ class TAPPayMentMethodView: UIViewController {
 		cardContainView.addSubview(cardField)
     }
     
-//    private func createCardType() {
-//        for item in listBtCard {
-//            item.addTarget(self, action: Selector(("actionCardType:")), for: .touchUpInside)
-//            let index = self.listBtCard?.index(of: item)
-//            if index == self.cardType.rawValue {
-//                item.isEnabled = true
-//            }else {
-//                item.isEnabled = false
-//            }
-//        }
-//    }
     func actionCardType(sender:UIButton) {
         
     }
@@ -60,15 +49,9 @@ class TAPPayMentMethodView: UIViewController {
         
     }
     private func getStripeToken() {
-
-//        let tripCardParams = STPCardParams()
-//        tripCardParams.number = cardField.cardNumber
-//        tripCardParams.cvc = cardField.cvc
-//        tripCardParams.expMonth = cardField.expirationMonth
-//        tripCardParams.expYear = cardField.expirationYear
 		
-		print(STPAPIClient.shared().publishableKey)
-		print(cardField.cardParams)
+//        print(STPAPIClient.shared().publishableKey)
+//        print(cardField.cardParams)
         if (STPCardValidator.validationState(forCard: cardField.cardParams) == .valid) {
             TAPGlobal.shared.showLoading()
             STPAPIClient.shared().createToken(withCard: cardField.cardParams, completion: { [weak self] (token, error) in
@@ -88,16 +71,6 @@ class TAPPayMentMethodView: UIViewController {
         }
         
     }
-//    private func cardName() -> String {
-//        switch self.cardType {
-//        case .credit:
-//            return "Credit/Debit"
-//        case .paypal:
-//            return "Paypal"
-//        case .pickup:
-//            return "Pickup"
-//        }
-//    }
     private func callApi(tokenStripe: String) {
         let params = createParams(token:tokenStripe)
         TAPGlobal.shared.showLoading()
@@ -117,16 +90,6 @@ class TAPPayMentMethodView: UIViewController {
                 print("sssssssssss")
             }
 		}
-//        TAPWebservice.shareInstance.sendPOSTRequest(path: API_PATH(path: apiPath), params: params as NSDictionary, headers: header as NSDictionary, responseObjectClass: TAPBaseEntity()) {[weak self] (success, obj) in
-//            TAPGlobal.shared.dismissLoading()
-//            if success {
-//
-//            }
-//            else {
-//                guard let weakSelf = self else { return }
-//                TAPDialogUtils.shareInstance.showAlertMessageOneButton(title: "", message: "Server error, please contact Tapiver team for assistance", positive: "OK", positiveHandler: nil, vc: weakSelf)
-//            }
-//        }
     }
 	private func createParams(token: String) -> NSDictionary {
         let total = reviewObj?.cardList?.originalTotalAmount ?? 0
@@ -134,15 +97,6 @@ class TAPPayMentMethodView: UIViewController {
         
         let totalAmountIncludeShipping = Double(total) + getIdParams().disCount
         let dict = getIdParams().orderPerSellers
-        
-//        let subParam = ["stripeToken" : token ,
-//                                        "totalAmountWithoutShipping": total,
-//                                        "shippingAddressId" : addShipping,
-//                                        "billingAddressId"  : reviewObj?.addressBilling?.id ?? addShipping,
-//										"couponName"        : reviewObj?.cardList?.coupon?.name!,
-//                                        "totalAmountIncludeShipping": totalAmountIncludeShipping,
-//                                        "orderPerSellers": dict
-//			] as [String : Any]
 		let param = NSMutableDictionary()
 		param["stripeToken"] = token
 		param["totalAmountWithoutShipping"] = total
@@ -154,8 +108,6 @@ class TAPPayMentMethodView: UIViewController {
 		
 		param["totalAmountIncludeShipping"] = totalAmountIncludeShipping
 		param["orderPerSellers"] = dict
-        
-//        print("subparams = \(subParam)")
 		print("param = \(param)")
 		return param as NSDictionary
     }
@@ -187,37 +139,6 @@ class TAPPayMentMethodView: UIViewController {
         
         return (0.0, [])
     }
-    private func jsonStringParam(param: [Dictionary<String, Any>]) -> String {
-        do {
-            
-            //Convert to Data
-            let jsonData = try JSONSerialization.data(withJSONObject: param, options: JSONSerialization.WritingOptions.prettyPrinted)
-            
-            //Do this for print data only otherwise skip
-            if let JSONString = String(data: jsonData, encoding: String.Encoding.utf8) {
-                print(JSONString)
-                return JSONString
-            }else {
-                return ""
-            }
-            
-        } catch {
-            return ""
-        }
-    }
-    //    {
-    //    "stripeToken" : "tok_1A7EhKGaV3oLL0KEZZoFzi2V",
-    //    "totalAmountWithoutShipping" : 60,
-    //    "totalAmountIncludeShipping": 62,
-    //    "couponName" : "discount5",
-    //    "shippingAddressId" : 1,
-    //    "billingAddressId" : 1,
-    //    "orderPerSellers": [{
-    //    "sellerId" : 1,
-    //    "shippingId": 1,
-    //    "subAmount": 60
-    //    }]
-    //    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

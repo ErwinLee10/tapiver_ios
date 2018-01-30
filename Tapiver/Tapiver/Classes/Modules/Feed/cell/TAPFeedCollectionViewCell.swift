@@ -83,17 +83,19 @@ class TAPFeedCollectionViewCell: UICollectionViewCell {
 			collectionContainerView.isHidden = true
 		}
 		else {
+            collectionContainerView.isHidden = false
 			colorCollectionView.delegate = self
 			colorCollectionView.dataSource = self
 //			colorTableView.frame = CGRect(x: colorTableView.frame.origin.x, y: colorTableView.frame.origin.y, width: colorTableView.frame.size.width, height: colorTableView.contentSize.height)
-			let cellWidth = 20
-			let spaceBetweenCell = 3
-			if colorData.count <= 4 {
-				colorCollectionViewWidth.constant = CGFloat(colorData.count * cellWidth + (colorData.count - 1) * spaceBetweenCell)
-			}
-			else {
-				colorCollectionViewWidth.constant = CGFloat(4 * cellWidth + (colorData.count - 1) * spaceBetweenCell)
-			}
+            let cellWidth = 16
+            let spaceBetweenCell = 3
+            if colorData.count <= 4 {
+                colorCollectionViewWidth.constant = CGFloat(colorData.count * cellWidth + (colorData.count + 1) * spaceBetweenCell)
+            }
+            else {
+                colorCollectionViewWidth.constant = CGFloat(4 * cellWidth + (colorData.count + 1) * spaceBetweenCell)
+            }
+            colorCollectionView.reloadData()
 		}
 		productImage.sd_setImage(with: URL.init(string: (model.variationsOverview?.listVariations![currentPicking].pictures![0])!), completed: nil)
 //        self.pageControl.numberOfPages = items.count
@@ -249,6 +251,7 @@ extension TAPFeedCollectionViewCell: UICollectionViewDataSource {
 	
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TAPFeedColorCollectionViewCell", for: indexPath) as! TAPFeedColorCollectionViewCell
+        cell.colorView.layer.cornerRadius = cell.colorView.frame.size.width / 2
 		cell.setData(hexColor: colorData[indexPath.row])
 		cell.backgroundColor = .clear
 		return cell

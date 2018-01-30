@@ -102,12 +102,16 @@ class TAPShippingCostModel: TAPBaseEntity {
 
 class TAPListVariationsModel: TAPBaseEntity {
     var listVariations: [TAPVariationsOverviewModel]? = []
+    var listColor: [String] = []
     override func parserResponseArray(dics: [NSDictionary]) {
         super.parserResponseArray(dics: dics)
         for dict in dics {
             let item =  TAPVariationsOverviewModel()
             item.parserResponse(dic: dict)
             listVariations?.append(item)
+            if ( !listColor.contains(item.colorHexCode!) )  {
+                listColor.append(item.colorHexCode!)
+            }
         }
     }
 }
