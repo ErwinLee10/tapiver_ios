@@ -138,14 +138,21 @@ class TAPAddressMethodController: TAPBaseViewController {
     }
     
     @IBAction func acPushOrder(_ sender: Any) {
+        if self.createReviewEntity().valid ==  false {
+            return;
+        }
         let review = TAPReViewOrderController.init(nibName: "TAPReViewOrderController", bundle: nil)
         review.reviewObj = TAPReviewOrderEntity()
-        review.reviewObj =  self.createReviewEntity()
+        review.reviewObj =  self.createReviewEntity().obj
         self.navigationController?.pushViewController(review, animated: true)
     }
     
-    private func createReviewEntity() -> TAPReviewOrderEntity  {
+    private func createReviewEntity() -> (obj : TAPReviewOrderEntity , valid: Bool)  {
         let obj = TAPReviewOrderEntity()
+        if self.listShipping.count == 0 {
+            TAPDialogUtils.shareInstance.showAlertMessageOneButton(title: "", message: "Please insert at least one address", positive: "OK", positiveHandler: nil, vc: self)
+            return (obj , false)
+        }
         for item in self.listShipping {
             if item.isSelected == true {
                 obj.address = item.addObj
@@ -161,7 +168,7 @@ class TAPAddressMethodController: TAPBaseViewController {
             
         }
         obj.cardList = cardList;
-        return obj
+        return (obj , true)
     }
     
     

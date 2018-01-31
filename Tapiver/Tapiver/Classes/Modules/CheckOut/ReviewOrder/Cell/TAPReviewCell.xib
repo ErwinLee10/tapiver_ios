@@ -72,20 +72,20 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Store total" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IgO-JA-YbC">
-                                <rect key="frame" x="189" y="9" width="50.5" height="12"/>
+                                <rect key="frame" x="189" y="4.5" width="50.5" height="12"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cashback" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1aw-dm-OSY">
-                                <rect key="frame" x="192" y="38" width="47.5" height="12"/>
+                                <rect key="frame" x="192" y="33.5" width="47.5" height="12"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bugis Juntioin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EnD-rh-IMg">
-                                <rect key="frame" x="16" y="29" width="113.5" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <rect key="frame" x="16" y="29" width="96.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -98,13 +98,13 @@
                             <constraint firstItem="CP1-Ew-vIk" firstAttribute="bottom" secondItem="EnD-rh-IMg" secondAttribute="bottom" id="CaF-kh-I4C"/>
                             <constraint firstItem="BMR-YQ-mtG" firstAttribute="leading" secondItem="4a8-px-jTd" secondAttribute="leading" constant="16" id="DhR-Ty-FFH"/>
                             <constraint firstAttribute="bottom" secondItem="EnD-rh-IMg" secondAttribute="bottom" id="GjE-KM-ebj"/>
+                            <constraint firstItem="jZv-1U-jzA" firstAttribute="centerY" secondItem="IgO-JA-YbC" secondAttribute="centerY" id="KNL-nN-wHC"/>
                             <constraint firstAttribute="trailing" secondItem="jZv-1U-jzA" secondAttribute="trailing" constant="16" id="KvY-Sj-Ucz"/>
                             <constraint firstItem="BMR-YQ-mtG" firstAttribute="top" secondItem="4a8-px-jTd" secondAttribute="top" id="QWh-0S-HIQ"/>
                             <constraint firstItem="EnD-rh-IMg" firstAttribute="leading" secondItem="BMR-YQ-mtG" secondAttribute="leading" id="Rmx-Bh-DkH"/>
                             <constraint firstAttribute="height" constant="50" id="hWf-Bz-Vcy"/>
                             <constraint firstItem="EnD-rh-IMg" firstAttribute="top" secondItem="BMR-YQ-mtG" secondAttribute="bottom" constant="8" id="jzC-MU-dJy"/>
-                            <constraint firstItem="1aw-dm-OSY" firstAttribute="bottom" secondItem="EnD-rh-IMg" secondAttribute="bottom" id="rnQ-10-mfe"/>
-                            <constraint firstItem="IgO-JA-YbC" firstAttribute="bottom" secondItem="BMR-YQ-mtG" secondAttribute="bottom" id="uX8-fb-69T"/>
+                            <constraint firstItem="CP1-Ew-vIk" firstAttribute="centerY" secondItem="1aw-dm-OSY" secondAttribute="centerY" id="mwX-pc-AB0"/>
                             <constraint firstItem="jZv-1U-jzA" firstAttribute="bottom" secondItem="BMR-YQ-mtG" secondAttribute="bottom" id="v7h-IC-qe3"/>
                         </constraints>
                     </view>
