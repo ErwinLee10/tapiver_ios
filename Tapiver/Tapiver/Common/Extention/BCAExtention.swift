@@ -7,9 +7,27 @@
 
 import Foundation
 import UIKit
+var refreshControl: UIRefreshControl = UIRefreshControl()
 
 extension UIViewController {
-    
+    // MARK : Pull Refresh - Start
+    func makePullToRefresh(tableName: UIScrollView){
+        if #available(iOS 10.0, *) {
+            tableName.refreshControl = refreshControl
+        } else {
+            tableName.addSubview(refreshControl)
+        }
+        refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
+    }
+    @objc public func refreshData(_ sender: Any) {
+        
+    }
+    func endRefresh(){
+        if refreshControl.isRefreshing {
+            refreshControl.endRefreshing()
+        }
+    }
+    // MARK : Pull Refresh - End
     func hideKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
         tap.cancelsTouchesInView = false
@@ -140,7 +158,7 @@ extension UIView {
         
         self.layer.add(animation, forKey: nil)
     }
-
+    
 }
 
 extension UIImage {
@@ -175,7 +193,7 @@ extension String {
     var numberValue: NSNumber? {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
-//        formatter.maximumFractionDigits = 0
+        //        formatter.maximumFractionDigits = 0
         return formatter.number(from: self)
     }
     
@@ -239,3 +257,6 @@ extension Date {
         return result
     }
 }
+
+
+

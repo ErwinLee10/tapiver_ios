@@ -7,14 +7,18 @@
 //
 
 import UIKit
-
+enum Table {
+    case none
+    case refresh
+    case loadmore
+}
 class TAPBaseViewController: UIViewController {
     @IBOutlet weak var headerView: TAPBaseHeaderView?
     @IBOutlet var headerTopConstraint: NSLayoutConstraint?
-    
+    var isMoreData: Bool = true
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.view.backgroundColor = UIColor.init(netHex: 0xF5F8F7)
         
         if #available(iOS 11.0, *) {
@@ -23,7 +27,7 @@ class TAPBaseViewController: UIViewController {
             headerTopConstraint?.constant = 20.0
         }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -56,13 +60,13 @@ class TAPBaseViewController: UIViewController {
     
     fileprivate func menuItemTouchHandler(itemIndex: Int) {
         guard TAPGlobal.shared.hasLogin() == true else {
-             TAPMainFrame.showLoginPageMain()
+            TAPMainFrame.showLoginPageMain()
             return
         }
         
         switch itemIndex {
-//        case 0:
-//            break
+            //        case 0:
+        //            break
         case 0:
             showHistoryScreen()
             break
@@ -100,6 +104,8 @@ class TAPBaseViewController: UIViewController {
         let vc = TAPHistoryReportIssueViewController(nibName: "TAPHistoryReportIssueViewController", bundle: nil)
         TAPMainFrame.getNavi().pushViewController(vc, animated: true)
     }
+    
+
 }
 
 extension TAPBaseViewController: UIPopoverPresentationControllerDelegate {
@@ -107,3 +113,8 @@ extension TAPBaseViewController: UIPopoverPresentationControllerDelegate {
         return UIModalPresentationStyle.none
     }
 }
+
+extension UITableView {
+    
+}
+

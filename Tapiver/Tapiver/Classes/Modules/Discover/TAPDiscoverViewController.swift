@@ -12,7 +12,6 @@ class TAPDiscoverViewController: TAPBaseViewController {
     @IBOutlet weak var tableView: UITableView!
     private var feedsApiModels: TAPFeedApiModel?
     public var landMarkId :String?
-    var isLoadMore: Bool = false
     
     var errorInternetView: TAPLostConnectErrorView?
     var errorGeneralView: TAPGeneralErrorView?
@@ -20,36 +19,65 @@ class TAPDiscoverViewController: TAPBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initIB()
-        initData()
+        initData(loadType: Table.none)
     }
- 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.makePullToRefresh(tableName: self.tableView)
+    }
+    @objc override public func refreshData(_ sender: Any) {
+        initData(loadType: Table.refresh)
+    }
     func initIB() {
         (self.headerView as? TAPMainPageHeaderView)?.delegate = self
         self.tableView.register(UINib.init(nibName: "TAPFeedTableViewCell", bundle: nil), forCellReuseIdentifier: "TAPFeedTableViewCell")
     }
-    func initData() {
+    
+    func initData(loadType: Table) {
+        var page: Int = 0
+        if self.feedsApiModels == nil || loadType == Table.none || loadType == Table.refresh {
+            self.feedsApiModels = TAPFeedApiModel()
+            self.isMoreData = true
+        }
+        if loadType == Table.loadmore {
+            page = (self.feedsApiModels?.feedModels.count)!
+        }
+        
         let header = NSMutableDictionary()
         header.setValue("application/json", forKey: "Content-Type")
         header.setValue(TAPGlobal.shared.getLoginModel()?.webSessionId ?? "", forKey: "Authorization")
+        
         let params = NSMutableDictionary()
+        params.setValue(page, forKey: "page")
+        params.setValue(landMarkId ?? "" , forKey: "landMarkId")
+        
         var apiPath: String
-        //params.setValue(landMarkId ?? "" , forKey: "landMarkId")
-        params.setValue(self.feedsApiModels?.feedModels.count , forKey: "page")
-		
         if(TAPGlobal.shared.hasLogin()) {
             apiPath = API_PATH(path: "/api/v1/discover")
-			params.setValue(TAPGlobal.shared.getLoginModel()?.userId ?? "", forKey: "userId")
+            params.setValue(TAPGlobal.shared.getLoginModel()?.userId ?? "", forKey: "userId")
         } else {
             apiPath = API_PATH(path: "/api/v1/s/overview")
         }
-        //SVProgressHUD.show()
+        
         TAPGlobal.shared.showLoading()
-        TAPWebservice.shareInstance.sendGETRequest(path: apiPath, params: params, headers: header, responseObjectClass: TAPFeedApiModel()) { (success, response) in
+        TAPWebservice.shareInstance.sendGETRequest(path: apiPath, params: params, headers: header, responseObjectClass: TAPFeedApiModel()) { [unowned self] (success, response) in
+            
             if success {
                 guard let model = response as? TAPFeedApiModel else {
                     return
                 }
-                self.feedsApiModels = model
+                if  loadType == Table.loadmore  {
+                    if model.feedModels.count > 0 {
+                        for item in model.feedModels {
+                            self.feedsApiModels?.feedModels .append(item)
+                        }
+                    } else {
+                        self.isMoreData = false
+                    }
+                }else {
+                    self.feedsApiModels = model
+                    self.endRefresh()
+                }
                 self.tableView.reloadData()
             } else {
                 TAPWebservice.shareInstance.checkHaveInternet(response: { (check) in
@@ -67,9 +95,8 @@ class TAPDiscoverViewController: TAPBaseViewController {
                         self.view.bringSubview(toFront: self.errorInternetView!)
                     }
                 })
-//                TAPDialogUtils.shareInstance.showAlertMessageOneButton(title: "", message: "Server error, please contact Tapiver team for assistance", positive: "OK", positiveHandler: nil, vc: self)
+                
             }
-            //SVProgressHUD.dismiss()
             TAPGlobal.shared.dismissLoading()
         }
     }
@@ -91,7 +118,7 @@ extension TAPDiscoverViewController: UITableViewDataSource {
         guard let data = self.feedsApiModels else {
             return 0
         }
-		return data.feedModels.count
+        return data.feedModels.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -109,6 +136,9 @@ extension TAPDiscoverViewController: UITableViewDataSource {
         cell.row = indexPath.row
         cell.typeView = MainPageViewType.MainPageViewTypeDiscover
         cell.fillDataToView(model: data.feedModels[indexPath.row])
+        if indexPath.row == self.feedsApiModels!.feedModels.count - 1 && self.isMoreData == true {
+            initData(loadType: Table.loadmore)
+        }
         return cell
     }
     
@@ -123,13 +153,6 @@ extension TAPDiscoverViewController: TAPMainPageHeaderViewDelegate {
 extension TAPDiscoverViewController: TAPFeedTableViewCellDelegate {
     func tapShop(at row: Int) {
         let vc = TAPStorePageViewController(nibName: "TAPStorePageViewController", bundle: nil)
-//        let feedModel = TAPFeedModel.init()
-//        feedModel.sellerPicture = data?.sellerPicture
-//        feedModel.sellerName = data?.sellerName
-//        feedModel.sellerTotalFollower = data?.sellerTotalFollower
-//        //feedModel.sellerCoverPicture = data.sellerc
-//        feedModel.sellerId = Int(data?.sellerId ?? "0")
-//        feedModel.sellerAddress = data?.sellerAddress
         vc.feedModel = self.feedsApiModels?.feedModels[row]
         TAPMainFrame.getNavi().pushViewController(vc, animated: true)
     }
@@ -141,12 +164,12 @@ extension TAPDiscoverViewController: TAPFeedTableViewCellDelegate {
     }
     
     func followShop(at row: Int) {
-		if TAPGlobal.shared.hasLogin() == false {
-			TAPMainFrame.showLoginPageMain()
-			return
-		}
-		
-		
+        if TAPGlobal.shared.hasLogin() == false {
+            TAPMainFrame.showLoginPageMain()
+            return
+        }
+        
+        
         if self.feedsApiModels?.feedModels[row].isFollowedByThisUser == true {
             TAPWebservice.shareInstance.sendDELETERequest(path: "/api/v1/u/\(TAPGlobal.shared.getLoginModel()?.userId ?? "")/follow/\(self.feedsApiModels?.feedModels[row].sellerId ?? 0)", responseHandler: { (check, response) in
                 if check {
