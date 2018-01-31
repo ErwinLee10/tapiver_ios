@@ -160,7 +160,7 @@
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="fkT-Ey-kid">
                                         <rect key="frame" x="78" y="2" width="16" height="16"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="16" id="3B7-F2-637"/>
                                             <constraint firstAttribute="height" constant="16" id="ebR-FT-rbN"/>
@@ -173,7 +173,7 @@
                                         </collectionViewFlowLayout>
                                     </collectionView>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="0.51632063356164382" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="1" alpha="0.43134631849315069" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="fkT-Ey-kid" firstAttribute="centerY" secondItem="GJs-hH-JBq" secondAttribute="centerY" id="5Dw-w2-cNp"/>
                                     <constraint firstItem="fkT-Ey-kid" firstAttribute="centerX" secondItem="GJs-hH-JBq" secondAttribute="centerX" id="6Br-Rh-gqJ"/>

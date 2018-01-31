@@ -66,7 +66,7 @@ class TAPMallPageDealsCell: UICollectionViewCell {
             viewColor.isHidden = false
             let cellWidth = 16
             let spaceBetweenCell = 6
-            widthCollection.constant = CGFloat(count * cellWidth + (count + 1) * spaceBetweenCell)
+            widthCollection.constant = CGFloat(count * cellWidth + (count - 1) * spaceBetweenCell)
         }else {
             viewColor.isHidden = true
             widthCollection.constant = 0;
