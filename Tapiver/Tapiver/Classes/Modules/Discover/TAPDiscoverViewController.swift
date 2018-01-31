@@ -25,7 +25,7 @@ class TAPDiscoverViewController: TAPBaseViewController {
         super.viewWillAppear(animated)
         self.makePullToRefresh(tableName: self.tableView)
     }
-    @objc override public func refreshData(_ sender: Any) {
+    @objc override public func refreshData() {
         initData(loadType: Table.refresh)
     }
     func initIB() {

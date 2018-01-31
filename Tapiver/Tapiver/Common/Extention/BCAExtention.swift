@@ -7,24 +7,25 @@
 
 import Foundation
 import UIKit
-var refreshControl: UIRefreshControl = UIRefreshControl()
+var refreshControl: UIRefreshControl?
 
 extension UIViewController {
     // MARK : Pull Refresh - Start
     func makePullToRefresh(tableName: UIScrollView){
+        refreshControl = UIRefreshControl()
         if #available(iOS 10.0, *) {
             tableName.refreshControl = refreshControl
         } else {
-            tableName.addSubview(refreshControl)
+            tableName.addSubview(refreshControl!)
         }
-        refreshControl.addTarget(self, action: #selector(refreshData(_:)), for: .valueChanged)
+        refreshControl?.addTarget(self, action: #selector(UIViewController.refreshData), for: .valueChanged)
     }
-    @objc public func refreshData(_ sender: Any) {
+    @objc public func refreshData() {
         
     }
     func endRefresh(){
-        if refreshControl.isRefreshing {
-            refreshControl.endRefreshing()
+        if refreshControl!.isRefreshing {
+            refreshControl!.endRefreshing()
         }
     }
     // MARK : Pull Refresh - End

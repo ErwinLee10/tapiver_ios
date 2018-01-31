@@ -25,31 +25,35 @@ class TAPDealsViewController: TAPBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setupView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        getData()
+        self.makePullToRefresh(tableName: contentCollectionView)
+        getData(typeLoad: Table.none)
+    }
+    
+    @objc override public func refreshData() {
+        getData(typeLoad: Table.refresh)
     }
     
     // MARK: Private methods
     private func setupView() {
+        
         let mainPageHeaderView = headerView as? TAPMainPageHeaderView
         mainPageHeaderView?.delegate = self
         contentCollectionView.register(UINib.init(nibName: "TAPMallPageDealsCell", bundle: nil), forCellWithReuseIdentifier: TAPMallPageDealViewController.cellIdentifier)
         emptyLabel.isHidden = true
     }
     
-    private func getData() {
+    private func getData(typeLoad: Table) {
         var params: [String: Any] = [:]
         if TAPGlobal.shared.hasLogin(), let userID = TAPGlobal.shared.getLoginModel()?.userId {
             params[TAPConstants.APIParams.userId] = userID.numberValue?.intValue ?? 0
 			params[TAPConstants.APIParams.hasDeal] = true
         }
         
-        //SVProgressHUD.show()
         TAPGlobal.shared.showLoading()
         TAPWebservice.shareInstance.sendGETRequest(path: TAPConstants.APIPath.getProducts, params: params, responseObjectClass: TAPProductListModel()) { [weak self] (success, responseEntity) in
             if success, let productListModel = responseEntity as? TAPProductListModel {

@@ -20,34 +20,61 @@ class TAPFeedViewController: TAPBaseViewController  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        tableData.register(UINib.init(nibName: "TAPFeedTableViewCell", bundle: nil), forCellReuseIdentifier: "TAPFeedTableViewCell")
-        (headerView as? TAPMainPageHeaderView)?.delegate = self
-        self.getData()
+        initIB()
+        self.getData(typeLoad: Table.none)
     }
     
-    private func getData() {
+    private func initIB() {
+        tableData.register(UINib.init(nibName: "TAPFeedTableViewCell", bundle: nil), forCellReuseIdentifier: "TAPFeedTableViewCell")
+        (headerView as? TAPMainPageHeaderView)?.delegate = self
+        self.makePullToRefresh(tableName: tableData)
+    }
+    
+    @objc override public func refreshData() {
+        getData(typeLoad: Table.refresh)
+    }
+    
+    private func getData(typeLoad: Table) {
 		if TAPGlobal.shared.hasLogin() == false {
 			self.nodataView.isHidden = false
 			return
 		}
-		
-		
+
+        var page: Int = 0
+        if self.feedsApiModels == nil || typeLoad == Table.none || typeLoad == Table.refresh {
+            self.feedsApiModels = TAPFeedApiModel()
+            self.isMoreData = true
+        }
+        if typeLoad == Table.loadmore {
+            page = (self.feedsApiModels?.feedModels.count)!
+        }
+        
         let header = NSMutableDictionary()
         header.setValue("application/json", forKey: "Content-Type")
         header.setValue(TAPGlobal.shared.getLoginModel()?.webSessionId ?? "", forKey: "Authorization")
         let params = NSMutableDictionary()
 		var apiPath = API_PATH(path: String.init(format: "/api/v1/u/%@/feeds", TAPGlobal.shared.getLoginModel()?.userId ?? ""))
-            //params.setValue((0), forKey: "page")
-        //SVProgressHUD.show()
+        params.setValue(page, forKey: "page")
+
         TAPGlobal.shared.showLoading()
-        TAPWebservice.shareInstance.sendGETRequest(path: apiPath, params: params, headers: header, responseObjectClass: TAPFeedApiModel()) { (success, response) in
+        TAPWebservice.shareInstance.sendGETRequest(path: apiPath, params: params, headers: header, responseObjectClass: TAPFeedApiModel()) { [unowned self] (success, response) in
             if success {
                 guard let model = response as? TAPFeedApiModel else {
                     return
                 }
-                self.feedsApiModels = model
+                if  typeLoad == Table.loadmore  {
+                    if model.feedModels.count > 0 {
+                        for item in model.feedModels {
+                            self.feedsApiModels?.feedModels .append(item)
+                        }
+                    } else {
+                        self.isMoreData = false
+                    }
+                }else {
+                    self.feedsApiModels = model
+                    self.endRefresh()
+                }
+                
                 self.tableData.reloadData()
                 
                 guard let data = self.feedsApiModels else {
@@ -70,9 +97,8 @@ class TAPFeedViewController: TAPBaseViewController  {
                         self.view.bringSubview(toFront: self.errorInternetView!)
                     }
                 })
-//                TAPDialogUtils.shareInstance.showAlertMessageOneButton(title: "", message: "Server error, please contact Tapiver team for assistance", positive: "OK", positiveHandler: nil, vc: self)
+
             }
-            //SVProgressHUD.dismiss()
             TAPGlobal.shared.dismissLoading()
         }
         
@@ -126,6 +152,9 @@ extension TAPFeedViewController: UITableViewDataSource {
         cell.delegate = self
         cell.row = indexPath.row
         cell.fillDataToView(model: data.feedModels[indexPath.row])
+        if indexPath.row == self.feedsApiModels!.feedModels.count - 1 && self.isMoreData == true {
+            getData(typeLoad: Table.loadmore)
+        }
         return cell
     }
     
