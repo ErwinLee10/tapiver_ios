@@ -22,14 +22,21 @@ class TAPPayMentMethodView: UIViewController {
     @IBOutlet weak var btPlaceOrder: UIButton!
 	@IBOutlet weak var cardContainView: UIView!
 	let cardField = STPPaymentCardTextField()
-//    private var cardType: CardType = .credit
     public var reviewObj: TAPReviewOrderEntity?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initIB()
     }
-	
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        IQKeyboardManager.sharedManager().enable = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        IQKeyboardManager.sharedManager().enable = false
+    }
 	override func viewDidLayoutSubviews() {
 		super.viewDidLayoutSubviews()
 		cardField.frame = CGRect(x: 0, y: 0, width: cardContainView.frame.width, height: cardContainView.frame.height)
@@ -49,9 +56,7 @@ class TAPPayMentMethodView: UIViewController {
         
     }
     private func getStripeToken() {
-		
-//        print(STPAPIClient.shared().publishableKey)
-//        print(cardField.cardParams)
+
         if (STPCardValidator.validationState(forCard: cardField.cardParams) == .valid) {
             TAPGlobal.shared.showLoading()
             STPAPIClient.shared().createToken(withCard: cardField.cardParams, completion: { [weak self] (token, error) in
@@ -82,12 +87,13 @@ class TAPPayMentMethodView: UIViewController {
         }
 		
         TAPGlobal.shared.showLoading()
-		TAPWebservice.shareInstance.sendPOSTRequest(path: API_PATH(path: apiPath), params: params) { (check) in
+		TAPWebservice.shareInstance.sendPOSTRequest(path: API_PATH(path: apiPath), params: params) { [unowned self] (check) in
 			TAPGlobal.shared.dismissLoading()
 			if check == false {
 				TAPDialogUtils.shareInstance.showAlertMessageOneButton(title: "", message: "Server error, please contact Tapiver team for assistance", positive: "OK", positiveHandler: nil, vc: self)
             }else {
                 print("sssssssssss")
+                self.backToMainPage()
             }
 		}
     }
@@ -139,6 +145,16 @@ class TAPPayMentMethodView: UIViewController {
         
         return (0.0, [])
     }
+    private func backToMainPage() {
+        for  item in (self.navigationController?.viewControllers)! {
+            if item is TAPMainTabbarViewController {
+                reviewObj = TAPReviewOrderEntity()
+                NotificationCenter.default.post(name:Notification.Name(rawValue:TAPConstants.NotificationName.ChangeCartNumber), object: ["number": "0"])
+                self.navigationController?.popToViewController(item, animated: true)
+                break
+            }
+        }
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -152,17 +168,5 @@ extension TAPPayMentMethodView: TAPHeaderViewDelegate {
 }
 
 extension TAPPayMentMethodView: STPPaymentCardTextFieldDelegate {
-//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-//        if textField.isEqual(self.tfExpDate) {
-//            let result = (textField.text as NSString?)?.replacingCharacters(in: range, with: string) ?? string
-//            if (result.length() >= 11) {
-//                return false
-//            }
-//            if (result.length() == 5 || result.length() == 8 || result.length() == 11) && string != ""{
-//                textField.text?.append("/")
-//            }
-//        }
-//
-//        return true
-//    }
+
 }
