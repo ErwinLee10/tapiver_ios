@@ -48,16 +48,37 @@ class TAPDealsViewController: TAPBaseViewController {
     }
     
     private func getData(typeLoad: Table) {
+        var page: Int = 0
+        if  typeLoad == Table.none || typeLoad == Table.refresh {
+            
+            self.isMoreData = true
+        }
+        if typeLoad == Table.loadmore {
+            page = productList.count
+        }
         var params: [String: Any] = [:]
         if TAPGlobal.shared.hasLogin(), let userID = TAPGlobal.shared.getLoginModel()?.userId {
             params[TAPConstants.APIParams.userId] = userID.numberValue?.intValue ?? 0
 			params[TAPConstants.APIParams.hasDeal] = true
+            params[TAPConstants.APIParams.page] = page
         }
         
         TAPGlobal.shared.showLoading()
         TAPWebservice.shareInstance.sendGETRequest(path: TAPConstants.APIPath.getProducts, params: params, responseObjectClass: TAPProductListModel()) { [weak self] (success, responseEntity) in
             if success, let productListModel = responseEntity as? TAPProductListModel {
-                self?.productList = productListModel.productList
+                
+                if  typeLoad == Table.loadmore  {
+                    if productListModel.productList.count > 0 {
+                        for item in productListModel.productList {
+                            self?.productList.append(item)
+                        }
+                    } else {
+                        self?.isMoreData = false
+                    }
+                }else {
+                    self?.productList = productListModel.productList
+                    self?.endRefresh()
+                }
                 self?.reloadData()
             }
             else {
@@ -79,7 +100,6 @@ class TAPDealsViewController: TAPBaseViewController {
                     }
                 })
             }
-            //SVProgressHUD.dismiss()
             TAPGlobal.shared.dismissLoading()
         }
     }
@@ -93,7 +113,6 @@ class TAPDealsViewController: TAPBaseViewController {
             contentCollectionView.reloadData()
         }
     }
-
 }
 
 extension TAPDealsViewController: UICollectionViewDataSource {
@@ -109,6 +128,9 @@ extension TAPDealsViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TAPMallPageDealViewController.cellIdentifier, for: indexPath) as! TAPMallPageDealsCell
         let row = indexPath.row
         cell.fillData(product: productList[row])
+        if indexPath.item == productList.count - 1 && self.isMoreData ==  true {
+            getData(typeLoad: Table.loadmore)
+        }
         return cell
     }
 }
