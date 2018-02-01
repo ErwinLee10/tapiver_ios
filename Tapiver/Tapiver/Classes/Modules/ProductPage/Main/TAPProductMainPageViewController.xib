@@ -649,7 +649,7 @@
                         <constraint firstItem="NeJ-ep-HNF" firstAttribute="centerY" secondItem="gpa-lW-hZn" secondAttribute="centerY" id="b6B-n6-e7Y"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vwk-y1-5ss">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vwk-y1-5ss" customClass="UIControl">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="1007"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tWM-hs-hDH">
@@ -881,6 +881,9 @@
                         <constraint firstItem="tWM-hs-hDH" firstAttribute="leading" secondItem="vwk-y1-5ss" secondAttribute="leading" constant="16" id="eXj-Lz-mLy"/>
                         <constraint firstItem="tWM-hs-hDH" firstAttribute="centerY" secondItem="vwk-y1-5ss" secondAttribute="centerY" id="xez-1R-VI2"/>
                     </constraints>
+                    <connections>
+                        <action selector="tapCartView:" destination="-1" eventType="touchUpInside" id="n4n-ly-bwN"/>
+                    </connections>
                 </view>
             </subviews>
             <color key="backgroundColor" red="0.098039215690000001" green="0.35686274509999999" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>

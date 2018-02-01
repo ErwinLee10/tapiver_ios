@@ -133,9 +133,9 @@ class TAPProductMainPageViewController: TAPBaseViewController {
         addToCartQuantityPickView.addGestureRecognizer(quantityPickTap)
         self.addToCartQuantityPickView.isUserInteractionEnabled = true
         
-        let addToCartTap = UITapGestureRecognizer(target: self, action: #selector(self.hideAddToCartView(_:)))
-        addToCartView.addGestureRecognizer(addToCartTap)
-        addToCartView.isUserInteractionEnabled = true
+//        let addToCartTap = UITapGestureRecognizer(target: self, action: #selector(self.hideAddToCartView(_:)))
+//        addToCartView.addGestureRecognizer(addToCartTap)
+//        addToCartView.isUserInteractionEnabled = true
         
         let storePickUpTap = UITapGestureRecognizer(target: self, action: #selector(self.hideStorePickupView(_:)))
         storePickUpView.addGestureRecognizer(storePickUpTap)
@@ -155,6 +155,9 @@ class TAPProductMainPageViewController: TAPBaseViewController {
         }
     }
     
+    @IBAction func tapCartView(_ sender: Any) {
+        self.addToCartView.isHidden = true
+    }
     func setupPageView() {
         self.imagePageView.type = .linear
         self.imagePageView.isPagingEnabled = true
