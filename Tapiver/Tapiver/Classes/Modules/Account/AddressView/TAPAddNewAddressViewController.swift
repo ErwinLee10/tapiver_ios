@@ -225,7 +225,9 @@ class TAPAddNewAddressViewController: UIViewController, UITextFieldDelegate {
                 address.contact = self.contactNumberTextField.text ?? ""
                 address.id = value
                 self.delegate?.addAddress(address: address)
-                self.navigationController?.popViewController(animated: true)
+                TAPDialogUtils.shareInstance.showAlertMessageOneButton(title: "", message: "Address was successfully added to your address book!", positive: "OK", positiveHandler: {
+                     self.navigationController?.popViewController(animated: true)
+                }, vc: self)
             }
             else {
                 TAPDialogUtils.shareInstance.showAlertMessageOneButton(title: "", message: "Server error, please contact Tapiver team for assistance", positive: "OK", positiveHandler: nil, vc: self)
