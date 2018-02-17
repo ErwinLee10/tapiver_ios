@@ -54,8 +54,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 self.window!.rootViewController = navi
             }
         }
-		
-//        IQKeyboardManager.sharedManager().enable = true
 
         return true
     }

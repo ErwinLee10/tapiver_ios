@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import IQKeyboardManagerSwift
 import DropDown
 
 @objc protocol TAPRedeemRequestDelegate: class {

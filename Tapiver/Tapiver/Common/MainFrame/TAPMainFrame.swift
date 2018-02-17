@@ -44,14 +44,13 @@ class TAPMainFrame: NSObject {
     
     static func showForgotPage() -> Void {
         let vc = TAPForgotPasswordViewController(nibName: "TAPForgotPasswordViewController", bundle: nil)
-        navigationView?.viewControllers = [vc]
+        navigationView?.pushViewController(vc, animated: true)
         
     }
     
     static func showSignupEmailPage() -> Void {
         let vc = TAPSignupEmailViewController(nibName: "TAPSignupEmailViewController", bundle: nil)
         navigationView?.pushViewController(vc, animated: true)
-//        navigationView?.viewControllers = [vc]
         
     }
     

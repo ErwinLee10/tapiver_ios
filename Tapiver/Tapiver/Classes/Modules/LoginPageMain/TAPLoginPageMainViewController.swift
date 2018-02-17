@@ -32,10 +32,6 @@ class TAPLoginPageMainViewController: UIViewController {
         triangularView.layer.mask = mask
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 
     @IBAction func actionLogin(_ sender: UIButton) {
         let header = NSMutableDictionary()
@@ -56,7 +52,7 @@ class TAPLoginPageMainViewController: UIViewController {
         }
         
         if !TAPUtils.shareInstance.isValidEmail(email: email) {
-            TAPDialogUtils.shareInstance.showAlertMessageOneButton(title: "", message: "Email not avalid", positive: "OK", positiveHandler: nil, vc: self)
+            TAPDialogUtils.shareInstance.showAlertMessageOneButton(title: "", message: "Email is not valid", positive: "OK", positiveHandler: nil, vc: self)
             return
         }
         

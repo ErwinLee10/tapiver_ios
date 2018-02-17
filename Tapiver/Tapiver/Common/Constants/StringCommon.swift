@@ -8,7 +8,6 @@
 
 import Foundation
 
-let TITLE_TAPIEVER = "Tapiever"
 let STRIPE_PUBLISHABLE_KEY  = "pk_test_FyiJZPqThsueboEipcNQ3OEX"
 let SECRET_KEY              = "sk_test_CeXIUsjL9mLZfL096mNUSmjg"
 

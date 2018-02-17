@@ -38,7 +38,7 @@ class TAPForgotPasswordViewController: UIViewController {
         }
         
         if !TAPUtils.shareInstance.isValidEmail(email: email) {
-            TAPDialogUtils.shareInstance.showAlertMessageOneButton(title: "", message: "Email not avalid", positive: "OK", positiveHandler: nil, vc: self)
+            TAPDialogUtils.shareInstance.showAlertMessageOneButton(title: "", message: "Email is not valid", positive: "OK", positiveHandler: nil, vc: self)
             return
         }
         
@@ -55,7 +55,7 @@ class TAPForgotPasswordViewController: UIViewController {
                 TAPGlobal.shared.saveHasLogin(isLogin: true)
                 TAPMainFrame.showLoginPageMain()
             } else {
-                TAPDialogUtils.shareInstance.showAlertMessageOneButton(title: "", message: "Server error, please contact Tapiver team for assistance", positive: "OK", positiveHandler: nil, vc: self)
+                TAPDialogUtils.shareInstance.showAlertMessageOneButton(title: "", message: "Please check your email to reset password", positive: "OK", positiveHandler: nil, vc: self)
             }
             //SVProgressHUD.dismiss()
             TAPGlobal.shared.dismissLoading()
