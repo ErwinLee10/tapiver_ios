@@ -52,10 +52,12 @@ class TAPSignupEmailViewController: UIViewController {
     }
 
     @IBAction func actionSignupNext(_ sender: UIButton) {
-        guard let email = emailTF.text
+        guard var email = emailTF.text
             else {
             return
         }
+        
+        email = email.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         
         if email.isEmpty {
             TAPDialogUtils.shareInstance.showAlertMessageOneButton(title: "", message: "Please input all fields", positive: "OK", positiveHandler: nil, vc: self)
@@ -63,7 +65,7 @@ class TAPSignupEmailViewController: UIViewController {
         }
         
         if !TAPUtils.shareInstance.isValidEmail(email: email) {
-            TAPDialogUtils.shareInstance.showAlertMessageOneButton(title: "", message: "Email is not valid", positive: "OK", positiveHandler: nil, vc: self)
+            TAPDialogUtils.shareInstance.showAlertMessageOneButton(title: "", message: "≈", positive: "OK", positiveHandler: nil, vc: self)
             return
         }
         

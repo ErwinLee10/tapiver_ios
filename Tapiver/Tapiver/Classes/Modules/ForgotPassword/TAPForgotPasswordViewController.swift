@@ -33,9 +33,11 @@ class TAPForgotPasswordViewController: UIViewController {
     @IBAction func actionForgot(_ sender: UIButton) {
         let header = NSMutableDictionary()
         header.setValue("application/json", forKey: "Content-Type")
-        guard let email = emailTF.text else {
+        guard var email = emailTF.text else {
             return
         }
+        
+        email = email.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         
         if !TAPUtils.shareInstance.isValidEmail(email: email) {
             TAPDialogUtils.shareInstance.showAlertMessageOneButton(title: "", message: "Email is not valid", positive: "OK", positiveHandler: nil, vc: self)

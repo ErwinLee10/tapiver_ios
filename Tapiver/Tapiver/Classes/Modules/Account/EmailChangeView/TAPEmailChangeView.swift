@@ -34,8 +34,13 @@ class TAPEmailChangeView: UIViewController {
     }
     
     public func isEmail() -> Bool {
-        // http://stackoverflow.com/questions/25471114/how-to-validate-an-e-mail-address-in-swift
-        return (emailTextField.text!.range(of: "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}",
+        
+        guard var email = emailTextField.text else {
+            return false
+        }
+        
+        email = email.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+        return (email.range(of: "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}",
                       options: String.CompareOptions.regularExpression,
                       range: nil, locale: nil) != nil)
     }
