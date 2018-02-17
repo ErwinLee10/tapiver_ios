@@ -64,7 +64,7 @@ class TAPReviewCell: UITableViewCell {
     }
     private func paserObj() -> (address: String, storeTotal: String, titleShippng: String, costShiping: String ) {
         var add: String = ""
-        let total: String = "S$ \(cartItem!.totalPrice ?? 0)"
+        let total: String = NSNumber(value: cartItem!.totalPrice!).moneyString()
         var titleshipping: String = ""
         var costShiping: String = ""
         for item  in self.cartItem!.shippingOptions {
@@ -72,7 +72,7 @@ class TAPReviewCell: UITableViewCell {
                 if item.provider == "Store" && item.type == "Pickup" && item.price == 0.0 {
                     add = "Store"
                     titleshipping = "Cash back"
-                    costShiping = "S$ \(item.additionalInfor?.cashbackPercentage ?? 0.00)"
+                    costShiping = NSNumber(value: (item.additionalInfor?.cashbackPercentage)!).moneyString()
                 }else {
                     titleshipping = item.type!
                     add = address?.contact ?? ""

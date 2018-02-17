@@ -71,43 +71,44 @@ class TAPCashbackView: UIViewController {
             TAPGlobal.shared.dismissLoading()
         }
     }
-    func convertToDictionary(text: String) -> [String: Any]? {
-        let text1 = """
-        {
-        "earning": 353.45,
-        "redeemable": 22,
-        "redeemed": 353.45,
-        "pending": 13.2,
-        "processing": 0,
-        "cashbacks": [
-        {
-        "id": 48,
-        "orderDate": 1507332130117,
-        "cashbackPercentage": 5,
-        "cashbackAmount": 83.25,
-        "status": "REDEEMED",
-        "orderId": 315073609301
-        },
-        {
-        "id": 47,
-        "orderDate": 1507331358703,
-        "cashbackPercentage": 5,
-        "cashbackAmount": 9.25,
-        "status": "PENDING",
-        "orderId": 315073601581
-        }
-        ]
-        }
-        """
-        if let data = text1.data(using: .utf8) {
-            do {
-                return try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
-            } catch {
-                print(error.localizedDescription)
-            }
-        }
-        return nil
-    }
+//    func convertToDictionary(text: String) -> [String: Any]? {
+//        let text1 = """
+//        {
+//        "earning": 353.45,
+//        "redeemable": 22,
+//        "redeemed": 353.45,
+//        "pending": 13.2,
+//        "processing": 0,
+//        "cashbacks": [
+//        {
+//        "id": 48,
+//        "orderDate": 1507332130117,
+//        "cashbackPercentage": 5,
+//        "cashbackAmount": 83.25,
+//        "status": "REDEEMED",
+//        "orderId": 315073609301
+//        },
+//        {
+//        "id": 47,
+//        "orderDate": 1507331358703,
+//        "cashbackPercentage": 5,
+//        "cashbackAmount": 9.25,
+//        "status": "PENDING",
+//        "orderId": 315073601581
+//        }
+//        ]
+//        }
+//        """
+//        if let data = text1.data(using: .utf8) {
+//            do {
+//                return try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+//            } catch {
+//                print(error.localizedDescription)
+//            }
+//        }
+//        return nil
+//    }
+    
     @IBAction func acRedeem(_ sender: Any) {
         let redeemView = TAPRedeemRequest.init(frame: WINDOW!.frame)
         redeemView.delegate = self
@@ -127,7 +128,7 @@ class TAPCashbackView: UIViewController {
                 self.btReddem.backgroundColor = UIColor.init(netHex: 0x848585)
                 self.btReddem.isEnabled = false
             }
-            self.lbCostRedeem.text = "S$\(count)"
+            self.lbCostRedeem.text = NSNumber(value: count).moneyString()
         }
         
         self.tableview.reloadData()

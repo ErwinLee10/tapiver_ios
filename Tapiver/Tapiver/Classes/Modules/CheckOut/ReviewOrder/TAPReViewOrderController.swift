@@ -28,7 +28,7 @@ class TAPReViewOrderController: UIViewController {
         self.headerView.delegate = self
         self.tableView.register(UINib.init(nibName: "TAPReviewCell", bundle: nil), forCellReuseIdentifier: "TAPReviewCell")
         self.tableView.register(UINib.init(nibName: "TAPSubShippingMethod", bundle: nil), forCellReuseIdentifier: "TAPSubShippingMethod")
-        self.lbTotal.text = "S$ \(reviewObj?.cardList?.finalTotalAmount ?? 0)"
+        self.lbTotal.text = NSNumber(value: (reviewObj?.cardList?.finalTotalAmount)!).moneyString()
         if let dis = reviewObj?.cardList?.originalTotalAmount  {
             if let bis = reviewObj?.cardList?.finalTotalAmount {
                 if bis != dis {
