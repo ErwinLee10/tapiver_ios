@@ -65,14 +65,11 @@ class TAPSignupEmailViewController: UIViewController {
         }
         
         if !TAPUtils.shareInstance.isValidEmail(email: email) {
-            TAPDialogUtils.shareInstance.showAlertMessageOneButton(title: "", message: "≈", positive: "OK", positiveHandler: nil, vc: self)
+            TAPDialogUtils.shareInstance.showAlertMessageOneButton(title: "", message: "Email is not valid", positive: "OK", positiveHandler: nil, vc: self)
             return
         }
         
         TAPMainFrame.showSignupPassPage(email:email, firstName: firstNameTF.text, lastName: lastNameTF.text)
-    }
-    @IBAction func actionSignupFacebook(_ sender: Any) {
-        
     }
     
     @IBAction func actionLogin(_ sender: UIButton) {

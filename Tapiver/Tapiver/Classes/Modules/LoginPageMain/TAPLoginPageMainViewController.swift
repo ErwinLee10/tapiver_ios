@@ -163,6 +163,7 @@ extension TAPLoginPageMainViewController {
                 TAPGlobal.shared.saveLoginModel(model: model)
                 TAPGlobal.shared.saveHasLogin(isLogin: true)
                 TAPMainFrame.showMainTabbarPage()
+                TAPDialogUtils.shareInstance.showAlertMessageOneButton(title: "", message: "Login successful", positive: "OK", positiveHandler: nil, vc: self)
             } else {
                 TAPMainFrame.showSignupEmailPage(email: email, firstName: firstName, lastName: lastName)
             }
